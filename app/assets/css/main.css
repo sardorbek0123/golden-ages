@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+
+  --color-green-50: #EFFDF5;
+  --color-green-100: #D9FBE8;
+  --color-green-200: #B3F5D1;
+  --color-green-300: #75EDAE;
+  --color-green-400: #00DC82;
+  --color-green-500: #00C16A;
+  --color-green-600: #00A155;
+  --color-green-700: #007F45;
+  --color-green-800: #016538;
+  --color-green-900: #0A5331;
+  --color-green-950: #052E16;
+
+  /* Green Palette */
+  --color-green-light: #eaf7f1;
+  --color-green-light-hover: #dff3ea;
+  --color-green-light-active: #bde6d4;
+  --color-green-normal: #2baf74;
+  --color-green-normal-hover: #279e68;
+  --color-green-normal-active: #228c5d;
+  --color-green-dark: #208357;
+  --color-green-dark-hover: #1a6946;
+  --color-green-dark-active: #134f34;
+  --color-green-darker: #0f3d29;
+
+  /* Orange Palette */
+  --color-orange-light: #fff6e6;
+  --color-orange-light-hover: #fff2d9;
+  --color-orange-light-active: #ffe4b0;
+  --color-orange-normal: #ffa800;
+  --color-orange-normal-hover: #e69700;
+  --color-orange-normal-active: #cc8600;
+  --color-orange-dark: #bf7e00;
+  --color-orange-dark-hover: #996500;
+  --color-orange-dark-active: #734c00;
+  --color-orange-darker: #593b00;
+
+  /* Dark/Black Palette */
+  --color-dark-light: #e7e7e7;
+  --color-dark-light-hover: #dbdbdb;
+  --color-dark-light-active: #b5b5b5;
+  --color-dark-normal: #111111;
+  --color-dark-normal-hover: #0f0f0f;
+  --color-dark-normal-active: #0e0e0e;
+  --color-dark-dark: #0d0d0d;
+  --color-dark-dark-hover: #0a0a0a;
+  --color-dark-dark-active: #080808;
+  --color-dark-darker: #060606;
+
+  /* Grey Palette */
+  --color-grey-light: #fefefe;
+  --color-grey-light-hover: #fdfdfd;
+  --color-grey-light-active: #fbfbfb;
+  --color-grey-normal: #f3f3f3;
+  --color-grey-normal-hover: #dbdbdb;
+  --color-grey-normal-active: #c2c2c2;
+  --color-grey-dark: #b6b6b6;
+  --color-grey-dark-hover: #929292;
+  --color-grey-dark-active: #6d6d6d;
+  --color-grey-darker: #555555;
+
+  /* Red Palette */
+  --color-red-light: #ffedeb;
+  --color-red-light-hover: #ffe4e1;
+  --color-red-light-active: #ffc8c2;
+  --color-red-normal: #ff4d3a;
+  --color-red-normal-hover: #e64534;
+  --color-red-normal-active: #cc3e2e;
+  --color-red-dark: #bf3a2c;
+  --color-red-dark-hover: #992e23;
+  --color-red-dark-active: #73231a;
+  --color-red-darker: #591b14;
+
+  /* Blue Palette */
+  --color-blue-light: #eaefff;
+  --color-blue-light-hover: #dfe7ff;
+  --color-blue-light-active: #beceff;
+  --color-blue-normal: #2c62ff;
+  --color-blue-normal-hover: #2858e6;
+  --color-blue-normal-active: #234ecc;
+  --color-blue-dark: #214abf;
+  --color-blue-dark-hover: #1a3b99;
+  --color-blue-dark-active: #142c73;
+  --color-blue-darker: #0f2259;
+
+  /* White Palette */
+  --color-white-light: #ffffff;
+  --color-white-light-hover: #ffffff;
+  --color-white-light-active: #ffffff;
+  --color-white-normal: #ffffff;
+  --color-white-normal-hover: #e6e6e6;
+  --color-white-normal-active: #cccccc;
+  --color-white-dark: #bfbfbf;
+  --color-white-dark-hover: #999999;
+  --color-white-dark-active: #737373;
+  --color-white-darker: #595959;
+
+  /* Yellow Palette */
+  --color-yellow-light: #fffbed;
+  --color-yellow-light-hover: #fff8e4;
+  --color-yellow-light-active: #fff1c7;
+  --color-yellow-normal: #ffd34a;
+  --color-yellow-normal-hover: #e6be43;
+  --color-yellow-normal-active: #cca93b;
+  --color-yellow-dark: #bf9e38;
+  --color-yellow-dark-hover: #997f2c;
+  --color-yellow-dark-active: #735f21;
+  --color-yellow-darker: #594a1a;
+}
+
+/* Global button styles */
+button:hover:not(:disabled) {
+  cursor: pointer;
+}
+
