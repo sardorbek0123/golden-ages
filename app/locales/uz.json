@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "tours": "TURLAR",
+    "aboutUs": "BIZ HAQIMIZDA",
+    "cities": "SHAHARLAR",
+    "shop": "DO'KON",
+    "uzbekCulture": "O'ZBEK MADANIYATI",
+    "contacts": "ALOQA"
+  },
+  "header": {
+    "createTour": "TUR YARATISH"
+  },
+  "hero": {
+    "title": "O'zbekiston tarixini kashf eting",
+    "subtitle": "Samarqanddan Xivagacha, Ipak yo'li bo'ylab sayohat qiling — guruhli, oilaviy, biznes yoki shaxsiy turlar — vizalar, mehmonxonalar va gidlar bilan."
+  },
+  "whyChooseUs": {
+    "badge": "BIZNING QADRIYATLARIMIZ",
+    "title": "Nega bizni tanlashadi",
+    "hotels": {
+      "title": "Mehmonxonalar",
+      "description": "3-5★ mehmonxonalar va butik turar joylar orasidan tanlang, barchasi qulaylik, joylashuv va haqiqiy o'zbek mehmondo'stligi uchun shaxsan tekshirilgan"
+    },
+    "simCard": {
+      "title": "Bepul SIM-karta / eSIM",
+      "description": "Birinchi kundan aloqada qoling. Biz bepul mahalliy SIM yoki eSIM ni taqdim etamiz, shuning uchun kelganingizdan keyin darhol internet va WhatsApp bo'ladi"
+    },
+    "medical": {
+      "title": "Tibbiy yordam",
+      "description": "Sizning xavfsizligingiz bizning ustuvorligimiz. Har bir sayohatchi safar davomida yordam va ishonchli klinikalarga kirish bilan ta'minlangan"
+    },
+    "guides": {
+      "title": "Do'stona va malakali gidlar",
+      "description": "Har bir yashirin marvaridni biladigan litsenziyalangan ingliz tilida so'zlashuvchi mutaxassislar — har bir ekskursiyani esda qolarli qiladi"
+    },
+    "packages": {
+      "title": "Moslashtirilgan tur paketlari",
+      "description": "Har bir yashirin marvaridni biladigan litsenziyalangan ingliz tilida so'zlashuvchi mutaxassislar — har bir ekskursiyani esda qolarli qiladi"
+    },
+    "support": {
+      "title": "24/7 qo'llab-quvvatlash",
+      "description": "Hamma narsa tashkil etilgan shaffof marshrutlar — transferlar, chiptalar, ovqatlanish va tajribalar, yashirin xarajatlarsiz"
+    }
+  },
+  "destinations": {
+    "badge": "BIZNING YO'NALISHLAR",
+    "title": "O'zbekistonning buyuk tarixi va ajoyib merosini kashf eting",
+    "seeTours": "{city} TURLARINI KO'RISH"
+  },
+  "testimonials": {
+    "badge": "SHARHLAR",
+    "title": "GAOU bilan sayohat qilganlarning hikoyalari",
+    "subtitle": "Haqiqiy tajribalar va ishonchli xizmat — sayohatchilar Golden Ages sayohati haqida nima deyishlarini bilib oling",
+    "writeReview": "SHARH YOZISH"
+  },
+  "tourPackages": {
+    "badge": "TUR PAKETLARI",
+    "title": "Siz uchun tanlangan O'zbekiston turlari",
+    "subtitle": "Mahalliy ekspertlar tomonidan yaratilgan eksklyuziv marshrutlar — mashhur diqqatga sazovor joylar, hashamatli mehmonxonalar va shaxsiylashtirilgan xizmat",
+    "bookingNow": "HOZIR BAND QILISH"
+  },
+  "contactForm": {
+    "title": "Biz bilan bog'laning",
+    "fullName": "TO'LIQ ISM",
+    "email": "ELEKTRON POCHTA",
+    "phone": "TELEFON",
+    "tourType": "TUR TURI",
+    "message": "XABAR",
+    "messagePlaceholder": "Sizga qanday yordam bera olamiz?",
+    "submit": "XABAR YUBORISH",
+    "contactTitle": "O'zbekistonga sayohatingizni rejalashtiring",
+    "contactHighlight": "mahalliy ekspertlar bilan"
+  },
+  "footer": {
+    "description": "Biz bilan tarixning Oltin Asrini his eting — O'zbekistonning abadiy go'zalligini kashf eting",
+    "tours": {
+      "title": "TURLAR",
+      "familyPackages": "Oilaviy paketlar",
+      "businessTours": "Biznes turlari",
+      "individualTrips": "Individual sayohatlar",
+      "friendsGetaways": "Do'stlar bilan dam olish",
+      "vipExperiences": "VIP tajribalar"
+    },
+    "aboutUs": {
+      "title": "BIZ HAQIMIZDA",
+      "missions": "Missiya",
+      "goals": "Maqsadlar",
+      "license": "Litsenziya",
+      "teamMembers": "Jamoa"
+    },
+    "cities": {
+      "title": "SHAHARLAR",
+      "more": "Ko'proq"
+    },
+    "culture": {
+      "title": "O'ZBEK MADANIYATI",
+      "cuisineFood": "Oshxona va taom",
+      "artHandicrafts": "San'at va hunarmandchilik",
+      "musicFestivals": "Musiqa va festivallar",
+      "historyHeritage": "Tarix va meros"
+    },
+    "copyright": "2025 Golden Ages. Barcha huquqlar himoyalangan.",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "termsOfService": "Foydalanish shartlari",
+    "cookiesSettings": "Cookie sozlamalari"
+  },
+  "toursPage": {
+    "heroTitle": "O'zbekistonni bizning turlarimiz bilan kashf eting",
+    "heroSubtitle": "Jonli Toshkentdan qadimiy Xivagacha — litsenziyalangan gidlar, 3-5★ mehmonxonalar va 24/7 qo'llab-quvvatlash bilan Ipak yo'lini o'rganing",
+    "startTrip": "SAYOHATNI BOSHLASH",
+    "ourTourPackages": "Bizning tur paketlarimiz"
+  },
+  "tourTypes": {
+    "groupTour": "Guruhli tur",
+    "privateTour": "Shaxsiy tur",
+    "familyTour": "Oilaviy tur",
+    "businessTour": "Biznes tur",
+    "customTour": "Maxsus tur"
+  },
+  "common": {
+    "from": "Dan",
+    "days": "kun",
+    "nights": "kecha",
+    "reviews": "sharhlar",
+    "excellent": "A'lo"
+  }
+}

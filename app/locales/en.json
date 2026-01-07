@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "tours": "TOURS",
+    "aboutUs": "ABOUT US",
+    "cities": "CITIES",
+    "shop": "SHOP",
+    "uzbekCulture": "UZBEK CULTURE",
+    "contacts": "CONTACTS"
+  },
+  "header": {
+    "createTour": "CREATE YOUR TOUR"
+  },
+  "hero": {
+    "title": "Discover the history of Uzbekistan",
+    "subtitle": "From Samarkand to Khiva, travel the Silk Road your way — group, family, business or private — with visas, hotels and guides taken care of."
+  },
+  "whyChooseUs": {
+    "badge": "OUR VALUES",
+    "title": "Why choose us",
+    "hotels": {
+      "title": "Hotels",
+      "description": "Choose among 3-5★ hotels and boutique stays, all personally vetted for comfort, location, and authentic Uzbek hospitality"
+    },
+    "simCard": {
+      "title": "Free SIM card / eSIM",
+      "description": "Stay connected from your first day. We provide a free local SIM or eSIM setup so you have internet and WhatsApp right after arrival"
+    },
+    "medical": {
+      "title": "Medical support",
+      "description": "Your safety is our priority. Every traveler is covered with on-trip assistance and access to trusted clinics when needed"
+    },
+    "guides": {
+      "title": "Friendly and qualified guides",
+      "description": "Licensed, English-speaking professionals who know every hidden gem – turning each excursion into a story worth remembering"
+    },
+    "packages": {
+      "title": "Customable tour packages",
+      "description": "Licensed, English-speaking professionals who know every hidden gem – turning each excursion into a story worth remembering"
+    },
+    "support": {
+      "title": "24/7 support",
+      "description": "Transparent itineraries with everything organized – transfers, tickets, meals, and experiences, without hidden costs"
+    }
+  },
+  "destinations": {
+    "badge": "OUR DESTINATIONS",
+    "title": "Discover the great history and incredible heritage of Uzbekistan",
+    "seeTours": "SEE {city} TOURS"
+  },
+  "testimonials": {
+    "badge": "TESTIMONIAL",
+    "title": "Stories from those who've traveled with GAOU",
+    "subtitle": "Authentic experiences and trusted service — discover what travelers say about their Golden Ages journey",
+    "writeReview": "WRITE A REVIEW"
+  },
+  "tourPackages": {
+    "badge": "TOUR PACKAGES",
+    "title": "Signature Uzbekistan Tours Curated for You",
+    "subtitle": "Exclusive itineraries crafted by local experts — combining iconic landmarks, luxury stays, and personalized service throughout your trip",
+    "bookingNow": "BOOKING NOW"
+  },
+  "contactForm": {
+    "title": "Get In Touch",
+    "fullName": "FULL NAME",
+    "email": "EMAIL",
+    "phone": "PHONE",
+    "tourType": "TOUR TYPE",
+    "message": "MESSAGE",
+    "messagePlaceholder": "How can we help you?",
+    "submit": "SEND A MESSAGE",
+    "contactTitle": "Plan Your Uzbekistan Trip with",
+    "contactHighlight": "Local Experts"
+  },
+  "footer": {
+    "description": "Experience the Golden Ages of history with us — Discover the timeless beauty of Uzbekistan",
+    "tours": {
+      "title": "TOURS",
+      "familyPackages": "Family Packages",
+      "businessTours": "Business Tours",
+      "individualTrips": "Individual Trips",
+      "friendsGetaways": "Friends Getaways",
+      "vipExperiences": "VIP Experiences"
+    },
+    "aboutUs": {
+      "title": "ABOUT US",
+      "missions": "Missions",
+      "goals": "Goals",
+      "license": "License",
+      "teamMembers": "Team members"
+    },
+    "cities": {
+      "title": "CITIES",
+      "more": "More"
+    },
+    "culture": {
+      "title": "UZBEK CULTURE",
+      "cuisineFood": "Cuisine & Food",
+      "artHandicrafts": "Art & Handicrafts",
+      "musicFestivals": "Music & Festivals",
+      "historyHeritage": "History & Heritage Stories"
+    },
+    "copyright": "2025 Golden Ages. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiesSettings": "Cookies Settings"
+  },
+  "toursPage": {
+    "heroTitle": "Discover Uzbekistan with our curated tours",
+    "heroSubtitle": "From vibrant Tashkent to ancient Khiva — explore the Silk Road with licensed guides, 3–5★ hotels, and 24/7 support",
+    "startTrip": "START THE TRIP",
+    "ourTourPackages": "Our Tour Packages"
+  },
+  "tourTypes": {
+    "groupTour": "Group tour",
+    "privateTour": "Private tour",
+    "familyTour": "Family tour",
+    "businessTour": "Business tour",
+    "customTour": "Custom tour"
+  },
+  "common": {
+    "from": "From",
+    "days": "days",
+    "nights": "nights",
+    "reviews": "reviews",
+    "excellent": "Excellent"
+  }
+}

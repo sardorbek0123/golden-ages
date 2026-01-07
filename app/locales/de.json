@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "tours": "TOUREN",
+    "aboutUs": "ÜBER UNS",
+    "cities": "STÄDTE",
+    "shop": "SHOP",
+    "uzbekCulture": "USBEKISCHE KULTUR",
+    "contacts": "KONTAKT"
+  },
+  "header": {
+    "createTour": "TOUR ERSTELLEN"
+  },
+  "hero": {
+    "title": "Entdecken Sie die Geschichte Usbekistans",
+    "subtitle": "Von Samarkand nach Chiwa, reisen Sie auf Ihre Weise entlang der Seidenstraße — in Gruppen, mit der Familie, geschäftlich oder privat — mit Visa, Hotels und Reiseführern."
+  },
+  "whyChooseUs": {
+    "badge": "UNSERE WERTE",
+    "title": "Warum uns wählen",
+    "hotels": {
+      "title": "Hotels",
+      "description": "Wählen Sie aus 3-5★ Hotels und Boutique-Unterkünften, alle persönlich auf Komfort, Lage und authentische usbekische Gastfreundschaft geprüft"
+    },
+    "simCard": {
+      "title": "Kostenlose SIM-Karte / eSIM",
+      "description": "Bleiben Sie vom ersten Tag an verbunden. Wir bieten eine kostenlose lokale SIM oder eSIM, damit Sie sofort Internet und WhatsApp haben"
+    },
+    "medical": {
+      "title": "Medizinische Unterstützung",
+      "description": "Ihre Sicherheit ist unsere Priorität. Jeder Reisende ist mit Unterstützung während der Reise und Zugang zu vertrauenswürdigen Kliniken abgesichert"
+    },
+    "guides": {
+      "title": "Freundliche und qualifizierte Reiseleiter",
+      "description": "Lizenzierte, englischsprachige Profis, die jeden verborgenen Schatz kennen — und jeden Ausflug zu einer Geschichte machen"
+    },
+    "packages": {
+      "title": "Anpassbare Tourpakete",
+      "description": "Lizenzierte, englischsprachige Profis, die jeden verborgenen Schatz kennen — und jeden Ausflug zu einer Geschichte machen"
+    },
+    "support": {
+      "title": "24/7 Support",
+      "description": "Transparente Reiserouten mit allem organisiert — Transfers, Tickets, Mahlzeiten und Erlebnisse, ohne versteckte Kosten"
+    }
+  },
+  "destinations": {
+    "badge": "UNSERE REISEZIELE",
+    "title": "Entdecken Sie die große Geschichte und das unglaubliche Erbe Usbekistans",
+    "seeTours": "{city} TOUREN ANSEHEN"
+  },
+  "testimonials": {
+    "badge": "ERFAHRUNGSBERICHTE",
+    "title": "Geschichten von Reisenden mit GAOU",
+    "subtitle": "Authentische Erlebnisse und vertrauenswürdiger Service — erfahren Sie, was Reisende über ihre Golden Ages Reise sagen",
+    "writeReview": "BEWERTUNG SCHREIBEN"
+  },
+  "tourPackages": {
+    "badge": "TOURPAKETE",
+    "title": "Exklusive Usbekistan-Touren für Sie",
+    "subtitle": "Exklusive Routen von lokalen Experten — kombiniert ikonische Sehenswürdigkeiten, Luxusunterkünfte und persönlichen Service",
+    "bookingNow": "JETZT BUCHEN"
+  },
+  "contactForm": {
+    "title": "Kontaktieren Sie uns",
+    "fullName": "VOLLSTÄNDIGER NAME",
+    "email": "E-MAIL",
+    "phone": "TELEFON",
+    "tourType": "TOURTYP",
+    "message": "NACHRICHT",
+    "messagePlaceholder": "Wie können wir Ihnen helfen?",
+    "submit": "NACHRICHT SENDEN",
+    "contactTitle": "Planen Sie Ihre Usbekistan-Reise mit",
+    "contactHighlight": "lokalen Experten"
+  },
+  "footer": {
+    "description": "Erleben Sie das Goldene Zeitalter der Geschichte mit uns — Entdecken Sie die zeitlose Schönheit Usbekistans",
+    "tours": {
+      "title": "TOUREN",
+      "familyPackages": "Familienpakete",
+      "businessTours": "Geschäftsreisen",
+      "individualTrips": "Einzelreisen",
+      "friendsGetaways": "Freundesausflüge",
+      "vipExperiences": "VIP-Erlebnisse"
+    },
+    "aboutUs": {
+      "title": "ÜBER UNS",
+      "missions": "Mission",
+      "goals": "Ziele",
+      "license": "Lizenz",
+      "teamMembers": "Team"
+    },
+    "cities": {
+      "title": "STÄDTE",
+      "more": "Mehr"
+    },
+    "culture": {
+      "title": "USBEKISCHE KULTUR",
+      "cuisineFood": "Küche & Essen",
+      "artHandicrafts": "Kunst & Handwerk",
+      "musicFestivals": "Musik & Festivals",
+      "historyHeritage": "Geschichte & Kulturerbe"
+    },
+    "copyright": "2025 Golden Ages. Alle Rechte vorbehalten.",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen",
+    "cookiesSettings": "Cookie-Einstellungen"
+  },
+  "toursPage": {
+    "heroTitle": "Entdecken Sie Usbekistan mit unseren Touren",
+    "heroSubtitle": "Vom lebhaften Taschkent bis zum antiken Chiwa — erkunden Sie die Seidenstraße mit lizenzierten Reiseleitern, 3-5★ Hotels und 24/7 Support",
+    "startTrip": "REISE STARTEN",
+    "ourTourPackages": "Unsere Tourpakete"
+  },
+  "tourTypes": {
+    "groupTour": "Gruppenreise",
+    "privateTour": "Privatreise",
+    "familyTour": "Familienreise",
+    "businessTour": "Geschäftsreise",
+    "customTour": "Individuelle Tour"
+  },
+  "common": {
+    "from": "Ab",
+    "days": "Tage",
+    "nights": "Nächte",
+    "reviews": "Bewertungen",
+    "excellent": "Ausgezeichnet"
+  }
+}

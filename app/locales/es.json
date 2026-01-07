@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "tours": "TOURS",
+    "aboutUs": "NOSOTROS",
+    "cities": "CIUDADES",
+    "shop": "TIENDA",
+    "uzbekCulture": "CULTURA UZBEKA",
+    "contacts": "CONTACTOS"
+  },
+  "header": {
+    "createTour": "CREAR TU TOUR"
+  },
+  "hero": {
+    "title": "Descubre la historia de Uzbekistán",
+    "subtitle": "De Samarcanda a Jiva, viaja por la Ruta de la Seda a tu manera — en grupo, familia, negocios o privado — con visas, hoteles y guías incluidos."
+  },
+  "whyChooseUs": {
+    "badge": "NUESTROS VALORES",
+    "title": "Por qué elegirnos",
+    "hotels": {
+      "title": "Hoteles",
+      "description": "Elige entre hoteles de 3-5★ y estancias boutique, todos personalmente verificados por comodidad, ubicación y auténtica hospitalidad uzbeka"
+    },
+    "simCard": {
+      "title": "SIM / eSIM gratis",
+      "description": "Mantente conectado desde el primer día. Proporcionamos una SIM local gratuita o configuración eSIM para que tengas internet y WhatsApp al llegar"
+    },
+    "medical": {
+      "title": "Apoyo médico",
+      "description": "Tu seguridad es nuestra prioridad. Cada viajero cuenta con asistencia durante el viaje y acceso a clínicas de confianza"
+    },
+    "guides": {
+      "title": "Guías amables y calificados",
+      "description": "Profesionales con licencia que hablan inglés y conocen cada joya oculta — convirtiendo cada excursión en una historia memorable"
+    },
+    "packages": {
+      "title": "Paquetes turísticos personalizables",
+      "description": "Profesionales con licencia que hablan inglés y conocen cada joya oculta — convirtiendo cada excursión en una historia memorable"
+    },
+    "support": {
+      "title": "Soporte 24/7",
+      "description": "Itinerarios transparentes con todo organizado — traslados, entradas, comidas y experiencias, sin costos ocultos"
+    }
+  },
+  "destinations": {
+    "badge": "NUESTROS DESTINOS",
+    "title": "Descubre la gran historia e increíble herencia de Uzbekistán",
+    "seeTours": "VER TOURS EN {city}"
+  },
+  "testimonials": {
+    "badge": "TESTIMONIOS",
+    "title": "Historias de quienes viajaron con GAOU",
+    "subtitle": "Experiencias auténticas y servicio confiable — descubre lo que dicen los viajeros sobre su viaje con Golden Ages",
+    "writeReview": "ESCRIBIR RESEÑA"
+  },
+  "tourPackages": {
+    "badge": "PAQUETES TURÍSTICOS",
+    "title": "Tours exclusivos por Uzbekistán para ti",
+    "subtitle": "Itinerarios exclusivos creados por expertos locales — combinando lugares icónicos, estancias de lujo y servicio personalizado",
+    "bookingNow": "RESERVAR AHORA"
+  },
+  "contactForm": {
+    "title": "Contáctanos",
+    "fullName": "NOMBRE COMPLETO",
+    "email": "CORREO ELECTRÓNICO",
+    "phone": "TELÉFONO",
+    "tourType": "TIPO DE TOUR",
+    "message": "MENSAJE",
+    "messagePlaceholder": "¿Cómo podemos ayudarte?",
+    "submit": "ENVIAR MENSAJE",
+    "contactTitle": "Planifica tu viaje a Uzbekistán con",
+    "contactHighlight": "expertos locales"
+  },
+  "footer": {
+    "description": "Experimenta la Edad de Oro de la historia con nosotros — Descubre la belleza atemporal de Uzbekistán",
+    "tours": {
+      "title": "TOURS",
+      "familyPackages": "Paquetes familiares",
+      "businessTours": "Tours de negocios",
+      "individualTrips": "Viajes individuales",
+      "friendsGetaways": "Escapadas con amigos",
+      "vipExperiences": "Experiencias VIP"
+    },
+    "aboutUs": {
+      "title": "NOSOTROS",
+      "missions": "Misiones",
+      "goals": "Objetivos",
+      "license": "Licencia",
+      "teamMembers": "Equipo"
+    },
+    "cities": {
+      "title": "CIUDADES",
+      "more": "Más"
+    },
+    "culture": {
+      "title": "CULTURA UZBEKA",
+      "cuisineFood": "Cocina y comida",
+      "artHandicrafts": "Arte y artesanías",
+      "musicFestivals": "Música y festivales",
+      "historyHeritage": "Historia y patrimonio"
+    },
+    "copyright": "2025 Golden Ages. Todos los derechos reservados.",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio",
+    "cookiesSettings": "Configuración de cookies"
+  },
+  "toursPage": {
+    "heroTitle": "Descubre Uzbekistán con nuestros tours",
+    "heroSubtitle": "Desde el vibrante Tashkent hasta la antigua Jiva — explora la Ruta de la Seda con guías licenciados, hoteles 3-5★ y soporte 24/7",
+    "startTrip": "COMENZAR VIAJE",
+    "ourTourPackages": "Nuestros paquetes turísticos"
+  },
+  "tourTypes": {
+    "groupTour": "Tour grupal",
+    "privateTour": "Tour privado",
+    "familyTour": "Tour familiar",
+    "businessTour": "Tour de negocios",
+    "customTour": "Tour personalizado"
+  },
+  "common": {
+    "from": "Desde",
+    "days": "días",
+    "nights": "noches",
+    "reviews": "reseñas",
+    "excellent": "Excelente"
+  }
+}

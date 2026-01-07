@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@nuxtjs/i18n'
   ],
 
   devtools: {
@@ -16,6 +17,26 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-01-15',
+
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json', flag: '🇬🇧' },
+      { code: 'ru', name: 'Русский', file: 'ru.json', flag: '🇷🇺' },
+      { code: 'uz', name: "O'zbek", file: 'uz.json', flag: '🇺🇿' },
+      { code: 'es', name: 'Español', file: 'es.json', flag: '🇪🇸' },
+      { code: 'de', name: 'Deutsch', file: 'de.json', flag: '🇩🇪' },
+      { code: 'fr', name: 'Français', file: 'fr.json', flag: '🇫🇷' }
+    ],
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: '../app/locales',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    }
+  },
 
   eslint: {
     config: {

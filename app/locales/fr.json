@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "tours": "CIRCUITS",
+    "aboutUs": "À PROPOS",
+    "cities": "VILLES",
+    "shop": "BOUTIQUE",
+    "uzbekCulture": "CULTURE OUZBÈKE",
+    "contacts": "CONTACTS"
+  },
+  "header": {
+    "createTour": "CRÉER VOTRE CIRCUIT"
+  },
+  "hero": {
+    "title": "Découvrez l'histoire de l'Ouzbékistan",
+    "subtitle": "De Samarcande à Khiva, voyagez sur la Route de la Soie à votre façon — en groupe, en famille, en affaires ou en privé — avec visas, hôtels et guides."
+  },
+  "whyChooseUs": {
+    "badge": "NOS VALEURS",
+    "title": "Pourquoi nous choisir",
+    "hotels": {
+      "title": "Hôtels",
+      "description": "Choisissez parmi des hôtels 3-5★ et des séjours boutique, tous personnellement vérifiés pour le confort, l'emplacement et l'hospitalité ouzbèke authentique"
+    },
+    "simCard": {
+      "title": "Carte SIM / eSIM gratuite",
+      "description": "Restez connecté dès le premier jour. Nous fournissons une SIM locale gratuite ou une configuration eSIM pour que vous ayez internet et WhatsApp dès votre arrivée"
+    },
+    "medical": {
+      "title": "Support médical",
+      "description": "Votre sécurité est notre priorité. Chaque voyageur bénéficie d'une assistance pendant le voyage et d'un accès à des cliniques de confiance"
+    },
+    "guides": {
+      "title": "Guides sympathiques et qualifiés",
+      "description": "Des professionnels agréés anglophones qui connaissent chaque joyau caché — transformant chaque excursion en une histoire mémorable"
+    },
+    "packages": {
+      "title": "Forfaits personnalisables",
+      "description": "Des professionnels agréés anglophones qui connaissent chaque joyau caché — transformant chaque excursion en une histoire mémorable"
+    },
+    "support": {
+      "title": "Support 24/7",
+      "description": "Itinéraires transparents avec tout organisé — transferts, billets, repas et expériences, sans frais cachés"
+    }
+  },
+  "destinations": {
+    "badge": "NOS DESTINATIONS",
+    "title": "Découvrez la grande histoire et l'incroyable patrimoine de l'Ouzbékistan",
+    "seeTours": "VOIR LES CIRCUITS À {city}"
+  },
+  "testimonials": {
+    "badge": "TÉMOIGNAGES",
+    "title": "Histoires de ceux qui ont voyagé avec GAOU",
+    "subtitle": "Expériences authentiques et service fiable — découvrez ce que les voyageurs disent de leur voyage Golden Ages",
+    "writeReview": "ÉCRIRE UN AVIS"
+  },
+  "tourPackages": {
+    "badge": "FORFAITS",
+    "title": "Circuits exclusifs en Ouzbékistan pour vous",
+    "subtitle": "Itinéraires exclusifs créés par des experts locaux — combinant sites emblématiques, séjours de luxe et service personnalisé",
+    "bookingNow": "RÉSERVER MAINTENANT"
+  },
+  "contactForm": {
+    "title": "Contactez-nous",
+    "fullName": "NOM COMPLET",
+    "email": "E-MAIL",
+    "phone": "TÉLÉPHONE",
+    "tourType": "TYPE DE CIRCUIT",
+    "message": "MESSAGE",
+    "messagePlaceholder": "Comment pouvons-nous vous aider?",
+    "submit": "ENVOYER LE MESSAGE",
+    "contactTitle": "Planifiez votre voyage en Ouzbékistan avec",
+    "contactHighlight": "des experts locaux"
+  },
+  "footer": {
+    "description": "Vivez l'Âge d'Or de l'histoire avec nous — Découvrez la beauté intemporelle de l'Ouzbékistan",
+    "tours": {
+      "title": "CIRCUITS",
+      "familyPackages": "Forfaits familiaux",
+      "businessTours": "Voyages d'affaires",
+      "individualTrips": "Voyages individuels",
+      "friendsGetaways": "Escapades entre amis",
+      "vipExperiences": "Expériences VIP"
+    },
+    "aboutUs": {
+      "title": "À PROPOS",
+      "missions": "Missions",
+      "goals": "Objectifs",
+      "license": "Licence",
+      "teamMembers": "Équipe"
+    },
+    "cities": {
+      "title": "VILLES",
+      "more": "Plus"
+    },
+    "culture": {
+      "title": "CULTURE OUZBÈKE",
+      "cuisineFood": "Cuisine & gastronomie",
+      "artHandicrafts": "Art & artisanat",
+      "musicFestivals": "Musique & festivals",
+      "historyHeritage": "Histoire & patrimoine"
+    },
+    "copyright": "2025 Golden Ages. Tous droits réservés.",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "cookiesSettings": "Paramètres des cookies"
+  },
+  "toursPage": {
+    "heroTitle": "Découvrez l'Ouzbékistan avec nos circuits",
+    "heroSubtitle": "De Tachkent animé à l'ancienne Khiva — explorez la Route de la Soie avec des guides agréés, des hôtels 3-5★ et un support 24/7",
+    "startTrip": "COMMENCER LE VOYAGE",
+    "ourTourPackages": "Nos forfaits"
+  },
+  "tourTypes": {
+    "groupTour": "Circuit en groupe",
+    "privateTour": "Circuit privé",
+    "familyTour": "Circuit familial",
+    "businessTour": "Voyage d'affaires",
+    "customTour": "Circuit sur mesure"
+  },
+  "common": {
+    "from": "À partir de",
+    "days": "jours",
+    "nights": "nuits",
+    "reviews": "avis",
+    "excellent": "Excellent"
+  }
+}

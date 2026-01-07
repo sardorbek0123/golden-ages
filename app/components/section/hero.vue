@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 </script>
 
 <template>
@@ -14,10 +16,10 @@
     <div class="relative container mx-auto h-full">
       <div class="flex flex-col items-center justify-center gap-4 h-full">
         <h1 class="text-9xl font-medium text-white text-center">
-            Discover the history <br>of Uzbekistan
+            {{ t('hero.title') }}
         </h1>
         <p class="text-2xl text-white text-center max-w-[800px]">
-            From Samarkand to Khiva, travel the Silk Road your way — group, family, business or private — with visas, hotels and guides taken care of.
+            {{ t('hero.subtitle') }}
         </p>
       </div>
     </div>

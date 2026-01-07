@@ -1,9 +1,9 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div>
+  <div class="relative bg-[#F0F0F0]">
     <LayoutHeader />
-    <slot />
+    <main>
+      <slot />
+    </main>
+    <LayoutFooter />
   </div>
 </template>
