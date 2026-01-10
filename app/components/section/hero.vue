@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import heroBg from '@/assets/images/hero_bg.jpg'
 
 const { t } = useI18n()
 </script>
@@ -7,7 +8,7 @@ const { t } = useI18n()
 <template>
   <section class="relative bg-cover bg-center h-screen">
     <!-- Background Image -->
-    <div class="absolute inset-0 bg-[url('/Users/sardor/golden-ages/app/assets/images/hero_bg.jpg')] bg-cover bg-center"></div>
+    <div class="absolute inset-0 bg-[url('@/assets/images/hero_bg.jpg')] bg-cover bg-center"></div>
     
     <!-- Dark Overlay (70% black) -->
     <div class="absolute inset-0 bg-black/70"></div>
