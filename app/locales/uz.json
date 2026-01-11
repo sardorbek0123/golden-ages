@@ -51,7 +51,21 @@
     "badge": "SHARHLAR",
     "title": "GAOU bilan sayohat qilganlarning hikoyalari",
     "subtitle": "Haqiqiy tajribalar va ishonchli xizmat — sayohatchilar Golden Ages sayohati haqida nima deyishlarini bilib oling",
-    "writeReview": "SHARH YOZISH"
+    "writeReview": "SHARH YOZISH",
+    "modal": {
+      "title": "Tajribangizni baham ko'ring",
+      "rating": "Bahongiz",
+      "fullName": "To'liq ism",
+      "fullNamePlaceholder": "Ismingizni kiriting",
+      "role": "Kasb / Faoliyat",
+      "rolePlaceholder": "masalan, Sayohat fotosuratchi",
+      "review": "Sharhingiz",
+      "reviewPlaceholder": "Golden Ages bilan tajribangiz haqida aytib bering...",
+      "submit": "Sharhni yuborish",
+      "submitting": "Yuborilmoqda...",
+      "successTitle": "Rahmat!",
+      "successMessage": "Sharhingiz muvaffaqiyatli yuborildi."
+    }
   },
   "tourPackages": {
     "badge": "TUR PAKETLARI",

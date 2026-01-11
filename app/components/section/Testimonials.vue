@@ -18,6 +18,17 @@ interface Review {
   review: string
 }
 
+// Modal state
+const isModalOpen = ref(false)
+
+const openModal = () => {
+  isModalOpen.value = true
+}
+
+const closeModal = () => {
+  isModalOpen.value = false
+}
+
 const reviews: Review[] = [
   {
     id: 1,
@@ -101,7 +112,7 @@ const progressWidth = computed(() => {
         <div class="absolute inset-0 bg-right -top-90 bg-no-repeat" :style="{ backgroundImage: `url(${testimonialsBg})` }">
         </div>
         <!-- Header -->
-        <div class="flex justify-between items-start mb-12">
+        <div class="flex justify-between items-start mb-12 z-10 relative">
           <!-- Left Side -->
           <div class="max-w-xl">
             <!-- Badge -->
@@ -118,7 +129,10 @@ const progressWidth = computed(() => {
             <p class="text-gray-600 mb-6">
               {{ t('testimonials.subtitle') }}
             </p>
-            <button class="inline-flex items-center justify-center px-8 py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
+            <button 
+              class="inline-flex items-center justify-center px-8 py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide"
+              @click="openModal"
+            >
               {{ t('testimonials.writeReview') }}
             </button>
           </div>
@@ -182,6 +196,9 @@ const progressWidth = computed(() => {
       </div>
     </div>
   </section>
+
+  <!-- Review Modal -->
+  <ModalReviewModal :open="isModalOpen" @close="closeModal" />
 </template>
 
 <style scoped>

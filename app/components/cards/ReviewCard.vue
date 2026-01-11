@@ -28,11 +28,7 @@ defineProps<Props>()
       </div>
       
       <!-- Quote Icon -->
-      <div class="text-orange-normal">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10.6667 18.6667H6.66667C6.66667 12 10.6667 10.6667 10.6667 10.6667V14.6667C10.6667 14.6667 8 14.6667 8 18.6667H10.6667V25.3333H4V18.6667H10.6667ZM24 18.6667H20C20 12 24 10.6667 24 10.6667V14.6667C24 14.6667 21.3333 14.6667 21.3333 18.6667H24V25.3333H17.3333V18.6667H24Z" fill="currentColor"/>
-        </svg>
-      </div>
+      <IconsQuote />
     </div>
 
     <!-- Stars -->

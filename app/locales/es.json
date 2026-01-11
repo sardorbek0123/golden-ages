@@ -51,7 +51,21 @@
     "badge": "TESTIMONIOS",
     "title": "Historias de quienes viajaron con GAOU",
     "subtitle": "Experiencias auténticas y servicio confiable — descubre lo que dicen los viajeros sobre su viaje con Golden Ages",
-    "writeReview": "ESCRIBIR RESEÑA"
+    "writeReview": "ESCRIBIR RESEÑA",
+    "modal": {
+      "title": "Comparte tu experiencia",
+      "rating": "Tu calificación",
+      "fullName": "Nombre completo",
+      "fullNamePlaceholder": "Ingresa tu nombre",
+      "role": "Profesión / Ocupación",
+      "rolePlaceholder": "ej. Fotógrafo de viajes",
+      "review": "Tu reseña",
+      "reviewPlaceholder": "Cuéntanos sobre tu experiencia con Golden Ages...",
+      "submit": "Enviar reseña",
+      "submitting": "Enviando...",
+      "successTitle": "¡Gracias!",
+      "successMessage": "Tu reseña ha sido enviada exitosamente."
+    }
   },
   "tourPackages": {
     "badge": "PAQUETES TURÍSTICOS",
