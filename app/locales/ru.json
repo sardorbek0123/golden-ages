@@ -138,11 +138,26 @@
     "nights": "ночей",
     "reviews": "отзывов",
     "excellent": "Отлично",
-    "try_again": "Повторить"
+    "try_again": "Повторить",
+    "bookNow": "ЗАБРОНИРОВАТЬ"
   },
   "tours": {
     "our_packages": "Наши туристические пакеты",
     "no_packages": "На данный момент нет доступных туристических пакетов.",
     "excellent": "Отлично"
+  },
+  "tourDetail": {
+    "back": "Назад",
+    "duration": "Продолжительность",
+    "groupSize": "Размер группы",
+    "accommodation": "Размещение",
+    "transport": "Транспорт",
+    "cities": "Города",
+    "guide": "Гид",
+    "price": "Цена",
+    "perPerson": "за человека",
+    "bookNow": "ЗАБРОНИРОВАТЬ",
+    "description": "ОПИСАНИЕ",
+    "itinerary": "Маршрут тура"
   }
 }

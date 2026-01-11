@@ -141,11 +141,26 @@
     "nights": "nights",
     "reviews": "reviews",
     "excellent": "Excellent",
-    "try_again": "Try Again"
+    "try_again": "Try Again",
+    "bookNow": "BOOK NOW"
   },
   "tours": {
     "our_packages": "Our Tour Packages",
     "no_packages": "No tour packages available at the moment.",
     "excellent": "Excellent"
+  },
+  "tourDetail": {
+    "back": "Back",
+    "duration": "Duration",
+    "groupSize": "Group Size",
+    "accommodation": "Accommodation",
+    "transport": "Transport",
+    "cities": "Cities",
+    "guide": "Guide",
+    "price": "Price",
+    "perPerson": "per person",
+    "bookNow": "BOOKING NOW",
+    "description": "DESCRIPTION",
+    "itinerary": "Tour Itinerary"
   }
 }

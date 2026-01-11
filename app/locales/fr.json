@@ -138,11 +138,26 @@
     "nights": "nuits",
     "reviews": "avis",
     "excellent": "Excellent",
-    "try_again": "Réessayer"
+    "try_again": "Réessayer",
+    "bookNow": "RÉSERVER MAINTENANT"
   },
   "tours": {
     "our_packages": "Nos forfaits",
     "no_packages": "Aucun forfait disponible pour le moment.",
     "excellent": "Excellent"
+  },
+  "tourDetail": {
+    "back": "Retour",
+    "duration": "Durée",
+    "groupSize": "Taille du groupe",
+    "accommodation": "Hébergement",
+    "transport": "Transport",
+    "cities": "Villes",
+    "guide": "Guide",
+    "price": "Prix",
+    "perPerson": "par personne",
+    "bookNow": "RÉSERVER",
+    "description": "DESCRIPTION",
+    "itinerary": "Itinéraire du voyage"
   }
 }

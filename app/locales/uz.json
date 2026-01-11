@@ -138,11 +138,26 @@
     "nights": "kecha",
     "reviews": "sharhlar",
     "excellent": "A'lo",
-    "try_again": "Qayta urinish"
+    "try_again": "Qayta urinish",
+    "bookNow": "BAND QILISH"
   },
   "tours": {
     "our_packages": "Bizning tur paketlarimiz",
     "no_packages": "Hozircha tur paketlari mavjud emas.",
     "excellent": "A'lo"
+  },
+  "tourDetail": {
+    "back": "Orqaga",
+    "duration": "Davomiyligi",
+    "groupSize": "Guruh hajmi",
+    "accommodation": "Turar joy",
+    "transport": "Transport",
+    "cities": "Shaharlar",
+    "guide": "Gid",
+    "price": "Narxi",
+    "perPerson": "har bir kishi uchun",
+    "bookNow": "BAND QILISH",
+    "description": "TAVSIF",
+    "itinerary": "Sayohat marshuti"
   }
 }

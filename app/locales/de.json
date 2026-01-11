@@ -138,11 +138,26 @@
     "nights": "Nächte",
     "reviews": "Bewertungen",
     "excellent": "Ausgezeichnet",
-    "try_again": "Erneut versuchen"
+    "try_again": "Erneut versuchen",
+    "bookNow": "JETZT BUCHEN"
   },
   "tours": {
     "our_packages": "Unsere Tourpakete",
     "no_packages": "Derzeit sind keine Tourpakete verfügbar.",
     "excellent": "Ausgezeichnet"
+  },
+  "tourDetail": {
+    "back": "Zurück",
+    "duration": "Dauer",
+    "groupSize": "Gruppengröße",
+    "accommodation": "Unterkunft",
+    "transport": "Transport",
+    "cities": "Städte",
+    "guide": "Reiseführer",
+    "price": "Preis",
+    "perPerson": "pro Person",
+    "bookNow": "JETZT BUCHEN",
+    "description": "BESCHREIBUNG",
+    "itinerary": "Reiseverlauf"
   }
 }

@@ -138,11 +138,26 @@
     "nights": "noches",
     "reviews": "reseñas",
     "excellent": "Excelente",
-    "try_again": "Intentar de nuevo"
+    "try_again": "Intentar de nuevo",
+    "bookNow": "RESERVAR AHORA"
   },
   "tours": {
     "our_packages": "Nuestros paquetes turísticos",
     "no_packages": "No hay paquetes turísticos disponibles en este momento.",
     "excellent": "Excelente"
+  },
+  "tourDetail": {
+    "back": "Volver",
+    "duration": "Duración",
+    "groupSize": "Tamaño del grupo",
+    "accommodation": "Alojamiento",
+    "transport": "Transporte",
+    "cities": "Ciudades",
+    "guide": "Guía",
+    "price": "Precio",
+    "perPerson": "por persona",
+    "bookNow": "RESERVAR AHORA",
+    "description": "DESCRIPCIÓN",
+    "itinerary": "Itinerario del tour"
   }
 }

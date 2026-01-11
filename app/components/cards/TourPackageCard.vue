@@ -5,6 +5,7 @@ interface Feature {
 }
 
 interface Props {
+  slug: string
   badge: string
   category: string
   title: string
@@ -30,8 +31,9 @@ const getStarClass = (index: number, rating: number) => {
 </script>
 
 <template>
-  <div 
-    class="bg-white rounded-3xl p-4 border border-gray-100 transition-all duration-300 hover:shadow-lg"
+  <NuxtLink 
+    :to="`/tours/${slug}`"
+    class="bg-white rounded-3xl p-4 border border-gray-100 transition-all duration-300 hover:shadow-lg block"
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
   >
@@ -173,5 +175,5 @@ const getStarClass = (index: number, rating: number) => {
         </div>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>

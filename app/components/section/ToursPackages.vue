@@ -82,6 +82,7 @@ const tourPackages = computed(() => {
         <CardsTourPackageCard
           v-for="tour in tourPackages"
           :key="tour.id"
+          :slug="tour.slug"
           :badge="tour.badge"
           :category="tour.category"
           :title="tour.title"

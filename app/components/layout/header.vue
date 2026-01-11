@@ -112,7 +112,7 @@ onUnmounted(() => {
       <div class="container mx-auto px-4">
         <!-- Header container with rounded corners -->
         <div 
-          class="bg-white/25 rounded-2xl px-4 md:px-8 py-4 flex items-center justify-between transition-all duration-300"
+          class="bg-[#1111110D] rounded-2xl px-4 md:px-8 py-4 flex items-center justify-between transition-all duration-300"
         >
           <!-- Logo -->
           <div class="flex items-center">

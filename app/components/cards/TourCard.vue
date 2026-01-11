@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface Props {
   title: string
+  slug: string
   duration: string
   description: string
   price: string
@@ -9,6 +10,8 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -28,12 +31,13 @@ defineProps<Props>()
     <!-- Content -->
     <div class="mt-5">
       <!-- Title - Always visible -->
-      <h3 
+      <NuxtLink 
+        :to="`/tours/${slug}`"
         class="font-bold text-gray-900 transition-all duration-300"
         :class="isActive ? 'text-xl' : 'text-lg'"
       >
         {{ title }}
-      </h3>
+      </NuxtLink>
 
       <!-- Active card extra content -->
       <template v-if="isActive">
@@ -54,7 +58,7 @@ defineProps<Props>()
             <span class="text-sm font-medium text-gray-900">{{ price }}</span>
           </div>
           <button class="inline-flex items-center justify-center px-6 py-2 bg-orange-normal text-white text-sm font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
-            BOOKING NOW
+            {{ t('common.bookNow') }}
           </button>
         </div>
       </template>

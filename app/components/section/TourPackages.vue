@@ -157,6 +157,7 @@ const formattedTotal = computed(() => {
         >
           <SwiperSlide v-for="(tour, index) in tours" :key="tour.id">
             <CardsTourCard
+              :slug="tour.slug"
               :title="tour.title"
               :duration="tour.duration"
               :description="tour.description"
