@@ -179,10 +179,10 @@ const handleSubmit = async () => {
               {{ t('contactForm.email') }}
             </a>
             <a 
-              href="tel:+998944448844" 
+              href="tel:+998950443334" 
               class="block text-2xl font-semibold text-white hover:text-orange-normal transition-colors"
             >
-              +998(94)444-88-44
+              +998(95)044-33-34
             </a>
           </div>
         </div>
