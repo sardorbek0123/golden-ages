@@ -29,15 +29,15 @@ const formattedPrice = computed(() => {
 
 // Get main image
 const mainImage = computed(() => {
-  if (!trip.value?.tripimage_set?.length) return ''
-  const sorted = [...trip.value.tripimage_set].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  if (!trip.value?.images?.length) return ''
+  const sorted = [...trip.value.images].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
   return sorted[0]?.image || ''
 })
 
 // Get secondary images
 const secondaryImages = computed(() => {
-  if (!trip.value?.tripimage_set?.length) return []
-  const sorted = [...trip.value.tripimage_set].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  if (!trip.value?.images?.length) return []
+  const sorted = [...trip.value.images].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
   return sorted.slice(1, 3)
 })
 
@@ -110,35 +110,56 @@ const goBack = () => {
         </div>
 
         <!-- Image Gallery -->
-        <div class="grid grid-cols-3 gap-4 mb-12">
-          <!-- Main Image -->
-          <div class="col-span-2 h-[520px] rounded-2xl overflow-hidden">
+        <div class="mb-12">
+          <!-- Single image layout -->
+          <div v-if="trip.images?.length === 1" class="h-[520px] rounded-2xl overflow-hidden">
             <img 
               :src="mainImage" 
               :alt="trip.name"
               class="w-full h-full object-cover"
             />
           </div>
-          
-          <!-- Secondary Images -->
-          <div class="flex flex-col gap-4">
-            <div 
-              v-for="(image, index) in secondaryImages" 
-              :key="image.id"
-              class="flex-1 rounded-2xl overflow-hidden"
-            >
+
+          <!-- Two images layout -->
+          <div v-else-if="trip.images?.length === 2" class="grid grid-cols-3 gap-4">
+            <div class="col-span-2 h-[520px] rounded-2xl overflow-hidden">
               <img 
-                :src="image.image" 
-                :alt="`${trip.name} ${index + 2}`"
+                :src="mainImage" 
+                :alt="trip.name"
                 class="w-full h-full object-cover"
               />
             </div>
-            <!-- Placeholder if less than 2 secondary images -->
-            <div 
-              v-for="i in Math.max(0, 2 - secondaryImages.length)" 
-              :key="`placeholder-${i}`"
-              class="flex-1 rounded-2xl bg-gray-100"
-            />
+            <div class="h-[520px] rounded-2xl overflow-hidden">
+              <img 
+                :src="secondaryImages[0]?.image" 
+                :alt="`${trip.name} 2`"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Three or more images layout -->
+          <div v-else class="grid grid-cols-3 gap-4">
+            <div class="col-span-2 h-[520px] rounded-2xl overflow-hidden">
+              <img 
+                :src="mainImage" 
+                :alt="trip.name"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flex flex-col gap-4">
+              <div 
+                v-for="(image, index) in secondaryImages" 
+                :key="image.id"
+                class="flex-1 rounded-2xl overflow-hidden"
+              >
+                <img 
+                  :src="image.image" 
+                  :alt="`${trip.name} ${index + 2}`"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -169,7 +190,7 @@ const goBack = () => {
               <div class="grid grid-cols-3 gap-4 mb-6">
                 <!-- Duration -->
                 <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect x="3" y="4" width="18" height="18" rx="2" stroke="#6B7280" stroke-width="2"/>
                       <path d="M16 2v4M8 2v4M3 10h18" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
@@ -183,7 +204,7 @@ const goBack = () => {
 
                 <!-- Group Size -->
                 <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       <circle cx="9" cy="7" r="4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -198,7 +219,7 @@ const goBack = () => {
 
                 <!-- Accommodation -->
                 <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3 21h18M3 7v14M21 7v14M6 11h4v4H6zM14 11h4v4h-4zM9 3h6v4H9z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -211,7 +232,7 @@ const goBack = () => {
 
                 <!-- Transport -->
                 <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect x="3" y="4" width="18" height="12" rx="2" stroke="#6B7280" stroke-width="2"/>
                       <circle cx="7" cy="19" r="2" stroke="#6B7280" stroke-width="2"/>
@@ -227,7 +248,7 @@ const goBack = () => {
 
                 <!-- Cities -->
                 <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="M9 9h1M14 9h1M9 13h1M14 13h1" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
@@ -241,7 +262,7 @@ const goBack = () => {
 
                 <!-- Guide -->
                 <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="12" cy="8" r="4" stroke="#6B7280" stroke-width="2"/>
                       <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
@@ -280,17 +301,17 @@ const goBack = () => {
         </div>
 
         <!-- Trip Plan Section -->
-        <div v-if="trip.tripplan_set?.length" class="mt-12">
+        <div v-if="trip.plans?.length" class="mt-12">
           <h3 class="text-2xl font-bold text-gray-900 mb-8">{{ t('tourDetail.itinerary') }}</h3>
           
           <div class="space-y-4">
             <div 
-              v-for="(plan, index) in trip.tripplan_set" 
+              v-for="(plan, index) in trip.plans" 
               :key="plan.id"
               class="bg-grey-normal rounded-2xl p-6"
             >
               <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-orange-normal text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
+                <div class="w-12 h-12 bg-orange-normal text-white rounded-full flex items-center justify-center font-bold shrink-0">
                   {{ index + 1 }}
                 </div>
                 <div>

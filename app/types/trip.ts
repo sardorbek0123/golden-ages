@@ -53,8 +53,8 @@ export interface TripDetail {
   video?: string | null
   price: number
   order?: number
-  tripplan_set: TripPlan[]
-  tripimage_set: TripImage[]
+  plans: TripPlan[]
+  images: TripImage[]
   created_at: string
   updated_at: string
 }
