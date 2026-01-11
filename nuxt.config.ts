@@ -38,6 +38,14 @@ export default defineNuxtConfig({
       redirectOn: 'root'
     }
   },
+  headers: {
+    'link': [
+      {
+        rel: 'icon',
+        href: '/favicon.svg'
+      }
+    ]
+  },
 
   eslint: {
     config: {
