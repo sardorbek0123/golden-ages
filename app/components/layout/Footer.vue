@@ -52,19 +52,14 @@ const socialLinks = [
 </script>
 
 <template>
-  <footer class="bg-[#1a1a1a] text-white relative">
+  <footer class="bg-black text-white relative">
     <!-- Main Footer Content -->
     <div class="container mx-auto px-4 py-16">
       <div class="grid grid-cols-12 gap-8">
         <!-- Logo & Description -->
         <div class="col-span-3">
           <div class="flex items-center gap-2 mb-4">
-            <div class="w-8 h-8 rounded-full bg-orange-normal flex items-center justify-center">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
-              </svg>
-            </div>
-            <span class="text-xl font-semibold text-orange-normal">Golden ages</span>
+              <IconsLogo />
           </div>
           
           <p class="text-gray-400 text-sm mb-6 leading-relaxed">
@@ -121,24 +116,23 @@ const socialLinks = [
     </div>
 
     <!-- Bottom Bar -->
-    <div class="border-t border-gray-800">
-      <div class="container mx-auto px-4 py-6">
+    <div class="border-t border-gray-800 relative py-30">
+      <div class="container mx-auto px-4 py-6 relative z-10">
         <div class="flex items-center justify-center gap-8 text-sm text-gray-400">
           <span>{{ t('footer.copyright') }}</span>
-          <a href="#" class="hover:text-white transition-colors">{{ t('footer.privacyPolicy') }}</a>
-          <a href="#" class="hover:text-white transition-colors">{{ t('footer.termsOfService') }}</a>
-          <a href="#" class="hover:text-white transition-colors">{{ t('footer.cookiesSettings') }}</a>
+          <NuxtLink href="#" class="hover:text-white transition-colors">{{ t('footer.privacyPolicy') }}</NuxtLink>
+          <NuxtLink href="#" class="hover:text-white transition-colors">{{ t('footer.termsOfService') }}</NuxtLink>
+          <NuxtLink href="#" class="hover:text-white transition-colors">{{ t('footer.cookiesSettings') }}</NuxtLink>
         </div>
       </div>
-    </div>
-
-    <!-- Footer Background Image -->
-    <div class="relative h-32 overflow-hidden">
-      <img 
-        :src="footerBg" 
-        alt="" 
-        class="w-full h-auto object-contain opacity-50"
-      />
+      
+      <div class="h-full overflow-hidden absolute bottom-0 left-0 right-0">
+        <img 
+          :src="footerBg" 
+          alt="" 
+          class="w-full h-auto object-contain opacity-50"
+        />
+      </div>
     </div>
 
     <!-- WhatsApp Button -->

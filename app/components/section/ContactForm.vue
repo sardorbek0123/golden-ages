@@ -165,9 +165,8 @@ const handleSubmit = async () => {
 
           <!-- Content -->
           <div class="relative z-10">
-            <h3 class="text-4xl font-bold text-white leading-tight">
+            <h3 class="text-2xl md:text-[30px] lg:text-[50px] font-medium text-white leading-tight uppercase">
               {{ t('contactForm.planYourTrip') }}<br />
-              {{ t('contactForm.tripWith') }} <span class="text-orange-normal">{{ t('contactForm.localExperts') }}</span>
             </h3>
           </div>
 

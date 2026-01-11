@@ -118,11 +118,7 @@ onUnmounted(() => {
           <!-- Logo -->
           <div class="flex items-center">
             <NuxtLink to="/" @click="closeDropdown">
-              <img
-                src="~/assets/Logo.svg"
-                alt="Golden Ages"
-                class="h-8 md:h-10 w-auto"
-              />
+              <IconsLogo />
             </NuxtLink>
           </div>
           

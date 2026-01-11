@@ -1,8 +1,9 @@
+@import "./font.css";
 @import "tailwindcss";
 @import "@nuxt/ui";
 
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
+  --font-grift: 'Grift', sans-serif;
 
   --color-green-50: #EFFDF5;
   --color-green-100: #D9FBE8;
@@ -118,3 +119,6 @@ button:hover:not(:disabled) {
   cursor: pointer;
 }
 
+* {
+  font-family: 'Grift', sans-serif;
+}

@@ -68,8 +68,8 @@
     "message": "XABAR",
     "messagePlaceholder": "Sizga qanday yordam bera olamiz?",
     "submit": "XABAR YUBORISH",
-    "contactTitle": "O'zbekistonga sayohatingizni rejalashtiring",
-    "contactHighlight": "mahalliy ekspertlar bilan"
+    "planYourTrip": "O'zbekistonga sayohatingizni mahalliy ekspertlar bilan rejalashtiring",
+    "selectTourType": "Turlar ro'yxatidan turni tanlang"
   },
   "footer": {
     "description": "Biz bilan tarixning Oltin Asrini his eting — O'zbekistonning abadiy go'zalligini kashf eting",

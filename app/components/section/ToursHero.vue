@@ -11,17 +11,17 @@ const { t } = useI18n()
         <!-- Left - Title -->
         <div class="max-w-lg">
           <h1 class="text-5xl font-bold text-gray-900 leading-tight">
-            {{ t('toursHero.title') }}
+            {{ t('toursPage.heroTitle') }}
           </h1>
         </div>
 
         <!-- Right - Description & CTA -->
         <div class="max-w-md">
           <p class="text-gray-600 mb-6">
-            {{ t('toursHero.description') }}
+            {{ t('toursPage.heroSubtitle') }}
           </p>
           <button class="inline-flex items-center justify-center px-10 py-4 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
-            {{ t('toursHero.cta') }}
+            {{ t('toursPage.startTrip') }}
           </button>
         </div>
       </div>
@@ -30,7 +30,7 @@ const { t } = useI18n()
       <div class="rounded-3xl overflow-hidden">
         <img
           :src="heroImage"
-          :alt="t('toursHero.alt')"
+          :alt="t('toursPage.heroTitle')"
           class="w-full h-[500px] object-cover"
         />
       </div>

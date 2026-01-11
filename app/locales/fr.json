@@ -68,8 +68,8 @@
     "message": "MESSAGE",
     "messagePlaceholder": "Comment pouvons-nous vous aider?",
     "submit": "ENVOYER LE MESSAGE",
-    "contactTitle": "Planifiez votre voyage en Ouzbékistan avec",
-    "contactHighlight": "des experts locaux"
+    "planYourTrip": "Planifiez votre voyage en Ouzbékistan avec des experts locaux",
+    "selectTourType": "Sélectionnez le type de circuit"
   },
   "footer": {
     "description": "Vivez l'Âge d'Or de l'histoire avec nous — Découvrez la beauté intemporelle de l'Ouzbékistan",
