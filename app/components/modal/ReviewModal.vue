@@ -53,8 +53,10 @@ const handleSubmit = async () => {
   }
 }
 
-// Lock body scroll when modal is open
+// Lock body scroll when modal is open (client-side only)
 watch(() => props.open, (newVal) => {
+  if (!import.meta.client) return
+  
   if (newVal) {
     document.body.style.overflow = 'hidden'
   } else {
@@ -66,7 +68,9 @@ watch(() => props.open, (newVal) => {
 
 // Cleanup on unmount
 onUnmounted(() => {
-  document.body.style.overflow = ''
+  if (import.meta.client) {
+    document.body.style.overflow = ''
+  }
 })
 </script>
 
