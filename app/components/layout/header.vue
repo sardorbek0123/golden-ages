@@ -113,7 +113,6 @@ onUnmounted(() => {
         <!-- Header container with rounded corners -->
         <div 
           class="bg-white/25 rounded-2xl px-4 md:px-8 py-4 flex items-center justify-between transition-all duration-300"
-          :class="{ 'rounded-b-none': activeDropdown }"
         >
           <!-- Logo -->
           <div class="flex items-center">
@@ -164,7 +163,7 @@ onUnmounted(() => {
         <Transition name="dropdown">
           <div 
             v-if="activeDropdown"
-            class="hidden lg:block bg-[#3a4f61] rounded-b-2xl px-8 py-6"
+            class="hidden lg:block mt-2 bg-[#3a4f61] rounded-2xl px-8 py-6"
           >
             <LayoutToursDropdown v-if="activeDropdown === 'tours'" @click="closeDropdown" />
             <LayoutCitiesDropdown v-if="activeDropdown === 'cities'" @click="closeDropdown" />
