@@ -47,6 +47,10 @@ export default defineNuxtConfig({
     ],
     'meta': [
       {
+        name: 'title',
+        content: 'Golden Ages of Uzbekistan - Discover the history and heritage of Uzbekistan'
+      },
+      {
         name: 'description',
         content: 'Golden Ages of Uzbekistan - Discover the history and heritage of Uzbekistan'
       },
