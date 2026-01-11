@@ -49,12 +49,8 @@ const rightFeatures = features.slice(3, 6)
     <div class="container mx-auto bg-[#F9FAF9] border border-[#9195923D] py-20 px-10 rounded-3xl ">
       <!-- Header -->
       <div class="flex flex-col items-center gap-4 mb-12">
-        <!-- Subtitle -->
-        <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-[#ffa800]">
-          <span class="text-sm font-medium text-[#ffa800] uppercase tracking-wide">
-            {{ t('whyChooseUs.badge') }}
-          </span>
-        </div>
+        <!-- Badge -->
+        <CommonBadge :text="t('whyChooseUs.badge')" />
         
         <!-- Title -->
         <h2 class="text-5xl font-bold text-gray-900">

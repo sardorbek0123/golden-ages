@@ -16,10 +16,10 @@ const { t } = useI18n()
     <!-- Content -->
     <div class="relative container mx-auto h-full">
       <div class="flex flex-col items-center justify-center gap-4 h-full">
-        <h1 class="text-9xl font-medium text-white text-center">
+        <h1 class="text-4xl md:text-6xl lg:text-9xl font-medium text-white text-center">
             {{ t('hero.title') }}
         </h1>
-        <p class="text-2xl text-white text-center max-w-[800px]">
+        <p class="text-lg md:text-2xl text-white text-center max-w-[800px]">
             {{ t('hero.subtitle') }}
         </p>
       </div>

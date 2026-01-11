@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineProps<{
+  mobile?: boolean
+}>()
+
 const cities = [
   { name: 'Tashkent', href: '/cities/tashkent', image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=400' },
   { name: 'Samarkand', href: '/cities/samarkand', image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=400' },
@@ -14,7 +18,20 @@ const cities = [
 </script>
 
 <template>
-  <div class="grid grid-cols-5 gap-4">
+  <!-- Mobile View -->
+  <div v-if="mobile" class="space-y-1">
+    <NuxtLink
+      v-for="city in cities"
+      :key="city.name"
+      :to="city.href"
+      class="block py-2 px-3 text-grey-darker text-sm hover:bg-grey-light rounded-lg transition-colors"
+    >
+      {{ city.name }}
+    </NuxtLink>
+  </div>
+
+  <!-- Desktop View -->
+  <div v-else class="grid grid-cols-5 gap-4">
     <NuxtLink
       v-for="city in cities"
       :key="city.name"

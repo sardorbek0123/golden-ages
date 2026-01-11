@@ -1,26 +1,48 @@
 <script setup lang="ts">
 import contactBg from '~/assets/images/hero_bg.jpg'
+import { useTripsStore } from '~/stores/trips'
+import { useMessagesStore } from '~/stores/messages'
 
 const { t } = useI18n()
+const tripsStore = useTripsStore()
+const messagesStore = useMessagesStore()
+
 const form = reactive({
   fullName: '',
   email: '',
   phone: '',
-  tourType: '',
+  tripId: null as number | null,
   message: ''
 })
 
-const tourTypes = [
-  'Group tour',
-  'Private tour',
-  'Family tour',
-  'Business tour',
-  'Custom tour'
-]
+// Fetch trips on mount
+onMounted(() => {
+  if (!tripsStore.hasTrips) {
+    tripsStore.fetchTrips()
+  }
+})
 
-const handleSubmit = () => {
-  console.log('Form submitted:', form)
-  // Handle form submission
+const isSubmitting = computed(() => messagesStore.loading)
+
+const handleSubmit = async () => {
+  if (!form.tripId) return
+
+  const success = await messagesStore.createMessage({
+    full_name: form.fullName,
+    email: form.email,
+    phone: form.phone,
+    trip_category: form.tripId,
+    message: form.message
+  })
+
+  if (success) {
+    // Reset form on success
+    form.fullName = ''
+    form.email = ''
+    form.phone = ''
+    form.tripId = null
+    form.message = ''
+  }
 }
 </script>
 
@@ -81,12 +103,13 @@ const handleSubmit = () => {
                 {{ t('contactForm.tourType') }}
               </label>
               <select
-                v-model="form.tourType"
+                v-model="form.tripId"
                 class="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                :disabled="tripsStore.loading"
               >
-                <option value="" disabled>{{ t('contactForm.selectTourType') }}</option>
-                <option v-for="type in tourTypes" :key="type" :value="type">
-                  {{ type }}
+                <option :value="null" disabled>{{ t('contactForm.selectTourType') }}</option>
+                <option v-for="trip in tripsStore.trips" :key="trip.id" :value="trip.id">
+                  {{ trip.name }}
                 </option>
               </select>
             </div>
@@ -108,10 +131,22 @@ const handleSubmit = () => {
             <!-- Submit Button -->
               <button
                 type="submit"
-                class="w-full py-4 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide"
+                :disabled="isSubmitting || !form.tripId"
+                class="w-full py-4 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {{ t('contactForm.submit') }}
+                <span v-if="isSubmitting">{{ t('contactForm.sending') || 'Sending...' }}</span>
+                <span v-else>{{ t('contactForm.submit') }}</span>
               </button>
+              
+              <!-- Success Message -->
+              <p v-if="messagesStore.success" class="text-green-600 text-center font-medium">
+                {{ t('contactForm.successMessage') || 'Message sent successfully!' }}
+              </p>
+              
+              <!-- Error Message -->
+              <p v-if="messagesStore.error" class="text-red-600 text-center font-medium">
+                {{ messagesStore.error }}
+              </p>
           </form>
         </div>
 

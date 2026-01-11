@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineProps<{
+  mobile?: boolean
+}>()
+
 const tourCategories = [
   {
     name: 'Group Tours',
@@ -29,7 +33,20 @@ const tourCategories = [
 </script>
 
 <template>
-  <div class="grid grid-cols-5 gap-4">
+  <!-- Mobile View -->
+  <div v-if="mobile" class="space-y-1">
+    <NuxtLink
+      v-for="tour in tourCategories"
+      :key="tour.name"
+      :to="tour.href"
+      class="block py-2 px-3 text-grey-darker text-sm hover:bg-grey-light rounded-lg transition-colors"
+    >
+      {{ tour.name }}
+    </NuxtLink>
+  </div>
+
+  <!-- Desktop View -->
+  <div v-else class="grid grid-cols-5 gap-4">
     <NuxtLink
       v-for="tour in tourCategories"
       :key="tour.name"

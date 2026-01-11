@@ -7,14 +7,14 @@ const emit = defineEmits<{
 
 interface NavItem {
   key: string
-  href: string
+  href?: string
   hasDropdown?: boolean
 }
 
 const navItems: NavItem[] = [
-  { key: 'tours', href: '/tours', hasDropdown: true },
+  { key: 'tours', hasDropdown: true },
   { key: 'aboutUs', href: '/about' },
-  { key: 'cities', href: '/cities', hasDropdown: true },
+  { key: 'cities', hasDropdown: true },
   { key: 'shop', href: '/shop' },
   { key: 'uzbekCulture', href: '/culture' },
   { key: 'contacts', href: '/contacts' }
@@ -53,7 +53,7 @@ defineExpose({
       >
         <NuxtLink
           :to="item.href"
-          class="nav-link text-white text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
+          class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
           :class="{ 'active': activeDropdown === item.key }"
           @click="handleClick(item, $event)"
         >

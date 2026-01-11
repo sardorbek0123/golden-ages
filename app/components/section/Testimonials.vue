@@ -5,6 +5,7 @@ import { Navigation } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import testimonialsBg from '~/assets/images/testimonial.png'
 
 const { t } = useI18n()
 
@@ -96,17 +97,15 @@ const progressWidth = computed(() => {
 <template>
   <section class="py-20">
     <div class="container mx-auto px-4">
-      <div class="bg-grey-normal border border-[#9195923D] rounded-3xl py-16 px-10 overflow-hidden">
+      <div class="relative bg-grey-normal border border-[#9195923D] rounded-3xl py-16 px-10 overflow-hidden">
+        <div class="absolute inset-0 bg-right -top-90 bg-no-repeat" :style="{ backgroundImage: `url(${testimonialsBg})` }">
+        </div>
         <!-- Header -->
         <div class="flex justify-between items-start mb-12">
           <!-- Left Side -->
           <div class="max-w-xl">
             <!-- Badge -->
-            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-orange-normal mb-6">
-              <span class="text-sm font-medium text-orange-normal uppercase tracking-wide">
-                {{ t('testimonials.badge') }}
-              </span>
-            </div>
+            <CommonBadge :text="t('testimonials.badge')" />
             
             <!-- Title -->
             <h2 class="text-5xl font-bold text-gray-900 leading-tight">
