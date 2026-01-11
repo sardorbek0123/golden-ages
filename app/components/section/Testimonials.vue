@@ -8,15 +8,13 @@ import 'swiper/css/navigation'
 import testimonialsBg from '~/assets/images/testimonial.png'
 
 const { t } = useI18n()
+const reviewsStore = useReviewsStore()
+const { sortedReviews: reviews, loading } = storeToRefs(reviewsStore)
 
-interface Review {
-  id: number
-  name: string
-  role: string
-  avatar: string
-  rating: number
-  review: string
-}
+// Fetch reviews on mount
+onMounted(() => {
+  reviewsStore.fetchHomeReviews()
+})
 
 // Modal state
 const isModalOpen = ref(false)
@@ -28,49 +26,6 @@ const openModal = () => {
 const closeModal = () => {
   isModalOpen.value = false
 }
-
-const reviews: Review[] = [
-  {
-    id: 1,
-    name: 'Sarah Miller',
-    role: 'Travel Photographer',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',
-    rating: 5,
-    review: "I didn't expect a city to be this vibrant and welcoming. Tashkent blends ancient spirit with a modern pulse — colorful bazaars, stunning metro art, and world-class restaurants side by side. GAOU made it effortless: transfers, hotels, SIM setup — everything was ready the moment I landed."
-  },
-  {
-    id: 2,
-    name: 'Sarah Miller',
-    role: 'Travel Photographer',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',
-    rating: 5,
-    review: "I didn't expect a city to be this vibrant and welcoming. Tashkent blends ancient spirit with a modern pulse — colorful bazaars, stunning metro art, and world-class restaurants side by side. GAOU made it effortless: transfers, hotels, SIM setup — everything was ready the moment I landed."
-  },
-  {
-    id: 3,
-    name: 'Sarah Miller',
-    role: 'Travel Photographer',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',
-    rating: 5,
-    review: "I didn't expect a city to be this vibrant and welcoming. Tashkent blends ancient spirit with a modern pulse — colorful bazaars, stunning metro art, and world-class restaurants side by side. GAOU made it effortless: transfers, hotels, SIM setup — everything was ready the moment I landed."
-  },
-  {
-    id: 4,
-    name: 'John Smith',
-    role: 'Business Consultant',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
-    rating: 5,
-    review: "An incredible journey through the Silk Road. The guides were knowledgeable and passionate. Every detail was taken care of — from airport pickup to the farewell dinner. Highly recommend GAOU for anyone looking to explore Uzbekistan."
-  },
-  {
-    id: 5,
-    name: 'Emma Wilson',
-    role: 'History Teacher',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100',
-    rating: 5,
-    review: "As a history enthusiast, this trip exceeded all my expectations. Walking through Samarkand and Bukhara felt like stepping back in time. The attention to historical details by our guide was remarkable."
-  }
-]
 
 const swiperInstance = ref<SwiperType | null>(null)
 const activeIndex = ref(0)
@@ -102,6 +57,10 @@ const progressWidth = computed(() => {
   const maxIndex = totalSlides.value - 3
   const progress = ((activeIndex.value) / maxIndex) * 100
   return Math.min(100, Math.max(0, progress))
+})
+
+const isNextDisabled = computed(() => {
+  return activeIndex.value >= reviews.value.length - 3
 })
 </script>
 
@@ -140,7 +99,30 @@ const progressWidth = computed(() => {
 
         <!-- Swiper -->
         <div class="mb-8">
+          <!-- Loading State -->
+          <div v-if="loading" class="flex gap-6">
+            <div v-for="i in 3" :key="i" class="flex-1 bg-white rounded-2xl p-6 animate-pulse">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-full" />
+                <div>
+                  <div class="h-4 w-24 bg-gray-200 rounded mb-2" />
+                  <div class="h-3 w-20 bg-gray-200 rounded" />
+                </div>
+              </div>
+              <div class="flex gap-1 mb-4">
+                <div v-for="j in 5" :key="j" class="w-4 h-4 bg-gray-200 rounded" />
+              </div>
+              <div class="space-y-2">
+                <div class="h-3 bg-gray-200 rounded w-full" />
+                <div class="h-3 bg-gray-200 rounded w-full" />
+                <div class="h-3 bg-gray-200 rounded w-3/4" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviews Swiper -->
           <Swiper
+            v-else-if="reviews.length > 0"
             :modules="[Navigation]"
             :slides-per-view="3"
             :space-between="24"
@@ -151,7 +133,7 @@ const progressWidth = computed(() => {
           >
             <SwiperSlide v-for="review in reviews" :key="review.id">
               <CardsReviewCard
-                :name="review.name"
+                :name="review.full_name"
                 :role="review.role"
                 :avatar="review.avatar"
                 :rating="review.rating"
@@ -159,6 +141,11 @@ const progressWidth = computed(() => {
               />
             </SwiperSlide>
           </Swiper>
+
+          <!-- Empty State -->
+          <div v-else class="text-center py-12 text-gray-500">
+            {{ t('testimonials.noReviews') }}
+          </div>
         </div>
 
         <!-- Bottom Navigation -->
@@ -184,7 +171,7 @@ const progressWidth = computed(() => {
             </button>
             <button
               class="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-300 hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
-              :disabled="activeIndex >= reviews.length - 3"
+              :disabled="isNextDisabled"
               @click="goNext"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

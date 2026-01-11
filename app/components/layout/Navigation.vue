@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const emit = defineEmits<{
@@ -45,7 +46,7 @@ defineExpose({
 </script>
 
 <template>
-  <nav class="bg-white/10 backdrop-blur-sm rounded-full p-2 border border-gray-dark">
+  <nav class="bg-[#1111110D] backdrop-blur-sm rounded-full p-2 border border-gray-dark">
     <ul class="flex items-center gap-3">
       <li 
         v-for="item in navItems" 

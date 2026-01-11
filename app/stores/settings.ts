@@ -1,62 +1,65 @@
 import { defineStore } from 'pinia'
 import type { SiteSettings } from '~/types'
-import { API_BASE_URL } from '~/types'
 
-interface SettingsState {
-  settings: SiteSettings | null
-  loading: boolean
-  error: string | null
-}
+export const useSettingsStore = defineStore('settings', () => {
+  const { get } = useApi()
 
-export const useSettingsStore = defineStore('settings', {
-  state: (): SettingsState => ({
-    settings: null,
-    loading: false,
-    error: null
-  }),
+  // State
+  const settings = ref<SiteSettings | null>(null)
+  const loading = ref(false)
+  const error = ref<string | null>(null)
 
-  getters: {
-    hasSocialLinks: (state) => {
-      if (!state.settings) return false
-      return !!(
-        state.settings.facebook ||
-        state.settings.linkedin ||
-        state.settings.instagram ||
-        state.settings.twitter
-      )
-    },
-    socialLinks: (state) => {
-      if (!state.settings) return []
-      const links = []
-      if (state.settings.facebook) links.push({ name: 'facebook', url: state.settings.facebook })
-      if (state.settings.linkedin) links.push({ name: 'linkedin', url: state.settings.linkedin })
-      if (state.settings.instagram) links.push({ name: 'instagram', url: state.settings.instagram })
-      if (state.settings.twitter) links.push({ name: 'twitter', url: state.settings.twitter })
-      return links
-    }
-  },
+  // Getters
+  const hasSocialLinks = computed(() => {
+    if (!settings.value) return false
+    return !!(
+      settings.value.facebook ||
+      settings.value.linkedin ||
+      settings.value.instagram ||
+      settings.value.twitter
+    )
+  })
 
-  actions: {
-    async fetchSettings() {
-      this.loading = true
-      this.error = null
+  const socialLinks = computed(() => {
+    if (!settings.value) return []
+    const links = []
+    if (settings.value.facebook) links.push({ name: 'facebook', url: settings.value.facebook })
+    if (settings.value.linkedin) links.push({ name: 'linkedin', url: settings.value.linkedin })
+    if (settings.value.instagram) links.push({ name: 'instagram', url: settings.value.instagram })
+    if (settings.value.twitter) links.push({ name: 'twitter', url: settings.value.twitter })
+    return links
+  })
 
-      try {
-        const url = `${API_BASE_URL}/settings/`
-        const response = await $fetch<SiteSettings>(url)
+  // Actions
+  async function fetchSettings() {
+    loading.value = true
+    error.value = null
 
-        this.settings = response
-      } catch (error) {
-        this.error = error instanceof Error ? error.message : 'Failed to fetch settings'
-        console.error('Error fetching settings:', error)
-      } finally {
-        this.loading = false
-      }
-    },
-
-    clearError() {
-      this.error = null
+    try {
+      const response = await get<SiteSettings>('/settings/')
+      settings.value = response
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Failed to fetch settings'
+      console.error('Error fetching settings:', e)
+    } finally {
+      loading.value = false
     }
   }
-})
 
+  function clearError() {
+    error.value = null
+  }
+
+  return {
+    // State
+    settings,
+    loading,
+    error,
+    // Getters
+    hasSocialLinks,
+    socialLinks,
+    // Actions
+    fetchSettings,
+    clearError
+  }
+})

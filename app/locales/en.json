@@ -52,6 +52,7 @@
     "title": "Stories from those who've traveled with GAOU",
     "subtitle": "Authentic experiences and trusted service — discover what travelers say about their Golden Ages journey",
     "writeReview": "WRITE A REVIEW",
+    "noReviews": "No reviews yet. Be the first to share your experience!",
     "modal": {
       "title": "Share Your Experience",
       "rating": "Your Rating",
@@ -139,6 +140,12 @@
     "days": "days",
     "nights": "nights",
     "reviews": "reviews",
+    "excellent": "Excellent",
+    "try_again": "Try Again"
+  },
+  "tours": {
+    "our_packages": "Our Tour Packages",
+    "no_packages": "No tour packages available at the moment.",
     "excellent": "Excellent"
   }
 }

@@ -2,12 +2,16 @@
 interface Props {
   name: string
   role: string
-  avatar: string
+  avatar?: string | null
   rating: number
   review: string
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const avatarUrl = computed(() => {
+  return props.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(props.name)}&background=F97316&color=fff`
+})
 </script>
 
 <template>
@@ -17,7 +21,7 @@ defineProps<Props>()
       <!-- Author Info -->
       <div class="flex items-center gap-3">
         <img
-          :src="avatar"
+          :src="avatarUrl"
           :alt="name"
           class="w-12 h-12 rounded-full object-cover"
         />

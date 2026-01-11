@@ -2,6 +2,7 @@
 import contactBg from '~/assets/images/hero_bg.jpg'
 import { useTripsStore } from '~/stores/trips'
 import { useMessagesStore } from '~/stores/messages'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const tripsStore = useTripsStore()

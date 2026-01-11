@@ -52,6 +52,7 @@
     "title": "GAOU bilan sayohat qilganlarning hikoyalari",
     "subtitle": "Haqiqiy tajribalar va ishonchli xizmat — sayohatchilar Golden Ages sayohati haqida nima deyishlarini bilib oling",
     "writeReview": "SHARH YOZISH",
+    "noReviews": "Hozircha sharhlar yo'q. Tajribangizni birinchi bo'lib ulashing!",
     "modal": {
       "title": "Tajribangizni baham ko'ring",
       "rating": "Bahongiz",
@@ -136,6 +137,12 @@
     "days": "kun",
     "nights": "kecha",
     "reviews": "sharhlar",
+    "excellent": "A'lo",
+    "try_again": "Qayta urinish"
+  },
+  "tours": {
+    "our_packages": "Bizning tur paketlarimiz",
+    "no_packages": "Hozircha tur paketlari mavjud emas.",
     "excellent": "A'lo"
   }
 }

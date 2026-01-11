@@ -35,6 +35,7 @@ export interface TripList {
   locations: string
   price: number
   order?: number
+  images: TripImage[]
   created_at: string
 }
 

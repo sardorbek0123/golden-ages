@@ -1,56 +1,54 @@
 import { defineStore } from 'pinia'
 import type { TripCategory, PaginatedResponse, PaginationParams } from '~/types'
-import { API_BASE_URL } from '~/types'
 
-interface CategoriesState {
-  categories: TripCategory[]
-  count: number
-  loading: boolean
-  error: string | null
-}
+export const useCategoriesStore = defineStore('categories', () => {
+  const { get } = useApi()
 
-export const useCategoriesStore = defineStore('categories', {
-  state: (): CategoriesState => ({
-    categories: [],
-    count: 0,
-    loading: false,
-    error: null
-  }),
+  // State
+  const categories = ref<TripCategory[]>([])
+  const count = ref(0)
+  const loading = ref(false)
+  const error = ref<string | null>(null)
 
-  getters: {
-    sortedCategories: (state) => {
-      return [...state.categories].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-    },
-    hasCategories: (state) => state.categories.length > 0
-  },
+  // Getters
+  const sortedCategories = computed(() => {
+    return [...categories.value].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  })
 
-  actions: {
-    async fetchCategories(params?: PaginationParams) {
-      this.loading = true
-      this.error = null
+  const hasCategories = computed(() => categories.value.length > 0)
 
-      try {
-        const query = new URLSearchParams()
-        if (params?.limit) query.set('limit', params.limit.toString())
-        if (params?.offset) query.set('offset', params.offset.toString())
-        if (params?.ordering) query.set('ordering', params.ordering)
+  // Actions
+  async function fetchCategories(params?: PaginationParams) {
+    loading.value = true
+    error.value = null
 
-        const url = `${API_BASE_URL}/categories/${query.toString() ? `?${query.toString()}` : ''}`
-        const response = await $fetch<PaginatedResponse<TripCategory>>(url)
-
-        this.categories = response.results
-        this.count = response.count
-      } catch (error) {
-        this.error = error instanceof Error ? error.message : 'Failed to fetch categories'
-        console.error('Error fetching categories:', error)
-      } finally {
-        this.loading = false
-      }
-    },
-
-    clearError() {
-      this.error = null
+    try {
+      const response = await get<PaginatedResponse<TripCategory>>('/categories/', params)
+      categories.value = response.results
+      count.value = response.count
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Failed to fetch categories'
+      console.error('Error fetching categories:', e)
+    } finally {
+      loading.value = false
     }
   }
-})
 
+  function clearError() {
+    error.value = null
+  }
+
+  return {
+    // State
+    categories,
+    count,
+    loading,
+    error,
+    // Getters
+    sortedCategories,
+    hasCategories,
+    // Actions
+    fetchCategories,
+    clearError
+  }
+})

@@ -52,6 +52,7 @@
     "title": "Histoires de ceux qui ont voyagé avec GAOU",
     "subtitle": "Expériences authentiques et service fiable — découvrez ce que les voyageurs disent de leur voyage Golden Ages",
     "writeReview": "ÉCRIRE UN AVIS",
+    "noReviews": "Pas encore d'avis. Soyez le premier à partager votre expérience !",
     "modal": {
       "title": "Partagez votre expérience",
       "rating": "Votre note",
@@ -136,6 +137,12 @@
     "days": "jours",
     "nights": "nuits",
     "reviews": "avis",
+    "excellent": "Excellent",
+    "try_again": "Réessayer"
+  },
+  "tours": {
+    "our_packages": "Nos forfaits",
+    "no_packages": "Aucun forfait disponible pour le moment.",
     "excellent": "Excellent"
   }
 }

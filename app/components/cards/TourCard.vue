@@ -13,20 +13,20 @@ defineProps<Props>()
 
 <template>
   <div 
-    class="tour-card relative rounded-2xl overflow-hidden transition-all duration-500"
+    class="tour-card relative overflow-hidden transition-all duration-500"
     :class="isActive ? 'tour-card--active' : 'tour-card--inactive'"
   >
     <!-- Image -->
-    <div class="relative" :class="isActive ? 'h-[450px]' : 'h-[320px]'">
+    <div class="relative" :class="isActive ? 'h-[600px]' : 'h-[460px]'">
       <img
         :src="image"
         :alt="title"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover rounded-2xl"
       />
     </div>
 
     <!-- Content -->
-    <div class="mt-4">
+    <div class="mt-5">
       <!-- Title - Always visible -->
       <h3 
         class="font-bold text-gray-900 transition-all duration-300"
@@ -40,7 +40,7 @@ defineProps<Props>()
         <!-- Duration -->
         <div class="flex items-center gap-2 mt-2">
           <span class="text-sm text-orange-normal font-medium">{{ duration.split('/')[0] }}</span>
-          <span class="text-sm text-gray-500">/ {{ duration.split('/')[1] }}</span>
+          <!-- <span class="text-sm text-gray-500">/ {{ duration.split('/')[1] }}</span> -->
         </div>
 
         <!-- Description -->

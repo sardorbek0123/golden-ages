@@ -52,6 +52,7 @@
     "title": "Geschichten von Reisenden mit GAOU",
     "subtitle": "Authentische Erlebnisse und vertrauenswürdiger Service — erfahren Sie, was Reisende über ihre Golden Ages Reise sagen",
     "writeReview": "BEWERTUNG SCHREIBEN",
+    "noReviews": "Noch keine Bewertungen. Seien Sie der Erste, der seine Erfahrung teilt!",
     "modal": {
       "title": "Teilen Sie Ihre Erfahrung",
       "rating": "Ihre Bewertung",
@@ -136,6 +137,12 @@
     "days": "Tage",
     "nights": "Nächte",
     "reviews": "Bewertungen",
+    "excellent": "Ausgezeichnet",
+    "try_again": "Erneut versuchen"
+  },
+  "tours": {
+    "our_packages": "Unsere Tourpakete",
+    "no_packages": "Derzeit sind keine Tourpakete verfügbar.",
     "excellent": "Ausgezeichnet"
   }
 }

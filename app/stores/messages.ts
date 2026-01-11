@@ -1,53 +1,51 @@
 import { defineStore } from 'pinia'
 import type { UserMessageCreate } from '~/types'
-import { API_BASE_URL } from '~/types'
 
-interface MessagesState {
-  loading: boolean
-  success: boolean
-  error: string | null
-}
+export const useMessagesStore = defineStore('messages', () => {
+  const { post } = useApi()
 
-export const useMessagesStore = defineStore('messages', {
-  state: (): MessagesState => ({
-    loading: false,
-    success: false,
-    error: null
-  }),
+  // State
+  const loading = ref(false)
+  const success = ref(false)
+  const error = ref<string | null>(null)
 
-  actions: {
-    async createMessage(data: UserMessageCreate) {
-      this.loading = true
-      this.error = null
-      this.success = false
+  // Actions
+  async function createMessage(data: UserMessageCreate) {
+    loading.value = true
+    error.value = null
+    success.value = false
 
-      try {
-        const url = `${API_BASE_URL}/messages/create/`
-        await $fetch<UserMessageCreate>(url, {
-          method: 'POST',
-          body: data
-        })
-
-        this.success = true
-        return true
-      } catch (error) {
-        this.error = error instanceof Error ? error.message : 'Failed to send message'
-        console.error('Error creating message:', error)
-        return false
-      } finally {
-        this.loading = false
-      }
-    },
-
-    resetState() {
-      this.loading = false
-      this.success = false
-      this.error = null
-    },
-
-    clearError() {
-      this.error = null
+    try {
+      await post<UserMessageCreate>('/messages/create/', data)
+      success.value = true
+      return true
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Failed to send message'
+      console.error('Error creating message:', e)
+      return false
+    } finally {
+      loading.value = false
     }
   }
-})
 
+  function resetState() {
+    loading.value = false
+    success.value = false
+    error.value = null
+  }
+
+  function clearError() {
+    error.value = null
+  }
+
+  return {
+    // State
+    loading,
+    success,
+    error,
+    // Actions
+    createMessage,
+    resetState,
+    clearError
+  }
+})

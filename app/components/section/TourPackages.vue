@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
@@ -7,65 +6,38 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 
 const { t } = useI18n()
-interface Tour {
-  id: number
-  title: string
-  duration: string
-  description: string
-  price: string
-  image: string
-}
+const tripsStore = useTripsStore()
 
-const tours: Tour[] = [
-  {
-    id: 1,
-    title: 'Khiva Desert & Aral Sea Adventure',
-    duration: '5 Days / 4 Nights',
-    description: 'Explore the ancient fortress city of Khiva and witness the haunting beauty of the Aral Sea with comfortable desert camps.',
-    price: 'From 850 000 UZS',
-    image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800'
-  },
-  {
-    id: 2,
-    title: 'Samarkand & Bukhara Highlights',
-    duration: '4 Days / 3 Nights',
-    description: 'Walk through Registan Square, Shah-i-Zinda, and Poi-Kalyan with expert local guides',
-    price: 'From 643 000 UZS',
-    image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800'
-  },
-  {
-    id: 3,
-    title: 'Fergana Valley Crafts & Nature',
-    duration: '3 Days / 2 Nights',
-    description: 'Discover silk weaving traditions, ceramic workshops, and stunning mountain landscapes of the Fergana Valley.',
-    price: 'From 520 000 UZS',
-    image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800'
-  },
-  {
-    id: 4,
-    title: 'Tashkent City Explorer',
-    duration: '2 Days / 1 Night',
-    description: 'Experience the vibrant capital with its famous metro, bustling bazaars, and modern architecture.',
-    price: 'From 320 000 UZS',
-    image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800'
-  },
-  {
-    id: 5,
-    title: 'Complete Silk Road Journey',
-    duration: '10 Days / 9 Nights',
-    description: 'The ultimate Uzbekistan experience covering all major cities and hidden gems along the ancient Silk Road.',
-    price: 'From 1 500 000 UZS',
-    image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800'
-  },
-  {
-    id: 6,
-    title: 'Nurata Mountains & Desert Safari',
-    duration: '4 Days / 3 Nights',
-    description: 'Adventure through the Nurata mountains and Kyzylkum desert with yurt stays and camel rides.',
-    price: 'From 720 000 UZS',
-    image: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800'
+// Fetch trips on mount
+onMounted(async () => {
+  if (!tripsStore.hasTrips) {
+    await tripsStore.fetchTrips()
   }
-]
+})
+
+// Transform trips data for the card component
+const tours = computed(() => {
+  return tripsStore.sortedTrips.map(trip => {
+    // Get first image from list response
+    const image = trip.images?.[0]?.image || ''
+    
+    // Format price
+    const formattedPrice = new Intl.NumberFormat('uz-UZ').format(trip.price)
+    
+    // Duration will be added by backend later
+    const duration = ''
+    
+    return {
+      id: trip.id,
+      slug: trip.slug,
+      title: trip.name,
+      duration,
+      description: trip.short_description,
+      price: `${t('common.from')} ${formattedPrice} UZS`,
+      image
+    }
+  })
+})
 
 const swiperInstance = ref<SwiperType | null>(null)
 const realIndex = ref(0)
@@ -92,7 +64,8 @@ const goNext = () => {
 }
 
 const progressWidth = computed(() => {
-  return ((realIndex.value + 1) / tours.length) * 100
+  const total = tours.value.length || 1
+  return ((realIndex.value + 1) / total) * 100
 })
 
 const formattedIndex = computed(() => {
@@ -100,7 +73,7 @@ const formattedIndex = computed(() => {
 })
 
 const formattedTotal = computed(() => {
-  return String(tours.length).padStart(2, '0')
+  return String(tours.value.length).padStart(2, '0')
 })
 </script>
 
@@ -164,15 +137,20 @@ const formattedTotal = computed(() => {
         </div>
       </div>
 
+      <!-- Loading State -->
+      <div v-if="tripsStore.loading" class="flex justify-center items-center py-20">
+        <div class="animate-spin rounded-full h-12 w-12 border-4 border-orange-normal border-t-transparent" />
+      </div>
+
       <!-- Swiper -->
-      <div class="tour-swiper-container">
+      <div v-else-if="tours.length > 0" class="tour-swiper-container">
         <Swiper
           :modules="[Navigation]"
           :slides-per-view="3"
           :space-between="24"
           :centered-slides="true"
           :initial-slide="0"
-          :loop="true"
+          :loop="tours.length >= 3"
           class="tour-packages-swiper"
           @swiper="onSwiper"
           @slide-change="onSlideChange"
@@ -188,6 +166,11 @@ const formattedTotal = computed(() => {
             />
           </SwiperSlide>
         </Swiper>
+      </div>
+
+      <!-- Empty State -->
+      <div v-else class="text-center py-20">
+        <p class="text-gray-500">{{ t('tours.no_packages') }}</p>
       </div>
     </div>
   </section>

@@ -1,95 +1,91 @@
 import { defineStore } from 'pinia'
 import type { TripList, TripDetail, PaginatedResponse, TripsListParams } from '~/types'
-import { API_BASE_URL } from '~/types'
 
-interface TripsState {
-  trips: TripList[]
-  currentTrip: TripDetail | null
-  count: number
-  loading: boolean
-  loadingDetail: boolean
-  error: string | null
-}
+export const useTripsStore = defineStore('trips', () => {
+  const { get } = useApi()
 
-export const useTripsStore = defineStore('trips', {
-  state: (): TripsState => ({
-    trips: [],
-    currentTrip: null,
-    count: 0,
-    loading: false,
-    loadingDetail: false,
-    error: null
-  }),
+  // State
+  const trips = ref<TripList[]>([])
+  const currentTrip = ref<TripDetail | null>(null)
+  const count = ref(0)
+  const loading = ref(false)
+  const loadingDetail = ref(false)
+  const error = ref<string | null>(null)
 
-  getters: {
-    sortedTrips: (state) => {
-      return [...state.trips].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-    },
-    hasTrips: (state) => state.trips.length > 0,
-    getTripBySlug: (state) => (slug: string) => {
-      return state.trips.find(trip => trip.slug === slug)
-    },
-    tripsByCategory: (state) => (categoryId: number) => {
-      return state.trips.filter(trip => trip.category?.id === categoryId)
-    }
-  },
+  // Getters
+  const sortedTrips = computed(() => {
+    return [...trips.value].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  })
 
-  actions: {
-    async fetchTrips(params?: TripsListParams) {
-      this.loading = true
-      this.error = null
+  const hasTrips = computed(() => trips.value.length > 0)
 
-      try {
-        const query = new URLSearchParams()
-        if (params?.category) query.set('category', params.category)
-        if (params?.active) query.set('active', params.active)
-        if (params?.price__gte) query.set('price__gte', params.price__gte)
-        if (params?.price__lte) query.set('price__lte', params.price__lte)
-        if (params?.price) query.set('price', params.price)
-        if (params?.search) query.set('search', params.search)
-        if (params?.ordering) query.set('ordering', params.ordering)
-        if (params?.limit) query.set('limit', params.limit.toString())
-        if (params?.offset) query.set('offset', params.offset.toString())
+  const getTripBySlug = computed(() => (slug: string) => {
+    return trips.value.find(trip => trip.slug === slug)
+  })
 
-        const url = `${API_BASE_URL}/trips/${query.toString() ? `?${query.toString()}` : ''}`
-        const response = await $fetch<PaginatedResponse<TripList>>(url)
+  const tripsByCategory = computed(() => (categoryId: number) => {
+    return trips.value.filter(trip => trip.category?.id === categoryId)
+  })
 
-        this.trips = response.results
-        this.count = response.count
-      } catch (error) {
-        this.error = error instanceof Error ? error.message : 'Failed to fetch trips'
-        console.error('Error fetching trips:', error)
-      } finally {
-        this.loading = false
-      }
-    },
+  // Actions
+  async function fetchTrips(params?: TripsListParams) {
+    loading.value = true
+    error.value = null
 
-    async fetchTripBySlug(slug: string) {
-      this.loadingDetail = true
-      this.error = null
-
-      try {
-        const url = `${API_BASE_URL}/trips/${slug}/`
-        const response = await $fetch<TripDetail>(url)
-
-        this.currentTrip = response
-        return response
-      } catch (error) {
-        this.error = error instanceof Error ? error.message : 'Failed to fetch trip details'
-        console.error('Error fetching trip details:', error)
-        return null
-      } finally {
-        this.loadingDetail = false
-      }
-    },
-
-    clearCurrentTrip() {
-      this.currentTrip = null
-    },
-
-    clearError() {
-      this.error = null
+    try {
+      const response = await get<PaginatedResponse<TripList>>('/trips/', params)
+      trips.value = response.results
+      count.value = response.count
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Failed to fetch trips'
+      console.error('Error fetching trips:', e)
+    } finally {
+      loading.value = false
     }
   }
-})
 
+  async function fetchTripBySlug(slug: string) {
+    loadingDetail.value = true
+    error.value = null
+
+    try {
+      const response = await get<TripDetail>(`/trips/${slug}/`)
+      currentTrip.value = response
+      return response
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Failed to fetch trip details'
+      console.error('Error fetching trip details:', e)
+      return null
+    } finally {
+      loadingDetail.value = false
+    }
+  }
+
+  function clearCurrentTrip() {
+    currentTrip.value = null
+  }
+
+  function clearError() {
+    error.value = null
+  }
+
+  return {
+    // State
+    trips,
+    currentTrip,
+    count,
+    loading,
+    loadingDetail,
+    error,
+    // Getters
+    sortedTrips,
+    hasTrips,
+    getTripBySlug,
+    tripsByCategory,
+    // Actions
+    fetchTrips,
+    fetchTripBySlug,
+    clearCurrentTrip,
+    clearError
+  }
+})

@@ -1,56 +1,54 @@
 import { defineStore } from 'pinia'
 import type { TeamMember, PaginatedResponse, PaginationParams } from '~/types'
-import { API_BASE_URL } from '~/types'
 
-interface TeamState {
-  members: TeamMember[]
-  count: number
-  loading: boolean
-  error: string | null
-}
+export const useTeamStore = defineStore('team', () => {
+  const { get } = useApi()
 
-export const useTeamStore = defineStore('team', {
-  state: (): TeamState => ({
-    members: [],
-    count: 0,
-    loading: false,
-    error: null
-  }),
+  // State
+  const members = ref<TeamMember[]>([])
+  const count = ref(0)
+  const loading = ref(false)
+  const error = ref<string | null>(null)
 
-  getters: {
-    sortedMembers: (state) => {
-      return [...state.members].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-    },
-    hasMembers: (state) => state.members.length > 0
-  },
+  // Getters
+  const sortedMembers = computed(() => {
+    return [...members.value].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  })
 
-  actions: {
-    async fetchTeamMembers(params?: PaginationParams) {
-      this.loading = true
-      this.error = null
+  const hasMembers = computed(() => members.value.length > 0)
 
-      try {
-        const query = new URLSearchParams()
-        if (params?.limit) query.set('limit', params.limit.toString())
-        if (params?.offset) query.set('offset', params.offset.toString())
-        if (params?.ordering) query.set('ordering', params.ordering)
+  // Actions
+  async function fetchTeamMembers(params?: PaginationParams) {
+    loading.value = true
+    error.value = null
 
-        const url = `${API_BASE_URL}/team/${query.toString() ? `?${query.toString()}` : ''}`
-        const response = await $fetch<PaginatedResponse<TeamMember>>(url)
-
-        this.members = response.results
-        this.count = response.count
-      } catch (error) {
-        this.error = error instanceof Error ? error.message : 'Failed to fetch team members'
-        console.error('Error fetching team members:', error)
-      } finally {
-        this.loading = false
-      }
-    },
-
-    clearError() {
-      this.error = null
+    try {
+      const response = await get<PaginatedResponse<TeamMember>>('/team/', params)
+      members.value = response.results
+      count.value = response.count
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Failed to fetch team members'
+      console.error('Error fetching team members:', e)
+    } finally {
+      loading.value = false
     }
   }
-})
 
+  function clearError() {
+    error.value = null
+  }
+
+  return {
+    // State
+    members,
+    count,
+    loading,
+    error,
+    // Getters
+    sortedMembers,
+    hasMembers,
+    // Actions
+    fetchTeamMembers,
+    clearError
+  }
+})

@@ -29,7 +29,6 @@ export default defineNuxtConfig({
       { code: 'fr', name: 'Français', file: 'fr.json', flag: '🇫🇷' }
     ],
     defaultLocale: 'en',
-    lazy: true,
     langDir: '../app/locales',
     strategy: 'prefix_except_default',
     detectBrowserLanguage: {
@@ -37,6 +36,14 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root'
     }
+  },
+  imports: {
+    presets: [
+      {
+        from: 'vue-i18n',
+        imports: ['useI18n'],
+      },
+    ],
   },
   app: {
     head: {
