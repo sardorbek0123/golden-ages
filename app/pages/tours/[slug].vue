@@ -41,13 +41,11 @@ const secondaryImages = computed(() => {
   return sorted.slice(1, 3)
 })
 
-// Parse utilities for display
-const getUtilityValue = (name: string) => {
-  const utility = trip.value?.utilities?.find(u => 
-    u.name.toLowerCase().includes(name.toLowerCase())
-  )
-  return utility?.name || '—'
-}
+// Get sorted utilities
+const sortedUtilities = computed(() => {
+  if (!trip.value?.utilities?.length) return []
+  return [...trip.value.utilities].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+})
 
 // Go back
 const goBack = () => {
@@ -56,7 +54,7 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-[#F9FAF9]">
     <div class="container mx-auto px-4 py-12">
       <!-- Back Button -->
       <button 
@@ -164,17 +162,12 @@ const goBack = () => {
         </div>
 
         <!-- Info Section -->
-        <div class="bg-grey-normal rounded-3xl p-10">
+        <div>
           <div class="grid grid-cols-2 gap-12">
             <!-- Left Column - Tour Info Card -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-100">
+            <div class="bg-white rounded-2xl p-8 border border-[#9195923D]">
               <!-- Category Badge -->
-              <span 
-                v-if="trip.category?.name"
-                class="inline-block px-3 py-1 bg-orange-normal/10 text-orange-normal text-xs font-semibold rounded-full uppercase tracking-wide mb-4"
-              >
-                {{ trip.category.name }}
-              </span>
+               <CommonBadge :text="trip.category?.name || ''" />
 
               <!-- Title -->
               <h2 class="text-2xl font-bold text-gray-900 mb-3">
@@ -187,90 +180,29 @@ const goBack = () => {
               </p>
 
               <!-- Details Grid -->
-              <div class="grid grid-cols-3 gap-4 mb-6">
-                <!-- Duration -->
-                <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="3" y="4" width="18" height="18" rx="2" stroke="#6B7280" stroke-width="2"/>
-                      <path d="M16 2v4M8 2v4M3 10h18" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
+              <div 
+                v-if="sortedUtilities.length"
+                class="grid grid-cols-3 gap-4 mb-6 bg-[#FFF6E64D] border border-[#9195923D] rounded-2xl py-6 px-5"
+              >
+                <div 
+                  v-for="utility in sortedUtilities" 
+                  :key="utility.id"
+                  class="flex items-start gap-3"
+                >
+                  <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shrink-0">
+                    <img 
+                      v-if="utility.icon"
+                      :src="utility.icon" 
+                      :alt="utility.name"
+                      class="w-5 h-5 object-contain"
+                    />
+                    <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#6B7280" stroke-width="2"/>
+                      <path d="M12 6v6l4 2" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                   </div>
                   <div>
-                    <p class="text-xs text-gray-400">{{ t('tourDetail.duration') }}</p>
-                    <p class="text-sm font-medium text-gray-900">{{ getUtilityValue('day') }}</p>
-                  </div>
-                </div>
-
-                <!-- Group Size -->
-                <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <circle cx="9" cy="7" r="4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-400">{{ t('tourDetail.groupSize') }}</p>
-                    <p class="text-sm font-medium text-gray-900">{{ getUtilityValue('traveler') }}</p>
-                  </div>
-                </div>
-
-                <!-- Accommodation -->
-                <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M3 21h18M3 7v14M21 7v14M6 11h4v4H6zM14 11h4v4h-4zM9 3h6v4H9z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-400">{{ t('tourDetail.accommodation') }}</p>
-                    <p class="text-sm font-medium text-gray-900">{{ getUtilityValue('hotel') }}</p>
-                  </div>
-                </div>
-
-                <!-- Transport -->
-                <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="3" y="4" width="18" height="12" rx="2" stroke="#6B7280" stroke-width="2"/>
-                      <circle cx="7" cy="19" r="2" stroke="#6B7280" stroke-width="2"/>
-                      <circle cx="17" cy="19" r="2" stroke="#6B7280" stroke-width="2"/>
-                      <path d="M5 16v1M19 16v1" stroke="#6B7280" stroke-width="2"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-400">{{ t('tourDetail.transport') }}</p>
-                    <p class="text-sm font-medium text-gray-900">{{ getUtilityValue('transport') }}</p>
-                  </div>
-                </div>
-
-                <!-- Cities -->
-                <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M9 9h1M14 9h1M9 13h1M14 13h1" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-400">{{ t('tourDetail.cities') }}</p>
-                    <p class="text-sm font-medium text-gray-900">{{ getUtilityValue('cit') }}</p>
-                  </div>
-                </div>
-
-                <!-- Guide -->
-                <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="8" r="4" stroke="#6B7280" stroke-width="2"/>
-                      <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-400">{{ t('tourDetail.guide') }}</p>
-                    <p class="text-sm font-medium text-gray-900">{{ getUtilityValue('guide') }}</p>
+                    <p class="text-sm font-medium text-gray-900">{{ utility.name }}</p>
                   </div>
                 </div>
               </div>
@@ -290,9 +222,7 @@ const goBack = () => {
             <!-- Right Column - Description -->
             <div>
               <!-- Description Badge -->
-              <span class="inline-block px-3 py-1 bg-orange-normal/10 text-orange-normal text-xs font-semibold rounded-full uppercase tracking-wide mb-6">
-                {{ t('tourDetail.description') }}
-              </span>
+              <CommonBadge :text="t('tourDetail.description')" />
 
               <!-- Description Text -->
               <div class="prose prose-gray max-w-none text-gray-600 leading-relaxed" v-html="trip.description" />

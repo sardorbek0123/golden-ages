@@ -41,7 +41,7 @@ onUnmounted(() => {
   <div ref="dropdownRef" class="relative">
     <!-- Current Language Button -->
     <button
-      class="flex items-center gap-2 px-3 py-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+      class="flex items-center gap-2 px-3 py-2 text-black hover:bg-white/10 rounded-lg transition-colors"
       @click="toggleDropdown"
     >
       <span class="text-lg">{{ currentLocale?.flag }}</span>
