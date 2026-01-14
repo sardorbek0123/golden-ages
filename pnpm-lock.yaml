@@ -14,6 +14,9 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.2.59
         version: 1.2.59
+      '@ivanv/vue-collapse-transition':
+        specifier: ^1.0.2
+        version: 1.0.2
       '@nuxt/ui':
         specifier: ^4.2.1
         version: 4.2.1(@babel/parser@7.28.5)(change-case@5.4.4)(db0@0.3.4)(embla-carousel@8.6.0)(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3)(vite@7.2.7(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)(yaml@2.8.2))(vue-router@4.6.3(vue@3.5.25(typescript@5.9.3)))(vue@3.5.25(typescript@5.9.3))(zod@4.1.12)
@@ -747,6 +750,9 @@ packages:
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
+
+  '@ivanv/vue-collapse-transition@1.0.2':
+    resolution: {integrity: sha512-eWEameFXJM/1khcoKbITvKjYYXDP1WKQ/Xf9ItJVPoEjCiOdocR3AgDAERzDrNNg4oWK28gRGi+0ft8Te27zxw==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -5704,6 +5710,8 @@ snapshots:
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
       minipass: 7.1.2
+
+  '@ivanv/vue-collapse-transition@1.0.2': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:

@@ -1,4 +1,16 @@
 {
+  "error": {
+    "pageNotFound": "Page Not Found",
+    "pageNotFoundDescription": "The page you're looking for doesn't exist or has been moved. Let's get you back on track to discover the wonders of the Silk Road.",
+    "somethingWentWrong": "Something Went Wrong",
+    "somethingWentWrongDescription": "We're experiencing some technical difficulties. Please try again later or return to the homepage.",
+    "backToHome": "Back to Home"
+  },
+  "comingSoon": {
+    "title": "Coming Soon",
+    "description": "We're working on something amazing. This page will be available soon — stay tuned for exciting new features and content.",
+    "backToHome": "Back to Home"
+  },
   "nav": {
     "tours": "TOURS",
     "aboutUs": "ABOUT US",
@@ -145,9 +157,13 @@
     "bookNow": "BOOK NOW"
   },
   "tours": {
+    "all": "All Tours",
     "our_packages": "Our Tour Packages",
     "no_packages": "No tour packages available at the moment.",
     "excellent": "Excellent"
+  },
+  "cities": {
+    "all": "All Cities"
   },
   "tourDetail": {
     "back": "Back",
@@ -161,6 +177,7 @@
     "perPerson": "per person",
     "bookNow": "BOOKING NOW",
     "description": "DESCRIPTION",
-    "itinerary": "Tour Itinerary"
+    "itinerary": "Tour Itinerary",
+    "tourPlan": "Tour Plan"
   }
 }

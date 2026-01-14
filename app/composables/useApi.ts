@@ -8,7 +8,6 @@ import { API_BASE_URL } from '~/types'
 function getCurrentLocale(): string {
   try {
     const { locale } = useI18n()
-    console.log('locale', locale.value);
     
     return locale.value
   } catch {
@@ -37,7 +36,6 @@ export function useApi() {
 
     const currentLocale = getCurrentLocale()
     const url = `${API_BASE_URL}${endpoint}${query.toString() ? `?${query.toString()}` : ''}`
-    console.log(url, currentLocale)
     return $fetch<T>(url, {
       method: 'GET',
       headers: {

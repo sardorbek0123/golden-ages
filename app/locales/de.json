@@ -1,4 +1,16 @@
 {
+  "error": {
+    "pageNotFound": "Seite nicht gefunden",
+    "pageNotFoundDescription": "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben. Lassen Sie uns Sie zurück auf den Weg bringen, um die Wunder der Seidenstraße zu entdecken.",
+    "somethingWentWrong": "Etwas ist schief gelaufen",
+    "somethingWentWrongDescription": "Wir haben technische Schwierigkeiten. Bitte versuchen Sie es später erneut oder kehren Sie zur Startseite zurück.",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "comingSoon": {
+    "title": "Demnächst verfügbar",
+    "description": "Wir arbeiten an etwas Großartigem. Diese Seite wird bald verfügbar sein — bleiben Sie dran für spannende neue Funktionen und Inhalte.",
+    "backToHome": "Zurück zur Startseite"
+  },
   "nav": {
     "tours": "TOUREN",
     "aboutUs": "ÜBER UNS",
@@ -142,9 +154,13 @@
     "bookNow": "JETZT BUCHEN"
   },
   "tours": {
+    "all": "Alle Touren",
     "our_packages": "Unsere Tourpakete",
     "no_packages": "Derzeit sind keine Tourpakete verfügbar.",
     "excellent": "Ausgezeichnet"
+  },
+  "cities": {
+    "all": "Alle Städte"
   },
   "tourDetail": {
     "back": "Zurück",
@@ -158,6 +174,7 @@
     "perPerson": "pro Person",
     "bookNow": "JETZT BUCHEN",
     "description": "BESCHREIBUNG",
-    "itinerary": "Reiseverlauf"
+    "itinerary": "Reiseverlauf",
+    "tourPlan": "Reiseplan"
   }
 }

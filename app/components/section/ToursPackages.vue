@@ -20,8 +20,10 @@ const tourPackages = computed(() => {
       .map(loc => loc.trim())
       .filter(Boolean)
     
-    // Features will be added by backend later (utilities)
-    const features: { icon: string; text: string }[] = []
+    // Get utilities from API, sorted by order
+    const utilities = (trip.trip_utilities || [])
+      .slice()
+      .sort((a, b) => (a.utility.order ?? 0) - (b.utility.order ?? 0))
     
     // Get first image from list response
     const image = trip.images?.[0]?.image || ''
@@ -37,7 +39,7 @@ const tourPackages = computed(() => {
       title: trip.name,
       description: trip.short_description,
       locations: locationsArray,
-      features,
+      utilities,
       rating: 4.5, // Default rating - can be updated when reviews API is integrated
       reviewCount: 0,
       ratingLabel: t('tours.excellent'),
@@ -88,7 +90,7 @@ const tourPackages = computed(() => {
           :title="tour.title"
           :description="tour.description"
           :locations="tour.locations"
-          :features="tour.features"
+          :utilities="tour.utilities"
           :rating="tour.rating"
           :review-count="tour.reviewCount"
           :rating-label="tour.ratingLabel"

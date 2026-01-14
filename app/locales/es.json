@@ -1,4 +1,16 @@
 {
+  "error": {
+    "pageNotFound": "Página no encontrada",
+    "pageNotFoundDescription": "La página que buscas no existe o ha sido movida. Volvamos a ponerte en camino para descubrir las maravillas de la Ruta de la Seda.",
+    "somethingWentWrong": "Algo salió mal",
+    "somethingWentWrongDescription": "Estamos experimentando dificultades técnicas. Por favor, inténtalo más tarde o vuelve a la página principal.",
+    "backToHome": "Volver al inicio"
+  },
+  "comingSoon": {
+    "title": "Próximamente",
+    "description": "Estamos trabajando en algo increíble. Esta página estará disponible pronto — mantente atento a nuevas funciones y contenido.",
+    "backToHome": "Volver al inicio"
+  },
   "nav": {
     "tours": "TOURS",
     "aboutUs": "NOSOTROS",
@@ -142,9 +154,13 @@
     "bookNow": "RESERVAR AHORA"
   },
   "tours": {
+    "all": "Todos los tours",
     "our_packages": "Nuestros paquetes turísticos",
     "no_packages": "No hay paquetes turísticos disponibles en este momento.",
     "excellent": "Excelente"
+  },
+  "cities": {
+    "all": "Todas las ciudades"
   },
   "tourDetail": {
     "back": "Volver",
@@ -158,6 +174,7 @@
     "perPerson": "por persona",
     "bookNow": "RESERVAR AHORA",
     "description": "DESCRIPCIÓN",
-    "itinerary": "Itinerario del tour"
+    "itinerary": "Itinerario del tour",
+    "tourPlan": "Plan del viaje"
   }
 }

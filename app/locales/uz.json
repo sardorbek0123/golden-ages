@@ -1,4 +1,16 @@
 {
+  "error": {
+    "pageNotFound": "Sahifa topilmadi",
+    "pageNotFoundDescription": "Siz qidirayotgan sahifa mavjud emas yoki ko'chirilgan. Keling, sizni Ipak yo'li mo'jizalarini kashf etishga qaytaraylik.",
+    "somethingWentWrong": "Xatolik yuz berdi",
+    "somethingWentWrongDescription": "Texnik muammolar yuz bermoqda. Iltimos, keyinroq qayta urinib ko'ring yoki bosh sahifaga qayting.",
+    "backToHome": "Bosh sahifaga"
+  },
+  "comingSoon": {
+    "title": "Tez kunda",
+    "description": "Biz ajoyib narsa ustida ishlayapmiz. Bu sahifa tez orada ochiladi — yangi imkoniyatlar va kontentni kuzatib boring.",
+    "backToHome": "Bosh sahifaga"
+  },
   "nav": {
     "tours": "TURLAR",
     "aboutUs": "BIZ HAQIMIZDA",
@@ -142,9 +154,13 @@
     "bookNow": "BAND QILISH"
   },
   "tours": {
+    "all": "Barcha turlar",
     "our_packages": "Bizning tur paketlarimiz",
     "no_packages": "Hozircha tur paketlari mavjud emas.",
     "excellent": "A'lo"
+  },
+  "cities": {
+    "all": "Barcha shaharlar"
   },
   "tourDetail": {
     "back": "Orqaga",
@@ -158,6 +174,7 @@
     "perPerson": "har bir kishi uchun",
     "bookNow": "BAND QILISH",
     "description": "TAVSIF",
-    "itinerary": "Sayohat marshuti"
+    "itinerary": "Sayohat marshuti",
+    "tourPlan": "Sayohat rejasi"
   }
 }

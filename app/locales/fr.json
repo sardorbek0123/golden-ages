@@ -1,4 +1,16 @@
 {
+  "error": {
+    "pageNotFound": "Page non trouvée",
+    "pageNotFoundDescription": "La page que vous recherchez n'existe pas ou a été déplacée. Remettons-vous sur la bonne voie pour découvrir les merveilles de la Route de la Soie.",
+    "somethingWentWrong": "Une erreur s'est produite",
+    "somethingWentWrongDescription": "Nous rencontrons des difficultés techniques. Veuillez réessayer plus tard ou retourner à la page d'accueil.",
+    "backToHome": "Retour à l'accueil"
+  },
+  "comingSoon": {
+    "title": "Bientôt disponible",
+    "description": "Nous travaillons sur quelque chose d'incroyable. Cette page sera bientôt disponible — restez à l'écoute pour de nouvelles fonctionnalités et du contenu.",
+    "backToHome": "Retour à l'accueil"
+  },
   "nav": {
     "tours": "CIRCUITS",
     "aboutUs": "À PROPOS",
@@ -142,9 +154,13 @@
     "bookNow": "RÉSERVER MAINTENANT"
   },
   "tours": {
+    "all": "Tous les tours",
     "our_packages": "Nos forfaits",
     "no_packages": "Aucun forfait disponible pour le moment.",
     "excellent": "Excellent"
+  },
+  "cities": {
+    "all": "Toutes les villes"
   },
   "tourDetail": {
     "back": "Retour",
@@ -158,6 +174,7 @@
     "perPerson": "par personne",
     "bookNow": "RÉSERVER",
     "description": "DESCRIPTION",
-    "itinerary": "Itinéraire du voyage"
+    "itinerary": "Itinéraire du voyage",
+    "tourPlan": "Plan du voyage"
   }
 }

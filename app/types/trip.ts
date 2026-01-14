@@ -11,6 +11,12 @@ export interface Utility {
   order?: number
 }
 
+export interface TripUtility {
+  id: number
+  utility: Utility
+  value: string
+}
+
 export interface TripPlan {
   id: number
   label?: string | null
@@ -36,6 +42,7 @@ export interface TripList {
   price: number
   order?: number
   images: TripImage[]
+  trip_utilities?: TripUtility[]
   created_at: string
 }
 
@@ -49,7 +56,7 @@ export interface TripDetail {
   short_description: string
   description: string
   locations: string
-  utilities: Utility[]
+  trip_utilities: TripUtility[]
   video?: string | null
   price: number
   order?: number
