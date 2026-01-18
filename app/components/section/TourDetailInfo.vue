@@ -75,9 +75,9 @@ const sortedUtilities = computed(() => {
               <p class="text-xs text-gray-400">{{ t('tourDetail.price') }}</p>
               <p class="text-xl font-bold text-gray-900">{{ formattedPrice }} <span class="text-sm font-normal text-gray-500">{{ t('tourDetail.perPerson') }}</span></p>
             </div>
-            <button class="px-8 py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
+            <NuxtLink to="#form" class="px-8 py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
               {{ t('tourDetail.bookNow') }}
-            </button>
+            </NuxtLink>
           </div>
         </div>
 

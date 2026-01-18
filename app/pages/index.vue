@@ -5,6 +5,6 @@
     <SectionDestinations />
     <SectionTestimonials />
     <SectionTourPackages />
-    <SectionContactForm />
+    <SectionContactForm id="form"/>
   </div>
 </template>

@@ -1,7 +1,10 @@
 <script setup lang="ts">
-definePageMeta({
-    layout: 'coming-soon'
-})
 </script>
 <template>
+  <div>
+    <SectionAboutUsHero />
+    <SectionAboutUsSlider />
+    <SectionTeamMembers />
+    <SectionContactForm />
+  </div>
 </template>

@@ -24,7 +24,9 @@
   },
   "hero": {
     "title": "Discover the history of Uzbekistan",
-    "subtitle": "From Samarkand to Khiva, travel the Silk Road your way — group, family, business or private — with visas, hotels and guides taken care of."
+    "subtitle": "From Samarkand to Khiva, travel the Silk Road your way — group, family, business or private — with visas, hotels and guides taken care of.",
+    "exploreTours": "SEE TOURS",
+    "ctaText": "START THE JOURNEY"
   },
   "whyChooseUs": {
     "badge": "OUR VALUES",
@@ -193,5 +195,15 @@
     "title": "Asked question",
     "description": "If the question is not available on our FAQ section, Feel free to contact us personally, we will resolve your respective doubts.",
     "askQuestion": "ASK QUESTION"
+  },
+  "aboutUs": {
+    "badge": "ABOUT US",
+    "sliderTitle": "Why Travel with Golden Ages",
+    "sliderDescription": "Every journey we design is more than a route — it's a story about culture, comfort, and discovery across the heart of Uzbekistan"
+  },
+  "team": {
+    "badge": "TEAM MEMBERS",
+    "title": "Who will take care of you?",
+    "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe"
   }
 }

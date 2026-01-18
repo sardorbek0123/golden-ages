@@ -24,7 +24,9 @@
   },
   "hero": {
     "title": "Descubre la historia de Uzbekistán",
-    "subtitle": "De Samarcanda a Jiva, viaja por la Ruta de la Seda a tu manera — en grupo, familia, negocios o privado — con visas, hoteles y guías incluidos."
+    "subtitle": "De Samarcanda a Jiva, viaja por la Ruta de la Seda a tu manera — en grupo, familia, negocios o privado — con visas, hoteles y guías incluidos.",
+    "exploreTours": "VER TOURS EN",
+    "ctaText": "COMENZAR EL VIAJE"
   },
   "whyChooseUs": {
     "badge": "NUESTROS VALORES",
@@ -190,5 +192,15 @@
     "title": "Preguntas frecuentes",
     "description": "Si su pregunta no está disponible en la sección de FAQ, contáctenos personalmente — responderemos a todas sus dudas.",
     "askQuestion": "HACER UNA PREGUNTA"
+  },
+  "aboutUs": {
+    "badge": "SOBRE NOSOTROS",
+    "sliderTitle": "Por qué viajar con Golden Ages",
+    "sliderDescription": "Cada viaje que diseñamos es más que una ruta — es una historia sobre cultura, comodidad y descubrimiento en el corazón de Uzbekistán"
+  },
+  "team": {
+    "badge": "MIEMBROS DEL EQUIPO",
+    "title": "¿Quién cuidará de ti?",
+    "description": "Conoce a los profesionales que harán tu viaje inolvidable"
   }
 }

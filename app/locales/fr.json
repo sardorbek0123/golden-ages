@@ -24,7 +24,9 @@
   },
   "hero": {
     "title": "Découvrez l'histoire de l'Ouzbékistan",
-    "subtitle": "De Samarcande à Khiva, voyagez sur la Route de la Soie à votre façon — en groupe, en famille, en affaires ou en privé — avec visas, hôtels et guides."
+    "subtitle": "De Samarcande à Khiva, voyagez sur la Route de la Soie à votre façon — en groupe, en famille, en affaires ou en privé — avec visas, hôtels et guides.",
+    "exploreTours": "VOIR LES CIRCUITS À",
+    "ctaText": "COMMENCER LE VOYAGE"
   },
   "whyChooseUs": {
     "badge": "NOS VALEURS",
@@ -190,5 +192,15 @@
     "title": "Questions fréquentes",
     "description": "Si votre question ne figure pas dans la section FAQ, n'hésitez pas à nous contacter personnellement — nous répondrons à toutes vos questions.",
     "askQuestion": "POSER UNE QUESTION"
+  },
+  "aboutUs": {
+    "badge": "À PROPOS",
+    "sliderTitle": "Pourquoi voyager avec Golden Ages",
+    "sliderDescription": "Chaque voyage que nous concevons est plus qu'un itinéraire — c'est une histoire de culture, de confort et de découverte au cœur de l'Ouzbékistan"
+  },
+  "team": {
+    "badge": "MEMBRES DE L'ÉQUIPE",
+    "title": "Qui prendra soin de vous?",
+    "description": "Rencontrez les professionnels qui rendront votre voyage inoubliable"
   }
 }

@@ -57,9 +57,9 @@ const { t } = useI18n()
           <div class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-full">
             <span class="text-sm font-medium text-gray-900">{{ price }}</span>
           </div>
-          <button class="inline-flex items-center justify-center px-6 py-2 bg-orange-normal text-white text-sm font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
+          <NuxtLink to="#form" class="inline-flex items-center justify-center px-6 py-2 bg-orange-normal text-white text-sm font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
             {{ t('common.bookNow') }}
-          </button>
+          </NuxtLink>
         </div>
       </template>
     </div>

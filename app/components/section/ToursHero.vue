@@ -21,9 +21,9 @@ const { t } = useI18n()
           <p class="text-gray-600 mb-6">
             {{ t('toursPage.heroSubtitle') }}
           </p>
-          <button class="inline-flex items-center justify-center px-10 py-4 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
+          <NuxtLink to="#form" class="inline-flex items-center justify-center px-10 py-4 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
             {{ t('toursPage.startTrip') }}
-          </button>
+          </NuxtLink>
         </div>
       </div>
 

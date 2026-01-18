@@ -63,7 +63,7 @@ onUnmounted(() => {
       <SectionTourPlan :plans="trip.plans || []" />
       <SectionTourPackages class="mt-20"/>
       <SectionTestimonials />
-      <SectionContactForm />
+      <SectionContactForm id="form"/>
     </template>
   </div>
 </template>

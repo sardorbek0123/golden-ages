@@ -3,6 +3,6 @@
     <SectionToursHero />
     <SectionToursPackages />
     <SectionTestimonials />
-    <SectionContactForm />
+    <SectionContactForm id="form" />
   </div>
 </template>

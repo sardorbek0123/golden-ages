@@ -24,7 +24,9 @@
   },
   "hero": {
     "title": "Entdecken Sie die Geschichte Usbekistans",
-    "subtitle": "Von Samarkand nach Chiwa, reisen Sie auf Ihre Weise entlang der Seidenstraße — in Gruppen, mit der Familie, geschäftlich oder privat — mit Visa, Hotels und Reiseführern."
+    "subtitle": "Von Samarkand nach Chiwa, reisen Sie auf Ihre Weise entlang der Seidenstraße — in Gruppen, mit der Familie, geschäftlich oder privat — mit Visa, Hotels und Reiseführern.",
+    "exploreTours": "TOUREN ANSEHEN",
+    "ctaText": "REISE STARTEN"
   },
   "whyChooseUs": {
     "badge": "UNSERE WERTE",
@@ -190,5 +192,15 @@
     "title": "Häufig gestellte Fragen",
     "description": "Wenn Ihre Frage nicht im FAQ-Bereich beantwortet wird, kontaktieren Sie uns persönlich — wir beantworten gerne alle Ihre Fragen.",
     "askQuestion": "FRAGE STELLEN"
+  },
+  "aboutUs": {
+    "badge": "ÜBER UNS",
+    "sliderTitle": "Warum mit Golden Ages reisen",
+    "sliderDescription": "Jede Reise, die wir gestalten, ist mehr als eine Route — es ist eine Geschichte über Kultur, Komfort und Entdeckung im Herzen Usbekistans"
+  },
+  "team": {
+    "badge": "TEAMMITGLIEDER",
+    "title": "Wer kümmert sich um Sie?",
+    "description": "Lernen Sie die Profis kennen, die Ihre Reise unvergesslich machen werden"
   }
 }

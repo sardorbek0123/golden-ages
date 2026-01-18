@@ -134,13 +134,14 @@ const getStarClass = (index: number, rating: number) => {
           </div>
           
           <!-- Booking Button - visible on hover -->
-          <button 
+          <NuxtLink 
+            to="#form"
             v-if="isHovered"
             @click.prevent=""
             class="px-8 py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide text-sm"
           >
             BOOKING NOW
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </div>

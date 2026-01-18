@@ -7,6 +7,7 @@
 export * from './api'
 
 // Domain types
+export * from './about'
 export * from './category'
 export * from './city'
 export * from './faq'

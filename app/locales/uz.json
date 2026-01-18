@@ -24,7 +24,9 @@
   },
   "hero": {
     "title": "O'zbekiston tarixini kashf eting",
-    "subtitle": "Samarqanddan Xivagacha, Ipak yo'li bo'ylab sayohat qiling — guruhli, oilaviy, biznes yoki shaxsiy turlar — vizalar, mehmonxonalar va gidlar bilan."
+    "subtitle": "Samarqanddan Xivagacha, Ipak yo'li bo'ylab sayohat qiling — guruhli, oilaviy, biznes yoki shaxsiy turlar — vizalar, mehmonxonalar va gidlar bilan.",
+    "exploreTours": "TURLARNI KO'RISH",
+    "ctaText": "SAYOHATNI BOSHLASH"
   },
   "whyChooseUs": {
     "badge": "BIZNING QADRIYATLARIMIZ",
@@ -190,5 +192,15 @@
     "title": "Ko'p so'raladigan savollar",
     "description": "Agar savol FAQ bo'limida mavjud bo'lmasa, biz bilan shaxsan bog'laning — barcha savollaringizga javob beramiz.",
     "askQuestion": "SAVOL BERISH"
+  },
+  "aboutUs": {
+    "badge": "BIZ HAQIMIZDA",
+    "sliderTitle": "Nima uchun Golden Ages bilan sayohat qilish kerak",
+    "sliderDescription": "Biz yaratgan har bir sayohat oddiy marshrut emas — bu O'zbekiston qalbidagi madaniyat, qulaylik va kashfiyotlar haqidagi hikoya"
+  },
+  "team": {
+    "badge": "JAMOA A'ZOLARI",
+    "title": "Kim sizga g'amxo'rlik qiladi?",
+    "description": "Sayohatingizni unutilmas qiladigan mutaxassislar bilan tanishing"
   }
 }
