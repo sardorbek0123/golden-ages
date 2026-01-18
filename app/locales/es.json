@@ -176,5 +176,19 @@
     "description": "DESCRIPCIÓN",
     "itinerary": "Itinerario del tour",
     "tourPlan": "Plan del viaje"
+  },
+  "contacts": {
+    "heroTitle": "Comienza tu viaje por la Ruta de la Seda hoy",
+    "heroDescription": "¿Tienes preguntas sobre nuestros tours o quieres un itinerario personalizado? Nuestros expertos locales están aquí para crear un viaje inolvidable por Uzbekistán",
+    "generalInquiries": "Consultas generales",
+    "technicalSupport": "Soporte técnico",
+    "ourOffice": "Nuestra oficina",
+    "officeHours": "Horario de atención",
+    "getDirections": "Cómo llegar"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "description": "Si su pregunta no está disponible en la sección de FAQ, contáctenos personalmente — responderemos a todas sus dudas.",
+    "askQuestion": "HACER UNA PREGUNTA"
   }
 }

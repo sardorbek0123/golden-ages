@@ -176,5 +176,19 @@
     "description": "TAVSIF",
     "itinerary": "Sayohat marshuti",
     "tourPlan": "Sayohat rejasi"
+  },
+  "contacts": {
+    "heroTitle": "Ipak yo'li sayohatingizni bugun boshlang",
+    "heroDescription": "Turlarimiz haqida savollaringiz bormi yoki maxsus marshrut xohlaysizmi? Mahalliy mutaxassislarimiz O'zbekiston bo'ylab unutilmas sayohat yaratishga tayyor",
+    "generalInquiries": "Umumiy savollar",
+    "technicalSupport": "Texnik yordam",
+    "ourOffice": "Bizning ofis",
+    "officeHours": "Ish vaqti",
+    "getDirections": "Yo'nalishni olish"
+  },
+  "faq": {
+    "title": "Ko'p so'raladigan savollar",
+    "description": "Agar savol FAQ bo'limida mavjud bo'lmasa, biz bilan shaxsan bog'laning — barcha savollaringizga javob beramiz.",
+    "askQuestion": "SAVOL BERISH"
   }
 }

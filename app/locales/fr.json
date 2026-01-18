@@ -176,5 +176,19 @@
     "description": "DESCRIPTION",
     "itinerary": "Itinéraire du voyage",
     "tourPlan": "Plan du voyage"
+  },
+  "contacts": {
+    "heroTitle": "Commencez votre voyage sur la Route de la Soie",
+    "heroDescription": "Vous avez des questions sur nos circuits ou souhaitez un itinéraire personnalisé? Nos experts locaux sont là pour créer un voyage inoubliable à travers l'Ouzbékistan",
+    "generalInquiries": "Renseignements généraux",
+    "technicalSupport": "Support technique",
+    "ourOffice": "Notre bureau",
+    "officeHours": "Heures d'ouverture",
+    "getDirections": "Obtenir l'itinéraire"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "description": "Si votre question ne figure pas dans la section FAQ, n'hésitez pas à nous contacter personnellement — nous répondrons à toutes vos questions.",
+    "askQuestion": "POSER UNE QUESTION"
   }
 }

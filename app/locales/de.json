@@ -176,5 +176,19 @@
     "description": "BESCHREIBUNG",
     "itinerary": "Reiseverlauf",
     "tourPlan": "Reiseplan"
+  },
+  "contacts": {
+    "heroTitle": "Starten Sie Ihre Seidenstraßen-Reise heute",
+    "heroDescription": "Haben Sie Fragen zu unseren Touren oder wünschen Sie eine individuelle Reiseroute? Unsere lokalen Experten sind hier, um eine unvergessliche Reise durch Usbekistan zu gestalten",
+    "generalInquiries": "Allgemeine Anfragen",
+    "technicalSupport": "Technischer Support",
+    "ourOffice": "Unser Büro",
+    "officeHours": "Öffnungszeiten",
+    "getDirections": "Wegbeschreibung"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "description": "Wenn Ihre Frage nicht im FAQ-Bereich beantwortet wird, kontaktieren Sie uns persönlich — wir beantworten gerne alle Ihre Fragen.",
+    "askQuestion": "FRAGE STELLEN"
   }
 }

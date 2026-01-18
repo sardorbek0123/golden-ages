@@ -9,6 +9,7 @@ export * from './api'
 // Domain types
 export * from './category'
 export * from './city'
+export * from './faq'
 export * from './message'
 export * from './review'
 export * from './settings'

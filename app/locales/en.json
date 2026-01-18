@@ -179,5 +179,19 @@
     "description": "DESCRIPTION",
     "itinerary": "Tour Itinerary",
     "tourPlan": "Tour Plan"
+  },
+  "contacts": {
+    "heroTitle": "Start Your Silk Road Journey Today",
+    "heroDescription": "Have questions about our tours or want a custom itinerary? Our local experts are here to craft an unforgettable journey through Uzbekistan",
+    "generalInquiries": "General Inquiries",
+    "technicalSupport": "Technical Support",
+    "ourOffice": "Our Office",
+    "officeHours": "Office Hours",
+    "getDirections": "Get Directions"
+  },
+  "faq": {
+    "title": "Asked question",
+    "description": "If the question is not available on our FAQ section, Feel free to contact us personally, we will resolve your respective doubts.",
+    "askQuestion": "ASK QUESTION"
   }
 }
