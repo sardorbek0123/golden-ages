@@ -2,14 +2,26 @@
 import { useI18n } from 'vue-i18n'
 
 const tripsStore = useTripsStore()
+const route = useRoute()
 const { t } = useI18n()
 
-// Fetch trips on mount
+// Get category from URL query parameter
+const categorySlug = computed(() => route.query.category as string | undefined)
+
+// Fetch trips on mount and when category changes
 onMounted(async () => {
-  if (!tripsStore.hasTrips) {
-    await tripsStore.fetchTrips()
-  }
+  await fetchTripsWithCategory()
 })
+
+// Watch for category changes in URL
+watch(() => route.query.category, async () => {
+  await fetchTripsWithCategory()
+})
+
+async function fetchTripsWithCategory() {
+  const params = categorySlug.value ? { category: categorySlug.value } : undefined
+  await tripsStore.fetchTrips(params)
+}
 
 // Transform trips data for the card component
 const tourPackages = computed(() => {

@@ -4,36 +4,38 @@ defineProps<{
 }>()
 
 const { t } = useI18n()
-const categoriesStore = useCategoriesStore()
-const { sortedCategories, loading } = storeToRefs(categoriesStore)
-
-// Fetch categories on mount
-onMounted(async () => {
-  if (!categoriesStore.hasCategories) {
-    await categoriesStore.fetchCategories()
-  }
-})
+const tripsStore = useTripsStore()
+const { sortedTrips, loading } = storeToRefs(tripsStore)
 
 // Default image fallback
 const defaultImage = 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400'
 
-// Combined categories with "All" as first item
-const displayCategories = computed(() => {
-  const allCategory = {
+// Fetch trips when component is mounted (dropdown opened)
+onMounted(async () => {
+  if (!tripsStore.hasTrips) {
+    await tripsStore.fetchTrips({ limit: 4 })
+  }
+})
+
+// Combined trips with "All" as first item (max 5 items total)
+const displayItems = computed(() => {
+  const allItem = {
     id: 0,
     name: t('tours.all'),
     slug: '/tours',
     image: defaultImage
   }
-  
-  const apiCategories = sortedCategories.value.map(cat => ({
-    id: cat.id,
-    name: cat.name,
-    slug: cat.slug ? `/tours/${cat.slug}` : `/tours`,
-    image: cat?.image || defaultImage
-  }))
-  
-  return [allCategory, ...apiCategories]
+
+  const tripItems = sortedTrips.value
+    .slice(0, 4) // Take only first 4 trips
+    .map(trip => ({
+      id: trip.id,
+      name: trip.name,
+      slug: `/tours/${trip.slug}`,
+      image: trip.images?.[0]?.image || defaultImage
+    }))
+
+  return [allItem, ...tripItems]
 })
 </script>
 
@@ -46,37 +48,37 @@ const displayCategories = computed(() => {
   <!-- Mobile View -->
   <div v-else-if="mobile" class="space-y-1">
     <NuxtLink
-      v-for="category in displayCategories"
-      :key="category.id"
-      :to="category.slug"
+      v-for="item in displayItems"
+      :key="item.id"
+      :to="item.slug"
       class="block py-2 px-3 text-grey-darker text-sm hover:bg-grey-light rounded-lg transition-colors"
     >
-      {{ category.name }}
+      {{ item.name }}
     </NuxtLink>
   </div>
 
   <!-- Desktop View -->
-  <div v-else class="grid grid-cols-6 gap-4">
+  <div v-else class="grid grid-cols-5 gap-4">
     <NuxtLink
-      v-for="category in displayCategories"
-      :key="category.id"
-      :to="category.slug"
+      v-for="item in displayItems"
+      :key="item.id"
+      :to="item.slug"
       class="group relative rounded-xl overflow-hidden h-[140px]"
     >
       <img
-        :src="category.image"
-        :alt="category.name"
+        :src="item.image"
+        :alt="item.name"
         class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
       />
       <div class="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
       <div class="absolute bottom-3 left-3 right-3">
         <div class="flex items-center justify-between">
-          <span class="text-white text-sm font-medium">{{ category.name }}</span>
-          <svg 
+          <span class="text-white text-sm font-medium">{{ item.name }}</span>
+          <svg
             class="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity"
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
             stroke-width="2"
           >
             <path d="M5 12h14M12 5l7 7-7 7"/>

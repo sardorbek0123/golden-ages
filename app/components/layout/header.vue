@@ -163,7 +163,7 @@ onUnmounted(() => {
         <Transition name="dropdown">
           <div 
             v-if="activeDropdown"
-            class="hidden lg:block mt-2 bg-[#3a4f61] rounded-2xl px-8 py-6"
+            class="hidden lg:block mt-2 bg-[#E5E5E5] rounded-2xl px-8 py-6"
           >
             <LayoutToursDropdown v-if="activeDropdown === 'tours'" @click="closeDropdown" />
             <LayoutCitiesDropdown v-if="activeDropdown === 'cities'" @click="closeDropdown" />
