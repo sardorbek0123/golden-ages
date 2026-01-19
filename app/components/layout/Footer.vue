@@ -6,41 +6,42 @@ const footerLinks = {
   tours: {
     title: t('footer.tours.title'),
     links: [
-      { name: t('footer.tours.familyPackages'), href: '#' },
-      { name: t('footer.tours.businessTours'), href: '#' },
-      { name: t('footer.tours.individualTrips'), href: '#' },
-      { name: t('footer.tours.friendsGetaways'), href: '#' },
-      { name: t('footer.tours.vipExperiences'), href: '#' }
+      { name: t('footer.tours.all'), href: '/tours' },
+      // { name: t('footer.tours.familyPackages'), href: '#' },
+      // { name: t('footer.tours.businessTours'), href: '#' },
+      // { name: t('footer.tours.individualTrips'), href: '#' },
+      // { name: t('footer.tours.friendsGetaways'), href: '#' },
+      // { name: t('footer.tours.vipExperiences'), href: '#' }
     ]
   },
   aboutUs: {
     title: t('footer.aboutUs.title'),
     links: [
-      { name: t('footer.aboutUs.missions'), href: '#' },
-      { name: t('footer.aboutUs.goals'), href: '#' },
-      { name: t('footer.aboutUs.license'), href: '#' },
-      { name: t('footer.aboutUs.teamMembers'), href: '#' }
+      { name: t('footer.aboutUs.missions'), href: '/about#missions' },
+      // { name: t('footer.aboutUs.goals'), href: '#' },
+      // { name: t('footer.aboutUs.license'), href: '#' },
+      { name: t('footer.aboutUs.teamMembers'), href: '/about#team' }
     ]
   },
-  cities: {
-    title: t('footer.cities.title'),
-    links: [
-      { name: t('footer.cities.tashkent'), href: '#' },
-      { name: t('footer.cities.samarkand'), href: '#' },
-      { name: t('footer.cities.bukhara'), href: '#' },
-      { name: t('footer.cities.khiva'), href: '#' },
-      { name: t('footer.cities.more'), href: '#' }
-    ]
-  },
-  culture: {
-    title: t('footer.culture.title'),
-    links: [
-      { name: t('footer.culture.cuisineFood'), href: '#' },
-      { name: t('footer.culture.artHandicrafts'), href: '#' },
-      { name: t('footer.culture.musicFestivals'), href: '#' },
-      { name: t('footer.culture.historyHeritageStories'), href: '#' }
-    ]
-  }
+  // cities: {
+  //   title: t('footer.cities.title'),
+  //   links: [
+  //     { name: t('footer.cities.tashkent'), href: '#' },
+  //     { name: t('footer.cities.samarkand'), href: '#' },
+  //     { name: t('footer.cities.bukhara'), href: '#' },
+  //     { name: t('footer.cities.khiva'), href: '#' },
+  //     { name: t('footer.cities.more'), href: '#' }
+  //   ]
+  // },
+  // culture: {
+  //   title: t('footer.culture.title'),
+  //   links: [
+  //     { name: t('footer.culture.cuisineFood'), href: '#' },
+  //     { name: t('footer.culture.artHandicrafts'), href: '#' },
+  //     { name: t('footer.culture.musicFestivals'), href: '#' },
+  //     { name: t('footer.culture.historyHeritageStories'), href: '#' }
+  //   ]
+  // }
 }
 
 const socialLinks = [
@@ -61,15 +62,15 @@ const socialLinks = [
           <div class="flex items-center gap-2 mb-4">
               <IconsLogo />
           </div>
-          
+
           <p class="text-gray-400 text-sm mb-6 leading-relaxed">
             {{ t('footer.description') }}
           </p>
 
           <!-- Social Links -->
           <div class="flex items-center gap-3">
-            <a 
-              v-for="social in socialLinks" 
+            <a
+              v-for="social in socialLinks"
               :key="social.name"
               :href="social.href"
               class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-orange-normal hover:text-orange-normal transition-colors"
@@ -101,8 +102,8 @@ const socialLinks = [
               </h4>
               <ul class="space-y-3">
                 <li v-for="link in section.links" :key="link.name">
-                  <a 
-                    :href="link.href" 
+                  <a
+                    :href="link.href"
                     class="text-sm text-gray-300 hover:text-orange-normal transition-colors"
                   >
                     {{ link.name }}
@@ -125,19 +126,19 @@ const socialLinks = [
           <NuxtLink href="#" class="hover:text-white transition-colors">{{ t('footer.cookiesSettings') }}</NuxtLink>
         </div>
       </div>
-      
+
       <div class="h-full overflow-hidden absolute bottom-0 left-0 right-0">
-        <img 
-          :src="footerBg" 
-          alt="" 
+        <img
+          :src="footerBg"
+          alt=""
           class="w-full h-auto object-contain opacity-50"
         />
       </div>
     </div>
 
     <!-- WhatsApp Button -->
-    <a 
-      href="https://wa.me/998944448844" 
+    <a
+      href="https://wa.me/998944448844"
       target="_blank"
       class="fixed bottom-8 right-8 z-50"
     >

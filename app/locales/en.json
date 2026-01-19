@@ -101,12 +101,13 @@
     "contactHighlight": "Local Experts",
     "planYourTrip": "Plan Your Uzbekistan Trip with local experts",
     "selectTourType": "Select Tour Type"
-    
+
   },
   "footer": {
     "description": "Experience the Golden Ages of history with us — Discover the timeless beauty of Uzbekistan",
     "tours": {
       "title": "TOURS",
+      "all": "All Tours",
       "familyPackages": "Family Packages",
       "businessTours": "Business Tours",
       "individualTrips": "Individual Trips",

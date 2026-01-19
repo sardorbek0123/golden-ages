@@ -17,9 +17,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { key: 'tours', hasDropdown: true, matchPath: '/tours' },
   { key: 'aboutUs', href: '/about' },
-  { key: 'cities', hasDropdown: true },
-  { key: 'shop', href: '/shop' },
-  { key: 'uzbekCulture', href: '/culture' },
+  // { key: 'cities', hasDropdown: true },
+  // { key: 'shop', href: '/shop' },
+  // { key: 'uzbekCulture', href: '/culture' },
   { key: 'contacts', href: '/contacts' }
 ]
 
@@ -61,14 +61,14 @@ defineExpose({
 <template>
   <nav class="bg-[#DADADA] backdrop-blur-sm rounded-full p-2 border border-gray-dark">
     <ul class="flex items-center gap-3">
-      <li 
-        v-for="item in navItems" 
+      <li
+        v-for="item in navItems"
         :key="item.key"
       >
         <NuxtLink
           :to="item.href"
           class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
-          :class="{ 
+          :class="{
             'active': activeDropdown === item.key,
             'route-active': isRouteActive(item)
           }"

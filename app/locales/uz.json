@@ -104,6 +104,7 @@
     "description": "Biz bilan tarixning Oltin Asrini his eting — O'zbekistonning abadiy go'zalligini kashf eting",
     "tours": {
       "title": "TURLAR",
+      "all": "Barcha turlar",
       "familyPackages": "Oilaviy paketlar",
       "businessTours": "Biznes turlari",
       "individualTrips": "Individual sayohatlar",

@@ -3,8 +3,8 @@
 <template>
   <div>
     <SectionAboutUsHero />
-    <SectionAboutUsSlider />
-    <SectionTeamMembers />
-    <SectionContactForm />
+    <SectionAboutUsSlider id="missions" />
+    <SectionTeamMembers id="team" />
+    <SectionContactForm id="form"/>
   </div>
 </template>
