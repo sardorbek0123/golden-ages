@@ -17,9 +17,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { key: 'tours', hasDropdown: true },
   { key: 'aboutUs', href: '/about' },
-  { key: 'cities', hasDropdown: true },
-  { key: 'shop', href: '/shop' },
-  { key: 'uzbekCulture', href: '/culture' },
+  // { key: 'cities', hasDropdown: true },
+  // { key: 'shop', href: '/shop' },
+  // { key: 'uzbekCulture', href: '/culture' },
   { key: 'contacts', href: '/contacts' }
 ]
 
@@ -64,7 +64,7 @@ const handleClickOutside = (event: MouseEvent) => {
 // Handle scroll to show/hide header
 const handleScroll = () => {
   const currentScrollY = window.scrollY
-  
+
   if (currentScrollY < 100) {
     // Always show header at the top
     isHeaderVisible.value = true
@@ -76,7 +76,7 @@ const handleScroll = () => {
     // Scrolling up - show header
     isHeaderVisible.value = true
   }
-  
+
   lastScrollY.value = currentScrollY
 }
 
@@ -102,7 +102,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header 
+  <header
     ref="headerRef"
     class="fixed top-0 left-0 w-full z-50 transition-transform duration-300"
     :class="{ '-translate-y-full': !isHeaderVisible }"
@@ -111,7 +111,7 @@ onUnmounted(() => {
     <div class="px-4 md:px-10 pt-4">
       <div class="container mx-auto px-4">
         <!-- Header container with rounded corners -->
-        <div 
+        <div
           class="bg-[#E5E5E5] rounded-2xl px-4 md:px-8 py-4 flex items-center justify-between transition-all duration-300"
         >
           <!-- Logo -->
@@ -120,15 +120,15 @@ onUnmounted(() => {
               <IconsLogo class="w-20 h-10 md:w-[150px] md:h-[35px] lg:max-w-[260px] xl:max-w-[300px] lg:max-h-full"/>
             </NuxtLink>
           </div>
-          
+
           <!-- Navigation - Desktop only -->
           <div class="hidden lg:flex flex-1 justify-center">
-            <LayoutNavigation 
+            <LayoutNavigation
               ref="navigationRef"
-              @dropdown-toggle="handleDropdownToggle" 
+              @dropdown-toggle="handleDropdownToggle"
             />
           </div>
-          
+
           <!-- Language Switcher & CTA Button - Desktop only -->
           <div class="hidden lg:flex items-center gap-4">
             <LayoutLanguageSwitcher />
@@ -138,20 +138,20 @@ onUnmounted(() => {
           <!-- Mobile: Language Switcher & Burger Button -->
           <div class="lg:hidden flex items-center gap-2">
             <LayoutLanguageSwitcher />
-            <button 
+            <button
               class="flex flex-col justify-center items-center w-10 h-10 gap-1.5"
               @click="toggleMobileMenu"
               aria-label="Toggle menu"
             >
-              <span 
+              <span
                 class="block w-6 h-0.5 bg-dark-normal transition-all duration-300"
                 :class="{ 'rotate-45 translate-y-2': isMobileMenuOpen }"
               />
-              <span 
+              <span
                 class="block w-6 h-0.5 bg-dark-normal transition-all duration-300"
                 :class="{ 'opacity-0': isMobileMenuOpen }"
               />
-              <span 
+              <span
                 class="block w-6 h-0.5 bg-dark-normal transition-all duration-300"
                 :class="{ '-rotate-45 -translate-y-2': isMobileMenuOpen }"
               />
@@ -161,7 +161,7 @@ onUnmounted(() => {
 
         <!-- Dropdown Container - Desktop only -->
         <Transition name="dropdown">
-          <div 
+          <div
             v-if="activeDropdown"
             class="hidden lg:block mt-2 bg-[#E5E5E5] rounded-2xl px-8 py-6"
           >
@@ -174,7 +174,7 @@ onUnmounted(() => {
 
     <!-- Mobile Menu Overlay -->
     <Transition name="fade">
-      <div 
+      <div
         v-if="isMobileMenuOpen"
         class="lg:hidden fixed inset-0 bg-black/50 z-40"
         @click="closeMobileMenu"
@@ -183,7 +183,7 @@ onUnmounted(() => {
 
     <!-- Mobile Menu Drawer -->
     <Transition name="slide">
-      <div 
+      <div
         v-if="isMobileMenuOpen"
         class="lg:hidden fixed top-0 right-0 h-full w-[85%] max-w-[360px] bg-white z-50 shadow-2xl overflow-y-auto"
       >
@@ -196,7 +196,7 @@ onUnmounted(() => {
               class="h-8 w-auto"
             />
           </NuxtLink>
-          <button 
+          <button
             class="w-10 h-10 flex items-center justify-center text-dark-normal hover:bg-grey-light rounded-full transition-colors"
             @click="closeMobileMenu"
             aria-label="Close menu"
@@ -218,12 +218,12 @@ onUnmounted(() => {
                   @click="toggleMobileDropdown(item.key)"
                 >
                   {{ t(`nav.${item.key}`) }}
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
                     class="w-5 h-5 transition-transform duration-300"
                     :class="{ 'rotate-180': activeMobileDropdown === item.key }"
-                    fill="none" 
-                    viewBox="0 0 24 24" 
+                    fill="none"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -231,20 +231,20 @@ onUnmounted(() => {
                 </button>
                 <!-- Dropdown Content -->
                 <Transition name="accordion">
-                  <div 
+                  <div
                     v-if="activeMobileDropdown === item.key"
                     class="overflow-hidden"
                   >
                     <div class="py-2 pl-6 pr-4 space-y-1">
-                      <LayoutToursDropdown 
-                        v-if="item.key === 'tours'" 
-                        mobile 
-                        @click="closeMobileMenu" 
+                      <LayoutToursDropdown
+                        v-if="item.key === 'tours'"
+                        mobile
+                        @click="closeMobileMenu"
                       />
-                      <LayoutCitiesDropdown 
-                        v-if="item.key === 'cities'" 
-                        mobile 
-                        @click="closeMobileMenu" 
+                      <LayoutCitiesDropdown
+                        v-if="item.key === 'cities'"
+                        mobile
+                        @click="closeMobileMenu"
                       />
                     </div>
                   </div>
