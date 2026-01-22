@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   modules: [
     '@nuxt/image',
     '@nuxt/eslint',
@@ -16,7 +16,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   routeRules: {
-    '/': { prerender: true }
+    // Disabled prerender to always fetch fresh data from API
+    // '/': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',
