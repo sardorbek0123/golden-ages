@@ -17,7 +17,7 @@ const citiesStore = useCitiesStore()
 await citiesStore.fetchCities()
 
 // Use sorted cities from store
-const cities = computed(() => citiesStore.sortedCities)
+const cities = computed(() => citiesStore.cities)
 
 const swiperInstance = ref<SwiperType | null>(null)
 const activeIndex = ref(0)
@@ -118,15 +118,16 @@ const currentCity = computed(() => cities.value[activeIndex.value])
             @swiper="onSwiper"
             @slide-change="onSlideChange"
           >
-          <pre>{{ cities }}</pre>
-            <SwiperSlide v-for="city in cities" :key="city.id">
-              <div class="relative">
-                <NuxtImg
-                  :src="city.image"
-                  :alt="city.name"
-                  class="w-[1024px] h-[680px] object-cover rounded-2xl"
-                />
-              </div>
+            <SwiperSlide
+              v-for="city in cities"
+              :key="`${city.id}-${city.image}`"
+            >
+              <NuxtImg
+                :key="`${city.id}-${city.image}`"
+                :src="city.image"
+                :alt="city.name"
+                class="w-[1024px] h-[680px] object-cover rounded-2xl"
+              />
             </SwiperSlide>
           </Swiper>
 
@@ -162,7 +163,6 @@ const currentCity = computed(() => cities.value[activeIndex.value])
             v-if="cities.length > 0 && activeIndex < cities.length - 1"
             class="overflow-hidden w-full"
           >
-          <pre>{{ cities[activeIndex + 1]?.image }}</pre>
             <NuxtImg
               :src="cities[activeIndex + 1]?.image"
               :alt="cities[activeIndex + 1]?.name"
