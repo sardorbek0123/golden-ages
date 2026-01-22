@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import EnIcon from '~/components/icons/lang/en.vue'
+import RuIcon from '~/components/icons/lang/ru.vue'
+import UzIcon from '~/components/icons/lang/uz.vue'
+import EsIcon from '~/components/icons/lang/es.vue'
+import DeIcon from '~/components/icons/lang/de.vue'
+import FrIcon from '~/components/icons/lang/fr.vue'
+
 const { locale, locales, setLocale } = useI18n()
 const isOpen = ref(false)
 
@@ -10,12 +17,24 @@ const currentLocale = computed(() => {
   return availableLocales.value.find(l => l.code === locale.value)
 })
 
+const getLangIcon = (code: string) => {
+  const iconMap: Record<string, any> = {
+    en: EnIcon,
+    ru: RuIcon,
+    uz: UzIcon,
+    es: EsIcon,
+    de: DeIcon,
+    fr: FrIcon
+  }
+  return iconMap[code as keyof typeof iconMap] || EnIcon
+}
+
 const toggleDropdown = () => {
   isOpen.value = !isOpen.value
 }
 
 const selectLocale = async (code: string) => {
-  await setLocale(code)
+  await setLocale(code as any)
   isOpen.value = false
 }
 
@@ -44,7 +63,10 @@ onUnmounted(() => {
       class="flex items-center gap-2 px-3 py-2 text-black hover:bg-white/10 rounded-lg transition-colors"
       @click="toggleDropdown"
     >
-      <span class="text-lg">{{ currentLocale?.flag }}</span>
+      <component 
+        :is="getLangIcon(locale)" 
+        class="w-5 h-5"
+      />
       <span class="text-sm font-medium uppercase">{{ locale }}</span>
       <svg 
         class="w-4 h-4 transition-transform duration-200" 
@@ -71,7 +93,10 @@ onUnmounted(() => {
           :class="{ 'bg-white/10': loc.code === locale }"
           @click="selectLocale(loc.code)"
         >
-          <span class="text-lg">{{ loc.flag }}</span>
+          <component 
+            :is="getLangIcon(loc.code)" 
+            class="w-5 h-5 shrink-0"
+          />
           <span class="text-sm text-white">{{ loc.name }}</span>
           <svg 
             v-if="loc.code === locale"
