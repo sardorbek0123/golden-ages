@@ -14,6 +14,7 @@ export const useCitiesStore = defineStore('cities', () => {
 
   // Getters
   const sortedCities = computed(() => {
+    console.log(cities.value)
     return [...cities.value].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
   })
 

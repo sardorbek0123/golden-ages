@@ -15,6 +15,7 @@ export interface PaginationParams {
   limit?: number
   offset?: number
   ordering?: string
+  [key: string]: unknown
 }
 
 // Search parameters

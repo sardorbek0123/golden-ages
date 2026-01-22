@@ -54,7 +54,7 @@ const currentCity = computed(() => cities.value[activeIndex.value])
 <template>
   <section v-if="cities.length > 0" class="relative py-20 overflow-hidden bg-orange-light-active">
     <!-- Background Image -->
-    <div 
+    <div
       class="absolute -top-22 inset-0 bg-left bg-no-repeat"
       :style="{ backgroundImage: `url(${destinationsBg})` }"
     />
@@ -66,7 +66,7 @@ const currentCity = computed(() => cities.value[activeIndex.value])
           <!-- Badge -->
           <CommonBadge :text="t('destinations.badge')" />
 
-          
+
           <!-- Title -->
           <h2 class="text-5xl font-bold text-gray-900 leading-tight">
             {{ t('destinations.title') }}
@@ -80,8 +80,8 @@ const currentCity = computed(() => cities.value[activeIndex.value])
             :key="city.id"
             class="text-xl transition-all duration-300 text-right"
             :class="[
-              activeIndex === index 
-                ? 'font-bold text-gray-900' 
+              activeIndex === index
+                ? 'font-bold text-gray-900'
                 : 'font-normal text-gray-500 hover:text-gray-700'
             ]"
             @click="goToSlide(index)"
@@ -118,9 +118,10 @@ const currentCity = computed(() => cities.value[activeIndex.value])
             @swiper="onSwiper"
             @slide-change="onSlideChange"
           >
+          <pre>{{ cities }}</pre>
             <SwiperSlide v-for="city in cities" :key="city.id">
               <div class="relative">
-                <img
+                <NuxtImg
                   :src="city.image"
                   :alt="city.name"
                   class="w-[1024px] h-[680px] object-cover rounded-2xl"
@@ -157,11 +158,12 @@ const currentCity = computed(() => cities.value[activeIndex.value])
 
         <!-- Right - Next Slide Preview -->
         <div class="col-span-3 flex items-stretch">
-          <div 
-            v-if="cities.length > 0 && activeIndex < cities.length - 1" 
+          <div
+            v-if="cities.length > 0 && activeIndex < cities.length - 1"
             class="overflow-hidden w-full"
           >
-            <img
+          <pre>{{ cities[activeIndex + 1]?.image }}</pre>
+            <NuxtImg
               :src="cities[activeIndex + 1]?.image"
               :alt="cities[activeIndex + 1]?.name"
               class="w-[1024px] h-[680px] object-cover rounded-l-2xl"
