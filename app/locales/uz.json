@@ -178,7 +178,10 @@
     "bookNow": "BAND QILISH",
     "description": "TAVSIF",
     "itinerary": "Sayohat marshuti",
-    "tourPlan": "Sayohat rejasi"
+    "tourPlan": "Sayohat rejasi",
+    "availableDates": "Sanalar va narxlar, har bir kishi uchun",
+    "available": "Mavjud",
+    "soldOut": "Sotilgan"
   },
   "contacts": {
     "heroTitle": "Ipak yo'li sayohatingizni bugun boshlang",

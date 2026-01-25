@@ -178,7 +178,10 @@
     "bookNow": "RESERVAR AHORA",
     "description": "DESCRIPCIÓN",
     "itinerary": "Itinerario del tour",
-    "tourPlan": "Plan del viaje"
+    "tourPlan": "Plan del viaje",
+    "availableDates": "Fechas y precios, por persona",
+    "available": "Disponible",
+    "soldOut": "Agotado"
   },
   "contacts": {
     "heroTitle": "Comienza tu viaje por la Ruta de la Seda hoy",

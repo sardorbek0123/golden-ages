@@ -178,7 +178,10 @@
     "bookNow": "ЗАБРОНИРОВАТЬ",
     "description": "ОПИСАНИЕ",
     "itinerary": "Маршрут тура",
-    "tourPlan": "План тура"
+    "tourPlan": "План тура",
+    "availableDates": "Даты и цены, за человека",
+    "available": "Доступно",
+    "soldOut": "Распродано"
   },
   "contacts": {
     "heroTitle": "Начните путешествие по Шёлковому пути",

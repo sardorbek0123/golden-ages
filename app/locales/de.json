@@ -178,7 +178,10 @@
     "bookNow": "JETZT BUCHEN",
     "description": "BESCHREIBUNG",
     "itinerary": "Reiseverlauf",
-    "tourPlan": "Reiseplan"
+    "tourPlan": "Reiseplan",
+    "availableDates": "Termine & Preise, pro Person",
+    "available": "Verfügbar",
+    "soldOut": "Ausverkauft"
   },
   "contacts": {
     "heroTitle": "Starten Sie Ihre Seidenstraßen-Reise heute",

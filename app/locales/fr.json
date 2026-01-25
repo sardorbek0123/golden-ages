@@ -178,7 +178,10 @@
     "bookNow": "RÉSERVER",
     "description": "DESCRIPTION",
     "itinerary": "Itinéraire du voyage",
-    "tourPlan": "Plan du voyage"
+    "tourPlan": "Plan du voyage",
+    "availableDates": "Dates et prix, par personne",
+    "available": "Disponible",
+    "soldOut": "Complet"
   },
   "contacts": {
     "heroTitle": "Commencez votre voyage sur la Route de la Soie",

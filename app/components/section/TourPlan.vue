@@ -76,7 +76,11 @@ const formatDay = (index: number) => {
             <CollapseTransition>
               <div v-show="isPlanExpanded(plan.id)" class="grid grid-cols-[200px_1fr_auto] gap-6 pt-3">
                 <div />
-                <p v-if="plan.description" class="text-gray-500 leading-relaxed whitespace-pre-line pr-10">{{ plan.description }}</p>
+                <div 
+                  v-if="plan.description" 
+                  class="prose prose-gray max-w-none text-gray-500 leading-relaxed pr-10"
+                  v-html="plan.description"
+                />
               </div>
             </CollapseTransition>
           </div>

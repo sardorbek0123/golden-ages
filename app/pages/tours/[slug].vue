@@ -61,6 +61,10 @@ onUnmounted(() => {
 
       <!-- Tour Plan Section: Accordion -->
       <SectionTourPlan :plans="trip.plans || []" />
+
+      <!-- Available Dates Section -->
+      <SectionAvailableDates :prices="trip.prices || []" />
+
       <SectionTourPackages class="mt-20"/>
       <SectionTestimonials />
       <SectionContactForm id="form"/>

@@ -6,7 +6,15 @@ import type { TripCategory } from './category'
 
 export interface TripCurrency {
   id: number
-  key: 'sum' | 'dollar'
+  key: 'sum' | 'dollar' | 'euro'
+}
+
+export interface TripPrice {
+  date_from: string
+  date_to: string
+  price: number
+  currency: TripCurrency | null
+  available: boolean
 }
 
 export interface Utility {
@@ -70,6 +78,7 @@ export interface TripDetail {
   currency?: TripCurrency | null
   order?: number
   plans: TripPlan[]
+  prices?: TripPrice[]
   images: TripImage[]
   days_count?: number | null
   nights_count?: number | null

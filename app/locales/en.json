@@ -181,7 +181,10 @@
     "bookNow": "BOOKING NOW",
     "description": "DESCRIPTION",
     "itinerary": "Tour Itinerary",
-    "tourPlan": "Tour Plan"
+    "tourPlan": "Tour Plan",
+    "availableDates": "Dates & Prices, per person",
+    "available": "Available",
+    "soldOut": "Sold Out"
   },
   "contacts": {
     "heroTitle": "Start Your Silk Road Journey Today",
