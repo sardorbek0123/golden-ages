@@ -4,6 +4,11 @@
 
 import type { TripCategory } from './category'
 
+export interface TripCurrency {
+  id: number
+  key: 'sum' | 'dollar'
+}
+
 export interface Utility {
   id: number
   name: string
@@ -40,9 +45,12 @@ export interface TripList {
   short_description: string
   locations: string
   price: number
+  currency?: TripCurrency | null
   order?: number
   images: TripImage[]
   trip_utilities?: TripUtility[]
+  days_count?: number | null
+  nights_count?: number | null
   created_at: string
 }
 
@@ -59,9 +67,12 @@ export interface TripDetail {
   trip_utilities: TripUtility[]
   video?: string | null
   price: number
+  currency?: TripCurrency | null
   order?: number
   plans: TripPlan[]
   images: TripImage[]
+  days_count?: number | null
+  nights_count?: number | null
   created_at: string
   updated_at: string
 }

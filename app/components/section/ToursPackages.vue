@@ -5,6 +5,20 @@ const tripsStore = useTripsStore()
 const route = useRoute()
 const { t } = useI18n()
 
+// Get currency symbol based on currency key
+const getCurrencyLabel = (currencyKey?: string | null): string => {
+  switch (currencyKey) {
+    case 'sum':
+      return 'UZS'
+    case 'dollar':
+      return 'USD'
+    case 'euro':
+      return 'EUR'
+    default:
+      return 'USD'
+  }
+}
+
 // Get category from URL query parameter
 const categorySlug = computed(() => route.query.category as string | undefined)
 
@@ -40,7 +54,8 @@ const tourPackages = computed(() => {
     // Get first image from list response
     const image = trip.images?.[0]?.image || ''
     
-    // Format price
+    // Format price with currency
+    const currencyLabel = getCurrencyLabel(trip.currency?.key)
     const formattedPrice = new Intl.NumberFormat('uz-UZ').format(trip.price)
     
     return {
@@ -55,7 +70,7 @@ const tourPackages = computed(() => {
       rating: 4.5, // Default rating - can be updated when reviews API is integrated
       reviewCount: 0,
       ratingLabel: t('tours.excellent'),
-      price: `${formattedPrice} UZS`,
+      price: `${formattedPrice} ${currencyLabel}`,
       image
     }
   })

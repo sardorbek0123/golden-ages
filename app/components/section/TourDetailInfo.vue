@@ -8,9 +8,24 @@ interface Props {
 const props = defineProps<Props>()
 const { t } = useI18n()
 
-// Format price
+// Get currency symbol based on currency key
+const getCurrencyLabel = (currencyKey?: string | null): string => {
+  switch (currencyKey) {
+    case 'sum':
+      return 'UZS'
+    case 'dollar':
+      return 'USD'
+    case 'euro':
+      return 'EUR'
+    default:
+      return 'USD'
+  }
+}
+
+// Format price with currency
 const formattedPrice = computed(() => {
-  return new Intl.NumberFormat('uz-UZ').format(props.trip.price) + ' UZS'
+  const currencyLabel = getCurrencyLabel(props.trip.currency?.key)
+  return new Intl.NumberFormat('uz-UZ').format(props.trip.price) + ' ' + currencyLabel
 })
 
 // Get sorted utilities

@@ -15,13 +15,28 @@ onMounted(async () => {
   }
 })
 
+// Get currency symbol based on currency key
+const getCurrencyLabel = (currencyKey?: string | null): string => {
+  switch (currencyKey) {
+    case 'sum':
+      return 'UZS'
+    case 'dollar':
+      return 'USD'
+    case 'euro':
+      return 'EUR'
+    default:
+      return 'USD'
+  }
+}
+
 // Transform trips data for the card component
 const tours = computed(() => {
   return tripsStore.sortedTrips.map(trip => {
     // Get first image from list response
     const image = trip.images?.[0]?.image || ''
     
-    // Format price
+    // Format price with appropriate currency
+    const currencyLabel = getCurrencyLabel(trip.currency?.key)
     const formattedPrice = new Intl.NumberFormat('uz-UZ').format(trip.price)
     
     // Duration will be added by backend later
@@ -33,7 +48,7 @@ const tours = computed(() => {
       title: trip.name,
       duration,
       description: trip.short_description,
-      price: `${t('common.from')} ${formattedPrice} UZS`,
+      price: `${t('common.from')} ${formattedPrice} ${currencyLabel}`,
       image
     }
   })
@@ -150,7 +165,7 @@ const formattedTotal = computed(() => {
           :space-between="24"
           :centered-slides="true"
           :initial-slide="0"
-          :loop="tours.length >= 3"
+          :loop="tours.length >= 6"
           class="tour-packages-swiper"
           @swiper="onSwiper"
           @slide-change="onSlideChange"
