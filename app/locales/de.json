@@ -181,7 +181,8 @@
     "tourPlan": "Reiseplan",
     "availableDates": "Termine & Preise, pro Person",
     "available": "Verfügbar",
-    "soldOut": "Ausverkauft"
+    "soldOut": "Ausverkauft",
+    "day": "Tag {number}"
   },
   "contacts": {
     "heroTitle": "Starten Sie Ihre Seidenstraßen-Reise heute",

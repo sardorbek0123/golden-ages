@@ -181,7 +181,8 @@
     "tourPlan": "Sayohat rejasi",
     "availableDates": "Sanalar va narxlar, har bir kishi uchun",
     "available": "Mavjud",
-    "soldOut": "Sotilgan"
+    "soldOut": "Sotilgan",
+    "day": "Kun {number}"
   },
   "contacts": {
     "heroTitle": "Ipak yo'li sayohatingizni bugun boshlang",

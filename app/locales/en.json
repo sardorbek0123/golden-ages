@@ -184,7 +184,8 @@
     "tourPlan": "Tour Plan",
     "availableDates": "Dates & Prices, per person",
     "available": "Available",
-    "soldOut": "Sold Out"
+    "soldOut": "Sold Out",
+    "day": "Day {number}"
   },
   "contacts": {
     "heroTitle": "Start Your Silk Road Journey Today",

@@ -51,7 +51,7 @@ const formatDay = (index: number) => {
                   ? 'bg-orange-normal text-white' 
                   : 'bg-transparent border border-gray-300 text-gray-600'"
               >
-                Day {{ formatDay(index) }}
+                {{ t('tourDetail.day', { number: formatDay(index) }) }}
               </div>
               
               <!-- Plan Name -->

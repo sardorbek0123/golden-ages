@@ -181,7 +181,8 @@
     "tourPlan": "Plan du voyage",
     "availableDates": "Dates et prix, par personne",
     "available": "Disponible",
-    "soldOut": "Complet"
+    "soldOut": "Complet",
+    "day": "Jour {number}"
   },
   "contacts": {
     "heroTitle": "Commencez votre voyage sur la Route de la Soie",

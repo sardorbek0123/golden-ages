@@ -181,7 +181,8 @@
     "tourPlan": "План тура",
     "availableDates": "Даты и цены, за человека",
     "available": "Доступно",
-    "soldOut": "Распродано"
+    "soldOut": "Распродано",
+    "day": "День {number}"
   },
   "contacts": {
     "heroTitle": "Начните путешествие по Шёлковому пути",
