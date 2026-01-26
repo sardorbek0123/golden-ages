@@ -48,32 +48,32 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <section class="py-20">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <section class="py-10 sm:py-14 md:py-16 lg:py-20">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         <!-- Left - Form -->
-        <div class="bg-white rounded-3xl p-10 border border-gray-200">
-          <h2 class="text-3xl font-bold text-gray-900 mb-8">{{ t('contactForm.title') }}</h2>
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 border border-gray-200">
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-5 sm:mb-6 md:mb-8">{{ t('contactForm.title') }}</h2>
           
-          <form @submit.prevent="handleSubmit" class="space-y-6">
+          <form @submit.prevent="handleSubmit" class="space-y-4 sm:space-y-5 md:space-y-6">
             <!-- Full Name -->
             <div>
-              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-2">
+              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                 {{ t('contactForm.fullName') }}
               </label>
               <input
                 v-model="form.fullName"
                 type="text"
                 :placeholder="t('contactForm.fullName')"
-                class="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
+                class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
                 :aria-label="t('contactForm.fullName')"
               />
             </div>
 
             <!-- Email & Phone -->
-            <div class="grid grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-2">
+                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                   {{ t('contactForm.email') }}
                 </label>
                 <input
@@ -81,11 +81,11 @@ const handleSubmit = async () => {
                   type="email"
                   :placeholder="t('contactForm.email')"
                   :aria-label="t('contactForm.email')"
-                  class="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
+                  class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
                 />
               </div>
               <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-2">
+                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                   {{ t('contactForm.phone') }}
                 </label>
                 <input
@@ -93,19 +93,19 @@ const handleSubmit = async () => {
                   type="tel"
                   :placeholder="t('contactForm.phone')"
                   :aria-label="t('contactForm.phone')"
-                  class="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
+                  class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
                 />
               </div>
             </div>
 
             <!-- Tour Type -->
             <div>
-              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-2">
+              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                 {{ t('contactForm.tourType') }}
               </label>
               <select
                 v-model="form.tripId"
-                class="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 appearance-none cursor-pointer"
                 :disabled="tripsStore.loading"
               >
                 <option :value="null" disabled>{{ t('contactForm.selectTourType') }}</option>
@@ -117,43 +117,43 @@ const handleSubmit = async () => {
 
             <!-- Message -->
             <div>
-              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-2">
+              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                 {{ t('contactForm.message') }}
               </label>
               <textarea
                 v-model="form.message"
-                rows="6"
+                :rows="4"
                 :placeholder="t('contactForm.message')"
                 :aria-label="t('contactForm.message')"
-                class="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400 resize-none"
+                class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400 resize-none sm:min-h-[150px] md:min-h-[180px]"
               />
             </div>
 
             <!-- Submit Button -->
-              <button
-                type="submit"
-                :disabled="isSubmitting || !form.tripId"
-                class="w-full py-4 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <span v-if="isSubmitting">{{ t('contactForm.sending') || 'Sending...' }}</span>
-                <span v-else>{{ t('contactForm.submit') }}</span>
-              </button>
-              
-              <!-- Success Message -->
-              <p v-if="messagesStore.success" class="text-green-600 text-center font-medium">
-                {{ t('contactForm.successMessage') || 'Message sent successfully!' }}
-              </p>
-              
-              <!-- Error Message -->
-              <p v-if="messagesStore.error" class="text-red-600 text-center font-medium">
-                {{ messagesStore.error }}
-              </p>
+            <button
+              type="submit"
+              :disabled="isSubmitting || !form.tripId"
+              class="w-full py-3 sm:py-4 bg-orange-normal text-white text-sm sm:text-base font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span v-if="isSubmitting">{{ t('contactForm.sending') || 'Sending...' }}</span>
+              <span v-else>{{ t('contactForm.submit') }}</span>
+            </button>
+            
+            <!-- Success Message -->
+            <p v-if="messagesStore.success" class="text-green-600 text-center text-sm sm:text-base font-medium">
+              {{ t('contactForm.successMessage') || 'Message sent successfully!' }}
+            </p>
+            
+            <!-- Error Message -->
+            <p v-if="messagesStore.error" class="text-red-600 text-center text-sm sm:text-base font-medium">
+              {{ messagesStore.error }}
+            </p>
           </form>
         </div>
 
         <!-- Right - Contact Info Card -->
         <div 
-          class="relative rounded-3xl overflow-hidden min-h-[600px] flex flex-col justify-between p-10"
+          class="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] flex flex-col justify-between p-5 sm:p-6 md:p-8 lg:p-10"
         >
           <!-- Background Image -->
           <div 
@@ -166,22 +166,22 @@ const handleSubmit = async () => {
 
           <!-- Content -->
           <div class="relative z-10">
-            <h3 class="text-2xl md:text-[30px] lg:text-[50px] font-medium text-white leading-tight uppercase">
+            <h3 class="text-xl sm:text-2xl md:text-[30px] lg:text-[50px] font-medium text-white leading-tight uppercase">
               {{ t('contactForm.planYourTrip') }}<br />
             </h3>
           </div>
 
           <!-- Contact Info -->
-          <div class="relative z-10 space-y-2">
+          <div class="relative z-10 space-y-1 sm:space-y-2">
             <a 
               href="mailto:info@gaou.travel" 
-              class="block text-xl text-white/80 hover:text-white transition-colors"
+              class="block text-base sm:text-lg lg:text-xl text-white/80 hover:text-white transition-colors"
             >
               {{ t('contactForm.email') }}
             </a>
             <a 
               href="tel:+998950443334" 
-              class="block text-2xl font-semibold text-white hover:text-orange-normal transition-colors"
+              class="block text-lg sm:text-xl lg:text-2xl font-semibold text-white hover:text-orange-normal transition-colors"
             >
               +998(95)044-33-34
             </a>

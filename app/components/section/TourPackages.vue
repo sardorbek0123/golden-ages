@@ -93,32 +93,32 @@ const formattedTotal = computed(() => {
 </script>
 
 <template>
-  <section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+  <section class="py-10 sm:py-14 md:py-16 lg:py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6">
       <!-- Header -->
-      <div class="flex justify-between items-start mb-8">
+      <div class="flex flex-col-reverse sm:flex-row justify-between items-start gap-4 sm:gap-6 mb-6 sm:mb-8">
         <!-- Left - Badge -->
-        <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-gray-300">
-          <span class="text-sm font-medium text-gray-700 uppercase tracking-wide">
+        <div class="inline-flex items-center px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-gray-300">
+          <span class="text-xs sm:text-sm font-medium text-gray-700 uppercase tracking-wide">
             {{ t('tourPackages.badge') }}
           </span>
         </div>
 
         <!-- Right - Title and Description -->
-        <div class="max-w-xl text-right">
-          <h2 class="text-5xl font-bold text-gray-900 leading-tight mb-4">
+        <div class="max-w-xl sm:text-right">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-2 sm:mb-4">
             {{ t('tourPackages.title') }}
           </h2>
-          <p class="text-gray-600">
+          <p class="text-sm sm:text-base text-gray-600">
             {{ t('tourPackages.subtitle') }}
           </p>
         </div>
       </div>
 
       <!-- Navigation Row -->
-      <div class="flex items-center justify-between mb-8">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6 sm:mb-8">
         <!-- Progress Bar -->
-        <div class="w-64 h-0.5 bg-gray-200 rounded-full overflow-hidden">
+        <div class="order-1 flex-1 sm:flex-none sm:w-40 md:w-52 lg:w-64 h-0.5 bg-gray-200 rounded-full overflow-hidden">
           <div 
             class="h-full bg-gray-900 rounded-full transition-all duration-300"
             :style="{ width: `${progressWidth}%` }"
@@ -126,26 +126,26 @@ const formattedTotal = computed(() => {
         </div>
 
         <!-- Counter -->
-        <div class="flex items-center gap-1">
-          <span class="text-lg font-bold text-gray-900">{{ formattedIndex }}</span>
-          <span class="text-lg text-gray-400">/{{ formattedTotal }}</span>
+        <div class="order-3 sm:order-2 flex items-center gap-1">
+          <span class="text-base sm:text-lg font-bold text-gray-900">{{ formattedIndex }}</span>
+          <span class="text-base sm:text-lg text-gray-400">/{{ formattedTotal }}</span>
         </div>
 
         <!-- Arrows -->
-        <div class="flex items-center gap-2">
+        <div class="order-2 sm:order-3 flex items-center gap-2">
           <button
-            class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center transition-all duration-300 hover:border-gray-900"
+            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-300 flex items-center justify-center transition-all duration-300 hover:border-gray-900"
             @click="goPrev"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
           <button
-            class="w-10 h-10 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-300 hover:bg-gray-800"
+            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-300 hover:bg-gray-800"
             @click="goNext"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
@@ -153,19 +153,23 @@ const formattedTotal = computed(() => {
       </div>
 
       <!-- Loading State -->
-      <div v-if="tripsStore.loading" class="flex justify-center items-center py-20">
-        <div class="animate-spin rounded-full h-12 w-12 border-4 border-orange-normal border-t-transparent" />
+      <div v-if="tripsStore.loading" class="flex justify-center items-center py-12 sm:py-16 lg:py-20">
+        <div class="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-4 border-orange-normal border-t-transparent" />
       </div>
 
       <!-- Swiper -->
       <div v-else-if="tours.length > 0" class="tour-swiper-container">
         <Swiper
           :modules="[Navigation]"
-          :slides-per-view="3"
-          :space-between="24"
+          :slides-per-view="1"
+          :space-between="16"
           :centered-slides="true"
           :initial-slide="0"
-          :loop="tours.length >= 6"
+          :loop="tours.length >= 3"
+          :breakpoints="{
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 24 }
+          }"
           class="tour-packages-swiper"
           @swiper="onSwiper"
           @slide-change="onSlideChange"
@@ -185,8 +189,8 @@ const formattedTotal = computed(() => {
       </div>
 
       <!-- Empty State -->
-      <div v-else class="text-center py-20">
-        <p class="text-gray-500">{{ t('tours.no_packages') }}</p>
+      <div v-else class="text-center py-12 sm:py-16 lg:py-20">
+        <p class="text-sm sm:text-base text-gray-500">{{ t('tours.no_packages') }}</p>
       </div>
     </div>
   </section>

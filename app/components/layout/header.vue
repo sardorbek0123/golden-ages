@@ -108,11 +108,11 @@ onUnmounted(() => {
     :class="{ '-translate-y-full': !isHeaderVisible }"
   >
     <!-- Main header section -->
-    <div class="px-4 md:px-10 pt-4">
-      <div class="container mx-auto px-4">
+    <div class="px-3 sm:px-4 md:px-6 lg:px-10 pt-3 sm:pt-4">
+      <div class="container mx-auto px-0 sm:px-4">
         <!-- Header container with rounded corners -->
         <div
-          class="bg-[#E5E5E5] rounded-2xl px-4 md:px-8 py-4 flex items-center justify-between transition-all duration-300"
+          class="bg-[#E5E5E5] rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between transition-all duration-300"
         >
           <!-- Logo -->
           <div class="flex items-center">
@@ -185,10 +185,10 @@ onUnmounted(() => {
     <Transition name="slide">
       <div
         v-if="isMobileMenuOpen"
-        class="lg:hidden fixed top-0 right-0 h-full w-[85%] max-w-[360px] bg-white z-50 shadow-2xl overflow-y-auto"
+        class="lg:hidden fixed top-0 right-0 h-full w-[85%] max-w-[320px] sm:max-w-[360px] bg-white z-50 shadow-2xl overflow-y-auto"
       >
         <!-- Mobile Menu Header -->
-        <div class="flex items-center justify-between p-6 border-b border-grey-normal">
+        <div class="flex items-center justify-between p-4 sm:p-6 border-b border-grey-normal">
           <NuxtLink to="/" @click="closeMobileMenu">
             <img
               src="~/assets/Logo.svg"
@@ -208,19 +208,19 @@ onUnmounted(() => {
         </div>
 
         <!-- Mobile Menu Navigation -->
-        <nav class="p-6">
+        <nav class="p-4 sm:p-6 pb-24 sm:pb-28">
           <ul class="space-y-1">
             <li v-for="item in navItems" :key="item.key">
               <!-- Item with Dropdown -->
               <template v-if="item.hasDropdown">
                 <button
-                  class="w-full flex items-center justify-between py-3 px-4 text-dark-normal font-medium text-base uppercase tracking-wide hover:bg-grey-light rounded-lg transition-colors"
+                  class="w-full flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-4 text-dark-normal font-medium text-sm sm:text-base uppercase tracking-wide hover:bg-grey-light rounded-lg transition-colors"
                   @click="toggleMobileDropdown(item.key)"
                 >
                   {{ t(`nav.${item.key}`) }}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5 transition-transform duration-300"
+                    class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300"
                     :class="{ 'rotate-180': activeMobileDropdown === item.key }"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -235,7 +235,7 @@ onUnmounted(() => {
                     v-if="activeMobileDropdown === item.key"
                     class="overflow-hidden"
                   >
-                    <div class="py-2 pl-6 pr-4 space-y-1">
+                    <div class="py-2 pl-4 sm:pl-6 pr-3 sm:pr-4 space-y-1">
                       <LayoutToursDropdown
                         v-if="item.key === 'tours'"
                         mobile
@@ -255,7 +255,7 @@ onUnmounted(() => {
               <template v-else>
                 <NuxtLink
                   :to="item.href"
-                  class="block py-3 px-4 text-dark-normal font-medium text-base uppercase tracking-wide hover:bg-grey-light rounded-lg transition-colors"
+                  class="block py-2.5 sm:py-3 px-3 sm:px-4 text-dark-normal font-medium text-sm sm:text-base uppercase tracking-wide hover:bg-grey-light rounded-lg transition-colors"
                   @click="closeMobileMenu"
                 >
                   {{ t(`nav.${item.key}`) }}
@@ -266,14 +266,14 @@ onUnmounted(() => {
         </nav>
 
         <!-- Mobile Menu Footer with CTA -->
-        <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-grey-normal bg-white">
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 border-t border-grey-normal bg-white">
           <NuxtLink
             to="/create-tour"
-            class="flex items-center justify-center gap-2 w-full py-4 px-6 bg-green-normal hover:bg-green-normal-hover text-white font-medium text-sm uppercase tracking-wide rounded-full transition-colors"
+            class="flex items-center justify-center gap-2 w-full py-3 sm:py-4 px-4 sm:px-6 bg-green-normal hover:bg-green-normal-hover text-white font-medium text-xs sm:text-sm uppercase tracking-wide rounded-full transition-colors"
             @click="closeMobileMenu"
           >
             {{ t('header.createTour') }}
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </NuxtLink>

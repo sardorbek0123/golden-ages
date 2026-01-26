@@ -94,7 +94,7 @@ const goBack = () => {
               class="w-full h-full object-cover"
             />
           </div>
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-3 sm:gap-4">
             <div 
               v-for="(image, index) in secondaryImages" 
               :key="image.id"

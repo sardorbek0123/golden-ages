@@ -45,23 +45,23 @@ const rightFeatures = features.slice(3, 6)
 </script>
 
 <template>
-  <section class="py-20 ">
-    <div class="container mx-auto bg-[#F9FAF9] border border-[#9195923D] py-20 px-10 rounded-3xl ">
+  <section class="py-10 sm:py-14 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto bg-[#F9FAF9] border border-[#9195923D] py-10 sm:py-14 md:py-16 lg:py-20 px-5 sm:px-6 md:px-8 lg:px-10 rounded-2xl sm:rounded-3xl">
       <!-- Header -->
-      <div class="flex flex-col items-center gap-4 mb-12">
+      <div class="flex flex-col items-center gap-3 sm:gap-4 mb-8 sm:mb-10 md:mb-12">
         <!-- Badge -->
         <CommonBadge :text="t('whyChooseUs.badge')" />
         
         <!-- Title -->
-        <h2 class="text-5xl font-bold text-gray-900">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center">
           {{ t('whyChooseUs.title') }}
         </h2>
       </div>
 
       <!-- Content Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 items-start">
         <!-- Left Column - Feature Cards -->
-        <div class="lg:col-span-4 flex flex-col gap-6">
+        <div class="lg:col-span-4 flex flex-col gap-3 sm:gap-4 md:gap-5 order-2 lg:order-1">
           <CardsFeatureCard
             v-for="(feature, index) in leftFeatures"
             :key="index"
@@ -72,16 +72,16 @@ const rightFeatures = features.slice(3, 6)
         </div>
 
         <!-- Center - Image -->
-        <div class="lg:col-span-4 flex justify-center h-full">
+        <div class="flex justify-center h-full order-1 lg:order-2 md:col-span-2 lg:col-span-4">
           <img
             src="~/assets/images/why_us.jpg"
             alt="Why choose us"
-            class="w-full rounded-2xl object-cover"
+            class="w-full max-w-md lg:max-w-none rounded-xl sm:rounded-2xl object-cover aspect-4/3 lg:aspect-auto"
           />
         </div>
 
         <!-- Right Column - Feature Cards -->
-        <div class="lg:col-span-4 flex flex-col gap-6">
+        <div class="lg:col-span-4 flex flex-col gap-3 sm:gap-4 md:gap-5 order-3">
           <CardsFeatureCard
             v-for="(feature, index) in rightFeatures"
             :key="index"

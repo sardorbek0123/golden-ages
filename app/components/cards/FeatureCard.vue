@@ -11,11 +11,11 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl p-6 border border-[#9195923D] hover:shadow-md transition-all duration-100">
-    <div class="flex flex-col gap-4">
+  <div class="bg-white rounded-2xl p-3 sm:p-6 border border-[#9195923D] hover:shadow-md transition-all duration-100">
+    <div class="flex flex-col gap-3 sm:gap-4">
       <!-- Icon -->
-      <div class="w-14 h-14 rounded-full bg-[#ffa800] flex items-center justify-center flex-shrink-0">
-        <component :is="icon" />
+      <div class="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-orange-normal flex items-center justify-center shrink-0">
+        <component :is="icon" class="w-6 h-6 sm:w-8 sm:h-8" />
       </div>
       
       <!-- Content -->
