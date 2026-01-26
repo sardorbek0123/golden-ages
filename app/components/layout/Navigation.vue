@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { navItems } from '~/constants/navigation'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const route = useRoute()
@@ -7,21 +8,6 @@ const emit = defineEmits<{
   (e: 'dropdown-toggle', menu: string | null): void
 }>()
 
-interface NavItem {
-  key: string
-  href?: string
-  hasDropdown?: boolean
-  matchPath?: string // for matching routes like /tours/*
-}
-
-const navItems: NavItem[] = [
-  { key: 'tours', hasDropdown: true, matchPath: '/tours' },
-  { key: 'aboutUs', href: '/about' },
-  // { key: 'cities', hasDropdown: true },
-  // { key: 'shop', href: '/shop' },
-  // { key: 'uzbekCulture', href: '/culture' },
-  { key: 'contacts', href: '/contacts' }
-]
 
 const activeDropdown = ref<string | null>(null)
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-definePageMeta({
-    layout: 'coming-soon'
-})
 </script>
 <template>
+  <div>
+    <h1>Culture Page</h1>
+  </div>
 </template>

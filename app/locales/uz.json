@@ -1,4 +1,5 @@
 {
+  "all": "Barcha",
   "error": {
     "pageNotFound": "Sahifa topilmadi",
     "pageNotFoundDescription": "Siz qidirayotgan sahifa mavjud emas yoki ko'chirilgan. Keling, sizni Ipak yo'li mo'jizalarini kashf etishga qaytaraylik.",
@@ -207,5 +208,8 @@
     "badge": "JAMOA A'ZOLARI",
     "title": "Kim sizga g'amxo'rlik qiladi?",
     "description": "Sayohatingizni unutilmas qiladigan mutaxassislar bilan tanishing"
+  },
+  "culture": {
+    "heroTitle": "O'zbekiston tarixini kashf eting"
   }
 }

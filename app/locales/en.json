@@ -1,4 +1,5 @@
 {
+  "all": "All",
   "error": {
     "pageNotFound": "Page Not Found",
     "pageNotFoundDescription": "The page you're looking for doesn't exist or has been moved. Let's get you back on track to discover the wonders of the Silk Road.",
@@ -210,5 +211,8 @@
     "badge": "TEAM MEMBERS",
     "title": "Who will take care of you?",
     "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe"
+  },
+  "culture": {
+    "heroTitle": "Stories That Bring Uzbekistan to Life"
   }
 }

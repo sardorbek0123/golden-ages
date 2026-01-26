@@ -1,4 +1,5 @@
 {
+  "all": "Todos",
   "error": {
     "pageNotFound": "Página no encontrada",
     "pageNotFoundDescription": "La página que buscas no existe o ha sido movida. Volvamos a ponerte en camino para descubrir las maravillas de la Ruta de la Seda.",
@@ -207,5 +208,8 @@
     "badge": "MIEMBROS DEL EQUIPO",
     "title": "¿Quién cuidará de ti?",
     "description": "Conoce a los profesionales que harán tu viaje inolvidable"
+  },
+  "culture": {
+    "heroTitle": "Historias que dan vida a Uzbekistán"
   }
 }

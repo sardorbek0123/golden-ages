@@ -1,4 +1,5 @@
 {
+  "all": "Tous",
   "error": {
     "pageNotFound": "Page non trouvée",
     "pageNotFoundDescription": "La page que vous recherchez n'existe pas ou a été déplacée. Remettons-vous sur la bonne voie pour découvrir les merveilles de la Route de la Soie.",
@@ -207,5 +208,8 @@
     "badge": "MEMBRES DE L'ÉQUIPE",
     "title": "Qui prendra soin de vous?",
     "description": "Rencontrez les professionnels qui rendront votre voyage inoubliable"
+  },
+  "culture": {
+    "heroTitle": "Histoires qui donnent vie à l'Ouzbékistan"
   }
 }

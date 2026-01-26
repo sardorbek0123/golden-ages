@@ -16,4 +16,5 @@ export * from './review'
 export * from './settings'
 export * from './team'
 export * from './trip'
+export * from './blog'
 

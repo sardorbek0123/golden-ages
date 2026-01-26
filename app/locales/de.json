@@ -1,4 +1,5 @@
 {
+  "all": "Alle",
   "error": {
     "pageNotFound": "Seite nicht gefunden",
     "pageNotFoundDescription": "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben. Lassen Sie uns Sie zurück auf den Weg bringen, um die Wunder der Seidenstraße zu entdecken.",
@@ -207,5 +208,8 @@
     "badge": "TEAMMITGLIEDER",
     "title": "Wer kümmert sich um Sie?",
     "description": "Lernen Sie die Profis kennen, die Ihre Reise unvergesslich machen werden"
+  },
+  "culture": {
+    "heroTitle": "Geschichten, die Usbekistans Leben bringen"
   }
 }

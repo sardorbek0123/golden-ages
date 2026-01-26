@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { navItems } from '~/constants/navigation'
 const { t } = useI18n()
 
 const activeDropdown = ref<string | null>(null)
@@ -8,20 +9,6 @@ const lastScrollY = ref(0)
 const isMobileMenuOpen = ref(false)
 const activeMobileDropdown = ref<string | null>(null)
 
-interface NavItem {
-  key: string
-  href?: string
-  hasDropdown?: boolean
-}
-
-const navItems: NavItem[] = [
-  { key: 'tours', hasDropdown: true },
-  { key: 'aboutUs', href: '/about' },
-  // { key: 'cities', hasDropdown: true },
-  // { key: 'shop', href: '/shop' },
-  // { key: 'uzbekCulture', href: '/culture' },
-  { key: 'contacts', href: '/contacts' }
-]
 
 const handleDropdownToggle = (menu: string | null) => {
   activeDropdown.value = menu

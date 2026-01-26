@@ -1,7 +1,7 @@
 <template>
   <div>
-    <SectionToursHero />
-    <SectionToursPackages />
+    <SectionTourHero />
+    <SectionTourPackages />
     <SectionTestimonials />
     <SectionContactForm id="form" />
   </div>
