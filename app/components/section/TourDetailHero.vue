@@ -29,27 +29,27 @@ const goBack = () => {
 </script>
 
 <template>
-  <section class="pt-12">
-    <div class="container mx-auto px-4">
+  <section class="pt-6 sm:pt-8 md:pt-12">
+    <div class="container mx-auto px-4 sm:px-6">
       <!-- Back Button -->
       <button 
-        class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mt-16 mb-6"
+        class="flex items-center gap-2 text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors mt-12 sm:mt-14 md:mt-16 mb-4 sm:mb-6"
         @click="goBack"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <span>{{ t('tourDetail.back') }}</span>
       </button>
 
       <!-- Title -->
-      <h1 class="text-5xl font-bold text-gray-900 mb-4">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
         {{ trip.name }}
       </h1>
 
       <!-- Locations -->
-      <div class="flex items-center gap-2 text-gray-600 mb-8">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="flex items-center gap-2 text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -59,7 +59,7 @@ const goBack = () => {
       <!-- Image Gallery -->
       <div>
         <!-- Single image layout -->
-        <div v-if="trip.images?.length === 1" class="h-[520px] rounded-2xl overflow-hidden">
+        <div v-if="trip.images?.length === 1" class="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
           <img 
             :src="mainImage" 
             :alt="trip.name"
@@ -68,15 +68,15 @@ const goBack = () => {
         </div>
 
         <!-- Two images layout -->
-        <div v-else-if="trip.images?.length === 2" class="grid grid-cols-3 gap-4">
-          <div class="col-span-2 h-[520px] rounded-2xl overflow-hidden">
+        <div v-else-if="trip.images?.length === 2" class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+          <div class="md:col-span-2 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
             <img 
               :src="mainImage" 
               :alt="trip.name"
               class="w-full h-full object-cover"
             />
           </div>
-          <div class="h-[520px] rounded-2xl overflow-hidden">
+          <div class="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
             <img 
               :src="secondaryImages[0]?.image" 
               :alt="`${trip.name} 2`"
@@ -86,8 +86,8 @@ const goBack = () => {
         </div>
 
         <!-- Three or more images layout -->
-        <div v-else class="grid grid-cols-3 gap-4">
-          <div class="col-span-2 h-fit rounded-2xl overflow-hidden">
+        <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+          <div class="md:col-span-2 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
             <img 
               :src="mainImage" 
               :alt="trip.name"
@@ -98,7 +98,7 @@ const goBack = () => {
             <div 
               v-for="(image, index) in secondaryImages" 
               :key="image.id"
-              class="flex-1 rounded-2xl overflow-hidden"
+              class="h-[120px] sm:h-[170px] md:h-[220px] lg:h-[250px] rounded-xl sm:rounded-2xl overflow-hidden"
             >
               <img 
                 :src="image.image" 

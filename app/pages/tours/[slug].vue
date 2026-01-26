@@ -25,26 +25,26 @@ onUnmounted(() => {
 <template>
   <div class="min-h-screen bg-[#F9FAF9]">
     <!-- Loading State -->
-    <div v-if="loading" class="container mx-auto px-4 py-12">
-      <div class="animate-pulse mt-16">
-        <div class="h-12 bg-gray-200 rounded w-3/4 mb-4" />
-        <div class="h-6 bg-gray-200 rounded w-1/2 mb-8" />
-        <div class="grid grid-cols-3 gap-4">
-          <div class="col-span-2 h-[500px] bg-gray-200 rounded-2xl" />
+    <div v-if="loading" class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div class="animate-pulse mt-12 sm:mt-16">
+        <div class="h-8 sm:h-10 md:h-12 bg-gray-200 rounded w-3/4 mb-3 sm:mb-4" />
+        <div class="h-4 sm:h-5 md:h-6 bg-gray-200 rounded w-1/2 mb-6 sm:mb-8" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="md:col-span-2 h-[300px] sm:h-[400px] md:h-[500px] bg-gray-200 rounded-xl sm:rounded-2xl" />
           <div class="space-y-4">
-            <div class="h-60 bg-gray-200 rounded-2xl" />
-            <div class="h-60 bg-gray-200 rounded-2xl" />
+            <div class="h-40 sm:h-48 md:h-60 bg-gray-200 rounded-xl sm:rounded-2xl" />
+            <div class="h-40 sm:h-48 md:h-60 bg-gray-200 rounded-xl sm:rounded-2xl" />
           </div>
         </div>
       </div>
     </div>
 
     <!-- Error State -->
-    <div v-else-if="error" class="container mx-auto px-4 py-12">
-      <div class="text-center py-10 mt-16">
-        <p class="text-red-500 mb-4">{{ error }}</p>
+    <div v-else-if="error" class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div class="text-center py-8 sm:py-10 mt-12 sm:mt-16">
+        <p class="text-sm sm:text-base text-red-500 mb-4">{{ error }}</p>
         <button
-          class="px-6 py-2 bg-orange-normal text-white rounded-full hover:bg-orange-normal-hover transition-colors"
+          class="px-5 sm:px-6 py-2 bg-orange-normal text-white text-sm sm:text-base rounded-full hover:bg-orange-normal-hover transition-colors"
           @click="tripsStore.fetchTripBySlug(slug)">
           {{ t('common.try_again') }}
         </button>
@@ -65,7 +65,7 @@ onUnmounted(() => {
       <!-- Available Dates Section -->
       <SectionAvailableDates :prices="trip.prices || []" />
 
-      <SectionTourPackages class="mt-20"/>
+      <SectionTourPackages class="mt-10 sm:mt-14 md:mt-16 lg:mt-20"/>
       <SectionTestimonials />
       <SectionContactForm id="form"/>
     </template>
