@@ -78,23 +78,23 @@ const tourPackages = computed(() => {
 </script>
 
 <template>
-  <section class="py-16">
-    <div class="container mx-auto px-4">
+  <section class="py-10 sm:py-12 md:py-14 lg:py-16">
+    <div class="container mx-auto px-4 sm:px-6">
       <!-- Title -->
-      <h2 class="text-5xl font-bold text-gray-900 text-center mb-12 italic">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-8 sm:mb-10 md:mb-12 italic">
         {{ t('tours.our_packages') }}
       </h2>
 
       <!-- Loading State -->
-      <div v-if="tripsStore.loading" class="flex justify-center items-center py-20">
-        <div class="animate-spin rounded-full h-12 w-12 border-4 border-orange-normal border-t-transparent" />
+      <div v-if="tripsStore.loading" class="flex justify-center items-center py-12 sm:py-16 md:py-20">
+        <div class="animate-spin rounded-full h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 border-4 border-orange-normal border-t-transparent" />
       </div>
 
       <!-- Error State -->
-      <div v-else-if="tripsStore.error" class="text-center py-20">
-        <p class="text-red-500 mb-4">{{ tripsStore.error }}</p>
+      <div v-else-if="tripsStore.error" class="text-center py-12 sm:py-16 md:py-20">
+        <p class="text-sm sm:text-base text-red-500 mb-4">{{ tripsStore.error }}</p>
         <button 
-          class="px-6 py-2 bg-orange-normal text-white rounded-full hover:bg-orange-normal-hover transition-colors"
+          class="px-5 sm:px-6 py-2 bg-orange-normal text-white text-sm sm:text-base rounded-full hover:bg-orange-normal-hover transition-colors"
           @click="tripsStore.fetchTrips()"
         >
           {{ t('common.try_again') }}
@@ -102,12 +102,12 @@ const tourPackages = computed(() => {
       </div>
 
       <!-- Empty State -->
-      <div v-else-if="tourPackages.length === 0" class="text-center py-20">
-        <p class="text-gray-500">{{ t('tours.no_packages') }}</p>
+      <div v-else-if="tourPackages.length === 0" class="text-center py-12 sm:py-16 md:py-20">
+        <p class="text-sm sm:text-base text-gray-500">{{ t('tours.no_packages') }}</p>
       </div>
 
       <!-- Tour Cards -->
-      <div v-else class="space-y-6">
+      <div v-else class="space-y-4 sm:space-y-5 md:space-y-6">
         <CardsTourPackageCard
           v-for="tour in tourPackages"
           :key="tour.id"
