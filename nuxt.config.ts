@@ -67,7 +67,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'keywords',
-          content: 'Golden Ages of Uzbekistan, Uzbekistan, history, heritage, tourism, travel, explore, discover, visit, experience, culture, cuisine, art, handicrafts, music, festivals, history, heritage stories, Samarkand, Khiva, Bukhara, Tashkent, Uzbekistan Tours, Uzbekistan Travel, Uzbekistan Vacations, Uzbekistan Packages, Uzbekistan Travel Packages, Uzbekistan Travel Agency, Uzbekistan Travel Agency in Uzbekistan, Uzbekistan Travel Agency in Tashkent, Uzbekistan Travel Agency in Samarkand, Uzbekistan Travel Agency in Khiva, Uzbekistan Travel Agency in Bukhara'
+          content: 'Golden Ages of Uzbekistan, Uzbekistan, history of Uzbekistan, travel to Uzbekistan, Uzbekistan travel, Uzbekistan tours, Uzbekistan travel packages, Uzbekistan travel agency, Uzbekistan travel agency in uzbekistan, Uzbekistan travel agency in tashkent, Uzbekistan travel agency in samarkand, Uzbekistan travel agency in khiva, Uzbekistan travel agency in bukhara'
         }
       ],
     },
