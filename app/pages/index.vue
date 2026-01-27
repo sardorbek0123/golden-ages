@@ -4,7 +4,7 @@
     <SectionWhyChooseUs />
     <SectionDestinations />
     <SectionTestimonials />
-    <SectionTourPackages />
+    <SectionMainTourPackages />
     <SectionContactForm id="form"/>
   </div>
 </template>
