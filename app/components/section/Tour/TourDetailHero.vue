@@ -7,7 +7,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const { t } = useI18n()
-
+const localePath = useLocalePath()
 // Get main image
 const mainImage = computed(() => {
   if (!props.trip.images?.length) return ''
@@ -24,7 +24,7 @@ const secondaryImages = computed(() => {
 
 // Go back
 const goBack = () => {
-  navigateTo('/tours')
+  navigateTo(localePath({ name: 'tours' }))
 }
 </script>
 
