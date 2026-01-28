@@ -4,6 +4,7 @@ defineProps<{
 }>()
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const citiesStore = useCitiesStore()
 const { sortedCities, loading } = storeToRefs(citiesStore)
 
@@ -50,7 +51,7 @@ const displayCities = computed(() => {
     <NuxtLink
       v-for="city in displayCities"
       :key="city.id"
-      :to="city.href"
+      :to="localePath(city.href)"
       class="block py-2 px-3 text-grey-darker text-sm hover:bg-grey-light rounded-lg transition-colors"
     >
       {{ city.name }}
@@ -62,7 +63,7 @@ const displayCities = computed(() => {
     <NuxtLink
       v-for="city in displayCities"
       :key="city.id"
-      :to="city.href"
+      :to="localePath(city.href)"
       class="group relative rounded-xl overflow-hidden h-[120px]"
     >
       <NuxtImg

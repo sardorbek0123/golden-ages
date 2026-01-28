@@ -33,7 +33,6 @@ const { t } = useI18n()
           :src="heroImage"
           :alt="t('toursPage.heroTitle')"
           class="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] object-cover"
-          loading="lazy"
         />
       </div>
     </div>

@@ -5,6 +5,7 @@ import IconsInstagram from '~/components/icons/social/instagram.vue'
 import IconsX from '~/components/icons/social/x.vue'
 import IconsThreads from '~/components/icons/social/threads.vue'
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const footerLinks = {
   tours: {
@@ -92,10 +93,10 @@ const socialLinks = [
               </h4>
               <ul class="space-y-2 sm:space-y-3">
                 <li v-for="link in section.links" :key="link.name">
-                  <a :href="link.href"
+                  <NuxtLink :to="localePath(link.href)"
                     class="text-xs sm:text-sm text-gray-300 hover:text-orange-normal transition-colors">
                     {{ link.name }}
-                  </a>
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -111,9 +112,9 @@ const socialLinks = [
           class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-xs sm:text-sm text-gray-400">
           <span class="text-center">{{ t('footer.copyright') }}</span>
           <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-            <NuxtLink href="#" class="hover:text-white transition-colors">{{ t('footer.privacyPolicy') }}</NuxtLink>
-            <NuxtLink href="#" class="hover:text-white transition-colors">{{ t('footer.termsOfService') }}</NuxtLink>
-            <NuxtLink href="#" class="hover:text-white transition-colors">{{ t('footer.cookiesSettings') }}</NuxtLink>
+            <NuxtLink :to="localePath('/privacy-policy')" class="hover:text-white transition-colors">{{ t('footer.privacyPolicy') }}</NuxtLink>
+            <NuxtLink :to="localePath('/terms-of-service')" class="hover:text-white transition-colors">{{ t('footer.termsOfService') }}</NuxtLink>
+            <NuxtLink :to="localePath('/cookies-settings')" class="hover:text-white transition-colors">{{ t('footer.cookiesSettings') }}</NuxtLink>
           </div>
         </div>
       </div>

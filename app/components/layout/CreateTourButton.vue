@@ -1,10 +1,11 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 </script>
 
 <template>
   <NuxtLink
-    to="#form"
+    :to="localePath('/#form')"
     class="px-6 py-3 rounded-full border-2 border-[#f2a900] text-[#f2a900] text-xs font-normal tracking-wide uppercase hover:bg-[#f2a900] hover:text-white transition-colors"
   >
     {{ t('header.createTour') }}

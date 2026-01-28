@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -22,7 +23,7 @@ const { t } = useI18n()
 
           <!-- Button -->
           <NuxtLink
-            to="/"
+            :to="localePath('/')"
             class="inline-block px-10 py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide text-sm"
           >
             {{ t('comingSoon.backToHome') }}

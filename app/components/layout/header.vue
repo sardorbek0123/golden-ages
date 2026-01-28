@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { navItems } from '~/constants/navigation'
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const activeDropdown = ref<string | null>(null)
 const navigationRef = ref<{ closeDropdown: () => void } | null>(null)
@@ -103,7 +104,7 @@ onUnmounted(() => {
         >
           <!-- Logo -->
           <div class="flex items-center">
-            <NuxtLink to="/" @click="closeDropdown">
+            <NuxtLink :to="localePath('/')" @click="closeDropdown">
               <IconsLogo class="w-20 h-10 md:w-[150px] md:h-[35px] lg:max-w-[260px] xl:max-w-[300px] lg:max-h-full"/>
             </NuxtLink>
           </div>
@@ -176,7 +177,7 @@ onUnmounted(() => {
       >
         <!-- Mobile Menu Header -->
         <div class="flex items-center justify-between p-4 sm:p-6 border-b border-grey-normal">
-          <NuxtLink to="/" @click="closeMobileMenu">
+          <NuxtLink :to="localePath('/')" @click="closeMobileMenu">
             <NuxtImg
               src="~/assets/Logo.svg"
               alt="Golden Ages"
@@ -242,7 +243,7 @@ onUnmounted(() => {
               <!-- Regular Item -->
               <template v-else>
                 <NuxtLink
-                  :to="item.href"
+                  :to="localePath(item.href || '/')"
                   class="block py-2.5 sm:py-3 px-3 sm:px-4 text-dark-normal font-medium text-sm sm:text-base uppercase tracking-wide hover:bg-grey-light rounded-lg transition-colors"
                   @click="closeMobileMenu"
                 >
@@ -256,7 +257,7 @@ onUnmounted(() => {
         <!-- Mobile Menu Footer with CTA -->
         <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 border-t border-grey-normal bg-white">
           <NuxtLink
-            to="/create-tour"
+            :to="localePath('/create-tour')"
             class="flex items-center justify-center gap-2 w-full py-3 sm:py-4 px-4 sm:px-6 bg-green-normal hover:bg-green-normal-hover text-white font-medium text-xs sm:text-sm uppercase tracking-wide rounded-full transition-colors"
             @click="closeMobileMenu"
           >

@@ -12,6 +12,7 @@ interface Props {
 defineProps<Props>()
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -36,7 +37,7 @@ const { t } = useI18n()
     <div class="mt-3 sm:mt-4 lg:mt-5">
       <!-- Title - Always visible -->
       <NuxtLink 
-        :to="`/tours/${slug}`"
+        :to="localePath(`/tours/${slug}`)"
         class="font-bold text-gray-900 transition-all duration-300 line-clamp-2"
         :class="isActive ? 'text-base sm:text-lg lg:text-xl' : 'text-sm sm:text-base lg:text-lg'"
       >
@@ -60,7 +61,7 @@ const { t } = useI18n()
           <div class="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-full">
             <span class="text-xs sm:text-sm font-medium text-gray-900">{{ price }}</span>
           </div>
-          <NuxtLink to="#form" class="inline-flex items-center justify-center px-4 sm:px-6 py-1.5 sm:py-2 bg-orange-normal text-white text-xs sm:text-sm font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
+          <NuxtLink :to="localePath('/#form')" class="inline-flex items-center justify-center px-4 sm:px-6 py-1.5 sm:py-2 bg-orange-normal text-white text-xs sm:text-sm font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
             {{ t('common.bookNow') }}
           </NuxtLink>
         </div>

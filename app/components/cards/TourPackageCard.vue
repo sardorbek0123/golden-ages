@@ -18,6 +18,7 @@ interface Props {
 
 defineProps<Props>()
 
+const localePath = useLocalePath()
 const isHovered = ref(false)
 
 const getStarClass = (index: number, rating: number) => {
@@ -29,7 +30,7 @@ const getStarClass = (index: number, rating: number) => {
 
 <template>
   <NuxtLink 
-    :to="`/tours/${slug}`"
+    :to="localePath(`/tours/${slug}`)"
     class="bg-[#F9FAF9] hover:bg-[#FFF6E666] rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 border border-[#9195923D] hover:border-[#FFE4B0] transition-all duration-300 hover:shadow-lg block"
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
@@ -136,7 +137,7 @@ const getStarClass = (index: number, rating: number) => {
           
           <!-- Booking Button - visible on hover (desktop) or always (mobile) -->
           <NuxtLink 
-            to="#form"
+            :to="localePath('/#form')"
             v-if="isHovered"
             @click.prevent=""
             class="hidden lg:inline-block px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide text-xs sm:text-sm"
@@ -144,7 +145,7 @@ const getStarClass = (index: number, rating: number) => {
             BOOKING NOW
           </NuxtLink>
           <NuxtLink 
-            to="#form"
+            :to="localePath('/#form')"
             @click.prevent=""
             class="lg:hidden inline-block px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide text-xs sm:text-sm"
           >

@@ -4,6 +4,7 @@ defineProps<{
 }>()
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const tripsStore = useTripsStore()
 const { sortedTrips, loading } = storeToRefs(tripsStore)
 
@@ -50,7 +51,7 @@ const displayItems = computed(() => {
     <NuxtLink
       v-for="item in displayItems"
       :key="item.id"
-      :to="item.slug"
+      :to="localePath(item.slug)"
       class="block py-2 px-3 text-grey-darker text-sm hover:bg-grey-light rounded-lg transition-colors"
     >
       {{ item.name }}
@@ -62,7 +63,7 @@ const displayItems = computed(() => {
     <NuxtLink
       v-for="item in displayItems"
       :key="item.id"
-      :to="item.slug"
+      :to="localePath(item.slug)"
       class="group relative rounded-xl overflow-hidden h-[140px]"
     >
       <NuxtImg

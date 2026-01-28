@@ -4,7 +4,7 @@
   <div>
     <SectionAboutUsHero />
     <SectionAboutUsSlider id="missions" />
-    <SectionTeamMembers id="team" />
+    <SectionAboutUsTeamMembers id="team" />
     <SectionContactForm id="form"/>
   </div>
 </template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 const faqsStore = useFaqsStore()
 const { faqs, loading } = storeToRefs(faqsStore)
 
@@ -37,7 +38,7 @@ const isExpanded = (id: number) => expandedId.value === id
               {{ t('faq.description') }}
             </p>
             <NuxtLink
-              to="/contacts#form"
+              :to="localePath('/contacts#form')"
               class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-orange-normal hover:bg-orange-normal-hover text-white font-medium text-xs sm:text-sm uppercase tracking-wide rounded-full transition-colors"
             >
               {{ t('faq.askQuestion') }}

@@ -3,6 +3,7 @@ import { navItems } from '~/constants/navigation'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const route = useRoute()
+const localePath = useLocalePath()
 
 const emit = defineEmits<{
   (e: 'dropdown-toggle', menu: string | null): void
@@ -52,7 +53,7 @@ defineExpose({
         :key="item.key"
       >
         <NuxtLink
-          :to="item.href"
+          :to="localePath(item.href || '/')"
           class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
           :class="{
             'active': activeDropdown === item.key,
