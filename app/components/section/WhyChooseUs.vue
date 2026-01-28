@@ -73,10 +73,11 @@ const rightFeatures = features.slice(3, 6)
 
         <!-- Center - Image -->
         <div class="flex justify-center h-full order-1 lg:order-2 md:col-span-2 lg:col-span-4">
-          <img
+          <NuxtImg
             src="~/assets/images/why_us.jpg"
             alt="Why choose us"
             class="w-full max-w-md lg:max-w-none rounded-xl sm:rounded-2xl object-cover aspect-4/3 lg:aspect-auto"
+            loading="lazy"
           />
         </div>
 

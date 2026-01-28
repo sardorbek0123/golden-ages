@@ -128,6 +128,7 @@ const currentCity = computed(() => cities.value[activeIndex.value])
             <NuxtImg
               :src="city.image"
               :alt="city.name"
+              loading="lazy"
               class="w-full aspect-4/3 sm:aspect-video object-cover"
             />
           </SwiperSlide>
@@ -203,6 +204,7 @@ const currentCity = computed(() => cities.value[activeIndex.value])
                   <NuxtImg
                     :src="city.image"
                     :alt="city.name"
+                    loading="lazy"
                     class="w-full aspect-3/2 object-cover"
                   />
                 </SwiperSlide>
@@ -215,6 +217,7 @@ const currentCity = computed(() => cities.value[activeIndex.value])
                 v-if="cities.length > 0 && activeIndex < cities.length - 1"
                 :src="cities[activeIndex + 1]?.image"
                 :alt="cities[activeIndex + 1]?.name"
+                loading="lazy"
                 class="w-full h-full object-cover rounded-l-2xl"
               />
             </div>

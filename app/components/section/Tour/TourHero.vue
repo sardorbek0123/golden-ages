@@ -29,10 +29,11 @@ const { t } = useI18n()
 
       <!-- Hero Image -->
       <div class="rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden">
-        <img
+        <NuxtImg
           :src="heroImage"
           :alt="t('toursPage.heroTitle')"
           class="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] object-cover"
+          loading="lazy"
         />
       </div>
     </div>

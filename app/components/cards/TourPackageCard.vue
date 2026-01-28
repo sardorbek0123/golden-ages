@@ -37,9 +37,10 @@ const getStarClass = (index: number, rating: number) => {
     <div class="flex flex-col lg:flex-row gap-4 sm:gap-5 md:gap-6">
       <!-- Left - Image -->
       <div class="relative w-full lg:w-[400px] h-[200px] sm:h-[250px] md:h-[280px] lg:shrink-0 rounded-xl sm:rounded-2xl overflow-hidden">
-        <img
+        <NuxtImg
           :src="image"
           :alt="title"
+          loading="lazy"
           class="w-full h-full object-cover"
         />
         <!-- Badge -->
@@ -91,10 +92,11 @@ const getStarClass = (index: number, rating: number) => {
             :key="item.id"
             class="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 bg-white border border-[#F3F3F3] rounded-full text-xs text-gray-600"
           >
-            <img 
+            <NuxtImg 
               v-if="item.utility.icon" 
               :src="item.utility.icon" 
               :alt="item.utility.name"
+              loading="lazy"
               class="w-3 h-3 sm:w-3.5 sm:h-3.5 object-contain opacity-60"
             />
             <span>{{ item.value }}</span>

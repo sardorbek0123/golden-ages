@@ -20,9 +20,10 @@ const avatarUrl = computed(() => {
     <div class="flex items-start justify-between mb-4">
       <!-- Author Info -->
       <div class="flex items-center gap-3">
-        <img
+        <NuxtImg
           :src="avatarUrl"
           :alt="name"
+          loading="lazy"
           class="w-12 h-12 rounded-full object-cover"
         />
         <div>

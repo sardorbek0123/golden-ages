@@ -177,10 +177,11 @@ onUnmounted(() => {
         <!-- Mobile Menu Header -->
         <div class="flex items-center justify-between p-4 sm:p-6 border-b border-grey-normal">
           <NuxtLink to="/" @click="closeMobileMenu">
-            <img
+            <NuxtImg
               src="~/assets/Logo.svg"
               alt="Golden Ages"
               class="h-8 w-auto"
+              loading="lazy"
             />
           </NuxtLink>
           <button

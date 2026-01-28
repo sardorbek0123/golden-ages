@@ -119,7 +119,7 @@ const socialLinks = [
       </div>
 
       <div class="h-full overflow-hidden absolute bottom-0 left-0 right-0">
-        <img :src="footerBg" alt="" class="w-full h-auto object-contain opacity-30 sm:opacity-40 lg:opacity-50" />
+        <NuxtImg :src="footerBg" alt="" class="w-full h-auto object-contain opacity-30 sm:opacity-40 lg:opacity-50" loading="lazy" />
       </div>
     </div>
 

@@ -148,10 +148,11 @@ const isNextDisabled = computed(() => activeIndex.value >= sortedMembers.value.l
             <div class="group">
               <!-- Image -->
               <div class="aspect-3/4 rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 bg-grey-light">
-                <img
+                <NuxtImg
                   v-if="member.image"
                   :src="member.image"
                   :alt="member.full_name"
+                  loading="lazy"
                   class="w-full h-full object-cover"
                 />
               </div>

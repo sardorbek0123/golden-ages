@@ -65,9 +65,10 @@ const displayItems = computed(() => {
       :to="item.slug"
       class="group relative rounded-xl overflow-hidden h-[140px]"
     >
-      <img
+      <NuxtImg
         :src="item.image"
         :alt="item.name"
+        loading="lazy"
         class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
       />
       <div class="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />

@@ -65,9 +65,10 @@ const displayCities = computed(() => {
       :to="city.href"
       class="group relative rounded-xl overflow-hidden h-[120px]"
     >
-      <img
+      <NuxtImg
         :src="city.image"
         :alt="city.name"
+        loading="lazy"
         class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
       />
       <div class="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />

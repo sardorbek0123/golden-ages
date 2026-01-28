@@ -60,27 +60,30 @@ const goBack = () => {
       <div>
         <!-- Single image layout -->
         <div v-if="trip.images?.length === 1" class="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
-          <img 
+          <NuxtImg 
             :src="mainImage" 
             :alt="trip.name"
             class="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
 
         <!-- Two images layout -->
         <div v-else-if="trip.images?.length === 2" class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
           <div class="md:col-span-2 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
-            <img 
+            <NuxtImg 
               :src="mainImage" 
               :alt="trip.name"
               class="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <div class="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
-            <img 
+            <NuxtImg 
               :src="secondaryImages[0]?.image" 
               :alt="`${trip.name} 2`"
               class="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -88,10 +91,11 @@ const goBack = () => {
         <!-- Three or more images layout -->
         <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
           <div class="md:col-span-2 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[520px] rounded-xl sm:rounded-2xl overflow-hidden">
-            <img 
+            <NuxtImg 
               :src="mainImage" 
               :alt="trip.name"
               class="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <div class="flex flex-col gap-3 sm:gap-4">
@@ -100,10 +104,11 @@ const goBack = () => {
               :key="image.id"
               class="h-[120px] sm:h-[170px] md:h-[220px] lg:h-[250px] rounded-xl sm:rounded-2xl overflow-hidden"
             >
-              <img 
+              <NuxtImg 
                 :src="image.image" 
                 :alt="`${trip.name} ${index + 2}`"
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>

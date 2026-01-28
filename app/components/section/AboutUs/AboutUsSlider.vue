@@ -118,9 +118,10 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
               <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <!-- Image -->
                 <div class="w-full sm:w-48 md:w-64 h-40 sm:h-44 md:h-48 flex-shrink-0 rounded-lg sm:rounded-xl overflow-hidden">
-                  <img
+                  <NuxtImg
                     :src="item.image"
                     :alt="`About us ${index + 1}`"
+                    loading="lazy"
                     class="w-full h-full object-cover"
                   />
                 </div>

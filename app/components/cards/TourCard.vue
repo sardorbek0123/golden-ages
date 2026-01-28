@@ -24,9 +24,10 @@ const { t } = useI18n()
       class="relative transition-all duration-500" 
       :class="isActive ? 'h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px]' : 'h-[240px] sm:h-[320px] md:h-[400px] lg:h-[460px]'"
     >
-      <img
+      <NuxtImg
         :src="image"
         :alt="title"
+        loading="lazy"
         class="w-full h-full object-cover rounded-xl sm:rounded-2xl"
       />
     </div>

@@ -69,11 +69,12 @@ const sortedUtilities = computed(() => {
               }"
             >
               <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-start justify-center shrink-0">
-                <img 
+                <NuxtImg 
                   v-if="tripUtility.utility.icon"
                   :src="tripUtility.utility.icon" 
                   :alt="tripUtility.utility.name"
                   class="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+                  loading="lazy"
                 />
                 <svg v-else class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="12" cy="12" r="10" stroke="#6B7280" stroke-width="2"/>
