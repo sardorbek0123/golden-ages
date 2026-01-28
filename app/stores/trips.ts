@@ -33,7 +33,7 @@ export const useTripsStore = defineStore('trips', () => {
     error.value = null
 
     try {
-      const response = await get<PaginatedResponse<TripList>>('/trips/', params)
+      const response = await get<PaginatedResponse<TripList>>('/trips/', params as Record<string, unknown>)
       trips.value = response.results
       count.value = response.count
     } catch (e) {

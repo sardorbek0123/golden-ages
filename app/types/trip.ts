@@ -60,6 +60,7 @@ export interface TripList {
   days_count?: number | null
   nights_count?: number | null
   created_at: string
+  currency_key?: string | null
 }
 
 export interface TripDetail {
