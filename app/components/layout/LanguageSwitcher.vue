@@ -6,7 +6,8 @@ import EsIcon from '~/components/icons/lang/es.vue'
 import DeIcon from '~/components/icons/lang/de.vue'
 import FrIcon from '~/components/icons/lang/fr.vue'
 
-const { locale, locales, setLocale } = useI18n()
+const { locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
 const isOpen = ref(false)
 
 const availableLocales = computed(() => {
@@ -33,9 +34,16 @@ const toggleDropdown = () => {
   isOpen.value = !isOpen.value
 }
 
-const selectLocale = async (code: string) => {
-  await setLocale(code as any)
+const selectLocale = (code: string) => {
+  if (code === locale.value) {
+    isOpen.value = false
+    return
+  }
+  
   isOpen.value = false
+  // Navigate to the same page with new locale and reload to refresh backend data
+  const newPath = switchLocalePath(code)
+  window.location.href = newPath
 }
 
 // Close on click outside
