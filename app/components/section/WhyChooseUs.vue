@@ -5,7 +5,7 @@ import HeartBeatIcon from '~/components/icons/heart-beat.vue'
 import BadgeIcon from '~/components/icons/badge.vue'
 import PlaneIcon from '~/components/icons/plane.vue'
 import CommentsIcon from '~/components/icons/comments.vue'
-
+import whyUsImage from '~/assets/images/why_us.jpg'
 const { t } = useI18n()
 const features = [
   {
@@ -74,7 +74,7 @@ const rightFeatures = features.slice(3, 6)
         <!-- Center - Image -->
         <div class="flex justify-center h-full order-1 lg:order-2 md:col-span-2 lg:col-span-4">
           <NuxtImg
-            src="~/assets/images/why_us.jpg"
+            :src="whyUsImage"
             alt="Why choose us"
             class="w-full max-w-md lg:max-w-none rounded-xl sm:rounded-2xl object-cover aspect-4/3 lg:aspect-auto"
             loading="lazy"
