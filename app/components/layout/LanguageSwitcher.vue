@@ -7,7 +7,7 @@ import DeIcon from '~/components/icons/lang/de.vue'
 import FrIcon from '~/components/icons/lang/fr.vue'
 
 const { locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
+const route = useRoute()
 const isOpen = ref(false)
 
 const availableLocales = computed(() => {
@@ -41,8 +41,25 @@ const selectLocale = (code: string) => {
   }
   
   isOpen.value = false
-  // Navigate to the same page with new locale and reload to refresh backend data
-  const newPath = switchLocalePath(code)
+  
+  // Get current path and replace locale prefix
+  let currentPath = route.path
+  
+  // Remove current locale prefix if exists (e.g., /ru/tours -> /tours)
+  const allLocaleCodes = locales.value.map(l => typeof l === 'string' ? l : l.code)
+  for (const loc of allLocaleCodes) {
+    if (currentPath.startsWith(`/${loc}/`)) {
+      currentPath = currentPath.slice(loc.length + 1)
+      break
+    } else if (currentPath === `/${loc}`) {
+      currentPath = '/'
+      break
+    }
+  }
+  
+  // Build new path with new locale prefix
+  const newPath = `/${code}${currentPath === '/' ? '' : currentPath}`
+  
   window.location.href = newPath
 }
 
