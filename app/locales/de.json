@@ -168,6 +168,11 @@
   "cities": {
     "all": "Alle Städte"
   },
+  "hotels": {
+    "title": "Übernachten in {city}",
+    "description": "Entdecken Sie eine kuratierte Auswahl der besten Hotels in {city} — von eleganten internationalen Ketten bis hin zu charmanten Boutique-Hotels in der Nähe antiker Sehenswürdigkeiten. Jede Unterkunft bietet Komfort, Stil und authentische usbekische Gastfreundschaft.",
+    "noHotels": "Derzeit sind keine Hotels für diese Stadt verfügbar."
+  },
   "tourDetail": {
     "back": "Zurück",
     "duration": "Dauer",

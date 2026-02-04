@@ -168,6 +168,11 @@
   "cities": {
     "all": "Todas las ciudades"
   },
+  "hotels": {
+    "title": "Dónde alojarse en {city}",
+    "description": "Descubre una selección curada de los mejores hoteles de {city} — desde elegantes cadenas internacionales hasta encantadores hoteles boutique cerca de monumentos antiguos. Cada propiedad ofrece comodidad, estilo y auténtica hospitalidad uzbeka.",
+    "noHotels": "No hay hoteles disponibles para esta ciudad en este momento."
+  },
   "tourDetail": {
     "back": "Volver",
     "duration": "Duración",

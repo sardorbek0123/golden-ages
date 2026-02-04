@@ -168,6 +168,11 @@
   "cities": {
     "all": "Toutes les villes"
   },
+  "hotels": {
+    "title": "Où séjourner à {city}",
+    "description": "Découvrez une sélection des meilleurs hôtels de {city} — des chaînes internationales élégantes aux charmants hôtels-boutiques près des monuments anciens. Chaque établissement offre confort, style et authentique hospitalité ouzbèke.",
+    "noHotels": "Aucun hôtel disponible pour cette ville pour le moment."
+  },
   "tourDetail": {
     "back": "Retour",
     "duration": "Durée",

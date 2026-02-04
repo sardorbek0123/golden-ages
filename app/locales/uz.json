@@ -168,6 +168,11 @@
   "cities": {
     "all": "Barcha shaharlar"
   },
+  "hotels": {
+    "title": "{city}da qayerda qolish mumkin",
+    "description": "{city}ning eng yaxshi mehmonxonalarini kashf eting — nafis xalqaro tarmoqlardan tortib qadimiy obidalar yaqinidagi go'zal butik mehmonxonalargacha. Har bir mehmonxona qulaylik, uslub va haqiqiy o'zbek mehmondo'stligini taqdim etadi.",
+    "noHotels": "Hozirda bu shahar uchun mehmonxonalar mavjud emas."
+  },
   "tourDetail": {
     "back": "Orqaga",
     "duration": "Davomiyligi",
