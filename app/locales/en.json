@@ -101,8 +101,10 @@
     "contactTitle": "Plan Your Uzbekistan Trip with",
     "contactHighlight": "Local Experts",
     "planYourTrip": "Plan Your Uzbekistan Trip with local experts",
-    "selectTourType": "Select Tour Type"
-
+    "selectTourType": "Select Tour Type",
+    "successTitle": "Thank You!",
+    "successMessage": "Your message has been submitted successfully.",
+    "sending": "Sending..."
   },
   "footer": {
     "description": "Experience the Golden Ages of history with us — Discover the timeless beauty of Uzbekistan",
@@ -211,6 +213,53 @@
     "badge": "TEAM MEMBERS",
     "title": "Who will take care of you?",
     "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe"
+  },
+  "mission": {
+    "badge": "OUR MISSION",
+    "title": "Bringing the Spirit of the Silk Road to Life",
+    "description": "We believe that every journey should go beyond sightseeing — it should connect people, cultures, and time",
+    "buttonText": "START THE TRIP",
+    "items": {
+      "connections": {
+        "title": "Authentic Connections",
+        "description": "We work closely with local guides, artisans, and families to offer genuine experiences rooted in real culture"
+      },
+      "customizable": {
+        "title": "Customisable Tours",
+        "description": "Every itinerary can be tailored to your preferences — from pace and accommodations to unique cultural activities"
+      },
+      "modular": {
+        "title": "Modular Elements",
+        "description": "Mix and match destinations, experiences, and services to build your perfect Uzbekistan adventure"
+      }
+    }
+  },
+  "goals": {
+    "badge": "GOALS",
+    "title": "Driven by Purpose, Focused on Excellence",
+    "description": "Our goal is to redefine the art of travel across Uzbekistan — turning every journey into a story of discovery, comfort, and connection. Through dedication, cultural insight, and precision in every detail, we craft experiences that stay with our travelers long after the journey ends.",
+    "cards": {
+      "experience": {
+        "badge": "EXPERIENCE",
+        "value": "10+ Years",
+        "description": "of curating authentic Silk Road adventures that inspire and educate travelers from around the world"
+      },
+      "satisfaction": {
+        "badge": "GUEST SATISFACTION",
+        "value": "99%",
+        "description": "Client Satisfaction Rate"
+      },
+      "journeys": {
+        "badge": "MEANINGFUL JOURNEYS",
+        "value": "300+ Curated Tours",
+        "description": "developed with a focus on cultural immersion, comfort, and sustainable travel practices"
+      },
+      "support": {
+        "badge": "SUPPORT & SERVICE",
+        "value": "24/7 Assistance",
+        "description": "from our dedicated on-ground teams ensures smooth experiences — from arrival to farewell"
+      }
+    }
   },
   "culture": {
     "heroTitle": "Stories That Bring Uzbekistan to Life"

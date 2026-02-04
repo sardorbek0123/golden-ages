@@ -25,14 +25,25 @@ onMounted(() => {
 
 const isSubmitting = computed(() => messagesStore.loading)
 
+// Check if all fields are filled
+const isFormValid = computed(() => {
+  return (
+    form.fullName.trim() !== '' &&
+    form.email.trim() !== '' &&
+    form.phone.trim() !== '' &&
+    form.tripId !== null &&
+    form.message.trim() !== ''
+  )
+})
+
 const handleSubmit = async () => {
-  if (!form.tripId) return
+  if (!isFormValid.value) return
 
   const success = await messagesStore.createMessage({
     full_name: form.fullName,
     email: form.email,
     phone: form.phone,
-    trip_category: form.tripId,
+    trip: form.tripId!,
     message: form.message
   })
 
@@ -64,6 +75,7 @@ const handleSubmit = async () => {
               <input
                 v-model="form.fullName"
                 type="text"
+                required
                 :placeholder="t('contactForm.fullName')"
                 class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
                 :aria-label="t('contactForm.fullName')"
@@ -79,6 +91,7 @@ const handleSubmit = async () => {
                 <input
                   v-model="form.email"
                   type="email"
+                  required
                   :placeholder="t('contactForm.email')"
                   :aria-label="t('contactForm.email')"
                   class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
@@ -91,6 +104,7 @@ const handleSubmit = async () => {
                 <input
                   v-model="form.phone"
                   type="tel"
+                  required
                   :placeholder="t('contactForm.phone')"
                   :aria-label="t('contactForm.phone')"
                   class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
@@ -105,6 +119,7 @@ const handleSubmit = async () => {
               </label>
               <select
                 v-model="form.tripId"
+                required
                 class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 appearance-none cursor-pointer"
                 :disabled="tripsStore.loading"
               >
@@ -123,6 +138,7 @@ const handleSubmit = async () => {
               <textarea
                 v-model="form.message"
                 :rows="4"
+                required
                 :placeholder="t('contactForm.message')"
                 :aria-label="t('contactForm.message')"
                 class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400 resize-none sm:min-h-[150px] md:min-h-[180px]"
@@ -132,22 +148,18 @@ const handleSubmit = async () => {
             <!-- Submit Button -->
             <button
               type="submit"
-              :disabled="isSubmitting || !form.tripId"
+              :disabled="isSubmitting || !isFormValid"
               class="w-full py-3 sm:py-4 bg-orange-normal text-white text-sm sm:text-base font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span v-if="isSubmitting">{{ t('contactForm.sending') || 'Sending...' }}</span>
+              <span v-if="isSubmitting">{{ t('contactForm.sending') }}</span>
               <span v-else>{{ t('contactForm.submit') }}</span>
             </button>
             
             <!-- Success Message -->
             <p v-if="messagesStore.success" class="text-green-600 text-center text-sm sm:text-base font-medium">
-              {{ t('contactForm.successMessage') || 'Message sent successfully!' }}
+              {{ t('contactForm.successMessage') }}
             </p>
-            
-            <!-- Error Message -->
-            <p v-if="messagesStore.error" class="text-red-600 text-center text-sm sm:text-base font-medium">
-              {{ messagesStore.error }}
-            </p>
+
           </form>
         </div>
 

@@ -98,6 +98,8 @@
     "message": "XABAR",
     "messagePlaceholder": "Sizga qanday yordam bera olamiz?",
     "submit": "XABAR YUBORISH",
+    "sending": "Yuborilmoqda...",
+    "successMessage": "Xabaringiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.",
     "planYourTrip": "O'zbekistonga sayohatingizni mahalliy ekspertlar bilan rejalashtiring",
     "selectTourType": "Turlar ro'yxatidan turni tanlang"
   },
@@ -208,6 +210,53 @@
     "badge": "JAMOA A'ZOLARI",
     "title": "Kim sizga g'amxo'rlik qiladi?",
     "description": "Sayohatingizni unutilmas qiladigan mutaxassislar bilan tanishing"
+  },
+  "mission": {
+    "badge": "BIZNING MISSIYAMIZ",
+    "title": "Ipak yo'li ruhini jonlantirish",
+    "description": "Biz har bir sayohat diqqatga sazovor joylarni ko'rishdan tashqariga chiqishi kerak deb hisoblaymiz — u odamlarni, madaniyatlarni va vaqtni bog'lashi kerak",
+    "buttonText": "SAYOHATNI BOSHLASH",
+    "items": {
+      "connections": {
+        "title": "Haqiqiy aloqalar",
+        "description": "Biz mahalliy gidlar, hunarmandlar va oilalar bilan yaqindan hamkorlik qilib, haqiqiy madaniyatga asoslangan chin tajribalarni taqdim etamiz"
+      },
+      "customizable": {
+        "title": "Moslashtirilgan turlar",
+        "description": "Har bir marshrutni o'z xohishingizga ko'ra moslashtirish mumkin — sur'atdan tortib, turar joylar va noyob madaniy tadbirlargacha"
+      },
+      "modular": {
+        "title": "Modulli elementlar",
+        "description": "O'zbekistonda mukammal sarguzashtingizni yaratish uchun yo'nalishlar, tajribalar va xizmatlarni aralashtiring"
+      }
+    }
+  },
+  "goals": {
+    "badge": "MAQSADLAR",
+    "title": "Maqsadga intilish, mukammallikka yo'nalish",
+    "description": "Bizning maqsadimiz — O'zbekiston bo'ylab sayohat san'atini qayta belgilash, har bir sayohatni kashfiyot, qulaylik va bog'lanish hikoyasiga aylantirish. Fidoyilik, madaniy tushuncha va har bir tafsilga e'tibor orqali biz sayohatchilar bilan uzoq vaqt qoladigan tajribalarni yaratamiz.",
+    "cards": {
+      "experience": {
+        "badge": "TAJRIBA",
+        "value": "10+ yil",
+        "description": "dunyo bo'ylab sayohatchilarni ilhomlantiruvchi va o'rgatuvchi Ipak yo'li sarguzashtlarini yaratish tajribasi"
+      },
+      "satisfaction": {
+        "badge": "MIJOZLAR MAMNUNIYATI",
+        "value": "99%",
+        "description": "Mijozlar mamnuniyati darajasi"
+      },
+      "journeys": {
+        "badge": "MAZMUNLI SAYOHATLAR",
+        "value": "300+ tur",
+        "description": "madaniy singdirish, qulaylik va barqaror sayohat amaliyotlariga e'tibor qaratgan holda ishlab chiqilgan"
+      },
+      "support": {
+        "badge": "QOLLAB-QUVVATLASH",
+        "value": "24/7 yordam",
+        "description": "bizning mahalliy jamoamiz kelishdan xayrlashuvgacha silliq tajribani ta'minlaydi"
+      }
+    }
   },
   "culture": {
     "heroTitle": "O'zbekiston tarixini kashf eting"

@@ -16,7 +16,7 @@ export const useMessagesStore = defineStore('messages', () => {
     success.value = false
 
     try {
-      await post<UserMessageCreate>('/messages/create/', data)
+      await post<UserMessageCreate>('/messages/create/', data as unknown as Record<string, unknown>)
       success.value = true
       return true
     } catch (e) {

@@ -98,6 +98,8 @@
     "message": "NACHRICHT",
     "messagePlaceholder": "Wie können wir Ihnen helfen?",
     "submit": "NACHRICHT SENDEN",
+    "sending": "Wird gesendet...",
+    "successMessage": "Ihre Nachricht wurde erfolgreich gesendet! Wir werden uns bald bei Ihnen melden.",
     "planYourTrip": "Planen Sie Ihre Usbekistan-Reise mit lokalen Experten",
     "selectTourType": "Tourtyp auswählen"
   },

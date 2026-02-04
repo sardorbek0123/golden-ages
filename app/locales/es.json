@@ -98,6 +98,8 @@
     "message": "MENSAJE",
     "messagePlaceholder": "¿Cómo podemos ayudarte?",
     "submit": "ENVIAR MENSAJE",
+    "sending": "Enviando...",
+    "successMessage": "¡Tu mensaje ha sido enviado con éxito! Nos pondremos en contacto contigo pronto.",
     "planYourTrip": "Planifica tu viaje a Uzbekistán con expertos locales",
     "selectTourType": "Selecciona el tipo de tour"
   },

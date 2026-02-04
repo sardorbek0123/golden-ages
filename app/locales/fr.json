@@ -98,6 +98,8 @@
     "message": "MESSAGE",
     "messagePlaceholder": "Comment pouvons-nous vous aider?",
     "submit": "ENVOYER LE MESSAGE",
+    "sending": "Envoi en cours...",
+    "successMessage": "Votre message a été envoyé avec succès ! Nous vous contacterons bientôt.",
     "planYourTrip": "Planifiez votre voyage en Ouzbékistan avec des experts locaux",
     "selectTourType": "Sélectionnez le type de circuit"
   },
