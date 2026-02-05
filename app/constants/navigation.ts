@@ -8,7 +8,7 @@ export interface NavItem {
 export const navItems: NavItem[] = [
     { key: 'tours', hasDropdown: true, matchPath: '/tours' },
     { key: 'aboutUs', href: '/about' },
-    { key: 'cities', hasDropdown: true },
+    // { key: 'cities', hasDropdown: true },
     // { key: 'shop', href: '/shop' },
     // { key: 'uzbekCulture', href: '/culture' },
     { key: 'contacts', href: '/contacts' }
