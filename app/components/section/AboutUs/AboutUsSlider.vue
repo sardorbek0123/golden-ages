@@ -131,9 +131,9 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
                 </div>
               </div>
               <!-- Description -->
-              <p class="text-dark-normal text-sm sm:text-base md:text-lg leading-relaxed mt-4 sm:mt-5 md:mt-6">
-                {{ item.description }}
-              </p>
+              <div class="text-dark-normal text-sm sm:text-base md:text-lg leading-relaxed mt-4 sm:mt-5 md:mt-6"
+                 v-html="item.description">
+              </div>
             </div>
           </SwiperSlide>
         </Swiper>

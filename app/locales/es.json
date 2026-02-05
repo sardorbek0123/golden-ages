@@ -216,6 +216,53 @@
     "title": "¿Quién cuidará de ti?",
     "description": "Conoce a los profesionales que harán tu viaje inolvidable"
   },
+  "mission": {
+    "badge": "NUESTRA MISIÓN",
+    "title": "Dando vida al espíritu de la Ruta de la Seda",
+    "description": "Creemos que cada viaje debe ir más allá del turismo — debe conectar personas, culturas y tiempos",
+    "buttonText": "COMENZAR EL VIAJE",
+    "items": {
+      "connections": {
+        "title": "Conexiones auténticas",
+        "description": "Trabajamos estrechamente con guías locales, artesanos y familias para ofrecer experiencias genuinas arraigadas en la cultura real"
+      },
+      "customizable": {
+        "title": "Tours personalizables",
+        "description": "Cada itinerario puede adaptarse a tus preferencias — desde el ritmo y alojamiento hasta actividades culturales únicas"
+      },
+      "modular": {
+        "title": "Elementos modulares",
+        "description": "Combina destinos, experiencias y servicios para crear tu aventura perfecta en Uzbekistán"
+      }
+    }
+  },
+  "goals": {
+    "badge": "OBJETIVOS",
+    "title": "Impulsados por un propósito, enfocados en la excelencia",
+    "description": "Nuestro objetivo es redefinir el arte de viajar por Uzbekistán — convirtiendo cada viaje en una historia de descubrimiento, comodidad y conexión. A través de la dedicación, la comprensión cultural y la precisión en cada detalle, creamos experiencias que permanecen con los viajeros mucho después de que el viaje termina.",
+    "cards": {
+      "experience": {
+        "badge": "EXPERIENCIA",
+        "value": "10+ Años",
+        "description": "curando auténticas aventuras por la Ruta de la Seda que inspiran y educan a viajeros de todo el mundo"
+      },
+      "satisfaction": {
+        "badge": "SATISFACCIÓN DEL CLIENTE",
+        "value": "99%",
+        "description": "Tasa de satisfacción del cliente"
+      },
+      "journeys": {
+        "badge": "VIAJES SIGNIFICATIVOS",
+        "value": "300+ Tours curados",
+        "description": "desarrollados con enfoque en inmersión cultural, comodidad y prácticas de viaje sostenibles"
+      },
+      "support": {
+        "badge": "SOPORTE Y SERVICIO",
+        "value": "Asistencia 24/7",
+        "description": "de nuestros equipos dedicados en el terreno asegura experiencias fluidas — desde la llegada hasta la despedida"
+      }
+    }
+  },
   "culture": {
     "heroTitle": "Historias que dan vida a Uzbekistán"
   }

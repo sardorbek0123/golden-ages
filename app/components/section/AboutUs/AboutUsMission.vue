@@ -5,16 +5,16 @@ const activeItem = ref(0)
 
 const missionItems = computed(() => [
   {
-    title: t('aboutUs.mission.items.authentic.title'),
-    description: t('aboutUs.mission.items.authentic.description')
+    title: t('mission.items.connections.title'),
+    description: t('mission.items.connections.description')
   },
   {
-    title: t('aboutUs.mission.items.customisable.title'),
-    description: t('aboutUs.mission.items.customisable.description')
+    title: t('mission.items.customizable.title'),
+    description: t('mission.items.customizable.description')
   },
   {
-    title: t('aboutUs.mission.items.modular.title'),
-    description: t('aboutUs.mission.items.modular.description')
+    title: t('mission.items.modular.title'),
+    description: t('mission.items.modular.description')
   }
 ])
 
@@ -33,7 +33,7 @@ const toggleItem = (index: number) => {
         <div class="w-full lg:w-1/2 xl:w-[45%]">
           <div class="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-full min-h-[400px] rounded-2xl overflow-hidden">
             <NuxtImg
-              src="/images/hero_bg.jpg"
+              src="~/assets/images/hero_bg.jpg"
               alt="Silk Road Architecture"
               class="w-full h-full object-cover"
               loading="lazy"
@@ -43,21 +43,21 @@ const toggleItem = (index: number) => {
 
         <!-- Right: Content -->
         <div class="w-full lg:w-1/2 xl:w-[55%] flex flex-col justify-center">
-          <CommonBadge :text="t('aboutUs.mission.badge')" />
+          <CommonBadge :text="t('mission.badge')" />
           
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-dark-normal leading-tight mb-4 sm:mb-6 font-display">
-            {{ t('aboutUs.mission.title') }}
+            {{ t('mission.title') }}
           </h2>
           
           <p class="text-grey-darker text-base sm:text-lg mb-6 sm:mb-8 max-w-xl">
-            {{ t('aboutUs.mission.description') }}
+            {{ t('mission.description') }}
           </p>
           
           <NuxtLink
             to="/tours"
             class="inline-flex items-center justify-center w-fit px-8 py-4 bg-orange-normal text-white font-semibold rounded-full hover:bg-orange-600 transition-colors duration-300 mb-10 sm:mb-12 uppercase tracking-wide text-sm"
           >
-            {{ t('aboutUs.mission.cta') }}
+            {{ t('mission.buttonText') }}
           </NuxtLink>
 
           <!-- Accordion -->

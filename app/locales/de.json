@@ -216,6 +216,53 @@
     "title": "Wer kümmert sich um Sie?",
     "description": "Lernen Sie die Profis kennen, die Ihre Reise unvergesslich machen werden"
   },
+  "mission": {
+    "badge": "UNSERE MISSION",
+    "title": "Den Geist der Seidenstraße zum Leben erwecken",
+    "description": "Wir glauben, dass jede Reise über das Sightseeing hinausgehen sollte — sie sollte Menschen, Kulturen und Zeiten verbinden",
+    "buttonText": "REISE STARTEN",
+    "items": {
+      "connections": {
+        "title": "Authentische Verbindungen",
+        "description": "Wir arbeiten eng mit lokalen Guides, Handwerkern und Familien zusammen, um echte Erlebnisse zu bieten, die in der realen Kultur verwurzelt sind"
+      },
+      "customizable": {
+        "title": "Individuelle Touren",
+        "description": "Jede Reiseroute kann nach Ihren Wünschen angepasst werden — von Tempo und Unterkunft bis hin zu einzigartigen kulturellen Aktivitäten"
+      },
+      "modular": {
+        "title": "Modulare Elemente",
+        "description": "Kombinieren Sie Reiseziele, Erlebnisse und Services, um Ihr perfektes Usbekistan-Abenteuer zu gestalten"
+      }
+    }
+  },
+  "goals": {
+    "badge": "ZIELE",
+    "title": "Von Zielen angetrieben, auf Exzellenz fokussiert",
+    "description": "Unser Ziel ist es, die Kunst des Reisens durch Usbekistan neu zu definieren — jede Reise in eine Geschichte von Entdeckung, Komfort und Verbindung zu verwandeln. Durch Hingabe, kulturelles Verständnis und Präzision in jedem Detail schaffen wir Erlebnisse, die Reisende noch lange nach der Reise begleiten.",
+    "cards": {
+      "experience": {
+        "badge": "ERFAHRUNG",
+        "value": "10+ Jahre",
+        "description": "authentische Seidenstraßen-Abenteuer zu kuratieren, die Reisende aus aller Welt inspirieren und bilden"
+      },
+      "satisfaction": {
+        "badge": "KUNDENZUFRIEDENHEIT",
+        "value": "99%",
+        "description": "Kundenzufriedenheitsrate"
+      },
+      "journeys": {
+        "badge": "BEDEUTUNGSVOLLE REISEN",
+        "value": "300+ kuratierte Touren",
+        "description": "entwickelt mit Fokus auf kulturelles Eintauchen, Komfort und nachhaltige Reisepraktiken"
+      },
+      "support": {
+        "badge": "SUPPORT & SERVICE",
+        "value": "24/7 Unterstützung",
+        "description": "von unseren engagierten Teams vor Ort sorgt für reibungslose Erlebnisse — von der Ankunft bis zum Abschied"
+      }
+    }
+  },
   "culture": {
     "heroTitle": "Geschichten, die Usbekistans Leben bringen"
   }

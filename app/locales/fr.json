@@ -216,6 +216,53 @@
     "title": "Qui prendra soin de vous?",
     "description": "Rencontrez les professionnels qui rendront votre voyage inoubliable"
   },
+  "mission": {
+    "badge": "NOTRE MISSION",
+    "title": "Donner vie à l'esprit de la Route de la Soie",
+    "description": "Nous croyons que chaque voyage doit aller au-delà du tourisme — il doit connecter les gens, les cultures et le temps",
+    "buttonText": "COMMENCER LE VOYAGE",
+    "items": {
+      "connections": {
+        "title": "Connexions authentiques",
+        "description": "Nous travaillons en étroite collaboration avec des guides locaux, des artisans et des familles pour offrir des expériences authentiques enracinées dans la vraie culture"
+      },
+      "customizable": {
+        "title": "Circuits personnalisables",
+        "description": "Chaque itinéraire peut être adapté à vos préférences — du rythme et de l'hébergement aux activités culturelles uniques"
+      },
+      "modular": {
+        "title": "Éléments modulaires",
+        "description": "Combinez destinations, expériences et services pour créer votre aventure parfaite en Ouzbékistan"
+      }
+    }
+  },
+  "goals": {
+    "badge": "OBJECTIFS",
+    "title": "Guidés par un objectif, focalisés sur l'excellence",
+    "description": "Notre objectif est de redéfinir l'art du voyage à travers l'Ouzbékistan — transformer chaque voyage en une histoire de découverte, de confort et de connexion. Par le dévouement, la compréhension culturelle et la précision dans chaque détail, nous créons des expériences qui restent avec les voyageurs longtemps après la fin du voyage.",
+    "cards": {
+      "experience": {
+        "badge": "EXPÉRIENCE",
+        "value": "10+ Ans",
+        "description": "à créer des aventures authentiques sur la Route de la Soie qui inspirent et éduquent les voyageurs du monde entier"
+      },
+      "satisfaction": {
+        "badge": "SATISFACTION CLIENT",
+        "value": "99%",
+        "description": "Taux de satisfaction client"
+      },
+      "journeys": {
+        "badge": "VOYAGES SIGNIFICATIFS",
+        "value": "300+ Circuits créés",
+        "description": "développés avec un accent sur l'immersion culturelle, le confort et les pratiques de voyage durables"
+      },
+      "support": {
+        "badge": "SUPPORT ET SERVICE",
+        "value": "Assistance 24/7",
+        "description": "de nos équipes dédiées sur le terrain assure des expériences fluides — de l'arrivée aux adieux"
+      }
+    }
+  },
   "culture": {
     "heroTitle": "Histoires qui donnent vie à l'Ouzbékistan"
   }
