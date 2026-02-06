@@ -18,25 +18,15 @@ onMounted(async () => {
 // Default image fallback
 const defaultImage = 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=400'
 
-// Combined cities with "All" as first item
+// Cities list without "All" option
 const displayCities = computed(() => {
-  const allCity = {
-    id: 0,
-    name: t('cities.all'),
-    slug: '',
-    href: '/cities',
-    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400'
-  }
-  
-  const apiCities = sortedCities.value.map(city => ({
+  return sortedCities.value.map(city => ({
     id: city.id,
     name: city.name,
     slug: city.slug,
     href: `/cities/${city.slug}`,
     image: city.image || defaultImage
   }))
-  
-  return [allCity, ...apiCities]
 })
 </script>
 

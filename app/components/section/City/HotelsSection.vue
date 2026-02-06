@@ -47,14 +47,8 @@ watch(() => props.cityId, async (newCityId) => {
 
       <!-- Hotels Grid -->
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        <!-- First hotel - featured (larger) -->
-        <div v-if="hotels.length > 0" class="sm:row-span-2">
-          <CardsHotelCard :hotel="hotels[0]" featured />
-        </div>
-        
-        <!-- Rest of hotels -->
         <CardsHotelCard
-          v-for="hotel in hotels.slice(1)"
+          v-for="hotel in hotels"
           :key="hotel.id"
           :hotel="hotel"
         />

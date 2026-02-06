@@ -3,6 +3,6 @@
 <template>
   <div>
     <SectionCultureHero />
-    <SectionCultureTabs />
+    <SectionCulturePosts />
   </div>
 </template>

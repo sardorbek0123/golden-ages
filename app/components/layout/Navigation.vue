@@ -52,14 +52,27 @@ defineExpose({
         v-for="item in navItems"
         :key="item.key"
       >
-        <NuxtLink
-          :to="localePath(item.href || '/')"
+        <!-- Items with dropdown - use button instead of link -->
+        <button
+          v-if="item.hasDropdown"
           class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
           :class="{
             'active': activeDropdown === item.key,
             'route-active': isRouteActive(item)
           }"
           @click="handleClick(item, $event)"
+        >
+          {{ t(`nav.${item.key}`) }}
+        </button>
+        
+        <!-- Regular items - use NuxtLink -->
+        <NuxtLink
+          v-else
+          :to="localePath(item.href || '/')"
+          class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
+          :class="{
+            'route-active': isRouteActive(item)
+          }"
         >
           {{ t(`nav.${item.key}`) }}
         </NuxtLink>

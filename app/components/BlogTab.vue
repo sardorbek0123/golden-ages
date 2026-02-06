@@ -22,11 +22,13 @@ const categories = computed(() => {
 })
 </script>
 <template>
-  <div class="flex justify-center items-center gap-4">
-    <div v-for="category in categories" :key="category.id">
-      <button class="font-bold text-2xl" :class=" activeCategory === category.id ? 'text-black' : 'text-black/40' " @click="toggleCategory(category.id)">
-        {{ category.name}}
-      </button>
+  <div class="flex justify-center">
+    <div class="flex justify-center items-center gap-6 border-b border-[#11111133] w-fit">
+      <div v-for="category in categories" :key="category.id">
+        <button class="font-bold text-2xl border-b border-transparent" :class=" activeCategory === category.id ? 'text-black border-black!' : 'text-black/40' " @click="toggleCategory(category.id)">
+          {{ category.name}}
+        </button>
+      </div>
     </div>
   </div>
 </template>
