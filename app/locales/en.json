@@ -268,5 +268,10 @@
   },
   "culture": {
     "heroTitle": "Stories That Bring Uzbekistan to Life"
+  },
+  "license": {
+    "badge": "LICENSE",
+    "description": "Officially licensed by the State Tourism Committee of Uzbekistan — trusted, transparent, and certified for quality travel.",
+    "download": "DOWNLOAD CERTIFICATE (PDF)"
   }
 }

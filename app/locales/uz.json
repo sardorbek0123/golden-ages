@@ -265,5 +265,10 @@
   },
   "culture": {
     "heroTitle": "O'zbekiston tarixini kashf eting"
+  },
+  "license": {
+    "badge": "LITSENZIYA",
+    "description": "O'zbekiston Davlat turizm qo'mitasi tomonidan rasmiy litsenziyalangan — ishonchli, shaffof va sifatli sayohat uchun sertifikatlangan.",
+    "download": "SERTIFIKATNI YUKLAB OLISH (PDF)"
   }
 }

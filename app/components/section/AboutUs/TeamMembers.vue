@@ -161,7 +161,7 @@ const isNextDisabled = computed(() => activeIndex.value >= sortedMembers.value.l
               <div>
                 <p class="text-grey-darker text-xs sm:text-sm mb-1">{{ member.role }}</p>
                 <h3 class="text-dark-normal text-base sm:text-lg md:text-xl font-semibold mb-1.5 sm:mb-2">{{ member.full_name }}</h3>
-                <p class="text-grey-darker text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">{{ member.description }}</p>
+                <div class="text-grey-darker text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4" v-html="member.description"></div>
 
                 <!-- Social Links -->
                 <div class="flex items-center gap-3 sm:gap-4">

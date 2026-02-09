@@ -265,5 +265,10 @@
   },
   "culture": {
     "heroTitle": "Histoires qui donnent vie à l'Ouzbékistan"
+  },
+  "license": {
+    "badge": "LICENCE",
+    "description": "Officiellement licencié par le Comité d'État du tourisme d'Ouzbékistan — fiable, transparent et certifié pour des voyages de qualité.",
+    "download": "TÉLÉCHARGER LE CERTIFICAT (PDF)"
   }
 }

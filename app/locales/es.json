@@ -265,5 +265,10 @@
   },
   "culture": {
     "heroTitle": "Historias que dan vida a Uzbekistán"
+  },
+  "license": {
+    "badge": "LICENCIA",
+    "description": "Licenciado oficialmente por el Comité Estatal de Turismo de Uzbekistán — confiable, transparente y certificado para viajes de calidad.",
+    "download": "DESCARGAR CERTIFICADO (PDF)"
   }
 }

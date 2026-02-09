@@ -7,6 +7,7 @@
     <SectionAboutUsMission />
     <SectionAboutUsGoals id="goals" />
     <SectionAboutUsTeamMembers id="team" />
+    <SectionAboutUsCertificate id="license" />
     <SectionContactForm id="form"/>
   </div>
 </template>
