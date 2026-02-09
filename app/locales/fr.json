@@ -264,7 +264,10 @@
     }
   },
   "culture": {
-    "heroTitle": "Histoires qui donnent vie à l'Ouzbékistan"
+    "heroTitle": "Histoires qui donnent vie à l'Ouzbékistan",
+    "noPosts": "Aucune histoire disponible pour le moment.",
+    "viewAll": "VOIR TOUTES LES HISTOIRES",
+    "postNotFound": "Histoire non trouvée."
   },
   "license": {
     "badge": "LICENCE",

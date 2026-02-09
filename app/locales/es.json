@@ -264,7 +264,10 @@
     }
   },
   "culture": {
-    "heroTitle": "Historias que dan vida a Uzbekistán"
+    "heroTitle": "Historias que dan vida a Uzbekistán",
+    "noPosts": "No hay historias disponibles en este momento.",
+    "viewAll": "VER TODAS LAS HISTORIAS",
+    "postNotFound": "Historia no encontrada."
   },
   "license": {
     "badge": "LICENCIA",

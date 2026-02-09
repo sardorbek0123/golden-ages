@@ -264,7 +264,10 @@
     }
   },
   "culture": {
-    "heroTitle": "Geschichten, die Usbekistans Leben bringen"
+    "heroTitle": "Geschichten, die Usbekistans Leben bringen",
+    "noPosts": "Derzeit keine Geschichten verfügbar.",
+    "viewAll": "ALLE GESCHICHTEN ANSEHEN",
+    "postNotFound": "Geschichte nicht gefunden."
   },
   "license": {
     "badge": "LIZENZ",

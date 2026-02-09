@@ -10,6 +10,6 @@ export const navItems: NavItem[] = [
     { key: 'aboutUs', href: '/about' },
     { key: 'cities', hasDropdown: true },
     // { key: 'shop', href: '/shop' },
-    // { key: 'culture', href: '/culture' },
+    { key: 'culture', href: '/culture' },
     { key: 'contacts', href: '/contacts' }
 ]

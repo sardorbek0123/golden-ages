@@ -100,7 +100,7 @@ onUnmounted(() => {
       <div class="container mx-auto px-0 sm:px-4">
         <!-- Header container with rounded corners -->
         <div
-          class="bg-[#E5E5E5] rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between transition-all duration-300"
+          class="bg-[#E5E5E5] rounded-xl sm:rounded-2xl px-2 sm:px-3 md:px-4 lg:px-6 py-3 sm:py-3 flex items-center justify-between transition-all duration-300"
         >
           <!-- Logo -->
           <div class="flex items-center">

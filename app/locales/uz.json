@@ -264,7 +264,10 @@
     }
   },
   "culture": {
-    "heroTitle": "O'zbekiston tarixini kashf eting"
+    "heroTitle": "O'zbekiston tarixini kashf eting",
+    "noPosts": "Hozirda maqolalar mavjud emas.",
+    "viewAll": "BARCHA MAQOLALARNI KO'RISH",
+    "postNotFound": "Maqola topilmadi."
   },
   "license": {
     "badge": "LITSENZIYA",

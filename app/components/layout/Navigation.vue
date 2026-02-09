@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { navItems } from '~/constants/navigation'
+import { navItems, type NavItem } from '~/constants/navigation'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const route = useRoute()
@@ -12,15 +12,25 @@ const emit = defineEmits<{
 
 const activeDropdown = ref<string | null>(null)
 
-// Check if route matches nav item
+// Check if route matches nav item (handles localized paths)
 const isRouteActive = (item: NavItem) => {
   const currentPath = route.path
+  
+  // Get localized path for comparison
+  const localizedHref = item.href ? localePath(item.href) : null
+  const localizedMatchPath = item.matchPath ? localePath(item.matchPath) : null
+  
   // For items with matchPath (like tours), check if route starts with it
-  if (item.matchPath) {
-    return currentPath === item.matchPath || currentPath.startsWith(item.matchPath + '/')
+  if (localizedMatchPath) {
+    return currentPath === localizedMatchPath || currentPath.startsWith(localizedMatchPath + '/')
   }
-  // For regular items, exact match
-  return item.href && currentPath === item.href
+  
+  // For regular items, check both exact match and startsWith for nested pages
+  if (localizedHref) {
+    return currentPath === localizedHref || currentPath.startsWith(localizedHref + '/')
+  }
+  
+  return false
 }
 
 const handleClick = (item: NavItem, event: Event) => {
@@ -55,7 +65,7 @@ defineExpose({
         <!-- Items with dropdown - use button instead of link -->
         <button
           v-if="item.hasDropdown"
-          class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
+          class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-3 py-1.5 rounded-full"
           :class="{
             'active': activeDropdown === item.key,
             'route-active': isRouteActive(item)
@@ -69,7 +79,7 @@ defineExpose({
         <NuxtLink
           v-else
           :to="localePath(item.href || '/')"
-          class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-4 py-2 rounded-full"
+          class="nav-link text-black text-base leading-5 font-medium tracking-wide uppercase transition-all relative px-3 py-1.5 rounded-full"
           :class="{
             'route-active': isRouteActive(item)
           }"
