@@ -112,9 +112,9 @@ const socialLinks = [
           class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-xs sm:text-sm text-gray-400">
           <span class="text-center">{{ t('footer.copyright') }}</span>
           <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-            <NuxtLink :to="localePath('/privacy-policy')" class="hover:text-white transition-colors">{{ t('footer.privacyPolicy') }}</NuxtLink>
-            <NuxtLink :to="localePath('/terms-of-service')" class="hover:text-white transition-colors">{{ t('footer.termsOfService') }}</NuxtLink>
-            <NuxtLink :to="localePath('/cookies-settings')" class="hover:text-white transition-colors">{{ t('footer.cookiesSettings') }}</NuxtLink>
+            <NuxtLink :to="localePath('/public_offer')" class="hover:text-white transition-colors">{{ t('footer.privacyPolicy') }}</NuxtLink>
+            <NuxtLink :to="localePath('/privacy')" class="hover:text-white transition-colors">{{ t('footer.termsOfService') }}</NuxtLink>
+            <!-- <NuxtLink :to="localePath('/cookies-settings')" class="hover:text-white transition-colors">{{ t('footer.cookiesSettings') }}</NuxtLink> -->
           </div>
         </div>
       </div>
