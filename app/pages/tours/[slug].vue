@@ -65,7 +65,7 @@ onUnmounted(() => {
       <!-- Available Dates Section -->
       <SectionTourAvailableDates :prices="trip.prices || []" />
 
-      <SectionTourPackages class="mt-10 sm:mt-14 md:mt-16 lg:mt-20"/>
+      <SectionMainTourPackages class="mt-10 sm:mt-14 md:mt-16 lg:mt-20"/>
       <SectionTestimonials />
       <SectionContactForm id="form"/>
     </template>
