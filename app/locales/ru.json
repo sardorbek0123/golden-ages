@@ -176,6 +176,13 @@
   },
   "tourDetail": {
     "back": "Назад",
+    "gallery": {
+      "showAll": "Смотреть все фото",
+      "close": "Закрыть",
+      "prev": "Предыдущее фото",
+      "next": "Следующее фото",
+      "image": "Фото {number}"
+    },
     "duration": "Продолжительность",
     "groupSize": "Размер группы",
     "accommodation": "Размещение",

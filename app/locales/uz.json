@@ -176,6 +176,13 @@
   },
   "tourDetail": {
     "back": "Orqaga",
+    "gallery": {
+      "showAll": "Barcha fotosuratlarni ko'rish",
+      "close": "Yopish",
+      "prev": "Oldingi foto",
+      "next": "Keyingi foto",
+      "image": "Foto {number}"
+    },
     "duration": "Davomiyligi",
     "groupSize": "Guruh hajmi",
     "accommodation": "Turar joy",

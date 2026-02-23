@@ -176,6 +176,13 @@
   },
   "tourDetail": {
     "back": "Zurück",
+    "gallery": {
+      "showAll": "Alle Fotos anzeigen",
+      "close": "Schließen",
+      "prev": "Vorheriges Foto",
+      "next": "Nächstes Foto",
+      "image": "Foto {number}"
+    },
     "duration": "Dauer",
     "groupSize": "Gruppengröße",
     "accommodation": "Unterkunft",
