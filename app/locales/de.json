@@ -198,7 +198,27 @@
     "availableDates": "Termine & Preise, pro Person",
     "available": "Verfügbar",
     "soldOut": "Ausverkauft",
-    "day": "Tag {number}"
+    "day": "Tag {number}",
+    "paymentModal": {
+      "title": "Zahlung",
+      "personalInfo": "Persönliche Daten",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "phone": "Telefonnummer",
+      "email": "E-Mail",
+      "cardDetails": "Kartendaten",
+      "cardholderName": "Name auf der Karte",
+      "cardholderNamePlaceholder": "Wie auf der Karte angegeben",
+      "cardNumber": "Kartennummer",
+      "cardNumberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Gültigkeitsdatum",
+      "cvv": "CVV",
+      "cvvPlaceholder": "123",
+      "pay": "Bezahlen",
+      "processing": "Wird verarbeitet...",
+      "successTitle": "Zahlung erfolgreich!",
+      "successMessage": "Vielen Dank für Ihre Buchung. Wir werden uns in Kürze bei Ihnen melden."
+    }
   },
   "contacts": {
     "heroTitle": "Starten Sie Ihre Seidenstraßen-Reise heute",

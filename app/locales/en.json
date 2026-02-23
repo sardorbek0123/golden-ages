@@ -201,7 +201,27 @@
     "availableDates": "Dates & Prices, per person",
     "available": "Available",
     "soldOut": "Sold Out",
-    "day": "Day {number}"
+    "day": "Day {number}",
+    "paymentModal": {
+      "title": "Payment",
+      "personalInfo": "Personal Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone Number",
+      "email": "Email",
+      "cardDetails": "Card Details",
+      "cardholderName": "Name on Card",
+      "cardholderNamePlaceholder": "As shown on the card",
+      "cardNumber": "Card Number",
+      "cardNumberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Expiry Date",
+      "cvv": "CVV",
+      "cvvPlaceholder": "123",
+      "pay": "Pay",
+      "processing": "Processing...",
+      "successTitle": "Payment Successful!",
+      "successMessage": "Thank you for your booking. We will contact you shortly."
+    }
   },
   "contacts": {
     "heroTitle": "Start Your Silk Road Journey Today",

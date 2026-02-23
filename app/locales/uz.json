@@ -198,7 +198,27 @@
     "availableDates": "Sanalar va narxlar, har bir kishi uchun",
     "available": "Mavjud",
     "soldOut": "Sotilgan",
-    "day": "Kun {number}"
+    "day": "Kun {number}",
+    "paymentModal": {
+      "title": "To'lov",
+      "personalInfo": "Shaxsiy ma'lumotlar",
+      "firstName": "Ism",
+      "lastName": "Familiya",
+      "phone": "Telefon raqami",
+      "email": "Email",
+      "cardDetails": "Karta ma'lumotlari",
+      "cardholderName": "Kartadagi ism",
+      "cardholderNamePlaceholder": "Kartada ko'rsatilgandek",
+      "cardNumber": "Karta raqami",
+      "cardNumberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Amal qilish muddati",
+      "cvv": "CVV",
+      "cvvPlaceholder": "123",
+      "pay": "To'lash",
+      "processing": "Qayta ishlanmoqda...",
+      "successTitle": "To'lov muvaffaqiyatli!",
+      "successMessage": "Band qilganingiz uchun rahmat. Tez orada siz bilan bog'lanamiz."
+    }
   },
   "contacts": {
     "heroTitle": "Ipak yo'li sayohatingizni bugun boshlang",

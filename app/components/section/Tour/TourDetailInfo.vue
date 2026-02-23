@@ -33,6 +33,10 @@ const sortedUtilities = computed(() => {
   if (!props.trip.trip_utilities?.length) return []
   return [...props.trip.trip_utilities].sort((a, b) => (a.utility.order ?? 0) - (b.utility.order ?? 0))
 })
+
+const isPaymentModalOpen = ref(false)
+const openPaymentModal = () => { isPaymentModalOpen.value = true }
+const closePaymentModal = () => { isPaymentModalOpen.value = false }
 </script>
 
 <template>
@@ -94,9 +98,13 @@ const sortedUtilities = computed(() => {
               <p class="text-xs text-gray-400">{{ t('tourDetail.price') }}</p>
               <p class="text-lg sm:text-xl font-bold text-gray-900">{{ formattedPrice }} <span class="text-xs sm:text-sm font-normal text-gray-500">{{ t('tourDetail.perPerson') }}</span></p>
             </div>
-            <NuxtLink to="#form" class="w-full sm:w-auto text-center px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-normal text-white text-sm sm:text-base font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
+            <button
+              type="button"
+              class="w-full sm:w-auto text-center px-6 sm:px-8 py-2.5 sm:py-3 bg-orange-normal text-white text-sm sm:text-base font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide"
+              @click="openPaymentModal"
+            >
               {{ t('tourDetail.bookNow') }}
-            </NuxtLink>
+            </button>
           </div>
         </div>
 
@@ -110,6 +118,9 @@ const sortedUtilities = computed(() => {
         </div>
       </div>
     </div>
+
+    <!-- Payment Modal -->
+    <ModalPaymentModal :open="isPaymentModalOpen" :trip="trip" @close="closePaymentModal" />
   </section>
 </template>
 

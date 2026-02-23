@@ -198,7 +198,27 @@
     "availableDates": "Даты и цены, за человека",
     "available": "Доступно",
     "soldOut": "Распродано",
-    "day": "День {number}"
+    "day": "День {number}",
+    "paymentModal": {
+      "title": "Оплата",
+      "personalInfo": "Персональные данные",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "phone": "Номер телефона",
+      "email": "Email",
+      "cardDetails": "Данные карты",
+      "cardholderName": "Имя на карте",
+      "cardholderNamePlaceholder": "Как указано на карте",
+      "cardNumber": "Номер карты",
+      "cardNumberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Срок действия",
+      "cvv": "CVV",
+      "cvvPlaceholder": "123",
+      "pay": "Оплатить",
+      "processing": "Обработка...",
+      "successTitle": "Оплата прошла успешно!",
+      "successMessage": "Спасибо за бронирование. Мы свяжемся с вами в ближайшее время."
+    }
   },
   "contacts": {
     "heroTitle": "Начните путешествие по Шёлковому пути",

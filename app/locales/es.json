@@ -198,7 +198,27 @@
     "availableDates": "Fechas y precios, por persona",
     "available": "Disponible",
     "soldOut": "Agotado",
-    "day": "Día {number}"
+    "day": "Día {number}",
+    "paymentModal": {
+      "title": "Pago",
+      "personalInfo": "Información personal",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "phone": "Número de teléfono",
+      "email": "Correo electrónico",
+      "cardDetails": "Datos de la tarjeta",
+      "cardholderName": "Nombre en la tarjeta",
+      "cardholderNamePlaceholder": "Como aparece en la tarjeta",
+      "cardNumber": "Número de tarjeta",
+      "cardNumberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Fecha de vencimiento",
+      "cvv": "CVV",
+      "cvvPlaceholder": "123",
+      "pay": "Pagar",
+      "processing": "Procesando...",
+      "successTitle": "¡Pago exitoso!",
+      "successMessage": "Gracias por su reserva. Nos pondremos en contacto con usted pronto."
+    }
   },
   "contacts": {
     "heroTitle": "Comienza tu viaje por la Ruta de la Seda hoy",

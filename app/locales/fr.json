@@ -198,7 +198,27 @@
     "availableDates": "Dates et prix, par personne",
     "available": "Disponible",
     "soldOut": "Complet",
-    "day": "Jour {number}"
+    "day": "Jour {number}",
+    "paymentModal": {
+      "title": "Paiement",
+      "personalInfo": "Informations personnelles",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "phone": "Numéro de téléphone",
+      "email": "E-mail",
+      "cardDetails": "Informations de la carte",
+      "cardholderName": "Nom sur la carte",
+      "cardholderNamePlaceholder": "Comme indiqué sur la carte",
+      "cardNumber": "Numéro de carte",
+      "cardNumberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Date d'expiration",
+      "cvv": "CVV",
+      "cvvPlaceholder": "123",
+      "pay": "Payer",
+      "processing": "Traitement en cours...",
+      "successTitle": "Paiement réussi !",
+      "successMessage": "Merci pour votre réservation. Nous vous contacterons très bientôt."
+    }
   },
   "contacts": {
     "heroTitle": "Commencez votre voyage sur la Route de la Soie",
