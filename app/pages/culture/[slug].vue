@@ -1,32 +1,55 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const route = useRoute()
 const blogStore = useBlogStore()
 const { currentBlog, loadingDetail, error } = storeToRefs(blogStore)
+const { public: { siteUrl } } = useRuntimeConfig()
 
 const slug = computed(() => route.params.slug as string)
 
-// Fetch blog on mount
-onMounted(async () => {
-  await blogStore.fetchBlogBySlug(slug.value)
-})
+await useAsyncData(
+  () => `blog-${locale.value}-${slug.value}`,
+  () => blogStore.fetchBlogBySlug(slug.value),
+  { watch: [slug, locale] }
+)
 
-// Watch for slug changes
-watch(slug, async (newSlug) => {
-  if (newSlug) {
-    await blogStore.fetchBlogBySlug(newSlug)
-  }
-})
-
-// Clean up on unmount
 onUnmounted(() => {
   blogStore.clearCurrentBlog()
 })
 
-// SEO
+const plainDescription = computed(() => currentBlog.value?.description?.replace(/<[^>]*>/g, '').substring(0, 160) || '')
+
 useSeoMeta({
   title: () => currentBlog.value?.name || t('culture.heroTitle'),
-  description: () => currentBlog.value?.description?.replace(/<[^>]*>/g, '').substring(0, 160) || ''
+  description: () => plainDescription.value,
+  ogTitle: () => currentBlog.value?.name || t('culture.heroTitle'),
+  ogDescription: () => plainDescription.value,
+  ogType: 'article',
+  ogImage: () => currentBlog.value?.image || undefined,
+  twitterCard: 'summary_large_image'
+})
+
+useHead(() => {
+  if (!currentBlog.value) {
+    return {}
+  }
+
+  return {
+    script: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: currentBlog.value.name,
+          description: plainDescription.value,
+          image: currentBlog.value.image,
+          mainEntityOfPage: new URL(route.fullPath, siteUrl).toString(),
+          inLanguage: locale.value
+        })
+      }
+    ]
+  }
 })
 </script>
 
