@@ -107,11 +107,41 @@ const isStep2Valid = computed(() => {
 const cardDigits = computed(() => payment.cardNumber.replace(/\s/g, ''))
 const expiryRegex = /^(0[1-9]|1[0-2])\/(\d{2})$/
 
+const isExpiryValid = computed(() => {
+  if (!expiryRegex.test(payment.expiry)) return false
+  const parts = payment.expiry.split('/').map(Number)
+  const mm = parts[0] ?? 0
+  const yy = parts[1] ?? 0
+  if (mm < 1 || mm > 12) return false
+  const now = new Date()
+  const currentYear = now.getFullYear() % 100
+  const currentMonth = now.getMonth() + 1
+  if (yy < currentYear) return false
+  if (yy === currentYear && mm < currentMonth) return false
+  return true
+})
+
+const expiryError = computed(() => {
+  if (!payment.expiry) return ''
+  if (!expiryRegex.test(payment.expiry)) return ''
+  const parts = payment.expiry.split('/').map(Number)
+  const mm = parts[0] ?? 0
+  const yy = parts[1] ?? 0
+  if (mm < 1 || mm > 12) return t('tourDetail.paymentModal.expiryErrorInvalid')
+  const now = new Date()
+  const currentYear = now.getFullYear() % 100
+  const currentMonth = now.getMonth() + 1
+  if (yy < currentYear || (yy === currentYear && mm < currentMonth)) {
+    return t('tourDetail.paymentModal.expiryErrorExpired')
+  }
+  return ''
+})
+
 const isStep3Valid = computed(() => {
   return (
-    cardDigits.value.length >= 13 && cardDigits.value.length <= 19 &&
+    cardDigits.value.length === 16 &&
     /^\d+$/.test(cardDigits.value) &&
-    expiryRegex.test(payment.expiry) &&
+    isExpiryValid.value &&
     /^\d{3,4}$/.test(payment.cvc) &&
     payment.cardHolderName.trim().length >= 2
   )
@@ -137,7 +167,7 @@ const onPassportInput = (index: number, e: Event) => {
 }
 
 const formatCardNumber = (value: string) => {
-  const raw = value.replace(/\s/g, '').replace(/\D/g, '').slice(0, 19)
+  const raw = value.replace(/\s/g, '').replace(/\D/g, '').slice(0, 16)
   return raw.replace(/(.{4})/g, '$1 ').trim()
 }
 
@@ -150,7 +180,15 @@ const onExpiryInput = (e: Event) => {
   const target = e.target as HTMLInputElement
   const raw = target.value.replace(/\D/g, '').slice(0, 4)
   if (raw.length >= 2) {
-    payment.expiry = `${raw.slice(0, 2)}/${raw.slice(2)}`
+    let mm = parseInt(raw.slice(0, 2), 10)
+    const yy = raw.slice(2)
+    if (mm > 12) mm = 12
+    if (mm === 0) mm = 1
+    payment.expiry = `${String(mm).padStart(2, '0')}/${yy}`
+    return
+  }
+  if (raw.length === 1 && parseInt(raw, 10) > 1) {
+    payment.expiry = `0${raw}`
     return
   }
   payment.expiry = raw
@@ -174,7 +212,7 @@ const prevStep = () => {
 const resetForm = () => {
   step.value = 1
   peopleCount.value = 1
-  passengers.value = []
+  passengers.value = Array.from({ length: 1 }, () => createPassenger())
 
   payment.cardNumber = ''
   payment.expiry = ''
@@ -219,17 +257,22 @@ const handlePay = async () => {
   } catch (error) {
     submitError.value = error instanceof Error
       ? error.message
-      : 'Payment failed. Please check your card details and try again.'
+      : t('tourDetail.paymentModal.paymentError')
   } finally {
     isSubmitting.value = false
   }
 }
 
-// Lock body scroll when modal is open
+// Lock body scroll when modal is open + sync passengers when opening
 let scrollY = 0
 watch(() => props.open, (newVal) => {
   if (!import.meta.client) return
   if (newVal) {
+    // Ensure passengers array is synced with peopleCount when modal opens
+    const count = normalizePeopleCount(peopleCount.value)
+    if (passengers.value.length !== count) {
+      passengers.value = Array.from({ length: count }, () => createPassenger())
+    }
     scrollY = window.scrollY
     document.documentElement.style.overflow = 'hidden'
     document.body.style.overflow = 'hidden'
@@ -306,14 +349,14 @@ onUnmounted(() => {
                   class="mt-2 text-xs sm:text-sm font-medium"
                   :class="index === step ? 'text-orange-normal' : 'text-gray-500'"
                 >
-                  Step {{ index }}
+                  {{ t('tourDetail.paymentModal.step', { number: index }) }}
                 </p>
               </div>
             </div>
 
             <div v-show="step === 1" class="space-y-5">
               <div class="rounded-2xl border border-gray-200 p-4 sm:p-5">
-                <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">People count</p>
+                <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">{{ t('tourDetail.paymentModal.peopleCount') }}</p>
                 <div class="flex items-center gap-3">
                   <button
                     type="button"
@@ -328,7 +371,7 @@ onUnmounted(() => {
                     type="number"
                     min="1"
                     max="10"
-                    class="w-20 text-center px-3 py-2 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    class="w-20 text-center px-3 py-2 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900"
                     @input="onPeopleCountInput"
                   />
                   <button
@@ -344,11 +387,11 @@ onUnmounted(() => {
 
               <div class="rounded-2xl bg-gray-50 p-4 sm:p-5 space-y-2">
                 <div class="flex items-center justify-between text-sm text-gray-600">
-                  <span>Price per person</span>
+                  <span>{{ t('tourDetail.paymentModal.pricePerPerson') }}</span>
                   <span class="font-semibold text-gray-900">{{ formatMoney(trip.price) }}</span>
                 </div>
                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 pt-2 border-t border-gray-200">
-                  <span>Subtotal</span>
+                  <span>{{ t('tourDetail.paymentModal.subtotal') }}</span>
                   <span>{{ formatMoney(subtotal) }}</span>
                 </div>
               </div>
@@ -360,53 +403,53 @@ onUnmounted(() => {
                 :key="index"
                 class="border border-gray-200 rounded-2xl p-4 sm:p-5"
               >
-                <p class="text-sm font-semibold text-gray-900 mb-3">Person {{ index + 1 }}</p>
+                <p class="text-sm font-semibold text-gray-900 mb-3">{{ t('tourDetail.paymentModal.person', { number: index + 1 }) }}</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <input
                     v-model="passenger.firstName"
                     type="text"
-                    placeholder="First name"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    :placeholder="t('tourDetail.paymentModal.firstName')"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                   />
                   <input
                     v-model="passenger.lastName"
                     type="text"
-                    placeholder="Last name"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    :placeholder="t('tourDetail.paymentModal.lastName')"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                   />
                   <select
                     v-model="passenger.gender"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 bg-white"
                   >
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="male">{{ t('tourDetail.paymentModal.male') }}</option>
+                    <option value="female">{{ t('tourDetail.paymentModal.female') }}</option>
+                    <option value="other">{{ t('tourDetail.paymentModal.other') }}</option>
                   </select>
                   <input
                     v-model="passenger.country"
                     type="text"
-                    placeholder="Country"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    :placeholder="t('tourDetail.paymentModal.country')"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                   />
                   <input
                     :value="passenger.passport"
                     type="text"
-                    placeholder="Passport (e.g. FA 1234567)"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    :placeholder="t('tourDetail.paymentModal.passportPlaceholder')"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                     @input="onPassportInput(index, $event)"
                   />
                   <input
                     v-model="passenger.phone"
                     type="tel"
-                    placeholder="Phone"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    :placeholder="t('tourDetail.paymentModal.phone')"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                   />
                 </div>
                 <p
                   v-if="passenger.passport && (!passportRegex.test(passenger.passport.trim()) || passenger.passport.trim().length < 6)"
                   class="text-xs text-red-500 mt-2"
                 >
-                  Passport must be at least 6 characters (letters, numbers and spaces only).
+                  {{ t('tourDetail.paymentModal.passportError') }}
                 </p>
               </div>
             </div>
@@ -414,15 +457,15 @@ onUnmounted(() => {
             <div v-show="step === 3" class="space-y-5">
               <div class="rounded-2xl bg-gray-50 p-4 sm:p-5 space-y-2">
                 <div class="flex items-center justify-between text-sm text-gray-600">
-                  <span>Price per person</span>
+                  <span>{{ t('tourDetail.paymentModal.pricePerPerson') }}</span>
                   <span class="font-semibold text-gray-900">{{ formatMoney(trip.price) }}</span>
                 </div>
                 <div class="flex items-center justify-between text-sm text-gray-600">
-                  <span>People</span>
+                  <span>{{ t('tourDetail.paymentModal.people') }}</span>
                   <span class="font-semibold text-gray-900">{{ peopleCount }}</span>
                 </div>
                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 pt-2 border-t border-gray-200">
-                  <span>Total</span>
+                  <span>{{ t('tourDetail.paymentModal.total') }}</span>
                   <span>{{ formatMoney(subtotal) }}</span>
                 </div>
               </div>
@@ -431,37 +474,40 @@ onUnmounted(() => {
                 <input
                   v-model="payment.cardHolderName"
                   type="text"
-                  placeholder="Card holder name"
-                  class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                  :placeholder="t('tourDetail.paymentModal.cardholderName')"
+                  class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                   autocomplete="cc-name"
                 />
                 <input
                   :value="payment.cardNumber"
                   type="text"
                   inputmode="numeric"
-                  placeholder="Card number"
-                  class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono tracking-wider"
+                  :placeholder="t('tourDetail.paymentModal.cardNumberPlaceholder')"
+                  class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono tracking-wider text-gray-900 placeholder:text-gray-500"
                   autocomplete="cc-number"
                   @input="onCardNumberInput"
                 />
                 <div class="grid grid-cols-2 gap-3">
-                  <input
-                    :value="payment.expiry"
-                    type="text"
-                    inputmode="numeric"
-                    placeholder="MM/YY"
-                    maxlength="5"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono"
-                    autocomplete="cc-exp"
-                    @input="onExpiryInput"
-                  />
+                  <div class="space-y-1">
+                    <input
+                      :value="payment.expiry"
+                      type="text"
+                      inputmode="numeric"
+                      :placeholder="t('tourDetail.paymentModal.expiryPlaceholder')"
+                      maxlength="5"
+                      :class="['w-full px-4 py-3 border rounded-xl focus:outline-none font-mono text-gray-900 placeholder:text-gray-500', expiryError ? 'border-red-500 focus:border-red-500' : 'border-gray-200 focus:border-gray-400']"
+                      autocomplete="cc-exp"
+                      @input="onExpiryInput"
+                    />
+                    <p v-if="expiryError" class="text-xs text-red-500">{{ expiryError }}</p>
+                  </div>
                   <input
                     :value="payment.cvc"
                     type="password"
                     inputmode="numeric"
-                    placeholder="CVC"
+                    :placeholder="t('tourDetail.paymentModal.cvvPlaceholder')"
                     maxlength="4"
-                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono text-gray-900 placeholder:text-gray-500"
                     autocomplete="cc-csc"
                     @input="onCvcInput"
                   />
@@ -478,7 +524,7 @@ onUnmounted(() => {
                 :disabled="step === 1 || isSubmitting"
                 @click="prevStep"
               >
-                Back
+                {{ t('tourDetail.paymentModal.back') }}
               </button>
 
               <button
@@ -488,7 +534,7 @@ onUnmounted(() => {
                 :disabled="!canGoNext || isSubmitting"
                 @click="nextStep"
               >
-                Next
+                {{ t('tourDetail.paymentModal.next') }}
               </button>
 
               <button
@@ -502,7 +548,7 @@ onUnmounted(() => {
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
-                <span>{{ isSubmitting ? t('tourDetail.paymentModal.processing') : 'Pay' }}</span>
+                <span>{{ isSubmitting ? t('tourDetail.paymentModal.processing') : t('tourDetail.paymentModal.pay') }}</span>
               </button>
             </div>
           </div>
