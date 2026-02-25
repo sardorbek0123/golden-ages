@@ -58,12 +58,19 @@ export default defineNuxtConfig({
       ],
       'meta': [
         {
+          charset: 'utf-8'
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        },
+        {
           name: 'title',
-          content: 'Golden Ages of Uzbekistan - Discover the history and heritage of Uzbekistan'
+          content: 'Golden Ages of Uzbekistan | Tours & Travel Packages'
         },
         {
           name: 'description',
-          content: 'Golden Ages of Uzbekistan - Discover the history and heritage of Uzbekistan'
+          content: 'Explore Uzbekistan with Golden Ages: curated tours, city guides, hotels, and cultural experiences for international travelers.'
         },
         {
           name: 'keywords',
@@ -71,6 +78,12 @@ export default defineNuxtConfig({
         }
       ],
     },
+  },
+
+  runtimeConfig: {
+    public: {
+      siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://goldenages.uz'
+    }
   },
 
   eslint: {

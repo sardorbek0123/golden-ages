@@ -2,17 +2,19 @@
 const citiesStore = useCitiesStore()
 const { currentCity, loadingDetail } = storeToRefs(citiesStore)
 const route = useRoute()
+const { t, locale } = useI18n()
+
 const slug = computed(() => route.params.slug as string)
 
-onMounted(async () => {
-  await citiesStore.fetchCityBySlug(slug.value)
-})
+await useAsyncData(
+  () => `city-${locale.value}-${slug.value}`,
+  () => citiesStore.fetchCityBySlug(slug.value),
+  { watch: [slug, locale] }
+)
 
-// Watch for slug changes
-watch(slug, async (newSlug) => {
-  if (newSlug) {
-    await citiesStore.fetchCityBySlug(newSlug)
-  }
+useSeoMeta({
+  title: () => currentCity.value?.name ? `${currentCity.value.name} Hotels & Travel Guide | Golden Ages` : t('cities.all'),
+  description: () => currentCity.value?.location || t('hotels.description', { city: currentCity.value?.name || '' })
 })
 </script>
 
@@ -22,14 +24,14 @@ watch(slug, async (newSlug) => {
     <div v-if="loadingDetail" class="min-h-[50vh] flex items-center justify-center">
       <div class="animate-spin rounded-full h-12 w-12 border-2 border-orange-normal border-t-transparent" />
     </div>
-    
+
     <template v-else-if="currentCity">
       <!-- Hotels Section -->
-      <SectionCityHotelsSection 
-        :city-id="currentCity.id" 
-        :city-name="currentCity.name" 
+      <SectionCityHotelsSection
+        :city-id="currentCity.id"
+        :city-name="currentCity.name"
       />
-      
+
       <SectionTestimonials />
       <SectionContactForm id="form"/>
     </template>

@@ -1,24 +1,62 @@
 <script setup lang="ts">
 const route = useRoute()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const tripsStore = useTripsStore()
 const { currentTrip: trip, loadingDetail: loading, error } = storeToRefs(tripsStore)
+const { public: { siteUrl } } = useRuntimeConfig()
 
 const slug = computed(() => route.params.slug as string)
 
-// Fetch trip on mount
-onMounted(async () => {
-  await tripsStore.fetchTripBySlug(slug.value)
-})
+await useAsyncData(
+  () => `trip-${locale.value}-${slug.value}`,
+  () => tripsStore.fetchTripBySlug(slug.value),
+  { watch: [slug, locale] }
+)
 
-// Watch for slug changes
-watch(slug, async (newSlug) => {
-  await tripsStore.fetchTripBySlug(newSlug)
-})
 
-// Cleanup on unmount
 onUnmounted(() => {
   tripsStore.clearCurrentTrip()
+})
+
+const plainDescription = computed(() => trip.value?.short_description?.replace(/<[^>]*>/g, ''))
+
+useSeoMeta({
+  title: () => trip.value?.name || t('toursPage.heroTitle'),
+  description: () => plainDescription.value || t('contacts.heroDescription'),
+  ogTitle: () => trip.value?.name || t('toursPage.heroTitle'),
+  ogDescription: () => plainDescription.value || t('contacts.heroDescription'),
+  ogType: 'website',
+  ogImage: () => trip.value?.images?.[0]?.image || undefined,
+  twitterCard: 'summary_large_image'
+})
+
+useHead(() => {
+  if (!trip.value) {
+    return {}
+  }
+
+  const tripUrl = new URL(route.fullPath, siteUrl).toString()
+
+  return {
+    script: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'TouristTrip',
+          name: trip.value.name,
+          description: plainDescription.value,
+          url: tripUrl,
+          touristType: 'International travelers',
+          itinerary: trip.value.plans?.map(plan => ({
+            '@type': 'TouristAttraction',
+            name: plan.name,
+            description: plan.description
+          }))
+        })
+      }
+    ]
+  }
 })
 </script>
 
