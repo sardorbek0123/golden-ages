@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://goldenages.uz/sitemap.xml
+Sitemap: https://goldenagestravel.com/sitemap.xml

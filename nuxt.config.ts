@@ -82,7 +82,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://goldenages.uz'
+      siteUrl: import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://goldenagestravel.com'
     }
   },
 
