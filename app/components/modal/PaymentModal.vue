@@ -1,6 +1,15 @@
 <script setup lang="ts">
-import { ref, reactive, watch, onUnmounted, computed } from 'vue'
+import { computed, onUnmounted, reactive, ref, watch } from 'vue'
 import type { TripDetail } from '~/types/trip'
+
+interface Passenger {
+  firstName: string
+  lastName: string
+  gender: 'male' | 'female' | 'other'
+  country: string
+  passport: string
+  phone: string
+}
 
 const props = defineProps<{
   open: boolean
@@ -12,6 +21,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const { post } = useApi()
 
 const getCurrencyLabel = (currencyKey?: string | null): string => {
   switch (currencyKey) {
@@ -26,35 +36,154 @@ const getCurrencyLabel = (currencyKey?: string | null): string => {
   }
 }
 
-const formattedPrice = computed(() => {
-  const currencyLabel = getCurrencyLabel(props.trip.currency?.key)
-  return new Intl.NumberFormat('uz-UZ').format(props.trip.price) + ' ' + currencyLabel
-})
+const currencyLabel = computed(() => getCurrencyLabel(props.trip.currency?.key))
+const formatMoney = (value: number) => `${new Intl.NumberFormat('uz-UZ').format(value)} ${currencyLabel.value}`
 
-const formData = reactive({
-  firstName: '',
-  lastName: '',
-  phone: '',
-  email: '',
-  cardholderName: '',
+const step = ref(1)
+const peopleCount = ref(1)
+const passengers = ref<Passenger[]>([])
+
+const payment = reactive({
   cardNumber: '',
   expiry: '',
-  cvv: ''
+  cvc: '',
+  cardHolderName: ''
 })
 
 const isSubmitting = ref(false)
 const submitSuccess = ref(false)
+const submitError = ref('')
+
+const createPassenger = (): Passenger => ({
+  firstName: '',
+  lastName: '',
+  gender: 'male',
+  country: '',
+  passport: '',
+  phone: ''
+})
+
+const normalizePeopleCount = (value: number) => {
+  if (Number.isNaN(value)) return 1
+  return Math.max(1, Math.min(10, Math.trunc(value)))
+}
+
+watch(peopleCount, (count) => {
+  const normalized = normalizePeopleCount(count)
+  if (normalized !== count) {
+    peopleCount.value = normalized
+    return
+  }
+
+  if (passengers.value.length < normalized) {
+    const missing = normalized - passengers.value.length
+    passengers.value.push(...Array.from({ length: missing }, () => createPassenger()))
+  } else if (passengers.value.length > normalized) {
+    passengers.value.splice(normalized)
+  }
+}, { immediate: true })
+
+const subtotal = computed(() => peopleCount.value * props.trip.price)
+
+const isStep1Valid = computed(() => peopleCount.value >= 1 && peopleCount.value <= 10)
+
+const passportRegex = /^[A-Z0-9 ]+$/
+
+const isPassengerValid = (passenger: Passenger) => (
+  passenger.firstName.trim() !== '' &&
+  passenger.lastName.trim() !== '' &&
+  passenger.gender !== undefined &&
+  passenger.country.trim() !== '' &&
+  passenger.passport.trim().length >= 6 &&
+  passportRegex.test(passenger.passport.trim()) &&
+  passenger.phone.trim() !== ''
+)
+
+const isStep2Valid = computed(() => {
+  if (passengers.value.length !== peopleCount.value) return false
+  return passengers.value.every(isPassengerValid)
+})
+
+const cardDigits = computed(() => payment.cardNumber.replace(/\s/g, ''))
+const expiryRegex = /^(0[1-9]|1[0-2])\/(\d{2})$/
+
+const isStep3Valid = computed(() => {
+  return (
+    cardDigits.value.length >= 13 && cardDigits.value.length <= 19 &&
+    /^\d+$/.test(cardDigits.value) &&
+    expiryRegex.test(payment.expiry) &&
+    /^\d{3,4}$/.test(payment.cvc) &&
+    payment.cardHolderName.trim().length >= 2
+  )
+})
+
+const canGoNext = computed(() => (step.value === 1 ? isStep1Valid.value : isStep2Valid.value))
+const canPay = computed(() => isStep3Valid.value && !isSubmitting.value)
+
+const onPeopleCountInput = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  peopleCount.value = normalizePeopleCount(Number(target.value))
+}
+
+const updatePeopleCount = (delta: number) => {
+  peopleCount.value = normalizePeopleCount(peopleCount.value + delta)
+}
+
+const onPassportInput = (index: number, e: Event) => {
+  const target = e.target as HTMLInputElement
+  const passenger = passengers.value[index]
+  if (!passenger) return
+  passenger.passport = target.value.toUpperCase().replace(/[^A-Z0-9 ]/g, '')
+}
+
+const formatCardNumber = (value: string) => {
+  const raw = value.replace(/\s/g, '').replace(/\D/g, '').slice(0, 19)
+  return raw.replace(/(.{4})/g, '$1 ').trim()
+}
+
+const onCardNumberInput = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  payment.cardNumber = formatCardNumber(target.value)
+}
+
+const onExpiryInput = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  const raw = target.value.replace(/\D/g, '').slice(0, 4)
+  if (raw.length >= 2) {
+    payment.expiry = `${raw.slice(0, 2)}/${raw.slice(2)}`
+    return
+  }
+  payment.expiry = raw
+}
+
+const onCvcInput = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  payment.cvc = target.value.replace(/\D/g, '').slice(0, 4)
+}
+
+const nextStep = () => {
+  if (step.value >= 3 || !canGoNext.value) return
+  step.value += 1
+}
+
+const prevStep = () => {
+  if (step.value <= 1) return
+  step.value -= 1
+}
 
 const resetForm = () => {
-  formData.firstName = ''
-  formData.lastName = ''
-  formData.phone = ''
-  formData.email = ''
-  formData.cardholderName = ''
-  formData.cardNumber = ''
-  formData.expiry = ''
-  formData.cvv = ''
+  step.value = 1
+  peopleCount.value = 1
+  passengers.value = []
+
+  payment.cardNumber = ''
+  payment.expiry = ''
+  payment.cvc = ''
+  payment.cardHolderName = ''
+
+  submitError.value = ''
   submitSuccess.value = false
+  isSubmitting.value = false
 }
 
 const closeModal = () => {
@@ -62,62 +191,38 @@ const closeModal = () => {
   resetForm()
 }
 
-const isFormValid = computed(() => {
-  return (
-    formData.firstName.trim() !== '' &&
-    formData.lastName.trim() !== '' &&
-    formData.phone.trim() !== '' &&
-    formData.email.trim() !== '' &&
-    formData.cardholderName.trim() !== '' &&
-    formData.cardNumber.replace(/\s/g, '').length >= 16 &&
-    formData.expiry.length >= 5 &&
-    formData.cvv.length >= 3
-  )
-})
-
-// Format card number with spaces (XXXX XXXX XXXX XXXX)
-const formatCardNumber = (value: string) => {
-  const v = value.replace(/\s/g, '').replace(/\D/g, '').slice(0, 16)
-  return v.replace(/(.{4})/g, '$1 ').trim()
-}
-
-const onCardNumberInput = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  formData.cardNumber = formatCardNumber(target.value)
-}
-
-// Format expiry (MM/YY)
-const formatExpiry = (value: string) => {
-  const v = value.replace(/\D/g, '').slice(0, 4)
-  if (v.length >= 2) {
-    return v.slice(0, 2) + '/' + v.slice(2)
-  }
-  return v
-}
-
-const onExpiryInput = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  formData.expiry = formatExpiry(target.value)
-}
-
-const onCvvInput = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  formData.cvv = target.value.replace(/\D/g, '').slice(0, 4)
-}
-
-const handleSubmit = async (e: Event) => {
-  e.preventDefault()
-  if (!isFormValid.value || isSubmitting.value) return
+const handlePay = async () => {
+  if (!isStep3Valid.value || isSubmitting.value) return
 
   isSubmitting.value = true
-  // Simulate payment processing (replace with actual payment integration)
-  await new Promise(resolve => setTimeout(resolve, 1500))
-  isSubmitting.value = false
-  submitSuccess.value = true
+  submitError.value = ''
 
-  setTimeout(() => {
-    closeModal()
-  }, 2000)
+  const payload = {
+    tourId: props.trip.id,
+    peopleCount: peopleCount.value,
+    passengers: passengers.value,
+    payment: {
+      cardNumber: cardDigits.value,
+      expiry: payment.expiry,
+      cvc: payment.cvc,
+      cardHolderName: payment.cardHolderName.trim()
+    },
+    totalAmount: subtotal.value
+  }
+
+  try {
+    await post('/bookings/create/', payload)
+    submitSuccess.value = true
+    setTimeout(() => {
+      closeModal()
+    }, 1500)
+  } catch (error) {
+    submitError.value = error instanceof Error
+      ? error.message
+      : 'Payment failed. Please check your card details and try again.'
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
 // Lock body scroll when modal is open
@@ -163,12 +268,9 @@ onUnmounted(() => {
   <Teleport to="body">
     <Transition name="modal">
       <div v-if="open" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" @click.self="closeModal">
-        <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
-        <!-- Modal Content -->
-        <div class="relative bg-white rounded-2xl sm:rounded-3xl w-full max-w-md sm:max-w-lg shadow-2xl overflow-y-auto max-h-[90vh] sm:max-h-[95vh]">
-          <!-- Close Button -->
+        <div class="relative bg-white rounded-2xl sm:rounded-3xl w-full max-w-md sm:max-w-2xl shadow-2xl overflow-y-auto max-h-[90vh] sm:max-h-[95vh]">
           <button
             type="button"
             class="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10"
@@ -180,7 +282,6 @@ onUnmounted(() => {
             </svg>
           </button>
 
-          <!-- Success State -->
           <div v-if="submitSuccess" class="text-center py-8 sm:py-10 px-6 sm:px-8">
             <div class="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -191,128 +292,220 @@ onUnmounted(() => {
             <p class="text-sm sm:text-base text-gray-600">{{ t('tourDetail.paymentModal.successMessage') }}</p>
           </div>
 
-          <!-- Form -->
-          <form v-else class="p-5 sm:p-6 md:p-8" @submit.prevent="handleSubmit">
-            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 pr-8">{{ t('tourDetail.paymentModal.title') }}</h3>
-            <p class="text-sm text-gray-500 mb-4 sm:mb-6">{{ trip.label || trip.name }}</p>
+          <div v-else class="p-5 sm:p-6 md:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 pr-8">{{ t('tourDetail.paymentModal.title') }}</h3>
+            <p class="text-sm text-gray-500 mb-5">{{ trip.label || trip.name }}</p>
 
-            <!-- Personal Info Section -->
-            <div class="space-y-3 sm:space-y-4 mb-5 sm:mb-6">
-              <p class="text-xs text-gray-400 uppercase tracking-wide font-medium">{{ t('tourDetail.paymentModal.personalInfo') }}</p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.firstName') }}</label>
-                  <input
-                    v-model="formData.firstName"
-                    type="text"
-                    required
-                    :placeholder="t('tourDetail.paymentModal.firstName')"
-                    class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
-                  />
-                </div>
-                <div>
-                  <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.lastName') }}</label>
-                  <input
-                    v-model="formData.lastName"
-                    type="text"
-                    required
-                    :placeholder="t('tourDetail.paymentModal.lastName')"
-                    class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
-              <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.phone') }}</label>
-                <input
-                  v-model="formData.phone"
-                  type="tel"
-                  required
-                  :placeholder="t('tourDetail.paymentModal.phone')"
-                  class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
+            <div class="grid grid-cols-3 gap-2 mb-6">
+              <div v-for="index in 3" :key="index" class="text-center">
+                <div
+                  class="h-1.5 rounded-full"
+                  :class="index <= step ? 'bg-orange-normal' : 'bg-gray-200'"
                 />
-              </div>
-              <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.email') }}</label>
-                <input
-                  v-model="formData.email"
-                  type="email"
-                  required
-                  :placeholder="t('tourDetail.paymentModal.email')"
-                  class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
-                />
+                <p
+                  class="mt-2 text-xs sm:text-sm font-medium"
+                  :class="index === step ? 'text-orange-normal' : 'text-gray-500'"
+                >
+                  Step {{ index }}
+                </p>
               </div>
             </div>
 
-            <!-- Card Details Section -->
-            <div class="space-y-3 sm:space-y-4 mb-6 sm:mb-8 pt-4 sm:pt-5 border-t border-gray-100">
-              <p class="text-xs text-gray-400 uppercase tracking-wide font-medium">{{ t('tourDetail.paymentModal.cardDetails') }}</p>
-              <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.cardholderName') }}</label>
+            <div v-show="step === 1" class="space-y-5">
+              <div class="rounded-2xl border border-gray-200 p-4 sm:p-5">
+                <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">People count</p>
+                <div class="flex items-center gap-3">
+                  <button
+                    type="button"
+                    class="w-10 h-10 rounded-full border border-gray-300 text-lg font-semibold disabled:opacity-50"
+                    :disabled="peopleCount <= 1"
+                    @click="updatePeopleCount(-1)"
+                  >
+                    -
+                  </button>
+                  <input
+                    :value="peopleCount"
+                    type="number"
+                    min="1"
+                    max="10"
+                    class="w-20 text-center px-3 py-2 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    @input="onPeopleCountInput"
+                  />
+                  <button
+                    type="button"
+                    class="w-10 h-10 rounded-full border border-gray-300 text-lg font-semibold disabled:opacity-50"
+                    :disabled="peopleCount >= 10"
+                    @click="updatePeopleCount(1)"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-gray-50 p-4 sm:p-5 space-y-2">
+                <div class="flex items-center justify-between text-sm text-gray-600">
+                  <span>Price per person</span>
+                  <span class="font-semibold text-gray-900">{{ formatMoney(trip.price) }}</span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold text-gray-900 pt-2 border-t border-gray-200">
+                  <span>Subtotal</span>
+                  <span>{{ formatMoney(subtotal) }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div v-show="step === 2" class="space-y-4">
+              <div
+                v-for="(passenger, index) in passengers"
+                :key="index"
+                class="border border-gray-200 rounded-2xl p-4 sm:p-5"
+              >
+                <p class="text-sm font-semibold text-gray-900 mb-3">Person {{ index + 1 }}</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    v-model="passenger.firstName"
+                    type="text"
+                    placeholder="First name"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                  />
+                  <input
+                    v-model="passenger.lastName"
+                    type="text"
+                    placeholder="Last name"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                  />
+                  <select
+                    v-model="passenger.gender"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                  >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <input
+                    v-model="passenger.country"
+                    type="text"
+                    placeholder="Country"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                  />
+                  <input
+                    :value="passenger.passport"
+                    type="text"
+                    placeholder="Passport (e.g. FA 1234567)"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                    @input="onPassportInput(index, $event)"
+                  />
+                  <input
+                    v-model="passenger.phone"
+                    type="tel"
+                    placeholder="Phone"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
+                  />
+                </div>
+                <p
+                  v-if="passenger.passport && (!passportRegex.test(passenger.passport.trim()) || passenger.passport.trim().length < 6)"
+                  class="text-xs text-red-500 mt-2"
+                >
+                  Passport must be at least 6 characters (letters, numbers and spaces only).
+                </p>
+              </div>
+            </div>
+
+            <div v-show="step === 3" class="space-y-5">
+              <div class="rounded-2xl bg-gray-50 p-4 sm:p-5 space-y-2">
+                <div class="flex items-center justify-between text-sm text-gray-600">
+                  <span>Price per person</span>
+                  <span class="font-semibold text-gray-900">{{ formatMoney(trip.price) }}</span>
+                </div>
+                <div class="flex items-center justify-between text-sm text-gray-600">
+                  <span>People</span>
+                  <span class="font-semibold text-gray-900">{{ peopleCount }}</span>
+                </div>
+                <div class="flex items-center justify-between text-base font-semibold text-gray-900 pt-2 border-t border-gray-200">
+                  <span>Total</span>
+                  <span>{{ formatMoney(subtotal) }}</span>
+                </div>
+              </div>
+
+              <div class="space-y-3">
                 <input
-                  v-model="formData.cardholderName"
+                  v-model="payment.cardHolderName"
                   type="text"
-                  required
-                  :placeholder="t('tourDetail.paymentModal.cardholderNamePlaceholder')"
-                  class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
+                  placeholder="Card holder name"
+                  class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none"
                   autocomplete="cc-name"
                 />
-              </div>
-              <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.cardNumber') }}</label>
                 <input
-                  :value="formData.cardNumber"
+                  :value="payment.cardNumber"
                   type="text"
                   inputmode="numeric"
+                  placeholder="Card number"
+                  class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono tracking-wider"
                   autocomplete="cc-number"
-                  :placeholder="t('tourDetail.paymentModal.cardNumberPlaceholder')"
-                  class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400 font-mono tracking-wider"
                   @input="onCardNumberInput"
                 />
-              </div>
-              <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.expiry') }}</label>
+                <div class="grid grid-cols-2 gap-3">
                   <input
-                    :value="formData.expiry"
+                    :value="payment.expiry"
                     type="text"
                     inputmode="numeric"
-                    autocomplete="cc-exp"
                     placeholder="MM/YY"
-                    class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400 font-mono"
                     maxlength="5"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono"
+                    autocomplete="cc-exp"
                     @input="onExpiryInput"
                   />
-                </div>
-                <div>
-                  <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">{{ t('tourDetail.paymentModal.cvv') }}</label>
                   <input
-                    :value="formData.cvv"
+                    :value="payment.cvc"
                     type="password"
                     inputmode="numeric"
-                    autocomplete="cc-csc"
-                    :placeholder="t('tourDetail.paymentModal.cvvPlaceholder')"
-                    class="w-full px-4 sm:px-5 py-3 sm:py-3.5 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400 font-mono"
+                    placeholder="CVC"
                     maxlength="4"
-                    @input="onCvvInput"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none font-mono"
+                    autocomplete="cc-csc"
+                    @input="onCvcInput"
                   />
                 </div>
               </div>
+
+              <p v-if="submitError" class="text-sm text-red-500">{{ submitError }}</p>
             </div>
 
-            <!-- Pay Button -->
-            <button
-              type="submit"
-              :disabled="isSubmitting || !isFormValid"
-              class="w-full py-3 sm:py-4 bg-orange-normal text-white text-sm sm:text-base font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            >
-              <svg v-if="isSubmitting" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-              </svg>
-              <span v-if="isSubmitting">{{ t('tourDetail.paymentModal.processing') }}</span>
-              <span v-else>{{ t('tourDetail.paymentModal.pay') }} {{ formattedPrice }}</span>
-            </button>
-          </form>
+            <div class="mt-6 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                class="px-5 py-2.5 rounded-full border border-gray-300 text-sm font-semibold text-gray-700 disabled:opacity-40"
+                :disabled="step === 1 || isSubmitting"
+                @click="prevStep"
+              >
+                Back
+              </button>
+
+              <button
+                v-if="step < 3"
+                type="button"
+                class="px-6 py-2.5 rounded-full bg-orange-normal text-white text-sm font-semibold disabled:opacity-50"
+                :disabled="!canGoNext || isSubmitting"
+                @click="nextStep"
+              >
+                Next
+              </button>
+
+              <button
+                v-else
+                type="button"
+                class="px-6 py-2.5 rounded-full bg-orange-normal text-white text-sm font-semibold disabled:opacity-50 flex items-center gap-2"
+                :disabled="!canPay"
+                @click="handlePay"
+              >
+                <svg v-if="isSubmitting" class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                <span>{{ isSubmitting ? t('tourDetail.paymentModal.processing') : 'Pay' }}</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </Transition>
