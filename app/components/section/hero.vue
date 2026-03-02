@@ -23,10 +23,10 @@ const localePath = useLocalePath()
             {{ t('hero.subtitle') }}
         </p>
         <div class="mt-4 sm:mt-5 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto">
-          <NuxtLink :to="localePath('/tours')" class="w-full sm:w-auto text-center px-5 sm:px-6 py-2.5 sm:py-2 bg-transparent text-white text-xs sm:text-sm font-semibold border border-gray-50 hover:border-orange-normal rounded-full transition-colors uppercase tracking-wide">
+          <NuxtLink :to="localePath('/tours')" class="w-full sm:w-auto text-center px-5 sm:px-6 py-2 sm:py-3 bg-transparent text-white text-xs sm:text-sm font-semibold border border-gray-50 hover:border-orange-normal rounded-full transition-colors uppercase tracking-wide">
             {{ t('hero.exploreTours') }}
           </NuxtLink>
-          <NuxtLink to="#form" class="w-full sm:w-auto text-center px-5 sm:px-6 py-2.5 sm:py-2 bg-orange-normal hover:bg-orange-400 text-white text-xs sm:text-sm font-semibold rounded-full transition-colors uppercase tracking-wide">
+          <NuxtLink to="#form" class="w-full sm:w-auto text-center px-5 sm:px-6 py-2 sm:py-3 bg-orange-normal hover:bg-orange-400 text-white text-xs sm:text-sm font-semibold rounded-full transition-colors uppercase tracking-wide">
             {{ t('hero.ctaText') }}
           </NuxtLink>
         </div>
