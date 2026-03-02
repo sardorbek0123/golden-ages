@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation } from 'swiper/modules'
+import { Navigation, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -147,7 +147,7 @@ const isNextDisabled = computed(() => {
           <!-- Reviews Swiper -->
           <Swiper
             v-else-if="reviews.length > 0"
-            :modules="[Navigation]"
+            :modules="[Navigation, Autoplay]"
             :slides-per-view="1"
             :space-between="16"
             :breakpoints="{
@@ -158,6 +158,10 @@ const isNextDisabled = computed(() => {
             class="testimonials-swiper"
             @swiper="onSwiper"
             @slide-change="onSlideChange"
+            :autoplay="{
+              delay: 2500,
+              disableOnInteraction: false,
+            }"
           >
             <SwiperSlide v-for="review in reviews" :key="review.id">
               <CardsReviewCard
