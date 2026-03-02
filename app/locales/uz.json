@@ -205,6 +205,11 @@
     "day": "Kun {number}",
     "paymentModal": {
       "title": "To'lov",
+      "paymentType": "To'lov turi",
+      "fullPayment": "To'liq to'lov",
+      "partialPayment": "30% oldindan to'lov",
+      "amountToPay": "To'lanishi kerak",
+      "partialPaymentHint": "Qolgan summa sayohat boshlanishidan oldin to'lanishi kerak.",
       "personalInfo": "Shaxsiy ma'lumotlar",
       "step": "Qadam {number}",
       "peopleCount": "Sayyohlar soni",

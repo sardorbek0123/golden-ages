@@ -42,6 +42,7 @@ const formatMoney = (value: number) => `${new Intl.NumberFormat('uz-UZ').format(
 const step = ref(1)
 const peopleCount = ref(1)
 const passengers = ref<Passenger[]>([])
+const paymentType = ref<'full' | 'partial'>('full')
 
 const payment = reactive({
   cardNumber: '',
@@ -84,6 +85,10 @@ watch(peopleCount, (count) => {
 }, { immediate: true })
 
 const subtotal = computed(() => peopleCount.value * props.trip.price)
+
+const paymentAmount = computed(() =>
+  paymentType.value === 'partial' ? Math.round(subtotal.value * 0.3) : subtotal.value
+)
 
 const isStep1Valid = computed(() => peopleCount.value >= 1 && peopleCount.value <= 10)
 
@@ -218,6 +223,7 @@ const resetForm = () => {
   payment.expiry = ''
   payment.cvc = ''
   payment.cardHolderName = ''
+  paymentType.value = 'full'
 
   submitError.value = ''
   submitSuccess.value = false
@@ -245,7 +251,8 @@ const handlePay = async () => {
       cvc: payment.cvc,
       cardHolderName: payment.cardHolderName.trim()
     },
-    totalAmount: subtotal.value
+    totalAmount: paymentAmount.value,
+    isPartialPayment: paymentType.value === 'partial'
   }
 
   try {
@@ -456,6 +463,23 @@ onUnmounted(() => {
 
             <div v-show="step === 3" class="space-y-5">
               <div class="rounded-2xl bg-gray-50 p-4 sm:p-5 space-y-2">
+                <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">{{ t('tourDetail.paymentModal.paymentType') }}</p>
+                <div class="flex gap-3 mb-3">
+                  <button
+                    type="button"
+                    :class="['flex-1 py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors', paymentType === 'full' ? 'border-orange-normal bg-orange-50 text-orange-700' : 'border-gray-200 text-gray-600 hover:border-gray-300']"
+                    @click="paymentType = 'full'"
+                  >
+                    {{ t('tourDetail.paymentModal.fullPayment') }}
+                  </button>
+                  <button
+                    type="button"
+                    :class="['flex-1 py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors', paymentType === 'partial' ? 'border-orange-normal bg-orange-50 text-orange-700' : 'border-gray-200 text-gray-600 hover:border-gray-300']"
+                    @click="paymentType = 'partial'"
+                  >
+                    {{ t('tourDetail.paymentModal.partialPayment') }}
+                  </button>
+                </div>
                 <div class="flex items-center justify-between text-sm text-gray-600">
                   <span>{{ t('tourDetail.paymentModal.pricePerPerson') }}</span>
                   <span class="font-semibold text-gray-900">{{ formatMoney(trip.price) }}</span>
@@ -464,10 +488,17 @@ onUnmounted(() => {
                   <span>{{ t('tourDetail.paymentModal.people') }}</span>
                   <span class="font-semibold text-gray-900">{{ peopleCount }}</span>
                 </div>
-                <div class="flex items-center justify-between text-base font-semibold text-gray-900 pt-2 border-t border-gray-200">
-                  <span>{{ t('tourDetail.paymentModal.total') }}</span>
-                  <span>{{ formatMoney(subtotal) }}</span>
+                <div class="flex items-center justify-between text-sm text-gray-600">
+                  <span>{{ t('tourDetail.paymentModal.subtotal') }}</span>
+                  <span class="font-semibold text-gray-900">{{ formatMoney(subtotal) }}</span>
                 </div>
+                <div class="flex items-center justify-between text-base font-semibold text-gray-900 pt-2 border-t border-gray-200">
+                  <span>{{ t('tourDetail.paymentModal.amountToPay') }}</span>
+                  <span>{{ formatMoney(paymentAmount) }}</span>
+                </div>
+                <p v-if="paymentType === 'partial'" class="text-xs text-gray-500">
+                  {{ t('tourDetail.paymentModal.partialPaymentHint') }}
+                </p>
               </div>
 
               <div class="space-y-3">
