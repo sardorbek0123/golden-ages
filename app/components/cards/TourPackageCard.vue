@@ -14,12 +14,35 @@ interface Props {
   ratingLabel: string
   price: string
   image: string
+  images?: string[]
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const localePath = useLocalePath()
 const isHovered = ref(false)
+
+// All photos for autoplay carousel (fallback to single image)
+const photos = computed(() => {
+  const imgs = props.images?.length ? props.images : [props.image]
+  return imgs.filter(Boolean)
+})
+
+const currentPhotoIndex = ref(0)
+
+// Autoplay: switch photo every 4 seconds
+let autoplayTimer: ReturnType<typeof setInterval> | null = null
+onMounted(() => {
+  if (photos.value.length <= 1) return
+  autoplayTimer = setInterval(() => {
+    currentPhotoIndex.value = (currentPhotoIndex.value + 1) % photos.value.length
+  }, 4000)
+})
+onUnmounted(() => {
+  if (autoplayTimer) clearInterval(autoplayTimer)
+})
+
+const currentPhoto = computed(() => photos.value[currentPhotoIndex.value] ?? props.image)
 
 const getStarClass = (index: number, rating: number) => {
   if (index <= Math.floor(rating)) return 'text-orange-normal'
@@ -36,23 +59,31 @@ const getStarClass = (index: number, rating: number) => {
     @mouseleave="isHovered = false"
   >
     <div class="flex flex-col lg:flex-row gap-4 sm:gap-5 md:gap-6">
-      <!-- Left - Image -->
+      <!-- Left - Image with autoplay carousel -->
       <div class="relative w-full lg:w-[400px] h-[200px] sm:h-[250px] md:h-[280px] lg:shrink-0 rounded-xl sm:rounded-2xl overflow-hidden">
-        <NuxtImg
-          :src="image"
-          :alt="title"
-          loading="lazy"
-          class="w-full h-full object-cover"
-        />
+        <div class="relative w-full h-full">
+          <NuxtImg
+            v-for="(photo, idx) in photos"
+            :key="photo"
+            :src="photo"
+            :alt="`${title} ${idx + 1}`"
+            loading="lazy"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+            :class="idx === currentPhotoIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'"
+          />
+        </div>
         <!-- Badge -->
-        <div class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-900/80 text-white text-xs font-medium rounded-lg">
+        <div class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-900/80 text-white text-xs font-medium rounded-lg z-10">
           {{ badge }}
         </div>
         <!-- Dots indicator -->
-        <div class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-          <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white" />
-          <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50" />
-          <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50" />
+        <div v-if="photos.length > 1" class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          <div
+            v-for="(_, idx) in photos"
+            :key="idx"
+            class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-opacity"
+            :class="idx === currentPhotoIndex ? 'bg-white' : 'bg-white/50'"
+          />
         </div>
       </div>
 
@@ -108,7 +139,7 @@ const getStarClass = (index: number, rating: number) => {
       <!-- Right - Rating & Price -->
       <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-between py-0 lg:py-2 w-full lg:w-auto lg:min-w-[180px]">
         <!-- Rating -->
-        <div class="flex items-center gap-2 sm:gap-3">
+        <!-- <div class="flex items-center gap-2 sm:gap-3">
           <div class="flex items-center gap-0.5">
             <svg 
               v-for="i in 5" 
@@ -127,7 +158,8 @@ const getStarClass = (index: number, rating: number) => {
           <div class="text-lg sm:text-xl md:text-2xl font-bold text-orange-normal">
             {{ rating.toFixed(1) }}
           </div>
-        </div>
+        </div> -->
+        <div></div>
 
         <!-- Price & Button -->
         <div class="text-right lg:text-right">

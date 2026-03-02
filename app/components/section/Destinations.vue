@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, EffectFade } from 'swiper/modules'
+import { Navigation, EffectFade, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -57,6 +57,13 @@ const goNext = () => {
 }
 
 const currentCity = computed(() => cities.value[activeIndex.value])
+const nextCity = computed(() => {
+  const idx = activeIndex.value + 1
+  return idx < cities.value.length ? cities.value[idx] : null
+})
+const localePath = useLocalePath()
+
+const getCityUrl = (city: { slug: string }) => localePath(`/cities/${city.slug}`)
 </script>
 
 <template>
@@ -82,37 +89,41 @@ const currentCity = computed(() => cities.value[activeIndex.value])
 
         <!-- City List - Hidden on mobile, horizontal scroll on tablet, vertical on desktop -->
         <div class="flex lg:flex-col gap-3 sm:gap-4 lg:gap-3 text-left lg:text-right overflow-x-auto pb-2 lg:pb-0 w-full lg:w-auto scrollbar-hide">
-          <button
+          <NuxtLink
             v-for="(city, index) in cities"
             :key="city.id"
+            :to="getCityUrl(city)"
             class="text-sm sm:text-base lg:text-xl transition-all duration-300 whitespace-nowrap"
             :class="[
               activeIndex === index
                 ? 'font-bold text-gray-900'
                 : 'font-normal text-gray-500 hover:text-gray-700'
             ]"
-            @click="goToSlide(index)"
           >
             {{ city.name }}
-          </button>
+          </NuxtLink>
         </div>
       </div>
 
       <!-- Mobile/Tablet Layout -->
       <div class="lg:hidden container mx-auto px-4 sm:px-6">
         <!-- City Info -->
-        <div class="flex flex-col items-center mb-4 sm:mb-6">
+        <NuxtLink
+          v-if="currentCity"
+          :to="getCityUrl(currentCity)"
+          class="flex flex-col items-center mb-4 sm:mb-6 cursor-pointer hover:opacity-80 transition-opacity"
+        >
           <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2 leading-tight text-center">
-            {{ currentCity?.name }}
+            {{ currentCity.name }}
           </h3>
           <p class="text-gray-600 text-xs sm:text-sm text-center">
-            {{ currentCity?.location }}
+            {{ currentCity.location }}
           </p>
-        </div>
+        </NuxtLink>
 
         <!-- Swiper -->
         <Swiper
-          :modules="[Navigation, EffectFade]"
+          :modules="[Navigation, EffectFade, Autoplay]"
           :slides-per-view="1"
           :space-between="0"
           :loop="false"
@@ -120,17 +131,23 @@ const currentCity = computed(() => cities.value[activeIndex.value])
           class="destinations-swiper overflow-hidden w-full rounded-xl sm:rounded-2xl"
           @swiper="onMobileSwiper"
           @slide-change="onSlideChange"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
         >
           <SwiperSlide
             v-for="city in cities"
             :key="`mobile-${city.id}-${city.image}`"
           >
-            <NuxtImg
-              :src="city.image"
-              :alt="city.name"
-              loading="lazy"
-              class="w-full aspect-4/3 sm:aspect-video object-cover"
-            />
+            <NuxtLink :to="getCityUrl(city)" class="block cursor-pointer">
+              <NuxtImg
+                :src="city.image"
+                :alt="city.name"
+                loading="lazy"
+                class="w-full aspect-4/3 sm:aspect-video object-cover"
+              />
+            </NuxtLink>
           </SwiperSlide>
         </Swiper>
 
@@ -171,14 +188,18 @@ const currentCity = computed(() => cities.value[activeIndex.value])
       <div class="hidden lg:grid grid-cols-12 gap-5">
         <!-- Left Content -->
         <div class="col-span-1"></div>
-        <div class="col-span-2 flex flex-col justify-end items-center pb-16">
+        <NuxtLink
+          v-if="currentCity"
+          :to="getCityUrl(currentCity)"
+          class="col-span-2 flex flex-col justify-end items-center pb-16 cursor-pointer hover:opacity-80 transition-opacity"
+        >
           <h3 class="text-xl xl:text-2xl font-bold text-gray-900 mb-3 leading-tight text-center">
-            {{ currentCity?.name }}
+            {{ currentCity.name }}
           </h3>
           <p class="text-gray-600 text-xs xl:text-sm text-center">
-            {{ currentCity?.location }}
+            {{ currentCity.location }}
           </p>
-        </div>
+        </NuxtLink>
 
         <!-- Center Swiper + Right Preview Row -->
         <div class="col-span-9 flex flex-col">
@@ -187,7 +208,7 @@ const currentCity = computed(() => cities.value[activeIndex.value])
             <!-- Center Swiper -->
             <div class="w-2/3">
               <Swiper
-                :modules="[Navigation, EffectFade]"
+                :modules="[Navigation, EffectFade, Autoplay]"
                 :slides-per-view="1"
                 :space-between="0"
                 :loop="false"
@@ -195,32 +216,41 @@ const currentCity = computed(() => cities.value[activeIndex.value])
                 class="destinations-swiper overflow-hidden w-full h-full rounded-2xl"
                 @swiper="onDesktopSwiper"
                 @slide-change="onSlideChange"
+                :autoplay="{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }"
               >
                 <SwiperSlide
                   v-for="city in cities"
                   :key="`desktop-${city.id}-${city.image}`"
                   class="h-auto!"
                 >
-                  <NuxtImg
-                    :src="city.image"
-                    :alt="city.name"
-                    loading="lazy"
-                    class="w-full aspect-3/2 object-cover"
-                  />
+                  <NuxtLink :to="getCityUrl(city)" class="block cursor-pointer">
+                    <NuxtImg
+                      :src="city.image"
+                      :alt="city.name"
+                      loading="lazy"
+                      class="w-full aspect-3/2 object-cover"
+                    />
+                  </NuxtLink>
                 </SwiperSlide>
               </Swiper>
             </div>
 
             <!-- Right - Next Slide Preview -->
-            <div class="w-1/3 overflow-hidden">
+            <NuxtLink
+              v-if="nextCity"
+              :to="getCityUrl(nextCity)"
+              class="w-1/3 overflow-hidden block cursor-pointer"
+            >
               <NuxtImg
-                v-if="cities.length > 0 && activeIndex < cities.length - 1"
-                :src="cities[activeIndex + 1]?.image"
-                :alt="cities[activeIndex + 1]?.name"
+                :src="nextCity.image"
+                :alt="nextCity.name"
                 loading="lazy"
                 class="w-full h-full object-cover rounded-l-2xl"
               />
-            </div>
+            </NuxtLink>
           </div>
 
           <!-- Bottom Navigation -->

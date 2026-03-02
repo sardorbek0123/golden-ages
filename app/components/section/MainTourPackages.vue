@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation } from 'swiper/modules'
+import { Navigation, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -160,7 +160,7 @@ const formattedTotal = computed(() => {
       <!-- Swiper -->
       <div v-else-if="tours.length > 0" class="tour-swiper-container">
         <Swiper
-          :modules="[Navigation]"
+          :modules="[Navigation, Autoplay]"
           :slides-per-view="1"
           :space-between="16"
           :centered-slides="true"
@@ -173,6 +173,10 @@ const formattedTotal = computed(() => {
           class="tour-packages-swiper"
           @swiper="onSwiper"
           @slide-change="onSlideChange"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
         >
           <SwiperSlide v-for="(tour, index) in tours" :key="tour.id">
             <CardsTourCard

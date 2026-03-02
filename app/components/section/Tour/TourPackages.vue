@@ -51,9 +51,14 @@ const tourPackages = computed(() => {
       .slice()
       .sort((a, b) => (a.utility.order ?? 0) - (b.utility.order ?? 0))
     
-    // Get first image from list response
-    const image = trip.images?.[0]?.image || ''
-    
+    // All images sorted by order (for autoplay carousel)
+    const images = (trip.images ?? [])
+      .slice()
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .map(img => img.image)
+      .filter(Boolean)
+    const image = images[0] ?? ''
+
     // Format price with currency
     const currencyLabel = getCurrencyLabel(trip.currency?.key)
     const formattedPrice = new Intl.NumberFormat('uz-UZ').format(trip.price)
@@ -71,7 +76,8 @@ const tourPackages = computed(() => {
       reviewCount: 0,
       ratingLabel: t('tours.excellent'),
       price: `${formattedPrice} ${currencyLabel}`,
-      image
+      image,
+      images
     }
   })
 })
@@ -123,6 +129,7 @@ const tourPackages = computed(() => {
           :rating-label="tour.ratingLabel"
           :price="tour.price"
           :image="tour.image"
+          :images="tour.images"
         />
       </div>
     </div>
