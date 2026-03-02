@@ -167,7 +167,11 @@
     "excellent": "A'lo"
   },
   "cities": {
-    "all": "Barcha shaharlar"
+    "all": "Barcha shaharlar",
+    "famousPlaces": {
+      "title": "Mashhur joylar",
+      "noPlaces": "Ushbu shahar uchun mashhur joylar hozircha mavjud emas."
+    }
   },
   "hotels": {
     "title": "{city}da qayerda qolish mumkin",

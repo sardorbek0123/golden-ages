@@ -167,7 +167,11 @@
     "excellent": "Excelente"
   },
   "cities": {
-    "all": "Todas las ciudades"
+    "all": "Todas las ciudades",
+    "famousPlaces": {
+      "title": "Lugares famosos",
+      "noPlaces": "No hay lugares famosos disponibles para esta ciudad en este momento."
+    }
   },
   "hotels": {
     "title": "Dónde alojarse en {city}",

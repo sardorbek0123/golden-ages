@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { CityList, CityDetail, PaginatedResponse, SearchParams } from '~/types'
+import type { CityList, CityDetail, FamousPlace, PaginatedResponse, SearchParams } from '~/types'
 
 export const useCitiesStore = defineStore('cities', () => {
   const { get } = useApi()
@@ -7,6 +7,8 @@ export const useCitiesStore = defineStore('cities', () => {
   // State
   const cities = ref<CityList[]>([])
   const currentCity = ref<CityDetail | null>(null)
+  const famousPlaces = ref<FamousPlace[]>([])
+  const loadingFamousPlaces = ref(false)
   const count = ref(0)
   const loading = ref(false)
   const loadingDetail = ref(false)
@@ -58,8 +60,25 @@ export const useCitiesStore = defineStore('cities', () => {
     }
   }
 
+  async function fetchFamousPlaces(cityId: number) {
+    loadingFamousPlaces.value = true
+
+    try {
+      const response = await get<PaginatedResponse<FamousPlace>>('/famous_places/', { city: cityId })
+      famousPlaces.value = response.results
+      return response.results
+    } catch (e) {
+      console.error('Error fetching famous places:', e)
+      famousPlaces.value = []
+      return []
+    } finally {
+      loadingFamousPlaces.value = false
+    }
+  }
+
   function clearCurrentCity() {
     currentCity.value = null
+    famousPlaces.value = []
   }
 
   function clearError() {
@@ -70,6 +89,8 @@ export const useCitiesStore = defineStore('cities', () => {
     // State
     cities,
     currentCity,
+    famousPlaces,
+    loadingFamousPlaces,
     count,
     loading,
     loadingDetail,
@@ -81,6 +102,7 @@ export const useCitiesStore = defineStore('cities', () => {
     // Actions
     fetchCities,
     fetchCityBySlug,
+    fetchFamousPlaces,
     clearCurrentCity,
     clearError
   }
