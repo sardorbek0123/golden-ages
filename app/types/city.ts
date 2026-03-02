@@ -30,3 +30,15 @@ export interface CityDetail {
   updated_at: string
 }
 
+export interface FamousPlaceImage {
+  id: number
+  image: string
+}
+
+export interface FamousPlace {
+  id: number
+  name: string
+  images: FamousPlaceImage[]
+  description: string
+}
+

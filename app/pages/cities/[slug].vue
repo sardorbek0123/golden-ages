@@ -25,7 +25,11 @@ useSeoMeta({
       <div class="animate-spin rounded-full h-12 w-12 border-2 border-orange-normal border-t-transparent" />
     </div>
 
+
     <template v-else-if="currentCity">
+      <!-- Famous Places Section -->
+      <SectionCityFamousPlaces :city-id="currentCity.id" />
+
       <!-- Hotels Section -->
       <SectionCityHotelsSection
         :city-id="currentCity.id"

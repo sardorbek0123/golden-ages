@@ -170,7 +170,11 @@
     "excellent": "Excellent"
   },
   "cities": {
-    "all": "All Cities"
+    "all": "All Cities",
+    "famousPlaces": {
+      "title": "Famous Places",
+      "noPlaces": "No famous places available for this city at the moment."
+    }
   },
   "hotels": {
     "title": "Where to Stay in {city}",
