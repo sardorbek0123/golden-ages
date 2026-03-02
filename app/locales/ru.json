@@ -205,6 +205,11 @@
     "day": "День {number}",
     "paymentModal": {
       "title": "Оплата",
+      "paymentType": "Тип оплаты",
+      "fullPayment": "Полная оплата",
+      "partialPayment": "Предоплата 30%",
+      "amountToPay": "К оплате",
+      "partialPaymentHint": "Остальную сумму необходимо оплатить до начала тура.",
       "personalInfo": "Персональные данные",
       "step": "Шаг {number}",
       "peopleCount": "Количество туристов",

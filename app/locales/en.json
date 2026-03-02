@@ -208,6 +208,11 @@
     "day": "Day {number}",
     "paymentModal": {
       "title": "Payment",
+      "paymentType": "Payment type",
+      "fullPayment": "Full payment",
+      "partialPayment": "30% deposit",
+      "amountToPay": "Amount to pay",
+      "partialPaymentHint": "The remaining amount is due before the tour starts.",
       "personalInfo": "Personal Information",
       "step": "Step {number}",
       "peopleCount": "Number of travelers",

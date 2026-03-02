@@ -205,6 +205,11 @@
     "day": "Tag {number}",
     "paymentModal": {
       "title": "Zahlung",
+      "paymentType": "Zahlungsart",
+      "fullPayment": "Vollständige Zahlung",
+      "partialPayment": "30% Anzahlung",
+      "amountToPay": "Zu zahlender Betrag",
+      "partialPaymentHint": "Der Restbetrag ist vor Tourbeginn fällig.",
       "personalInfo": "Persönliche Daten",
       "step": "Schritt {number}",
       "peopleCount": "Anzahl der Reisenden",

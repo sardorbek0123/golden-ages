@@ -205,6 +205,11 @@
     "day": "Día {number}",
     "paymentModal": {
       "title": "Pago",
+      "paymentType": "Tipo de pago",
+      "fullPayment": "Pago completo",
+      "partialPayment": "Anticipo del 30%",
+      "amountToPay": "Importe a pagar",
+      "partialPaymentHint": "El importe restante debe abonarse antes del inicio del tour.",
       "personalInfo": "Información personal",
       "step": "Paso {number}",
       "peopleCount": "Número de viajeros",

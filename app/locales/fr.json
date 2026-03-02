@@ -205,6 +205,11 @@
     "day": "Jour {number}",
     "paymentModal": {
       "title": "Paiement",
+      "paymentType": "Type de paiement",
+      "fullPayment": "Paiement intégral",
+      "partialPayment": "Acompte de 30%",
+      "amountToPay": "Montant à payer",
+      "partialPaymentHint": "Le solde restant est dû avant le début du circuit.",
       "personalInfo": "Informations personnelles",
       "step": "Étape {number}",
       "peopleCount": "Nombre de voyageurs",
