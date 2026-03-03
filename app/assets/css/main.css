@@ -112,6 +112,16 @@
   --color-yellow-dark-hover: #997f2c;
   --color-yellow-dark-active: #735f21;
   --color-yellow-darker: #594a1a;
+
+  /* FAB pulse — каждые 3 сек */
+  --animate-whatsapp-ping: whatsapp-ping 3s ease-out infinite;
+
+  @keyframes whatsapp-ping {
+    0% { transform: scale(1); opacity: 0.4; }
+    33% { transform: scale(1.8); opacity: 0; }
+    34% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 0.4; }
+  }
 }
 
 /* Global button styles */
