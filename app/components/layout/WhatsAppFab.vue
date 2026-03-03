@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Placeholder link - replace with real WhatsApp number when ready
-const whatsappUrl = 'https://wa.me/1234567890'
+const whatsappUrl = 'https://wa.me/998901830888'
 </script>
 
 <template>
