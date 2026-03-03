@@ -7,6 +7,8 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const tripsStore = useTripsStore()
 const messagesStore = useMessagesStore()
+const settingsStore = useSettingsStore()
+const { settings } = storeToRefs(settingsStore)
 
 const form = reactive({
   fullName: '',
@@ -21,7 +23,14 @@ onMounted(() => {
   if (!tripsStore.hasTrips) {
     tripsStore.fetchTrips()
   }
+
+  if (!settings.value) {
+    settingsStore.fetchSettings()
+  }
 })
+
+const contactEmail = computed(() => settings.value?.email || '')
+const contactPhone = computed(() => settings.value?.phone_number || '')
 
 const isSubmitting = computed(() => messagesStore.loading)
 
@@ -186,16 +195,18 @@ const handleSubmit = async () => {
           <!-- Contact Info -->
           <div class="relative z-10 space-y-1 sm:space-y-2">
             <a 
-              href="mailto:info@gaou.travel" 
+              v-if="contactEmail"
+              :href="`mailto:${contactEmail}`" 
               class="block text-base sm:text-lg lg:text-xl text-white/80 hover:text-white transition-colors"
             >
-              {{ t('contactForm.email') }}
+              {{ contactEmail }}
             </a>
             <a 
-              href="tel:+998950443334" 
+              v-if="contactPhone"
+              :href="`tel:${contactPhone}`" 
               class="block text-lg sm:text-xl lg:text-2xl font-semibold text-white hover:text-orange-normal transition-colors"
             >
-              +998(95)044-33-34
+              {{ contactPhone }}
             </a>
           </div>
         </div>
