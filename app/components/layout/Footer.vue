@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import footerBg from '~/assets/images/footer.png'
-import IconsFacebook from '~/components/icons/social/facebook.vue'
-import IconsInstagram from '~/components/icons/social/instagram.vue'
-import IconsX from '~/components/icons/social/x.vue'
-import IconsThreads from '~/components/icons/social/threads.vue'
+
 const { t } = useI18n()
 const localePath = useLocalePath()
+const settingsStore = useSettingsStore()
+const { settings } = storeToRefs(settingsStore)
+
+onMounted(async () => {
+  if (!settings.value) {
+    await settingsStore.fetchSettings()
+  }
+})
 
 const footerLinks = {
   tours: {
@@ -49,12 +54,16 @@ const footerLinks = {
   // }
 }
 
-const socialLinks = [
-  { name: 'Facebook', icon: 'facebook', href: '#' },
-  { name: 'Instagram', icon: 'instagram', href: '#' },
-  { name: 'X', icon: 'x', href: '#' },
-  { name: 'Threads', icon: 'threads', href: '#' }
-]
+const socialLinks = computed(() => {
+  if (!settings.value) return []
+
+  return [
+    { name: 'Facebook', icon: 'facebook', href: settings.value.facebook },
+    { name: 'Instagram', icon: 'instagram', href: settings.value.instagram },
+    { name: 'X', icon: 'x', href: settings.value.twitter },
+    { name: 'LinkedIn', icon: 'linkedin', href: settings.value.linkedin }
+  ].filter((social) => social.href)
+})
 </script>
 
 <template>
@@ -74,12 +83,12 @@ const socialLinks = [
 
           <!-- Social Links -->
           <div class="flex items-center gap-2 sm:gap-3">
-            <a v-for="social in socialLinks" :key="social.name" :href="social.href"
+            <a v-for="social in socialLinks" :key="social.name" :href="social.href" target="_blank" rel="noopener noreferrer"
               class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-orange-normal hover:text-orange-normal transition-colors">
-              <IconsFacebook v-if="social.icon === 'facebook'" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-              <IconsInstagram v-else-if="social.icon === 'instagram'" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-              <IconsX v-else-if="social.icon === 'x'" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-              <IconsThreads v-else-if="social.icon === 'threads'" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+              <Icon v-if="social.icon === 'facebook'" name="simple-icons:facebook" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+              <Icon v-else-if="social.icon === 'instagram'" name="simple-icons:instagram" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+              <Icon v-else-if="social.icon === 'x'" name="simple-icons:x" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+              <Icon v-else-if="social.icon === 'linkedin'" name="simple-icons:linkedin" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
             </a>
           </div>
         </div>
