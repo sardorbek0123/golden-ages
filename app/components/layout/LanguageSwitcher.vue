@@ -5,6 +5,7 @@ import UzIcon from '~/components/icons/lang/uz.vue'
 import EsIcon from '~/components/icons/lang/es.vue'
 import DeIcon from '~/components/icons/lang/de.vue'
 import FrIcon from '~/components/icons/lang/fr.vue'
+import ItIcon from '~/components/icons/lang/it.vue'
 
 const { locale, locales } = useI18n()
 const route = useRoute()
@@ -25,7 +26,8 @@ const getLangIcon = (code: string) => {
     uz: UzIcon,
     es: EsIcon,
     de: DeIcon,
-    fr: FrIcon
+    fr: FrIcon,
+    it: ItIcon
   }
   return iconMap[code as keyof typeof iconMap] || EnIcon
 }

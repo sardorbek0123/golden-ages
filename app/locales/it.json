@@ -1,0 +1,337 @@
+{
+  "all": "All",
+  "error": {
+    "pageNotFound": "Page Not Found",
+    "pageNotFoundDescription": "The page you're looking for doesn't exist or has been moved. Let's get you back on track to discover the wonders of the Silk Road.",
+    "somethingWentWrong": "Something Went Wrong",
+    "somethingWentWrongDescription": "We're experiencing some technical difficulties. Please try again later or return to the homepage.",
+    "backToHome": "Back to Home"
+  },
+  "comingSoon": {
+    "title": "Coming Soon",
+    "description": "We're working on something amazing. This page will be available soon — stay tuned for exciting new features and content.",
+    "backToHome": "Back to Home"
+  },
+  "nav": {
+    "tours": "TOURS",
+    "aboutUs": "ABOUT US",
+    "cities": "CITIES",
+    "shop": "SHOP",
+    "culture": "CULTURE",
+    "contacts": "CONTACTS"
+  },
+  "header": {
+    "createTour": "CREATE YOUR TOUR"
+  },
+  "hero": {
+    "title": "Discover the history of Uzbekistan",
+    "subtitle": "From Samarkand to Khiva, travel the Silk Road your way — group, family, business or private — with visas, hotels and guides taken care of.",
+    "exploreTours": "SEE TOURS",
+    "ctaText": "START THE JOURNEY"
+  },
+  "whyChooseUs": {
+    "badge": "OUR VALUES",
+    "title": "Why choose us",
+    "hotels": {
+      "title": "Hotels",
+      "description": "Choose among 3-5★ hotels and boutique stays, all personally vetted for comfort, location, and authentic Uzbek hospitality"
+    },
+    "simCard": {
+      "title": "Free SIM card / eSIM",
+      "description": "Stay connected from your first day. We provide a free local SIM or eSIM setup so you have internet and WhatsApp right after arrival"
+    },
+    "medical": {
+      "title": "Medical support",
+      "description": "Your safety is our priority. Every traveler is covered with on-trip assistance and access to trusted clinics when needed"
+    },
+    "guides": {
+      "title": "Friendly and qualified guides",
+      "description": "Licensed, English-speaking professionals who know every hidden gem – turning each excursion into a story worth remembering"
+    },
+    "packages": {
+      "title": "Customable tour packages",
+      "description": "Licensed, English-speaking professionals who know every hidden gem – turning each excursion into a story worth remembering"
+    },
+    "support": {
+      "title": "24/7 support",
+      "description": "Transparent itineraries with everything organized – transfers, tickets, meals, and experiences, without hidden costs"
+    }
+  },
+  "destinations": {
+    "badge": "OUR DESTINATIONS",
+    "title": "Discover the great history and incredible heritage of Uzbekistan",
+    "seeTours": "SEE {city} TOURS"
+  },
+  "testimonials": {
+    "badge": "TESTIMONIAL",
+    "title": "Stories from those who've traveled with GAOU",
+    "subtitle": "Authentic experiences and trusted service — discover what travelers say about their Golden Ages journey",
+    "writeReview": "WRITE A REVIEW",
+    "noReviews": "No reviews yet. Be the first to share your experience!",
+    "modal": {
+      "title": "Share Your Experience",
+      "rating": "Your Rating",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your name",
+      "role": "Profession / Role",
+      "rolePlaceholder": "e.g. Travel Photographer",
+      "review": "Your Review",
+      "reviewPlaceholder": "Tell us about your experience with Golden Ages...",
+      "submit": "Submit Review",
+      "submitting": "Submitting...",
+      "successTitle": "Thank You!",
+      "successMessage": "Your review has been submitted successfully."
+    }
+  },
+  "tourPackages": {
+    "badge": "TOUR PACKAGES",
+    "title": "Signature Uzbekistan Tours Curated for You",
+    "subtitle": "Exclusive itineraries crafted by local experts — combining iconic landmarks, luxury stays, and personalized service throughout your trip",
+    "bookingNow": "BOOKING NOW"
+  },
+  "contactForm": {
+    "title": "Get In Touch",
+    "fullName": "FULL NAME",
+    "email": "EMAIL",
+    "phone": "PHONE",
+    "tourType": "TOUR TYPE",
+    "message": "MESSAGE",
+    "messagePlaceholder": "How can we help you?",
+    "submit": "SEND A MESSAGE",
+    "contactTitle": "Plan Your Uzbekistan Trip with",
+    "contactHighlight": "Local Experts",
+    "planYourTrip": "Plan Your Uzbekistan Trip with local experts",
+    "selectTourType": "Select Tour Type",
+    "successTitle": "Thank You!",
+    "successMessage": "Your message has been submitted successfully.",
+    "sending": "Sending..."
+  },
+  "footer": {
+    "description": "Experience the Golden Ages of history with us — Discover the timeless beauty of Uzbekistan",
+    "tours": {
+      "title": "TOURS",
+      "all": "All Tours",
+      "familyPackages": "Family Packages",
+      "businessTours": "Business Tours",
+      "individualTrips": "Individual Trips",
+      "friendsGetaways": "Friends Getaways",
+      "vipExperiences": "VIP Experiences"
+    },
+    "aboutUs": {
+      "title": "ABOUT US",
+      "missions": "Missions",
+      "goals": "Goals",
+      "license": "License",
+      "teamMembers": "Team members"
+    },
+    "cities": {
+      "title": "CITIES",
+      "more": "More"
+    },
+    "culture": {
+      "title": "UZBEK CULTURE",
+      "cuisineFood": "Cuisine & Food",
+      "artHandicrafts": "Art & Handicrafts",
+      "musicFestivals": "Music & Festivals",
+      "historyHeritage": "History & Heritage Stories"
+    },
+    "copyright": "2025 Golden Ages. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiesSettings": "Cookies Settings",
+    "registrationAndLicence": "Registration and Licence"
+  },
+  "toursPage": {
+    "heroTitle": "Discover Uzbekistan with our curated tours",
+    "heroSubtitle": "From vibrant Tashkent to ancient Khiva — explore the Silk Road with licensed guides, 3–5★ hotels, and 24/7 support",
+    "startTrip": "START THE TRIP",
+    "ourTourPackages": "Our Tour Packages"
+  },
+  "tourTypes": {
+    "groupTour": "Group tour",
+    "privateTour": "Private tour",
+    "familyTour": "Family tour",
+    "businessTour": "Business tour",
+    "customTour": "Custom tour"
+  },
+  "common": {
+    "from": "From",
+    "days": "days",
+    "nights": "nights",
+    "reviews": "reviews",
+    "excellent": "Excellent",
+    "try_again": "Try Again",
+    "bookNow": "BOOK NOW"
+  },
+  "tours": {
+    "all": "All Tours",
+    "our_packages": "Our Tour Packages",
+    "no_packages": "No tour packages available at the moment.",
+    "excellent": "Excellent"
+  },
+  "cities": {
+    "all": "All Cities",
+    "famousPlaces": {
+      "title": "Famous Places",
+      "noPlaces": "No famous places available for this city at the moment."
+    }
+  },
+  "hotels": {
+    "title": "Where to Stay in {city}",
+    "description": "Discover a curated selection of {city}'s finest hotels — from elegant international chains to charming boutique stays nestled near ancient landmarks. Each property offers comfort, style, and authentic Uzbek hospitality to make your stay truly memorable.",
+    "noHotels": "No hotels available for this city at the moment."
+  },
+  "tourDetail": {
+    "back": "Back",
+    "gallery": {
+      "showAll": "Show All Photos",
+      "close": "Close",
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "image": "Photo {number}"
+    },
+    "duration": "Duration",
+    "groupSize": "Group Size",
+    "accommodation": "Accommodation",
+    "transport": "Transport",
+    "cities": "Cities",
+    "guide": "Guide",
+    "price": "Price",
+    "perPerson": "per person",
+    "bookNow": "BOOKING NOW",
+    "description": "DESCRIPTION",
+    "itinerary": "Tour Itinerary",
+    "tourPlan": "Tour Plan",
+    "availableDates": "Dates & Prices, per person",
+    "available": "Available",
+    "soldOut": "Sold Out",
+    "day": "Day {number}",
+    "paymentModal": {
+      "title": "Payment",
+      "paymentType": "Payment type",
+      "fullPayment": "Full payment",
+      "partialPayment": "30% deposit",
+      "amountToPay": "Amount to pay",
+      "partialPaymentHint": "The remaining amount is due before the tour starts.",
+      "personalInfo": "Personal Information",
+      "step": "Step {number}",
+      "peopleCount": "Number of travelers",
+      "pricePerPerson": "Price per person",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "people": "People",
+      "person": "Person {number}",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "country": "Country",
+      "passport": "Passport",
+      "passportPlaceholder": "Passport (e.g. AB 1234567)",
+      "passportError": "Passport must be at least 6 characters (letters, numbers and spaces only).",
+      "phone": "Phone Number",
+      "email": "Email",
+      "cardDetails": "Card Details",
+      "cardholderName": "Card holder name",
+      "cardholderNamePlaceholder": "As shown on the card",
+      "cardNumber": "Card number",
+      "cardNumberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Expiry Date",
+      "expiryPlaceholder": "MM/YY",
+      "expiryErrorInvalid": "Invalid month. Use MM/YY format (01-12).",
+      "expiryErrorExpired": "Card has expired.",
+      "cvv": "CVC",
+      "cvvPlaceholder": "123",
+      "back": "Back",
+      "next": "Next",
+      "pay": "Pay",
+      "processing": "Processing...",
+      "successTitle": "Payment Successful!",
+      "successMessage": "Thank you for your booking. We will contact you shortly.",
+      "paymentError": "Payment failed. Please check your card details and try again."
+    }
+  },
+  "contacts": {
+    "heroTitle": "Start Your Silk Road Journey Today",
+    "heroDescription": "Have questions about our tours or want a custom itinerary? Our local experts are here to craft an unforgettable journey through Uzbekistan",
+    "generalInquiries": "General Inquiries",
+    "technicalSupport": "Technical Support",
+    "ourOffice": "Our Office",
+    "officeHours": "Office Hours",
+    "getDirections": "Get Directions"
+  },
+  "faq": {
+    "title": "Asked question",
+    "description": "If the question is not available on our FAQ section, Feel free to contact us personally, we will resolve your respective doubts.",
+    "askQuestion": "ASK QUESTION"
+  },
+  "aboutUs": {
+    "badge": "ABOUT US",
+    "sliderTitle": "Why Travel with Golden Ages",
+    "sliderDescription": "Every journey we design is more than a route — it's a story about culture, comfort, and discovery across the heart of Uzbekistan"
+  },
+  "team": {
+    "badge": "TEAM MEMBERS",
+    "title": "Who will take care of you?",
+    "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe"
+  },
+  "mission": {
+    "badge": "OUR MISSION",
+    "title": "Bringing the Spirit of the Silk Road to Life",
+    "description": "We believe that every journey should go beyond sightseeing — it should connect people, cultures, and time",
+    "buttonText": "START THE TRIP",
+    "items": {
+      "connections": {
+        "title": "Authentic Connections",
+        "description": "We work closely with local guides, artisans, and families to offer genuine experiences rooted in real culture"
+      },
+      "customizable": {
+        "title": "Customisable Tours",
+        "description": "Every itinerary can be tailored to your preferences — from pace and accommodations to unique cultural activities"
+      },
+      "modular": {
+        "title": "Modular Elements",
+        "description": "Mix and match destinations, experiences, and services to build your perfect Uzbekistan adventure"
+      }
+    }
+  },
+  "goals": {
+    "badge": "GOALS",
+    "title": "Driven by Purpose, Focused on Excellence",
+    "description": "Our goal is to redefine the art of travel across Uzbekistan — turning every journey into a story of discovery, comfort, and connection. Through dedication, cultural insight, and precision in every detail, we craft experiences that stay with our travelers long after the journey ends.",
+    "cards": {
+      "experience": {
+        "badge": "EXPERIENCE",
+        "value": "10+ Years",
+        "description": "of curating authentic Silk Road adventures that inspire and educate travelers from around the world"
+      },
+      "satisfaction": {
+        "badge": "GUEST SATISFACTION",
+        "value": "99%",
+        "description": "Client Satisfaction Rate"
+      },
+      "journeys": {
+        "badge": "MEANINGFUL JOURNEYS",
+        "value": "300+ Curated Tours",
+        "description": "developed with a focus on cultural immersion, comfort, and sustainable travel practices"
+      },
+      "support": {
+        "badge": "SUPPORT & SERVICE",
+        "value": "24/7 Assistance",
+        "description": "from our dedicated on-ground teams ensures smooth experiences — from arrival to farewell"
+      }
+    }
+  },
+  "culture": {
+    "heroTitle": "Stories That Bring Uzbekistan to Life",
+    "noPosts": "No stories available at the moment.",
+    "viewAll": "VIEW FULL LIST OF STORIES",
+    "postNotFound": "Story not found."
+  },
+  "license": {
+    "badge": "LICENSE",
+    "description": "Officially licensed by the State Tourism Committee of Uzbekistan — trusted, transparent, and certified for quality travel.",
+    "download": "DOWNLOAD CERTIFICATE (PDF)"
+  }
+}

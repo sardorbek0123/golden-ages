@@ -1,7 +1,7 @@
 type EntityWithSlug = { slug: string }
 
 const API_BASE_URL = 'https://api.goldenagestravel.com/api'
-const locales = ['en', 'ru', 'uz', 'es', 'de', 'fr']
+const locales = ['en', 'ru', 'uz', 'es', 'de', 'fr', 'it']
 const staticRoutes = ['/', '/about', '/contacts', '/tours', '/culture', '/shop']
 
 function localePath(locale: string, path: string) {

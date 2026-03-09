@@ -29,7 +29,8 @@ export default defineNuxtConfig({
       { code: 'uz', name: "O'zbek", file: 'uz.json', flag: '🇺🇿' },
       { code: 'es', name: 'Español', file: 'es.json', flag: '🇪🇸' },
       { code: 'de', name: 'Deutsch', file: 'de.json', flag: '🇩🇪' },
-      { code: 'fr', name: 'Français', file: 'fr.json', flag: '🇫🇷' }
+      { code: 'fr', name: 'Français', file: 'fr.json', flag: '🇫🇷' },
+      { code: 'it', name: 'Italiano', file: 'it.json', flag: '🇮🇹' }
     ],
     defaultLocale: 'en',
     langDir: '../app/locales',
