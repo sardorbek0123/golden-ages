@@ -9,7 +9,7 @@ const organizationSchema = {
   name: 'Golden Ages of Uzbekistan',
   url: siteUrl,
   areaServed: 'Uzbekistan',
-  availableLanguage: ['en', 'ru', 'uz', 'es', 'de', 'fr']
+  availableLanguage: ['en', 'ru', 'uz', 'es', 'de', 'fr', 'it']
 }
 
 useHead(() => ({

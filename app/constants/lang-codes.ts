@@ -6,4 +6,5 @@ export const LANG_CODES = {
   de: 'de',
   ar: 'ar',
   fr: 'fr',
+  it: 'it',
 }
