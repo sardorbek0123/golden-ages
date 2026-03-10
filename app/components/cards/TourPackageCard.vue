@@ -15,6 +15,8 @@ interface Props {
   price: string
   image: string
   images?: string[]
+  discount?: boolean
+  discount_price?: string
 }
 
 const props = defineProps<Props>()
@@ -163,8 +165,12 @@ const getStarClass = (index: number, rating: number) => {
 
         <!-- Price & Button -->
         <div class="text-right lg:text-right">
-          <div class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
-            {{ price }}
+          <div class="mb-2 sm:mb-3">
+            <template v-if="discount && discount_price">
+              <div class="text-base sm:text-lg font-bold text-orange-normal">{{ discount_price }}</div>
+              <div class="text-sm text-gray-500 line-through">{{ price }}</div>
+            </template>
+            <div v-else class="text-base sm:text-lg font-bold text-gray-900">{{ price }}</div>
           </div>
           
           <!-- Booking Button - visible on hover (desktop) or always (mobile) -->

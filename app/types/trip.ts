@@ -53,6 +53,8 @@ export interface TripList {
   short_description: string
   locations: string
   price: number
+  discount?: boolean
+  discount_price?: number
   currency?: TripCurrency | null
   order?: number
   images: TripImage[]

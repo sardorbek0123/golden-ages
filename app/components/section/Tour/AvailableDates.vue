@@ -64,8 +64,8 @@ const scrollToForm = () => {
         <span class="text-xl font-bold text-gray-900">2026</span>
       </div>
 
-      <!-- Dates Table -->
-      <div class="border border-gray-200 rounded-2xl overflow-hidden">
+      <!-- Dates Table (Desktop) -->
+      <div class="hidden md:block border border-gray-200 rounded-2xl overflow-hidden">
         <table class="w-full">
           <tbody class="divide-y divide-gray-100">
             <tr
@@ -73,14 +73,12 @@ const scrollToForm = () => {
               :key="index"
               class="hover:bg-gray-50 transition-colors"
             >
-              <!-- Date Range -->
               <td class="py-4 px-6">
                 <span class="text-gray-700 font-medium">
                   {{ formatDate(priceItem.date_from) }} - {{ formatDate(priceItem.date_to) }}
                 </span>
               </td>
 
-              <!-- Availability Status -->
               <td class="py-4 px-6">
                 <span 
                   class="font-medium"
@@ -90,14 +88,12 @@ const scrollToForm = () => {
                 </span>
               </td>
 
-              <!-- Price -->
               <td class="py-4 px-6">
                 <span class="font-bold text-gray-900">
                   {{ formatPrice(priceItem.price, priceItem.currency) }}
                 </span>
               </td>
 
-              <!-- Book Button -->
               <td class="py-4 px-6 text-right">
                 <button
                   :disabled="!priceItem.available"
@@ -113,6 +109,45 @@ const scrollToForm = () => {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Dates Cards (Mobile) -->
+      <div class="md:hidden divide-y divide-gray-200">
+        <div
+          v-for="(priceItem, index) in prices"
+          :key="index"
+          class="py-5"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <span class="text-gray-700 font-medium text-sm leading-snug">
+              {{ formatDate(priceItem.date_from) }} -<br>{{ formatDate(priceItem.date_to) }}
+            </span>
+
+            <div class="text-right shrink-0">
+              <span
+                class="font-semibold text-sm"
+                :class="priceItem.available ? 'text-green-600' : 'text-gray-400'"
+              >
+                {{ priceItem.available ? t('tourDetail.available') : t('tourDetail.soldOut') }}
+              </span>
+              <span
+                class="font-bold ml-1"
+                :class="priceItem.available ? 'text-gray-900' : 'text-orange-500'"
+              >
+                {{ formatPrice(priceItem.price, priceItem.currency) }}
+              </span>
+            </div>
+          </div>
+
+          <div v-if="priceItem.available" class="mt-2 flex justify-end">
+            <button
+              class="w-fit px-3 py-1.5 rounded-lg font-semibold text-xs sm:text-sm bg-orange-normal text-white hover:bg-orange-normal-hover transition-all duration-200"
+              @click="scrollToForm"
+            >
+              {{ t('tourDetail.bookNow') }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>

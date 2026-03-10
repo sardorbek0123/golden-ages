@@ -16,7 +16,9 @@ export const useSettingsStore = defineStore('settings', () => {
       settings.value.facebook ||
       settings.value.linkedin ||
       settings.value.instagram ||
-      settings.value.twitter
+      settings.value.twitter ||
+      settings.value.telegram ||
+      settings.value.whatsapp
     )
   })
 
@@ -27,6 +29,8 @@ export const useSettingsStore = defineStore('settings', () => {
     if (settings.value.linkedin) links.push({ name: 'linkedin', url: settings.value.linkedin })
     if (settings.value.instagram) links.push({ name: 'instagram', url: settings.value.instagram })
     if (settings.value.twitter) links.push({ name: 'twitter', url: settings.value.twitter })
+    if (settings.value.telegram) links.push({ name: 'telegram', url: settings.value.telegram })
+    if (settings.value.whatsapp) links.push({ name: 'whatsapp', url: settings.value.whatsapp })
     return links
   })
 

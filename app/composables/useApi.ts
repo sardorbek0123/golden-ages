@@ -3,13 +3,16 @@ import { API_BASE_URL } from '~/types'
 
 /**
  * Helper to get current locale at request time
- * This ensures we always use the fresh locale value, not a stale SSR reference
+ * Uses useNuxtApp().$i18n instead of useI18n() because useI18n() loses
+ * component context after await - getCurrentInstance() returns null in async callbacks,
+ * causing fallback to default locale 'en' on subsequent requests
  */
 function getCurrentLocale(): string {
   try {
-    const { locale } = useI18n()
-    
-    return locale.value
+    const nuxtApp = useNuxtApp()
+    const locale = nuxtApp.$i18n?.locale
+    const value = locale && typeof locale === 'object' && 'value' in locale ? locale.value : locale
+    return value || 'en'
   } catch {
     return 'en' // fallback
   }

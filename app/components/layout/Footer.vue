@@ -61,7 +61,9 @@ const socialLinks = computed(() => {
     { name: 'Facebook', icon: 'facebook', href: settings.value.facebook },
     { name: 'Instagram', icon: 'instagram', href: settings.value.instagram },
     { name: 'X', icon: 'x', href: settings.value.twitter },
-    { name: 'LinkedIn', icon: 'linkedin', href: settings.value.linkedin }
+    { name: 'LinkedIn', icon: 'linkedin', href: settings.value.linkedin },
+    { name: 'Telegram', icon: 'telegram', href: settings.value.telegram },
+    { name: 'WhatsApp', icon: 'whatsapp', href: settings.value.whatsapp }
   ].filter((social) => social.href)
 })
 </script>
@@ -89,6 +91,8 @@ const socialLinks = computed(() => {
               <Icon v-else-if="social.icon === 'instagram'" name="simple-icons:instagram" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
               <Icon v-else-if="social.icon === 'x'" name="simple-icons:x" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
               <Icon v-else-if="social.icon === 'linkedin'" name="simple-icons:linkedin" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+              <Icon v-else-if="social.icon === 'telegram'" name="simple-icons:telegram" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+              <Icon v-else-if="social.icon === 'whatsapp'" name="simple-icons:whatsapp" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
             </a>
           </div>
         </div>

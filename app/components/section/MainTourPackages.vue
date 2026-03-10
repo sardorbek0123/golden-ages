@@ -38,10 +38,13 @@ const tours = computed(() => {
     // Format price with appropriate currency
     const currencyLabel = getCurrencyLabel(trip.currency?.key)
     const formattedPrice = new Intl.NumberFormat('uz-UZ').format(trip.price)
-    
+    const formattedDiscountPrice = trip.discount_price != null
+      ? `${new Intl.NumberFormat('uz-UZ').format(trip.discount_price)} ${currencyLabel}`
+      : undefined
+
     // Duration will be added by backend later
     const duration = ''
-    
+
     return {
       id: trip.id,
       slug: trip.slug,
@@ -49,7 +52,9 @@ const tours = computed(() => {
       duration,
       description: trip.short_description,
       price: `${t('common.from')} ${formattedPrice} ${currencyLabel}`,
-      image
+      image,
+      discount: trip.discount ?? false,
+      discount_price: formattedDiscountPrice
     }
   })
 })
@@ -187,6 +192,8 @@ const formattedTotal = computed(() => {
               :price="tour.price"
               :image="tour.image"
               :is-active="index === realIndex"
+              :discount="tour.discount"
+              :discount_price="tour.discount_price"
             />
           </SwiperSlide>
         </Swiper>

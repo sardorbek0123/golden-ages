@@ -1,337 +1,338 @@
 {
-  "all": "All",
+  "all": "Tutti",
   "error": {
-    "pageNotFound": "Page Not Found",
-    "pageNotFoundDescription": "The page you're looking for doesn't exist or has been moved. Let's get you back on track to discover the wonders of the Silk Road.",
-    "somethingWentWrong": "Something Went Wrong",
-    "somethingWentWrongDescription": "We're experiencing some technical difficulties. Please try again later or return to the homepage.",
-    "backToHome": "Back to Home"
+    "pageNotFound": "Pagina non trovata",
+    "pageNotFoundDescription": "La pagina che stai cercando non esiste o è stata spostata. Ti aiutiamo a rimetterti sulla strada per scoprire le meraviglie della Via della Seta.",
+    "somethingWentWrong": "Qualcosa è andato storto",
+    "somethingWentWrongDescription": "Stiamo riscontrando difficoltà tecniche. Riprova più tardi o torna alla pagina iniziale.",
+    "backToHome": "Torna alla home"
   },
   "comingSoon": {
-    "title": "Coming Soon",
-    "description": "We're working on something amazing. This page will be available soon — stay tuned for exciting new features and content.",
-    "backToHome": "Back to Home"
+    "title": "In arrivo",
+    "description": "Stiamo lavorando su qualcosa di straordinario. Questa pagina sarà presto disponibile — restate sintonizzati per nuovi contenuti e funzionalità.",
+    "backToHome": "Torna alla home"
   },
   "nav": {
-    "tours": "TOURS",
-    "aboutUs": "ABOUT US",
-    "cities": "CITIES",
-    "shop": "SHOP",
-    "culture": "CULTURE",
-    "contacts": "CONTACTS"
+    "tours": "TOUR",
+    "aboutUs": "CHI SIAMO",
+    "cities": "CITTÀ",
+    "shop": "NEGOZIO",
+    "culture": "CULTURA",
+    "contacts": "CONTATTI"
   },
   "header": {
-    "createTour": "CREATE YOUR TOUR"
+    "createTour": "CREA IL TUO TOUR"
   },
   "hero": {
-    "title": "Discover the history of Uzbekistan",
-    "subtitle": "From Samarkand to Khiva, travel the Silk Road your way — group, family, business or private — with visas, hotels and guides taken care of.",
-    "exploreTours": "SEE TOURS",
-    "ctaText": "START THE JOURNEY"
+    "title": "Scopri la storia dell'Uzbekistan",
+    "subtitle": "Da Samarcanda a Khiva, viaggia sulla Via della Seta come preferisci — in gruppo, in famiglia, business o privato — con visti, hotel e guide inclusi.",
+    "exploreTours": "SCOPRI I TOUR",
+    "ctaText": "INIZIA IL VIAGGIO"
   },
   "whyChooseUs": {
-    "badge": "OUR VALUES",
-    "title": "Why choose us",
+    "badge": "I NOSTRI VALORI",
+    "title": "Perché sceglierci",
     "hotels": {
-      "title": "Hotels",
-      "description": "Choose among 3-5★ hotels and boutique stays, all personally vetted for comfort, location, and authentic Uzbek hospitality"
+      "title": "Hotel",
+      "description": "Scegli tra hotel 3-5 stelle e boutique, tutti personalmente selezionati per comfort, posizione e autentica ospitalità uzbeka"
     },
     "simCard": {
-      "title": "Free SIM card / eSIM",
-      "description": "Stay connected from your first day. We provide a free local SIM or eSIM setup so you have internet and WhatsApp right after arrival"
+      "title": "SIM card / eSIM gratuita",
+      "description": "Resta connesso dal primo giorno. Forniamo una SIM locale gratuita o configurazione eSIM per avere internet e WhatsApp subito dopo l'arrivo"
     },
     "medical": {
-      "title": "Medical support",
-      "description": "Your safety is our priority. Every traveler is covered with on-trip assistance and access to trusted clinics when needed"
+      "title": "Supporto medico",
+      "description": "La tua sicurezza è la nostra priorità. Ogni viaggiatore ha assistenza durante il viaggio e accesso a cliniche di fiducia quando necessario"
     },
     "guides": {
-      "title": "Friendly and qualified guides",
-      "description": "Licensed, English-speaking professionals who know every hidden gem – turning each excursion into a story worth remembering"
+      "title": "Guide cordiali e qualificate",
+      "description": "Professionisti abilitati, anglofoni, che conoscono ogni tesoro nascosto — trasformando ogni escursione in una storia da ricordare"
     },
     "packages": {
-      "title": "Customable tour packages",
-      "description": "Licensed, English-speaking professionals who know every hidden gem – turning each excursion into a story worth remembering"
+      "title": "Pacchetti tour personalizzabili",
+      "description": "Itinerari personalizzabili secondo le tue preferenze — ritmo, alloggi e attività culturali uniche"
     },
     "support": {
-      "title": "24/7 support",
-      "description": "Transparent itineraries with everything organized – transfers, tickets, meals, and experiences, without hidden costs"
+      "title": "Assistenza 24/7",
+      "description": "Itinerari trasparenti con tutto organizzato — trasferimenti, biglietti, pasti ed esperienze, senza costi nascosti"
     }
   },
   "destinations": {
-    "badge": "OUR DESTINATIONS",
-    "title": "Discover the great history and incredible heritage of Uzbekistan",
-    "seeTours": "SEE {city} TOURS"
+    "badge": "LE NOSTRE METE",
+    "title": "Scopri la grande storia e l'incredibile patrimonio dell'Uzbekistan",
+    "seeTours": "SCOPRI I TOUR DI {city}"
   },
   "testimonials": {
-    "badge": "TESTIMONIAL",
-    "title": "Stories from those who've traveled with GAOU",
-    "subtitle": "Authentic experiences and trusted service — discover what travelers say about their Golden Ages journey",
-    "writeReview": "WRITE A REVIEW",
-    "noReviews": "No reviews yet. Be the first to share your experience!",
+    "badge": "RECENSIONI",
+    "title": "Storie di chi ha viaggiato con GAOU",
+    "subtitle": "Esperienze autentiche e servizio affidabile — scopri cosa dicono i viaggiatori del loro viaggio con Golden Ages",
+    "writeReview": "SCRIVI UNA RECENSIONE",
+    "noReviews": "Nessuna recensione ancora. Sii il primo a condividere la tua esperienza!",
     "modal": {
-      "title": "Share Your Experience",
-      "rating": "Your Rating",
-      "fullName": "Full Name",
-      "fullNamePlaceholder": "Enter your name",
-      "role": "Profession / Role",
-      "rolePlaceholder": "e.g. Travel Photographer",
-      "review": "Your Review",
-      "reviewPlaceholder": "Tell us about your experience with Golden Ages...",
-      "submit": "Submit Review",
-      "submitting": "Submitting...",
-      "successTitle": "Thank You!",
-      "successMessage": "Your review has been submitted successfully."
+      "title": "Condividi la tua esperienza",
+      "rating": "La tua valutazione",
+      "fullName": "Nome completo",
+      "fullNamePlaceholder": "Inserisci il tuo nome",
+      "role": "Professione / Ruolo",
+      "rolePlaceholder": "es. Fotografo di viaggio",
+      "review": "La tua recensione",
+      "reviewPlaceholder": "Raccontaci la tua esperienza con Golden Ages...",
+      "submit": "Invia recensione",
+      "submitting": "Invio in corso...",
+      "successTitle": "Grazie!",
+      "successMessage": "La tua recensione è stata inviata con successo."
     }
   },
   "tourPackages": {
-    "badge": "TOUR PACKAGES",
-    "title": "Signature Uzbekistan Tours Curated for You",
-    "subtitle": "Exclusive itineraries crafted by local experts — combining iconic landmarks, luxury stays, and personalized service throughout your trip",
-    "bookingNow": "BOOKING NOW"
+    "badge": "PACCHETTI TOUR",
+    "title": "Tour esclusivi in Uzbekistan pensati per te",
+    "subtitle": "Itinerari esclusivi creati da esperti locali — luoghi iconici, soggiorni di lusso e servizio personalizzato per tutto il viaggio",
+    "bookingNow": "PRENOTA ORA"
   },
   "contactForm": {
-    "title": "Get In Touch",
-    "fullName": "FULL NAME",
+    "title": "Contattaci",
+    "fullName": "NOME COMPLETO",
     "email": "EMAIL",
-    "phone": "PHONE",
-    "tourType": "TOUR TYPE",
-    "message": "MESSAGE",
-    "messagePlaceholder": "How can we help you?",
-    "submit": "SEND A MESSAGE",
-    "contactTitle": "Plan Your Uzbekistan Trip with",
-    "contactHighlight": "Local Experts",
-    "planYourTrip": "Plan Your Uzbekistan Trip with local experts",
-    "selectTourType": "Select Tour Type",
-    "successTitle": "Thank You!",
-    "successMessage": "Your message has been submitted successfully.",
-    "sending": "Sending..."
+    "phone": "TELEFONO",
+    "tourType": "TIPO DI TOUR",
+    "message": "MESSAGGIO",
+    "messagePlaceholder": "Come possiamo aiutarti?",
+    "submit": "INVIA MESSAGGIO",
+    "contactTitle": "Pianifica il tuo viaggio in Uzbekistan con",
+    "contactHighlight": "Esperti locali",
+    "planYourTrip": "Pianifica il tuo viaggio in Uzbekistan con esperti locali",
+    "selectTourType": "Seleziona tipo di tour",
+    "successTitle": "Grazie!",
+    "successMessage": "Il tuo messaggio è stato inviato con successo.",
+    "sending": "Invio in corso..."
   },
   "footer": {
-    "description": "Experience the Golden Ages of history with us — Discover the timeless beauty of Uzbekistan",
+    "description": "Vivi l'Età dell'Oro della storia con noi — Scopri la bellezza senza tempo dell'Uzbekistan",
     "tours": {
-      "title": "TOURS",
-      "all": "All Tours",
-      "familyPackages": "Family Packages",
-      "businessTours": "Business Tours",
-      "individualTrips": "Individual Trips",
-      "friendsGetaways": "Friends Getaways",
-      "vipExperiences": "VIP Experiences"
+      "title": "TOUR",
+      "all": "Tutti i tour",
+      "familyPackages": "Pacchetti famiglia",
+      "businessTours": "Tour business",
+      "individualTrips": "Viaggi individuali",
+      "friendsGetaways": "Gite tra amici",
+      "vipExperiences": "Esperienze VIP"
     },
     "aboutUs": {
-      "title": "ABOUT US",
-      "missions": "Missions",
-      "goals": "Goals",
-      "license": "License",
-      "teamMembers": "Team members"
+      "title": "CHI SIAMO",
+      "missions": "Missioni",
+      "goals": "Obiettivi",
+      "license": "Licenza",
+      "teamMembers": "Membri del team"
     },
     "cities": {
-      "title": "CITIES",
-      "more": "More"
+      "title": "CITTÀ",
+      "more": "Altro"
     },
     "culture": {
-      "title": "UZBEK CULTURE",
-      "cuisineFood": "Cuisine & Food",
-      "artHandicrafts": "Art & Handicrafts",
-      "musicFestivals": "Music & Festivals",
-      "historyHeritage": "History & Heritage Stories"
+      "title": "CULTURA UZBEKA",
+      "cuisineFood": "Cucina e gastronomia",
+      "artHandicrafts": "Arte e artigianato",
+      "musicFestivals": "Musica e festival",
+      "historyHeritage": "Storia e patrimonio"
     },
-    "copyright": "2025 Golden Ages. All rights reserved.",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service",
-    "cookiesSettings": "Cookies Settings",
-    "registrationAndLicence": "Registration and Licence"
+    "copyright": "2025 Golden Ages. Tutti i diritti riservati.",
+    "privacyPolicy": "Informativa sulla privacy",
+    "termsOfService": "Termini di servizio",
+    "cookiesSettings": "Impostazioni cookie",
+    "registrationAndLicence": "Registrazione e licenza"
   },
   "toursPage": {
-    "heroTitle": "Discover Uzbekistan with our curated tours",
-    "heroSubtitle": "From vibrant Tashkent to ancient Khiva — explore the Silk Road with licensed guides, 3–5★ hotels, and 24/7 support",
-    "startTrip": "START THE TRIP",
-    "ourTourPackages": "Our Tour Packages"
+    "heroTitle": "Scopri l'Uzbekistan con i nostri tour",
+    "heroSubtitle": "Dalla vivace Tashkent all'antica Khiva — esplora la Via della Seta con guide abilitate, hotel 3-5 stelle e assistenza 24/7",
+    "startTrip": "INIZIA IL VIAGGIO",
+    "ourTourPackages": "I nostri pacchetti tour"
   },
   "tourTypes": {
-    "groupTour": "Group tour",
-    "privateTour": "Private tour",
-    "familyTour": "Family tour",
-    "businessTour": "Business tour",
-    "customTour": "Custom tour"
+    "groupTour": "Tour di gruppo",
+    "privateTour": "Tour privato",
+    "familyTour": "Tour famiglia",
+    "businessTour": "Tour business",
+    "customTour": "Tour su misura"
   },
   "common": {
-    "from": "From",
-    "days": "days",
-    "nights": "nights",
-    "reviews": "reviews",
-    "excellent": "Excellent",
-    "try_again": "Try Again",
-    "bookNow": "BOOK NOW"
+    "from": "Da",
+    "days": "giorni",
+    "nights": "notti",
+    "reviews": "recensioni",
+    "excellent": "Eccellente",
+    "try_again": "Riprova",
+    "bookNow": "PRENOTA ORA"
   },
   "tours": {
-    "all": "All Tours",
-    "our_packages": "Our Tour Packages",
-    "no_packages": "No tour packages available at the moment.",
-    "excellent": "Excellent"
+    "all": "Tutti i tour",
+    "our_packages": "I nostri pacchetti tour",
+    "no_packages": "Nessun pacchetto tour disponibile al momento.",
+    "excellent": "Eccellente"
   },
   "cities": {
-    "all": "All Cities",
+    "all": "Tutte le città",
     "famousPlaces": {
-      "title": "Famous Places",
-      "noPlaces": "No famous places available for this city at the moment."
+      "title": "Luoghi famosi",
+      "noPlaces": "Nessun luogo famoso disponibile per questa città al momento."
     }
   },
   "hotels": {
-    "title": "Where to Stay in {city}",
-    "description": "Discover a curated selection of {city}'s finest hotels — from elegant international chains to charming boutique stays nestled near ancient landmarks. Each property offers comfort, style, and authentic Uzbek hospitality to make your stay truly memorable.",
-    "noHotels": "No hotels available for this city at the moment."
+    "title": "Dove alloggiare a {city}",
+    "description": "Scopri una selezione dei migliori hotel di {city} — da eleganti catene internazionali a boutique nei pressi di antichi monumenti. Ogni struttura offre comfort, stile e autentica ospitalità uzbeka per un soggiorno indimenticabile.",
+    "noHotels": "Nessun hotel disponibile per questa città al momento."
   },
   "tourDetail": {
-    "back": "Back",
+    "back": "Indietro",
     "gallery": {
-      "showAll": "Show All Photos",
-      "close": "Close",
-      "prev": "Previous photo",
-      "next": "Next photo",
-      "image": "Photo {number}"
+      "showAll": "Mostra tutte le foto",
+      "close": "Chiudi",
+      "prev": "Foto precedente",
+      "next": "Foto successiva",
+      "image": "Foto {number}"
     },
-    "duration": "Duration",
-    "groupSize": "Group Size",
-    "accommodation": "Accommodation",
-    "transport": "Transport",
-    "cities": "Cities",
-    "guide": "Guide",
-    "price": "Price",
-    "perPerson": "per person",
-    "bookNow": "BOOKING NOW",
-    "description": "DESCRIPTION",
-    "itinerary": "Tour Itinerary",
-    "tourPlan": "Tour Plan",
-    "availableDates": "Dates & Prices, per person",
-    "available": "Available",
-    "soldOut": "Sold Out",
-    "day": "Day {number}",
+    "duration": "Durata",
+    "groupSize": "Dimensione gruppo",
+    "accommodation": "Alloggio",
+    "transport": "Trasporto",
+    "cities": "Città",
+    "guide": "Guida",
+    "price": "Prezzo",
+    "perPerson": "a persona",
+    "bookNow": "PRENOTA ORA",
+    "description": "DESCRIZIONE",
+    "itinerary": "Itinerario del tour",
+    "tourPlan": "Piano del tour",
+    "availableDates": "Date e prezzi, a persona",
+    "available": "Disponibile",
+    "soldOut": "Esaurito",
+    "day": "Giorno {number}",
     "paymentModal": {
-      "title": "Payment",
-      "paymentType": "Payment type",
-      "fullPayment": "Full payment",
-      "partialPayment": "30% deposit",
-      "amountToPay": "Amount to pay",
-      "partialPaymentHint": "The remaining amount is due before the tour starts.",
-      "personalInfo": "Personal Information",
-      "step": "Step {number}",
-      "peopleCount": "Number of travelers",
-      "pricePerPerson": "Price per person",
-      "subtotal": "Subtotal",
-      "total": "Total",
-      "people": "People",
-      "person": "Person {number}",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "male": "Male",
-      "female": "Female",
-      "other": "Other",
-      "country": "Country",
-      "passport": "Passport",
-      "passportPlaceholder": "Passport (e.g. AB 1234567)",
-      "passportError": "Passport must be at least 6 characters (letters, numbers and spaces only).",
-      "phone": "Phone Number",
+      "title": "Pagamento",
+      "paymentType": "Tipo di pagamento",
+      "fullPayment": "Pagamento completo",
+      "partialPayment": "Acconto 30%",
+      "amountToPay": "Importo da pagare",
+      "partialPaymentHint": "Il saldo è dovuto prima dell'inizio del tour.",
+      "personalInfo": "Dati personali",
+      "step": "Passo {number}",
+      "peopleCount": "Numero di viaggiatori",
+      "pricePerPerson": "Prezzo a persona",
+      "subtotal": "Subtotale",
+      "total": "Totale",
+      "people": "Persone",
+      "person": "Persona {number}",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "male": "Uomo",
+      "female": "Donna",
+      "other": "Altro",
+      "country": "Paese",
+      "passport": "Passaporto",
+      "passportPlaceholder": "Passaporto (es. AB 1234567)",
+      "passportError": "Il passaporto deve contenere almeno 6 caratteri (solo lettere, numeri e spazi).",
+      "phone": "Numero di telefono",
       "email": "Email",
-      "cardDetails": "Card Details",
-      "cardholderName": "Card holder name",
-      "cardholderNamePlaceholder": "As shown on the card",
-      "cardNumber": "Card number",
+      "cardDetails": "Dati carta",
+      "cardholderName": "Nome titolare",
+      "cardholderNamePlaceholder": "Come indicato sulla carta",
+      "cardNumber": "Numero carta",
       "cardNumberPlaceholder": "0000 0000 0000 0000",
-      "expiry": "Expiry Date",
-      "expiryPlaceholder": "MM/YY",
-      "expiryErrorInvalid": "Invalid month. Use MM/YY format (01-12).",
-      "expiryErrorExpired": "Card has expired.",
+      "expiry": "Data di scadenza",
+      "expiryPlaceholder": "MM/AA",
+      "expiryErrorInvalid": "Mese non valido. Usa il formato MM/AA (01-12).",
+      "expiryErrorExpired": "La carta è scaduta.",
       "cvv": "CVC",
       "cvvPlaceholder": "123",
-      "back": "Back",
-      "next": "Next",
-      "pay": "Pay",
-      "processing": "Processing...",
-      "successTitle": "Payment Successful!",
-      "successMessage": "Thank you for your booking. We will contact you shortly.",
-      "paymentError": "Payment failed. Please check your card details and try again."
+      "back": "Indietro",
+      "next": "Avanti",
+      "pay": "Paga",
+      "processing": "Elaborazione...",
+      "successTitle": "Pagamento riuscito!",
+      "successMessage": "Grazie per la prenotazione. Ti contatteremo a breve.",
+      "paymentError": "Pagamento fallito. Controlla i dati della carta e riprova."
     }
   },
   "contacts": {
-    "heroTitle": "Start Your Silk Road Journey Today",
-    "heroDescription": "Have questions about our tours or want a custom itinerary? Our local experts are here to craft an unforgettable journey through Uzbekistan",
-    "generalInquiries": "General Inquiries",
-    "technicalSupport": "Technical Support",
-    "ourOffice": "Our Office",
-    "officeHours": "Office Hours",
-    "getDirections": "Get Directions"
+    "heroTitle": "Inizia oggi il tuo viaggio sulla Via della Seta",
+    "heroDescription": "Hai domande sui nostri tour o vuoi un itinerario personalizzato? I nostri esperti locali sono qui per creare un viaggio indimenticabile attraverso l'Uzbekistan",
+    "generalInquiries": "Informazioni generali",
+    "technicalSupport": "Supporto tecnico",
+    "ourOffice": "Il nostro ufficio",
+    "officeHours": "Orari di apertura",
+    "getDirections": "Ottieni indicazioni"
   },
   "faq": {
-    "title": "Asked question",
-    "description": "If the question is not available on our FAQ section, Feel free to contact us personally, we will resolve your respective doubts.",
-    "askQuestion": "ASK QUESTION"
+    "title": "Domande frequenti",
+    "description": "Se la tua domanda non è nella sezione FAQ, contattaci — risolveremo tutti i tuoi dubbi.",
+    "askQuestion": "FAI UNA DOMANDA"
   },
   "aboutUs": {
-    "badge": "ABOUT US",
-    "sliderTitle": "Why Travel with Golden Ages",
-    "sliderDescription": "Every journey we design is more than a route — it's a story about culture, comfort, and discovery across the heart of Uzbekistan"
+    "badge": "CHI SIAMO",
+    "sliderTitle": "Perché viaggiare con Golden Ages",
+    "sliderDescription": "Ogni viaggio che progettiamo è più di un itinerario — è una storia di cultura, comfort e scoperta nel cuore dell'Uzbekistan"
   },
   "team": {
-    "badge": "TEAM MEMBERS",
-    "title": "Who will take care of you?",
-    "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe"
+    "badge": "MEMBRI DEL TEAM",
+    "title": "Chi si prenderà cura di te?",
+    "description": "Incontra i professionisti che renderanno il tuo viaggio indimenticabile"
   },
   "mission": {
-    "badge": "OUR MISSION",
-    "title": "Bringing the Spirit of the Silk Road to Life",
-    "description": "We believe that every journey should go beyond sightseeing — it should connect people, cultures, and time",
-    "buttonText": "START THE TRIP",
+    "badge": "LA NOSTRA MISSIONE",
+    "title": "Dare vita allo spirito della Via della Seta",
+    "description": "Crediamo che ogni viaggio debba andare oltre il turismo — deve connettere persone, culture e tempo",
+    "buttonText": "INIZIA IL VIAGGIO",
     "items": {
       "connections": {
-        "title": "Authentic Connections",
-        "description": "We work closely with local guides, artisans, and families to offer genuine experiences rooted in real culture"
+        "title": "Connessioni autentiche",
+        "description": "Lavoriamo a stretto contatto con guide locali, artigiani e famiglie per offrire esperienze genuine radicate nella vera cultura"
       },
       "customizable": {
-        "title": "Customisable Tours",
-        "description": "Every itinerary can be tailored to your preferences — from pace and accommodations to unique cultural activities"
+        "title": "Tour personalizzabili",
+        "description": "Ogni itinerario può essere adattato alle tue preferenze — dal ritmo e alloggi alle attività culturali uniche"
       },
       "modular": {
-        "title": "Modular Elements",
-        "description": "Mix and match destinations, experiences, and services to build your perfect Uzbekistan adventure"
+        "title": "Elementi modulari",
+        "description": "Combina mete, esperienze e servizi per costruire la tua avventura perfetta in Uzbekistan"
       }
     }
   },
   "goals": {
-    "badge": "GOALS",
-    "title": "Driven by Purpose, Focused on Excellence",
-    "description": "Our goal is to redefine the art of travel across Uzbekistan — turning every journey into a story of discovery, comfort, and connection. Through dedication, cultural insight, and precision in every detail, we craft experiences that stay with our travelers long after the journey ends.",
+    "badge": "OBIETTIVI",
+    "title": "Spinti dall'obiettivo, focalizzati sull'eccellenza",
+    "description": "Il nostro obiettivo è ridefinire l'arte del viaggio in Uzbekistan — trasformare ogni viaggio in una storia di scoperta, comfort e connessione. Con dedizione, conoscenza culturale e precisione in ogni dettaglio, creiamo esperienze che restano con i viaggiatori ben dopo la fine del viaggio.",
     "cards": {
       "experience": {
-        "badge": "EXPERIENCE",
-        "value": "10+ Years",
-        "description": "of curating authentic Silk Road adventures that inspire and educate travelers from around the world"
+        "badge": "ESPERIENZA",
+        "value": "10+ anni",
+        "description": "a creare avventure autentiche sulla Via della Seta che ispirano e educano viaggiatori da tutto il mondo"
       },
       "satisfaction": {
-        "badge": "GUEST SATISFACTION",
+        "badge": "SODDISFAZIONE CLIENTI",
         "value": "99%",
-        "description": "Client Satisfaction Rate"
+        "description": "Tasso di soddisfazione clienti"
       },
       "journeys": {
-        "badge": "MEANINGFUL JOURNEYS",
-        "value": "300+ Curated Tours",
-        "description": "developed with a focus on cultural immersion, comfort, and sustainable travel practices"
+        "badge": "VIAGGI SIGNIFICATIVI",
+        "value": "300+ tour curati",
+        "description": "sviluppati con focus su immersione culturale, comfort e pratiche di viaggio sostenibili"
       },
       "support": {
-        "badge": "SUPPORT & SERVICE",
-        "value": "24/7 Assistance",
-        "description": "from our dedicated on-ground teams ensures smooth experiences — from arrival to farewell"
+        "badge": "ASSISTENZA E SERVIZIO",
+        "value": "Assistenza 24/7",
+        "description": "dei nostri team dedicati sul territorio garantisce esperienze fluide — dall'arrivo ai saluti"
       }
     }
   },
   "culture": {
-    "heroTitle": "Stories That Bring Uzbekistan to Life",
-    "noPosts": "No stories available at the moment.",
-    "viewAll": "VIEW FULL LIST OF STORIES",
-    "postNotFound": "Story not found."
+    "heroTitle": "Storie che danno vita all'Uzbekistan",
+    "noPosts": "Nessuna storia disponibile al momento.",
+    "viewAll": "VEDI TUTTE LE STORIE",
+    "viewMore": "VEDI ALTRO",
+    "postNotFound": "Storia non trovata."
   },
   "license": {
-    "badge": "LICENSE",
-    "description": "Officially licensed by the State Tourism Committee of Uzbekistan — trusted, transparent, and certified for quality travel.",
-    "download": "DOWNLOAD CERTIFICATE (PDF)"
+    "badge": "LICENZA",
+    "description": "Autorizzati ufficialmente dal Comitato statale per il turismo dell'Uzbekistan — affidabili, trasparenti e certificati per viaggi di qualità.",
+    "download": "SCARICA CERTIFICATO (PDF)"
   }
 }
