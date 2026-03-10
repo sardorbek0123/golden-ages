@@ -29,6 +29,9 @@ export const useBlogStore = defineStore('blogs', () => {
     return blogs.value.filter(blog => blog.category?.id === categoryId)
   })
 
+  const loadingMore = ref(false)
+  const hasMore = computed(() => blogs.value.length < count.value)
+
   // Actions
   async function fetchBlogs(params?: BlogsListParams) {
     loading.value = true
@@ -43,6 +46,25 @@ export const useBlogStore = defineStore('blogs', () => {
       console.error('Error fetching blogs:', e)
     } finally {
       loading.value = false
+    }
+  }
+
+  async function loadMoreBlogs(limit = 10) {
+    if (!hasMore.value || loadingMore.value) return
+    loadingMore.value = true
+
+    try {
+      const response = await get<PaginatedResponse<Blog>>('/blogs/', {
+        limit,
+        offset: blogs.value.length,
+      } as Record<string, unknown>)
+      blogs.value = [...blogs.value, ...response.results]
+      count.value = response.count
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Failed to load more blogs'
+      console.error('Error loading more blogs:', e)
+    } finally {
+      loadingMore.value = false
     }
   }
 
@@ -88,14 +110,17 @@ export const useBlogStore = defineStore('blogs', () => {
     currentBlog,
     count,
     loading,
+    loadingMore,
     loadingDetail,
     error,
     // Getters
     hasBlogs,
+    hasMore,
     getBlogBySlug,
     blogsByCategory,
     // Actions
     fetchBlogs,
+    loadMoreBlogs,
     fetchBlogBySlug,
     fetchBlogCategories,
     clearCurrentBlog,

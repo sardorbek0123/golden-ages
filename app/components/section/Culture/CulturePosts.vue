@@ -4,7 +4,7 @@ const blogStore = useBlogStore()
 
 onMounted(async () => {
   await blogStore.fetchBlogCategories()
-  await blogStore.fetchBlogs()
+  await blogStore.fetchBlogs({ limit: 10 })
 })
 </script>
 <template>
