@@ -7,6 +7,8 @@ interface Props {
   price: string
   image: string
   isActive?: boolean
+  discount?: boolean
+  discount_price?: string
 }
 
 defineProps<Props>()
@@ -58,8 +60,12 @@ const localePath = useLocalePath()
 
         <!-- Price and Button -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3 mt-3 sm:mt-4">
-          <div class="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-full">
-            <span class="text-xs sm:text-sm font-medium text-gray-900">{{ price }}</span>
+          <div class="inline-flex flex-col items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-full">
+            <template v-if="discount && discount_price">
+              <span class="text-xs sm:text-sm font-medium text-orange-normal">{{ discount_price }}</span>
+              <span class="text-xs text-gray-500 line-through">{{ price }}</span>
+            </template>
+            <span v-else class="text-xs sm:text-sm font-medium text-gray-900">{{ price }}</span>
           </div>
           <NuxtLink :to="localePath('/#form')" class="inline-flex items-center justify-center px-4 sm:px-6 py-1.5 sm:py-2 bg-orange-normal text-white text-xs sm:text-sm font-semibold rounded-full hover:bg-orange-normal-hover transition-colors uppercase tracking-wide">
             {{ t('common.bookNow') }}

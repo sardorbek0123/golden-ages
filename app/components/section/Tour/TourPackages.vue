@@ -62,7 +62,10 @@ const tourPackages = computed(() => {
     // Format price with currency
     const currencyLabel = getCurrencyLabel(trip.currency?.key)
     const formattedPrice = new Intl.NumberFormat('uz-UZ').format(trip.price)
-    
+    const formattedDiscountPrice = trip.discount_price != null
+      ? `${new Intl.NumberFormat('uz-UZ').format(trip.discount_price)} ${currencyLabel}`
+      : undefined
+
     return {
       id: trip.id,
       slug: trip.slug,
@@ -77,7 +80,9 @@ const tourPackages = computed(() => {
       ratingLabel: t('tours.excellent'),
       price: `${formattedPrice} ${currencyLabel}`,
       image,
-      images
+      images,
+      discount: trip.discount ?? false,
+      discount_price: formattedDiscountPrice
     }
   })
 })
@@ -130,6 +135,8 @@ const tourPackages = computed(() => {
           :price="tour.price"
           :image="tour.image"
           :images="tour.images"
+          :discount="tour.discount"
+          :discount_price="tour.discount_price"
         />
       </div>
     </div>
