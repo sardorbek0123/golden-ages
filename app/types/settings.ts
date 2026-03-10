@@ -8,6 +8,8 @@ export interface SiteSettings {
   linkedin?: string
   instagram?: string
   twitter?: string
+  telegram?: string
+  whatsapp?: string
   home_page_video?: string | null
   email?: string
   phone_number?: string

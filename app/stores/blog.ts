@@ -66,10 +66,10 @@ export const useBlogStore = defineStore('blogs', () => {
   async function fetchBlogCategories() {
     try {
       const response = await get<PaginatedResponse<BlogCategory>>('/blog-categories/')
-      return response.results
+      blogCategories.value = response.results
     } catch (e) {
       console.error('Error fetching blog categories:', e)
-      return []
+      blogCategories.value = []
     }
   }
 

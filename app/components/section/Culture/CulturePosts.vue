@@ -3,7 +3,7 @@ const { t } = useI18n()
 const blogStore = useBlogStore()
 
 onMounted(async () => {
-  blogStore.blogCategories = await blogStore.fetchBlogCategories()
+  await blogStore.fetchBlogCategories()
   await blogStore.fetchBlogs()
 })
 </script>
