@@ -23,10 +23,15 @@ const getCurrencyLabel = (currencyKey?: string | null): string => {
 }
 
 // Format price with currency
+const currencyLabel = computed(() => getCurrencyLabel(props.trip.currency?.key))
 const formattedPrice = computed(() => {
-  const currencyLabel = getCurrencyLabel(props.trip.currency?.key)
-  return new Intl.NumberFormat('uz-UZ').format(props.trip.price) + ' ' + currencyLabel
+  return new Intl.NumberFormat('uz-UZ').format(props.trip.price) + ' ' + currencyLabel.value
 })
+const formattedDiscountPrice = computed(() => {
+  if (props.trip.discount_price == null) return null
+  return new Intl.NumberFormat('uz-UZ').format(props.trip.discount_price) + ' ' + currencyLabel.value
+})
+const showDiscount = computed(() => props.trip.discount && formattedDiscountPrice.value)
 
 // Get sorted utilities
 const sortedUtilities = computed(() => {
@@ -96,7 +101,11 @@ const closePaymentModal = () => { isPaymentModalOpen.value = false }
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-0 pt-4 sm:pt-6 border-t border-gray-100">
             <div>
               <p class="text-xs text-gray-400">{{ t('tourDetail.price') }}</p>
-              <p class="text-lg sm:text-xl font-bold text-gray-900">{{ formattedPrice }} <span class="text-xs sm:text-sm font-normal text-gray-500">{{ t('tourDetail.perPerson') }}</span></p>
+              <div v-if="showDiscount">
+                <p class="text-lg sm:text-xl font-bold text-orange-normal">{{ formattedDiscountPrice }} <span class="text-xs sm:text-sm font-normal text-gray-500">{{ t('tourDetail.perPerson') }}</span></p>
+                <p class="text-sm text-gray-500 line-through">{{ formattedPrice }}</p>
+              </div>
+              <p v-else class="text-lg sm:text-xl font-bold text-gray-900">{{ formattedPrice }} <span class="text-xs sm:text-sm font-normal text-gray-500">{{ t('tourDetail.perPerson') }}</span></p>
             </div>
             <button
               type="button"
