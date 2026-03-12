@@ -78,6 +78,8 @@ export interface TripDetail {
   trip_utilities: TripUtility[]
   video?: string | null
   price: number
+  discount?: boolean
+  discount_price?: number
   currency?: TripCurrency | null
   order?: number
   plans: TripPlan[]
