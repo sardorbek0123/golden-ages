@@ -84,6 +84,13 @@ export default defineNuxtConfig({
       ],
       script: [
         {
+          src: 'https://www.googletagmanager.com/gtag/js?id=AW-17928071140',
+          async: true
+        },
+        {
+          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17928071140');`
+        },
+        {
           innerHTML: `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
