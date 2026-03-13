@@ -173,6 +173,14 @@
       "noPlaces": "Ushbu shahar uchun mashhur joylar hozircha mavjud emas."
     }
   },
+  "cityOverview": {
+    "region": "Viloyat",
+    "population": "Aholi",
+    "founded": "Tashkil topgan",
+    "unescoStatus": "UNESCO holati",
+    "bestSeason": "Eng yaxshi mavsum",
+    "experienceHighlights": "Tajriba xususiyatlari"
+  },
   "hotels": {
     "title": "{city}da qayerda qolish mumkin",
     "description": "{city}ning eng yaxshi mehmonxonalarini kashf eting — nafis xalqaro tarmoqlardan tortib qadimiy obidalar yaqinidagi go'zal butik mehmonxonalargacha. Har bir mehmonxona qulaylik, uslub va haqiqiy o'zbek mehmondo'stligini taqdim etadi.",

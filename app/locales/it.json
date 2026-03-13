@@ -176,6 +176,14 @@
       "noPlaces": "Nessun luogo famoso disponibile per questa città al momento."
     }
   },
+  "cityOverview": {
+    "region": "Regione",
+    "population": "Popolazione",
+    "founded": "Fondata",
+    "unescoStatus": "Stato UNESCO",
+    "bestSeason": "Miglior stagione",
+    "experienceHighlights": "Punti salienti dell'esperienza"
+  },
   "hotels": {
     "title": "Dove alloggiare a {city}",
     "description": "Scopri una selezione dei migliori hotel di {city} — da eleganti catene internazionali a boutique nei pressi di antichi monumenti. Ogni struttura offre comfort, stile e autentica ospitalità uzbeka per un soggiorno indimenticabile.",

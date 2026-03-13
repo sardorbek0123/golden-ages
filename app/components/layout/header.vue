@@ -104,7 +104,7 @@ onUnmounted(() => {
         >
           <!-- Logo -->
           <div class="flex items-center">
-            <NuxtLink :to="localePath('/')" @click="closeDropdown">
+            <NuxtLink :to="localePath('/')" aria-label="Golden Ages home" @click="closeDropdown">
               <IconsLogo class="w-20 h-10 md:w-[150px] md:h-[35px] lg:max-w-[260px] xl:max-w-[300px] lg:max-h-full"/>
             </NuxtLink>
           </div>
@@ -177,7 +177,7 @@ onUnmounted(() => {
       >
         <!-- Mobile Menu Header -->
         <div class="flex items-center justify-between p-4 sm:p-6 border-b border-grey-normal">
-          <NuxtLink :to="localePath('/')" @click="closeMobileMenu">
+          <NuxtLink :to="localePath('/')" aria-label="Golden Ages home" @click="closeMobileMenu">
             <NuxtImg
               src="~/assets/Logo.svg"
               alt="Golden Ages"

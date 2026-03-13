@@ -86,7 +86,9 @@ const socialLinks = computed(() => {
           <!-- Social Links -->
           <div class="flex items-center gap-2 sm:gap-3">
             <a v-for="social in socialLinks" :key="social.name" :href="social.href" target="_blank" rel="noopener noreferrer"
-              class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-orange-normal hover:text-orange-normal transition-colors">
+              class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-orange-normal hover:text-orange-normal transition-colors"
+              :aria-label="social.name"
+              :title="social.name">
               <Icon v-if="social.icon === 'facebook'" name="simple-icons:facebook" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
               <Icon v-else-if="social.icon === 'instagram'" name="simple-icons:instagram" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
               <Icon v-else-if="social.icon === 'x'" name="simple-icons:x" class="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
@@ -101,9 +103,9 @@ const socialLinks = computed(() => {
         <div class="md:col-span-8 lg:col-span-9">
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
             <div v-for="(section, key) in footerLinks" :key="key">
-              <h4 class="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3 sm:mb-4">
+              <h3 class="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3 sm:mb-4">
                 {{ section.title }}
-              </h4>
+              </h3>
               <ul class="space-y-2 sm:space-y-3">
                 <li v-for="link in section.links" :key="link.name">
                   <NuxtLink :to="localePath(link.href)"
@@ -138,7 +140,7 @@ const socialLinks = computed(() => {
     </div>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/998944448844" target="_blank"
+    <a href="https://wa.me/998944448844" target="_blank" aria-label="WhatsApp" title="WhatsApp"
       class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50">
       <IconsWhatsapp class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16" />
     </a>
