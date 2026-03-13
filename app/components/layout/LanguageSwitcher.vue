@@ -89,6 +89,9 @@ onUnmounted(() => {
     <button
       class="flex items-center gap-2 px-3 py-2 text-black hover:bg-white/10 rounded-lg transition-colors"
       @click="toggleDropdown"
+      aria-label="Select language"
+      :aria-expanded="isOpen"
+      aria-haspopup="menu"
     >
       <component 
         :is="getLangIcon(locale)" 
@@ -119,6 +122,7 @@ onUnmounted(() => {
           class="w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-white/10 transition-colors"
           :class="{ 'bg-white/10': loc.code === locale }"
           @click="selectLocale(loc.code)"
+          :aria-label="loc.name"
         >
           <component 
             :is="getLangIcon(loc.code)" 
