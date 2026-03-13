@@ -67,7 +67,7 @@ const getCityUrl = (city: { slug: string }) => localePath(`/cities/${city.slug}`
 </script>
 
 <template>
-  <section v-if="cities.length > 0" class="relative py-10 sm:py-14 md:py-16 lg:py-20 overflow-hidden bg-orange-light-active">
+  <section v-if="cities.length > 0" class="relative py-10 sm:py-14 md:py-16 lg:py-20 overflow-hidden bg-orange-cream">
     <!-- Background Image -->
     <div
       class="absolute -top-22 inset-0 bg-left bg-no-repeat opacity-50 lg:opacity-100"

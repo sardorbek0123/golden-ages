@@ -173,6 +173,14 @@
       "noPlaces": "Aucun lieu célèbre disponible pour cette ville pour le moment."
     }
   },
+  "cityOverview": {
+    "region": "Région",
+    "population": "Population",
+    "founded": "Fondée",
+    "unescoStatus": "Statut UNESCO",
+    "bestSeason": "Meilleure saison",
+    "experienceHighlights": "Points forts de l'expérience"
+  },
   "hotels": {
     "title": "Où séjourner à {city}",
     "description": "Découvrez une sélection des meilleurs hôtels de {city} — des chaînes internationales élégantes aux charmants hôtels-boutiques près des monuments anciens. Chaque établissement offre confort, style et authentique hospitalité ouzbèke.",

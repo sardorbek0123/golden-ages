@@ -173,6 +173,14 @@
       "noPlaces": "Für diese Stadt sind derzeit keine berühmten Orte verfügbar."
     }
   },
+  "cityOverview": {
+    "region": "Region",
+    "population": "Bevölkerung",
+    "founded": "Gegründet",
+    "unescoStatus": "UNESCO-Status",
+    "bestSeason": "Beste Reisezeit",
+    "experienceHighlights": "Erlebnis-Highlights"
+  },
   "hotels": {
     "title": "Übernachten in {city}",
     "description": "Entdecken Sie eine kuratierte Auswahl der besten Hotels in {city} — von eleganten internationalen Ketten bis hin zu charmanten Boutique-Hotels in der Nähe antiker Sehenswürdigkeiten. Jede Unterkunft bietet Komfort, Stil und authentische usbekische Gastfreundschaft.",

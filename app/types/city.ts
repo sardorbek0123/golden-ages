@@ -17,15 +17,40 @@ export interface CityList {
   order?: number
 }
 
+export interface CityProperty {
+  id: number
+  value: string
+  property: {
+    id: number
+    name: string
+  }
+}
+
+export interface CityExperienceHighlight {
+  id: number
+  icon: string
+  title: string
+  description: string
+}
+
 export interface CityDetail {
   id: number
   active?: boolean
   name: string
+  title?: string
+  subtitle?: string
   slug: string
   location: string
   image?: string
   order?: number
   cityimage_set: CityImage[]
+  properties?: CityProperty[]
+  region?: string
+  population?: string
+  founded?: string
+  unesco_status?: string
+  best_season?: string
+  experience_highlights?: CityExperienceHighlight[]
   created_at: string
   updated_at: string
 }

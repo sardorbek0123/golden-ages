@@ -1,13 +1,13 @@
 <script setup lang="ts">
 const citiesStore = useCitiesStore()
-const { currentCity, loadingDetail } = storeToRefs(citiesStore)
+const { currentCity } = storeToRefs(citiesStore)
 const route = useRoute()
 const { t, locale } = useI18n()
 
 const slug = computed(() => route.params.slug as string)
 
-await useAsyncData(
-  () => `city-${locale.value}-${slug.value}`,
+const { status } = await useAsyncData(
+  `city-${slug.value}`,
   () => citiesStore.fetchCityBySlug(slug.value),
   { watch: [slug, locale] }
 )
@@ -21,14 +21,16 @@ useSeoMeta({
 <template>
   <main class="pt-10 sm:pt-14 md:pt-16 lg:pt-20">
     <!-- Loading State -->
-    <div v-if="loadingDetail" class="min-h-[50vh] flex items-center justify-center">
+    <div v-if="status === 'pending'" class="min-h-[50vh] flex items-center justify-center">
       <div class="animate-spin rounded-full h-12 w-12 border-2 border-orange-normal border-t-transparent" />
     </div>
-
 
     <template v-else-if="currentCity">
       <!-- Famous Places Section -->
       <SectionCityFamousPlaces :city-id="currentCity.id" />
+
+      <!-- City Overview Section -->
+      <SectionCityOverview :city="currentCity" />
 
       <!-- Hotels Section -->
       <SectionCityHotelsSection
