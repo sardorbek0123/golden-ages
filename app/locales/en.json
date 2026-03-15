@@ -210,6 +210,10 @@
     "description": "DESCRIPTION",
     "itinerary": "Tour Itinerary",
     "tourPlan": "Tour Plan",
+    "properties": {
+      "included": "Included in the tour",
+      "notIncluded": "Not included in the tour"
+    },
     "availableDates": "Dates & Prices, per person",
     "available": "Available",
     "soldOut": "Sold Out",

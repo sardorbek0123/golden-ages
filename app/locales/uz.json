@@ -207,6 +207,10 @@
     "description": "TAVSIF",
     "itinerary": "Sayohat marshuti",
     "tourPlan": "Sayohat rejasi",
+    "properties": {
+      "included": "Turga kiritilgan",
+      "notIncluded": "Turga kiritilmagan"
+    },
     "availableDates": "Sanalar va narxlar, har bir kishi uchun",
     "available": "Mavjud",
     "soldOut": "Sotilgan",

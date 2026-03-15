@@ -38,6 +38,18 @@ export interface TripPlan {
   order?: number
 }
 
+export interface TripPropertyType {
+  id: number
+  name: string
+}
+
+export interface TripProperty {
+  id: number
+  value: string
+  property: TripPropertyType
+  included: boolean
+}
+
 export interface TripImage {
   id: number
   image: string
@@ -83,6 +95,7 @@ export interface TripDetail {
   currency?: TripCurrency | null
   order?: number
   plans: TripPlan[]
+  properties?: TripProperty[]
   prices?: TripPrice[]
   images: TripImage[]
   days_count?: number | null
