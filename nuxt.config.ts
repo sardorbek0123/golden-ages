@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@nuxt/eslint',
+    '@nuxt/ui',
     '@nuxtjs/i18n',
     '@pinia/nuxt'
   ],
