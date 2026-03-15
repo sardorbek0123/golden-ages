@@ -207,6 +207,10 @@
     "description": "ОПИСАНИЕ",
     "itinerary": "Маршрут тура",
     "tourPlan": "План тура",
+    "properties": {
+      "included": "Включено в тур",
+      "notIncluded": "Не включено в тур"
+    },
     "availableDates": "Даты и цены, за человека",
     "available": "Доступно",
     "soldOut": "Распродано",

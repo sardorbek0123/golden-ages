@@ -207,6 +207,10 @@
     "description": "DESCRIPCIÓN",
     "itinerary": "Itinerario del tour",
     "tourPlan": "Plan del viaje",
+    "properties": {
+      "included": "Incluido en el tour",
+      "notIncluded": "No incluido en el tour"
+    },
     "availableDates": "Fechas y precios, por persona",
     "available": "Disponible",
     "soldOut": "Agotado",

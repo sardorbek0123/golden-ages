@@ -97,6 +97,9 @@ useHead(() => {
       <!-- Info Section: Tour card + Description -->
       <SectionTourDetailInfo :trip="trip" />
 
+      <!-- Tour Properties: Included / Not Included -->
+      <SectionTourProperties :properties="trip.properties || []" />
+
       <!-- Tour Plan Section: Accordion -->
       <SectionTourPlan :plans="trip.plans || []" />
 
