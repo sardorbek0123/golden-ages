@@ -94,6 +94,8 @@ const toggleItem = (index: number) => {
                 <img
                   :src="img.url"
                   :alt="img.alt"
+                  width="1200"
+                  height="800"
                   class="w-full h-full object-cover"
                   loading="lazy"
                 >

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import heroBg from '~/assets/images/hero_bg.jpg'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -8,7 +9,17 @@ const localePath = useLocalePath()
 <template>
   <section class="relative bg-cover bg-center min-h-svh md:h-screen">
     <!-- Background Image -->
-    <div class="absolute inset-0 bg-[url('@/assets/images/hero_bg.jpg')] bg-cover bg-center"></div>
+    <NuxtImg
+      :src="heroBg"
+      alt=""
+      width="1920"
+      height="1080"
+      sizes="100vw"
+      format="webp"
+      preload
+      fetchpriority="high"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
     
     <!-- Dark Overlay (70% black) -->
     <div class="absolute inset-0 bg-black/70"></div>

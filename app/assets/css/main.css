@@ -1,6 +1,5 @@
 @import "./font.css";
 @import "tailwindcss";
-@import "@nuxt/ui";
 
 @theme static {
   --font-grift: 'Grift', sans-serif;
