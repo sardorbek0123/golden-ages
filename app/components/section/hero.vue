@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import heroBg from '~/assets/images/hero_bg.jpg'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -10,11 +9,10 @@ const localePath = useLocalePath()
   <section class="relative bg-cover bg-center min-h-svh md:h-screen">
     <!-- Background Image -->
     <NuxtImg
-      :src="heroBg"
+      src="/images/hero_bg.jpg"
       alt=""
       width="1920"
       height="1080"
-      sizes="100vw"
       format="webp"
       preload
       fetchpriority="high"
