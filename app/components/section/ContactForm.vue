@@ -78,10 +78,11 @@ const handleSubmit = async () => {
           <form @submit.prevent="handleSubmit" class="space-y-4 sm:space-y-5 md:space-y-6">
             <!-- Full Name -->
             <div>
-              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
+              <label for="contact-full-name" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                 {{ t('contactForm.fullName') }}
               </label>
               <input
+                id="contact-full-name"
                 v-model="form.fullName"
                 type="text"
                 required
@@ -94,10 +95,11 @@ const handleSubmit = async () => {
             <!-- Email & Phone -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
+                <label for="contact-email" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                   {{ t('contactForm.email') }}
                 </label>
                 <input
+                  id="contact-email"
                   v-model="form.email"
                   type="email"
                   required
@@ -107,10 +109,11 @@ const handleSubmit = async () => {
                 />
               </div>
               <div>
-                <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
+                <label for="contact-phone" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                   {{ t('contactForm.phone') }}
                 </label>
                 <input
+                  id="contact-phone"
                   v-model="form.phone"
                   type="tel"
                   required
@@ -123,10 +126,11 @@ const handleSubmit = async () => {
 
             <!-- Tour Type -->
             <div>
-              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
+              <label for="contact-trip" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                 {{ t('contactForm.tourType') }}
               </label>
               <select
+                id="contact-trip"
                 v-model="form.tripId"
                 required
                 class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 appearance-none cursor-pointer"
@@ -141,10 +145,11 @@ const handleSubmit = async () => {
 
             <!-- Message -->
             <div>
-              <label class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
+              <label for="contact-message" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                 {{ t('contactForm.message') }}
               </label>
               <textarea
+                id="contact-message"
                 v-model="form.message"
                 :rows="4"
                 required

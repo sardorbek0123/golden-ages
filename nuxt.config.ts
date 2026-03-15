@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   ],
 
   devtools: {
-    enabled: true
+    enabled: false
   },
 
   css: ['~/assets/css/main.css'],
@@ -51,6 +51,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'Golden Ages of Uzbekistan | Tours & Travel Packages',
+      htmlAttrs: {
+        lang: 'en'
+      },
       'link': [
         {
           rel: 'icon',
@@ -66,10 +70,6 @@ export default defineNuxtConfig({
           content: 'width=device-width, initial-scale=1'
         },
         {
-          name: 'title',
-          content: 'Golden Ages of Uzbekistan | Tours & Travel Packages'
-        },
-        {
           name: 'description',
           content: 'Explore Uzbekistan with Golden Ages: curated tours, city guides, hotels, and cultural experiences for international travelers.'
         },
@@ -80,27 +80,6 @@ export default defineNuxtConfig({
         {
           name: 'facebook-domain-verification',
           content: '7duk0fno85nl9nbxfn7j17fxeurvet'
-        }
-      ],
-      script: [
-        {
-          src: 'https://www.googletagmanager.com/gtag/js?id=AW-17928071140',
-          async: true
-        },
-        {
-          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17928071140');`
-        },
-        {
-          innerHTML: `!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1607287043845190');
-fbq('track', 'PageView');`
         }
       ],
       noscript: [

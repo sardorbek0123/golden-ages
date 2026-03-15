@@ -31,6 +31,8 @@ const downloadCertificate = () => {
           <img
             :src="licenseImage"
             alt="Certificate"
+            width="420"
+            height="420"
             class="object-cover rounded-full"
             loading="lazy"
           >
