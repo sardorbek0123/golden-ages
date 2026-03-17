@@ -33,7 +33,7 @@ const toggleItem = (index: number) => {
         <div class="w-full lg:w-1/2 xl:w-[45%]">
           <div class="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-full min-h-[400px] rounded-2xl overflow-hidden">
             <NuxtImg
-              src="~/assets/images/hero_bg.jpg"
+              src="/images/mission.jpg"
               alt="Silk Road Architecture"
               class="w-full h-full object-cover"
               loading="lazy"
@@ -43,7 +43,7 @@ const toggleItem = (index: number) => {
 
         <!-- Right: Content -->
         <div class="w-full lg:w-1/2 xl:w-[55%] flex flex-col justify-center">
-          <CommonBadge :text="t('mission.badge')" />
+          <CommonBadge :text="t('mission.badge')" class="w-fit"/>
           
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-dark-normal leading-tight mb-4 sm:mb-6 font-display">
             {{ t('mission.title') }}
