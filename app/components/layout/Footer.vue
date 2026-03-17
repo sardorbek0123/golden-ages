@@ -139,10 +139,6 @@ const socialLinks = computed(() => {
       </div>
     </div>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/998944448844" target="_blank" aria-label="WhatsApp" title="WhatsApp"
-      class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50">
-      <IconsWhatsapp class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16" />
-    </a>
+    
   </footer>
 </template>

@@ -46,8 +46,11 @@ const localePath = useLocalePath()
         {{ title }}
       </NuxtLink>
 
-      <!-- Active card extra content -->
-      <template v-if="isActive">
+      <!-- Extra content - always in DOM to prevent height jump, visible only when active -->
+      <div
+        class="transition-opacity duration-500"
+        :class="isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'"
+      >
         <!-- Duration -->
         <div class="flex items-center gap-2 mt-1.5 sm:mt-2">
           <span class="text-xs sm:text-sm text-orange-normal font-medium">{{ duration.split('/')[0] }}</span>
@@ -71,7 +74,7 @@ const localePath = useLocalePath()
             {{ t('common.bookNow') }}
           </NuxtLink>
         </div>
-      </template>
+      </div>
     </div>
   </div>
 </template>
