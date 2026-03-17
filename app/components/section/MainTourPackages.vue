@@ -166,6 +166,7 @@ const formattedTotal = computed(() => {
       <div v-else-if="tours.length > 0" class="tour-swiper-container">
         <Swiper
           :modules="[Navigation, Autoplay]"
+          :auto-height="false"
           :slides-per-view="1"
           :space-between="16"
           :centered-slides="true"
@@ -209,12 +210,8 @@ const formattedTotal = computed(() => {
 
 <style scoped>
 .tour-packages-swiper {
-  overflow: visible;
+  overflow: hidden; /* prevents content overflow from affecting layout */
   padding-bottom: 20px;
-}
-
-.tour-packages-swiper :deep(.swiper-slide) {
-  transition: all 0.5s ease;
 }
 
 .tour-packages-swiper :deep(.swiper-slide-active) {
@@ -223,5 +220,53 @@ const formattedTotal = computed(() => {
 
 .tour-swiper-container {
   overflow: hidden;
+  /* Lock height to prevent jump when active slide changes */
+  min-height: 520px;
+}
+
+@media (min-width: 640px) {
+  .tour-swiper-container {
+    min-height: 660px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tour-swiper-container {
+    min-height: 760px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tour-swiper-container {
+    min-height: 860px;
+  }
+}
+
+/* Fix height jump: fixed height = active card, prevents layout jump on autoplay */
+.tour-packages-swiper :deep(.swiper-wrapper) {
+  align-items: stretch;
+}
+
+.tour-packages-swiper :deep(.swiper-slide) {
+  transition: transform 0.5s ease;
+  height: 500px; /* mobile: active image 280px + content ~220px */
+}
+
+@media (min-width: 640px) {
+  .tour-packages-swiper :deep(.swiper-slide) {
+    height: 640px; /* sm: image 400px + content ~240px */
+  }
+}
+
+@media (min-width: 768px) {
+  .tour-packages-swiper :deep(.swiper-slide) {
+    height: 740px; /* md: image 500px + content ~240px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .tour-packages-swiper :deep(.swiper-slide) {
+    height: 840px; /* lg: image 600px + content ~240px */
+  }
 }
 </style>
