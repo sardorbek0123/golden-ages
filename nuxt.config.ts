@@ -82,6 +82,15 @@ export default defineNuxtConfig({
           content: '7duk0fno85nl9nbxfn7j17fxeurvet'
         }
       ],
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=AW-17928071140',
+          async: true
+        },
+        {
+          innerHTML: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17928071140');"
+        }
+      ],
       noscript: [
         {
           innerHTML: '<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1607287043845190&ev=PageView&noscript=1">'

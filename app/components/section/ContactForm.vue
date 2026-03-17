@@ -57,7 +57,14 @@ const handleSubmit = async () => {
   })
 
   if (success) {
-    // Reset form on success
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-17928071140/8L06CK_DgIccEOTP4uRC',
+        value: 1.0,
+        currency: 'USD'
+      })
+    }
+
     form.fullName = ''
     form.email = ''
     form.phone = ''
