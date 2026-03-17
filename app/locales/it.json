@@ -177,6 +177,7 @@
     }
   },
   "cityOverview": {
+    "overview": "Panoramica",
     "region": "Regione",
     "population": "Popolazione",
     "founded": "Fondata",
