@@ -10,7 +10,7 @@ const localePath = useLocalePath()
     <!-- Background Image -->
     <NuxtImg
       src="/images/hero_bg.jpg"
-      alt=""
+      alt="Hero Background"
       width="1920"
       height="1080"
       format="webp"
