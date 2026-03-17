@@ -8,7 +8,18 @@ interface Props {
 const props = defineProps<Props>()
 const { t } = useI18n()
 
-const tabs = ['Overview', 'History', 'Highlights', 'Where to stay', 'Tips'] as const
+const propertyTabs = computed(() =>
+  (props.city.properties ?? []).map(p => ({
+    id: p.id,
+    name: p.property.name,
+    value: p.value,
+  }))
+)
+
+const tabs = computed(() => [
+  { name: t('cityOverview.overview'), value: '' },
+  ...propertyTabs.value.map(p => ({ name: p.name, value: p.value })),
+])
 const activeTab = ref(0)
 
 const photos = computed(() => {
@@ -94,56 +105,52 @@ function stripHtml(html: string) {
         <div class="flex gap-6 sm:gap-8 md:gap-10 min-w-max">
           <button
             v-for="(tab, idx) in tabs"
-            :key="tab"
-            class="pb-3 text-sm sm:text-base font-medium transition-colors whitespace-nowrap"
+            :key="idx"
+            class="pb-3 text-sm sm:text-base font-medium transition-colors whitespace-nowrap cursor-pointer"
             :class="[
               activeTab === idx
                 ? 'text-dark-normal border-b-2 border-dark-normal'
-                : 'text-grey-darker hover:text-dark-normal',
-              idx !== 0 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+                : 'text-grey-darker hover:text-dark-normal'
             ]"
-            :disabled="idx !== 0"
             @click="activeTab = idx"
           >
-            {{ tab }}
+            {{ tab.name }}
           </button>
         </div>
       </div>
 
-      <!-- Overview Tab Content -->
-      <div v-if="activeTab === 0" class="flex flex-col lg:flex-row gap-8 lg:gap-12">
-        <!-- Left: Info -->
+      <!-- Tab Content + Photos (photos always visible) -->
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        <!-- Left: Tab content (changes per tab) -->
         <div class="w-full lg:w-1/2 flex flex-col justify-between">
-          <!-- Subtitle & description -->
-          <div class="mb-6 sm:mb-8">
-            <h3
-              v-if="city.subtitle"
-              class="text-xl sm:text-2xl md:text-[1.7rem] font-bold text-dark-normal leading-snug mb-3 sm:mb-4"
-            >
-              {{ city.subtitle }}
-            </h3>
-
-            <template v-if="city.properties?.length">
-              <p
-                v-for="prop in city.properties"
-                :key="prop.id"
-                class="text-grey-darker text-sm sm:text-base leading-relaxed"
+          <!-- Overview tab -->
+          <template v-if="activeTab === 0">
+            <div class="mb-6 sm:mb-8">
+              <h3
+                v-if="city.subtitle"
+                class="text-xl sm:text-2xl md:text-[1.7rem] font-bold text-dark-normal leading-snug mb-3 sm:mb-4"
               >
-                {{ stripHtml(prop.value) }}
-              </p>
-            </template>
-          </div>
-
-          <!-- Info Grid -->
-          <div v-if="infoItems.length" class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-4 sm:gap-y-5">
-            <div v-for="item in infoItems" :key="item.label">
-              <p class="text-grey-darker text-xs sm:text-sm mb-0.5">{{ item.label }}:</p>
-              <p class="text-dark-normal text-sm sm:text-base font-semibold leading-snug">{{ item.value }}</p>
+                {{ city.subtitle }}
+              </h3>
             </div>
-          </div>
+
+            <div v-if="infoItems.length" class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-4 sm:gap-y-5">
+              <div v-for="item in infoItems" :key="item.label">
+                <p class="text-grey-darker text-xs sm:text-sm mb-0.5">{{ item.label }}:</p>
+                <p class="text-dark-normal text-sm sm:text-base font-semibold leading-snug">{{ item.value }}</p>
+              </div>
+            </div>
+          </template>
+
+          <!-- Property tabs (HTML content) -->
+          <div
+            v-else
+            class="prose prose-sm sm:prose-base max-w-none text-grey-darker"
+            v-html="tabs[activeTab]?.value"
+          />
         </div>
 
-        <!-- Right: Image carousel -->
+        <!-- Right: Image carousel (always visible) -->
         <div v-if="photos.length" class="w-full lg:w-1/2 h-full">
           <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden h-[240px] sm:h-[300px] md:h-[360px] lg:h-full lg:min-h-[320px]">
             <NuxtImg
@@ -169,8 +176,8 @@ function stripHtml(html: string) {
         </div>
       </div>
 
-      <!-- Experience Highlights -->
-      <div v-if="hasHighlights && activeTab === 0" class="mt-10 sm:mt-12 md:mt-14">
+      <!-- Experience Highlights (always visible) -->
+      <div v-if="hasHighlights" class="mt-10 sm:mt-12 md:mt-14">
         <div class="flex items-center justify-between mb-5 sm:mb-6">
           <h3 class="text-xl sm:text-2xl font-bold text-dark-normal">
             {{ t('cityOverview.experienceHighlights') }}:

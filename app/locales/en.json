@@ -177,6 +177,7 @@
     }
   },
   "cityOverview": {
+    "overview": "Overview",
     "region": "Region",
     "population": "Population",
     "founded": "Founded",
