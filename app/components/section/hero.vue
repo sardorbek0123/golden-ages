@@ -12,7 +12,8 @@ const localePath = useLocalePath()
       src="/images/hero_bg.jpg"
       alt="Hero Background"
       width="1920"
-      height="1080"
+      height="1220"
+      sizes="100vw"
       format="webp"
       preload
       fetchpriority="high"
