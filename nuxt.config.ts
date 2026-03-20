@@ -15,9 +15,35 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  image: {
+    domains: ['api.goldenagestravel.com'],
+    quality: 80,
+    format: ['webp', 'avif'],
+    screens: {
+      xs: 400,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      '2xl': 1536
+    }
+  },
+
   routeRules: {
     // Disabled prerender to always fetch fresh data from API
     // '/': { prerender: true }
+    '/_nuxt/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
+    },
+    '/_ipx/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
+    },
+    '/images/**': {
+      headers: { 'cache-control': 'public, max-age=604800, stale-while-revalidate=86400' }
+    },
+    '/fonts/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' }
+    }
   },
 
   compatibilityDate: '2025-01-15',
