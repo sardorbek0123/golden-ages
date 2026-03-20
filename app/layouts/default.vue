@@ -31,7 +31,7 @@ useHead(() => ({
     <main>
       <slot />
     </main>
-    <LayoutFooter />
+    <LazyLayoutFooter />
     <LayoutWhatsAppFab />
   </div>
 </template>

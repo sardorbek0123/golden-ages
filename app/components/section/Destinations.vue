@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, EffectFade, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/effect-fade'
 import destinationsBg from '~/assets/images/destinations_bg.png'
 import { useCitiesStore } from '~/stores'
 
@@ -22,6 +17,23 @@ const cities = computed(() => citiesStore.cities)
 const mobileSwiperInstance = ref<SwiperType | null>(null)
 const desktopSwiperInstance = ref<SwiperType | null>(null)
 const activeIndex = ref(0)
+
+const SwiperCmp = shallowRef<unknown>(null)
+const SwiperSlideCmp = shallowRef<unknown>(null)
+const swiperModules = shallowRef<unknown[]>([])
+
+onMounted(async () => {
+  const [{ Swiper, SwiperSlide }, { Navigation, EffectFade, Autoplay }] = await Promise.all([
+    import('swiper/vue'),
+    import('swiper/modules'),
+    import('swiper/css'),
+    import('swiper/css/navigation'),
+    import('swiper/css/effect-fade')
+  ])
+  SwiperCmp.value = markRaw(Swiper)
+  SwiperSlideCmp.value = markRaw(SwiperSlide)
+  swiperModules.value = [Navigation, EffectFade, Autoplay]
+})
 
 const onMobileSwiper = (swiper: SwiperType) => {
   mobileSwiperInstance.value = swiper
@@ -121,67 +133,80 @@ const getCityUrl = (city: { slug: string }) => localePath(`/cities/${city.slug}`
           </p>
         </NuxtLink>
 
-        <!-- Swiper -->
-        <Swiper
-          :modules="[Navigation, EffectFade, Autoplay]"
-          :slides-per-view="1"
-          :space-between="0"
-          :loop="false"
-          effect="fade"
-          class="destinations-swiper overflow-hidden w-full rounded-xl sm:rounded-2xl"
-          @swiper="onMobileSwiper"
-          @slide-change="onSlideChange"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-        >
-          <SwiperSlide
-            v-for="city in cities"
-            :key="`mobile-${city.id}-${city.image}`"
+        <ClientOnly>
+          <div v-if="!SwiperCmp" class="w-full aspect-4/3 sm:aspect-video rounded-xl sm:rounded-2xl bg-white/60 animate-pulse" />
+          <component
+            :is="SwiperCmp"
+            v-else
+            :modules="swiperModules"
+            :slides-per-view="1"
+            :space-between="0"
+            :loop="false"
+            effect="fade"
+            class="destinations-swiper overflow-hidden w-full rounded-xl sm:rounded-2xl"
+            @swiper="onMobileSwiper"
+            @slide-change="onSlideChange"
+            :autoplay="{
+              delay: 2500,
+              disableOnInteraction: false,
+            }"
           >
-            <NuxtLink :to="getCityUrl(city)" class="block cursor-pointer">
-              <NuxtImg
-                :src="city.image"
-                :alt="city.name"
-                loading="lazy"
-                class="w-full aspect-4/3 sm:aspect-video object-cover"
-              />
-            </NuxtLink>
-          </SwiperSlide>
-        </Swiper>
+            <component
+              :is="SwiperSlideCmp"
+              v-for="city in cities"
+              :key="`mobile-${city.id}-${city.image}`"
+            >
+              <NuxtLink :to="getCityUrl(city)" class="block cursor-pointer">
+                <NuxtImg
+                  :src="city.image"
+                  :alt="city.name"
+                  loading="lazy"
+                  class="w-full aspect-4/3 sm:aspect-video object-cover"
+                />
+              </NuxtLink>
+            </component>
+          </component>
 
-        <!-- Navigation -->
-        <div class="flex justify-center items-center mt-4 sm:mt-6 gap-3">
-          <button
-            class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center transition-all duration-300 hover:border-gray-900 disabled:opacity-30 disabled:cursor-not-allowed bg-white"
-            :disabled="activeIndex === 0"
-            @click="goPrev"
-          >
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <!-- Dots indicator -->
-          <div class="flex items-center gap-1.5 sm:gap-2">
+          <div class="flex justify-center items-center mt-4 sm:mt-6 gap-3">
             <button
-              v-for="(_, index) in cities"
-              :key="`dot-${index}`"
-              class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300"
-              :class="activeIndex === index ? 'bg-gray-900 w-4 sm:w-6' : 'bg-gray-300 hover:bg-gray-400'"
-              @click="goToSlide(index)"
-            />
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center transition-all duration-300 hover:border-gray-900 disabled:opacity-30 disabled:cursor-not-allowed bg-white"
+              :disabled="activeIndex === 0 || !SwiperCmp"
+              @click="goPrev"
+            >
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="flex items-center gap-1.5 sm:gap-2">
+              <button
+                v-for="(_, index) in cities"
+                :key="`dot-${index}`"
+                class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300"
+                :class="activeIndex === index ? 'bg-gray-900 w-4 sm:w-6' : 'bg-gray-300 hover:bg-gray-400'"
+                :disabled="!SwiperCmp"
+                @click="goToSlide(index)"
+              />
+            </div>
+            <button
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-300 hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
+              :disabled="cities.length === 0 || activeIndex === cities.length - 1 || !SwiperCmp"
+              @click="goNext"
+            >
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
-          <button
-            class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-300 hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
-            :disabled="cities.length === 0 || activeIndex === cities.length - 1"
-            @click="goNext"
-          >
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
+
+          <template #fallback>
+            <div class="w-full aspect-4/3 sm:aspect-video rounded-xl sm:rounded-2xl bg-white/60 animate-pulse" />
+            <div class="flex justify-center items-center mt-4 sm:mt-6 gap-3 opacity-50">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200" />
+              <div class="h-2 w-24 rounded-full bg-gray-200" />
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200" />
+            </div>
+          </template>
+        </ClientOnly>
       </div>
 
       <!-- Desktop Layout -->
@@ -207,35 +232,44 @@ const getCityUrl = (city: { slug: string }) => localePath(`/cities/${city.slug}`
           <div class="flex gap-5 items-stretch">
             <!-- Center Swiper -->
             <div class="w-2/3">
-              <Swiper
-                :modules="[Navigation, EffectFade, Autoplay]"
-                :slides-per-view="1"
-                :space-between="0"
-                :loop="false"
-                effect="fade"
-                class="destinations-swiper overflow-hidden w-full h-full rounded-2xl"
-                @swiper="onDesktopSwiper"
-                @slide-change="onSlideChange"
-                :autoplay="{
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }"
-              >
-                <SwiperSlide
-                  v-for="city in cities"
-                  :key="`desktop-${city.id}-${city.image}`"
-                  class="h-auto!"
+              <ClientOnly>
+                <div v-if="!SwiperCmp" class="w-full aspect-3/2 rounded-2xl bg-white/60 animate-pulse" />
+                <component
+                  :is="SwiperCmp"
+                  v-else
+                  :modules="swiperModules"
+                  :slides-per-view="1"
+                  :space-between="0"
+                  :loop="false"
+                  effect="fade"
+                  class="destinations-swiper overflow-hidden w-full h-full rounded-2xl"
+                  @swiper="onDesktopSwiper"
+                  @slide-change="onSlideChange"
+                  :autoplay="{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }"
                 >
-                  <NuxtLink :to="getCityUrl(city)" class="block cursor-pointer">
-                    <NuxtImg
-                      :src="city.image"
-                      :alt="city.name"
-                      loading="lazy"
-                      class="w-full aspect-3/2 object-cover"
-                    />
-                  </NuxtLink>
-                </SwiperSlide>
-              </Swiper>
+                  <component
+                    :is="SwiperSlideCmp"
+                    v-for="city in cities"
+                    :key="`desktop-${city.id}-${city.image}`"
+                    class="h-auto!"
+                  >
+                    <NuxtLink :to="getCityUrl(city)" class="block cursor-pointer">
+                      <NuxtImg
+                        :src="city.image"
+                        :alt="city.name"
+                        loading="lazy"
+                        class="w-full aspect-3/2 object-cover"
+                      />
+                    </NuxtLink>
+                  </component>
+                </component>
+                <template #fallback>
+                  <div class="w-full aspect-3/2 rounded-2xl bg-white/60 animate-pulse" />
+                </template>
+              </ClientOnly>
             </div>
 
             <!-- Right - Next Slide Preview -->
@@ -254,28 +288,33 @@ const getCityUrl = (city: { slug: string }) => localePath(`/cities/${city.slug}`
           </div>
 
           <!-- Bottom Navigation -->
-          <div class="flex justify-start items-center mt-6">
-            <div class="flex items-center gap-2">
-              <button
-                class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center transition-all duration-300 hover:border-gray-900 disabled:opacity-30 disabled:cursor-not-allowed bg-white"
-                :disabled="activeIndex === 0"
-                @click="goPrev"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <button
-                class="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-300 hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
-                :disabled="cities.length === 0 || activeIndex === cities.length - 1"
-                @click="goNext"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
+          <ClientOnly>
+            <div class="flex justify-start items-center mt-6">
+              <div class="flex items-center gap-2">
+                <button
+                  class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center transition-all duration-300 hover:border-gray-900 disabled:opacity-30 disabled:cursor-not-allowed bg-white"
+                  :disabled="activeIndex === 0 || !SwiperCmp"
+                  @click="goPrev"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button
+                  class="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center transition-all duration-300 hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
+                  :disabled="cities.length === 0 || activeIndex === cities.length - 1 || !SwiperCmp"
+                  @click="goNext"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
+            <template #fallback>
+              <div class="flex justify-start items-center mt-6 h-12 w-28 rounded-full bg-gray-200/80 animate-pulse" />
+            </template>
+          </ClientOnly>
         </div>
       </div>
     </div>
