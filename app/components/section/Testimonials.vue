@@ -16,28 +16,21 @@ const openModal = () => { isModalOpen.value = true }
 const closeModal = () => { isModalOpen.value = false }
 
 // Lazy-load Swiper + Autoplay to eliminate render-blocking CSS
+const SwiperCmp = shallowRef<any>(null)
+const SwiperSlideCmp = shallowRef<any>(null)
 const swiperModules = shallowRef<any[]>([])
 
-const loadSwiper = (() => {
-  let promise: Promise<typeof import('swiper/vue')> | null = null
-  return () => {
-    if (!promise) {
-      promise = Promise.all([
-        import('swiper/vue'),
-        import('swiper/modules'),
-        // @ts-expect-error CSS side-effect import has no type declarations
-        import('swiper/css')
-      ]).then(([vue, modules]) => {
-        swiperModules.value = [modules.Autoplay]
-        return vue
-      })
-    }
-    return promise
-  }
-})()
-
-const LazySwiper = defineAsyncComponent(() => loadSwiper().then(m => m.Swiper))
-const LazySwiperSlide = defineAsyncComponent(() => loadSwiper().then(m => m.SwiperSlide))
+onMounted(async () => {
+  const [{ Swiper, SwiperSlide }, { Autoplay }] = await Promise.all([
+    import('swiper/vue'),
+    import('swiper/modules'),
+    // @ts-expect-error CSS side-effect import has no type declarations
+    import('swiper/css')
+  ])
+  SwiperCmp.value = markRaw(Swiper)
+  SwiperSlideCmp.value = markRaw(SwiperSlide)
+  swiperModules.value = [Autoplay]
+})
 
 const swiperInstance = shallowRef<SwiperType | null>(null)
 const activeIndex = ref(0)
@@ -115,7 +108,7 @@ const progressWidth = computed(() => {
         <div class="mb-6 sm:mb-8 relative z-10">
           <ClientOnly>
             <!-- Loading State -->
-            <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div v-if="loading || !SwiperCmp" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               <div
                 v-for="i in 3"
                 :key="i"
@@ -141,7 +134,8 @@ const progressWidth = computed(() => {
             </div>
 
             <!-- Reviews Swiper -->
-            <LazySwiper
+            <component
+              :is="SwiperCmp"
               v-else-if="reviews.length > 0"
               :modules="swiperModules"
               :slides-per-view="1"
@@ -157,7 +151,11 @@ const progressWidth = computed(() => {
               @slide-change="onSlideChange"
               @breakpoint="onBreakpoint"
             >
-              <LazySwiperSlide v-for="review in reviews" :key="review.id">
+              <component
+                :is="SwiperSlideCmp"
+                v-for="review in reviews"
+                :key="review.id"
+              >
                 <CardsReviewCard
                   :name="review.full_name"
                   :role="review.role"
@@ -165,8 +163,8 @@ const progressWidth = computed(() => {
                   :rating="review.rating"
                   :review="review.review"
                 />
-              </LazySwiperSlide>
-            </LazySwiper>
+              </component>
+            </component>
 
             <!-- Empty State -->
             <div v-else class="text-center py-8 sm:py-12 text-gray-500 text-sm sm:text-base">

@@ -5,29 +5,25 @@ const { t } = useI18n()
 const aboutUsStore = useAboutUsStore()
 const { items, loading } = storeToRefs(aboutUsStore)
 
+// Lazy-load Swiper to eliminate render-blocking CSS
+const SwiperCmp = shallowRef<any>(null)
+const SwiperSlideCmp = shallowRef<any>(null)
+
+onMounted(async () => {
+  const [{ Swiper, SwiperSlide }] = await Promise.all([
+    import('swiper/vue'),
+    // @ts-expect-error CSS side-effect import has no type declarations
+    import('swiper/css')
+  ])
+  SwiperCmp.value = markRaw(Swiper)
+  SwiperSlideCmp.value = markRaw(SwiperSlide)
+})
+
 onMounted(async () => {
   if (!aboutUsStore.hasItems) {
     await aboutUsStore.fetchAboutUs()
   }
 })
-
-// Lazy-load Swiper to eliminate render-blocking CSS
-const loadSwiper = (() => {
-  let promise: Promise<typeof import('swiper/vue')> | null = null
-  return () => {
-    if (!promise) {
-      promise = Promise.all([
-        import('swiper/vue'),
-        // @ts-expect-error CSS side-effect import has no type declarations
-        import('swiper/css')
-      ]).then(([mod]) => mod)
-    }
-    return promise
-  }
-})()
-
-const LazySwiper = defineAsyncComponent(() => loadSwiper().then(m => m.Swiper))
-const LazySwiperSlide = defineAsyncComponent(() => loadSwiper().then(m => m.SwiperSlide))
 
 const swiperInstance = shallowRef<SwiperType | null>(null)
 const activeIndex = ref(0)
@@ -94,12 +90,13 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
 
       <!-- Content -->
       <ClientOnly>
-        <div v-if="loading" class="flex items-center justify-center py-12 sm:py-16">
+        <div v-if="loading || !SwiperCmp" class="flex items-center justify-center py-12 sm:py-16">
           <div class="animate-spin rounded-full h-8 w-8 sm:h-10 sm:w-10 border-2 border-orange-normal border-t-transparent" />
         </div>
 
         <div v-else>
-          <LazySwiper
+          <component
+            :is="SwiperCmp"
             :slides-per-view="1"
             :space-between="16"
             :loop="false"
@@ -109,7 +106,11 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
             @slide-change="onSlideChange"
             @breakpoint="onBreakpoint"
           >
-            <LazySwiperSlide v-for="(item, index) in items" :key="item.id">
+            <component
+              :is="SwiperSlideCmp"
+              v-for="(item, index) in items"
+              :key="item.id"
+            >
               <div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 h-full border border-grey-normal">
                 <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
                   <!-- Image -->
@@ -131,8 +132,8 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
                    v-html="item.description">
                 </div>
               </div>
-            </LazySwiperSlide>
-          </LazySwiper>
+            </component>
+          </component>
 
           <!-- Bottom Navigation -->
           <div class="flex flex-wrap justify-between items-center gap-4">
