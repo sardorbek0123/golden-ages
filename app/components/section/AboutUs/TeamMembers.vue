@@ -5,29 +5,25 @@ const { t } = useI18n()
 const teamStore = useTeamStore()
 const { sortedMembers, loading } = storeToRefs(teamStore)
 
+// Lazy-load Swiper to eliminate render-blocking CSS
+const SwiperCmp = shallowRef<any>(null)
+const SwiperSlideCmp = shallowRef<any>(null)
+
+onMounted(async () => {
+  const [{ Swiper, SwiperSlide }] = await Promise.all([
+    import('swiper/vue'),
+    // @ts-expect-error CSS side-effect import has no type declarations
+    import('swiper/css')
+  ])
+  SwiperCmp.value = markRaw(Swiper)
+  SwiperSlideCmp.value = markRaw(SwiperSlide)
+})
+
 onMounted(async () => {
   if (!teamStore.hasMembers) {
     await teamStore.fetchTeamMembers()
   }
 })
-
-// Lazy-load Swiper to eliminate render-blocking CSS in SSR
-const loadSwiper = (() => {
-  let promise: Promise<typeof import('swiper/vue')> | null = null
-  return () => {
-    if (!promise) {
-      promise = Promise.all([
-        import('swiper/vue'),
-        // @ts-expect-error CSS side-effect import has no type declarations
-        import('swiper/css')
-      ]).then(([mod]) => mod)
-    }
-    return promise
-  }
-})()
-
-const LazySwiper = defineAsyncComponent(() => loadSwiper().then(m => m.Swiper))
-const LazySwiperSlide = defineAsyncComponent(() => loadSwiper().then(m => m.SwiperSlide))
 
 // Swiper state — shallowRef avoids deep reactivity on the complex Swiper instance
 const swiperInstance = shallowRef<SwiperType | null>(null)
@@ -127,12 +123,13 @@ const totalPages = computed(() => Math.ceil(sortedMembers.value.length / visible
 
       <!-- Content -->
       <ClientOnly>
-        <div v-if="loading" class="flex items-center justify-center py-12 sm:py-16">
+        <div v-if="loading || !SwiperCmp" class="flex items-center justify-center py-12 sm:py-16">
           <div class="animate-spin rounded-full h-8 w-8 sm:h-10 sm:w-10 border-2 border-orange-normal border-t-transparent" />
         </div>
 
         <div v-else>
-          <LazySwiper
+          <component
+            :is="SwiperCmp"
             :slides-per-view="1"
             :space-between="16"
             :loop="false"
@@ -142,7 +139,11 @@ const totalPages = computed(() => Math.ceil(sortedMembers.value.length / visible
             @slide-change="onSlideChange"
             @breakpoint="onBreakpoint"
           >
-            <LazySwiperSlide v-for="member in sortedMembers" :key="member.id">
+            <component
+              :is="SwiperSlideCmp"
+              v-for="member in sortedMembers"
+              :key="member.id"
+            >
               <div class="group">
                 <!-- Image -->
                 <div class="aspect-3/4 rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 bg-grey-light">
@@ -214,8 +215,8 @@ const totalPages = computed(() => Math.ceil(sortedMembers.value.length / visible
                   </div>
                 </div>
               </div>
-            </LazySwiperSlide>
-          </LazySwiper>
+            </component>
+          </component>
         </div>
 
         <template #fallback>
