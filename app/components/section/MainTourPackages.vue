@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
-import 'swiper/css'
-import 'swiper/css/navigation'
 
 const { t } = useI18n()
 const tripsStore = useTripsStore()
@@ -61,6 +57,22 @@ const tours = computed(() => {
 
 const swiperInstance = ref<SwiperType | null>(null)
 const realIndex = ref(0)
+
+const SwiperCmp = shallowRef<unknown>(null)
+const SwiperSlideCmp = shallowRef<unknown>(null)
+const swiperModules = shallowRef<unknown[]>([])
+
+onMounted(async () => {
+  const [{ Swiper, SwiperSlide }, { Navigation, Autoplay }] = await Promise.all([
+    import('swiper/vue'),
+    import('swiper/modules'),
+    import('swiper/css'),
+    import('swiper/css/navigation')
+  ])
+  SwiperCmp.value = markRaw(Swiper)
+  SwiperSlideCmp.value = markRaw(SwiperSlide)
+  swiperModules.value = [Navigation, Autoplay]
+})
 
 const onSwiper = (swiper: SwiperType) => {
   swiperInstance.value = swiper
@@ -162,43 +174,58 @@ const formattedTotal = computed(() => {
         <div class="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-4 border-orange-normal border-t-transparent" />
       </div>
 
-      <!-- Swiper -->
-      <div v-else-if="tours.length > 0" class="tour-swiper-container">
-        <Swiper
-          :modules="[Navigation, Autoplay]"
-          :auto-height="false"
-          :slides-per-view="1"
-          :space-between="16"
-          :centered-slides="true"
-          :initial-slide="0"
-          :loop="tours.length >= 3"
-          :breakpoints="{
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            1024: { slidesPerView: 3, spaceBetween: 24 }
-          }"
-          class="tour-packages-swiper"
-          @swiper="onSwiper"
-          @slide-change="onSlideChange"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-        >
-          <SwiperSlide v-for="(tour, index) in tours" :key="tour.id">
-            <CardsTourCard
-              :slug="tour.slug"
-              :title="tour.title"
-              :duration="tour.duration"
-              :description="tour.description"
-              :price="tour.price"
-              :image="tour.image"
-              :is-active="index === realIndex"
-              :discount="tour.discount"
-              :discount_price="tour.discount_price"
-            />
-          </SwiperSlide>
-        </Swiper>
-      </div>
+      <!-- Swiper (client-only + dynamic import = non-render-blocking Swiper CSS) -->
+      <ClientOnly v-else-if="tours.length > 0">
+        <div v-if="!SwiperCmp" class="tour-swiper-container flex items-center justify-center py-12 sm:py-16 lg:py-20">
+          <div class="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-4 border-orange-normal border-t-transparent" />
+        </div>
+        <div v-else class="tour-swiper-container">
+          <component
+            :is="SwiperCmp"
+            :modules="swiperModules"
+            :auto-height="false"
+            :slides-per-view="1"
+            :space-between="16"
+            :centered-slides="true"
+            :initial-slide="0"
+            :loop="tours.length >= 3"
+            :breakpoints="{
+              640: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 24 }
+            }"
+            class="tour-packages-swiper"
+            @swiper="onSwiper"
+            @slide-change="onSlideChange"
+            :autoplay="{
+              delay: 2500,
+              disableOnInteraction: false,
+            }"
+          >
+            <component
+              :is="SwiperSlideCmp"
+              v-for="(tour, index) in tours"
+              :key="tour.id"
+            >
+              <CardsTourCard
+                :slug="tour.slug"
+                :title="tour.title"
+                :duration="tour.duration"
+                :description="tour.description"
+                :price="tour.price"
+                :image="tour.image"
+                :is-active="index === realIndex"
+                :discount="tour.discount"
+                :discount_price="tour.discount_price"
+              />
+            </component>
+          </component>
+        </div>
+        <template #fallback>
+          <div class="tour-swiper-container flex items-center justify-center py-12 sm:py-16 lg:py-20">
+            <div class="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-4 border-orange-normal border-t-transparent" />
+          </div>
+        </template>
+      </ClientOnly>
 
       <!-- Empty State -->
       <div v-else class="text-center py-12 sm:py-16 lg:py-20">

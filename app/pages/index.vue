@@ -15,8 +15,8 @@ useSeoMeta({
     <SectionHero />
     <SectionWhyChooseUs />
     <SectionDestinations />
-    <SectionTestimonials />
-    <SectionMainTourPackages />
+    <LazySectionTestimonials />
+    <LazySectionMainTourPackages />
     <SectionContactForm id="form"/>
   </div>
 </template>
