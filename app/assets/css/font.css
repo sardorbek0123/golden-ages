@@ -2,8 +2,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-thin.otf') format('opentype'),
-       url('../fonts/grift-thin.ttf') format('truetype');
+  src: url('../fonts/grift-thin.woff2') format('woff2');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -11,8 +10,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-extralight.otf') format('opentype'),
-       url('../fonts/grift-extralight.ttf') format('truetype');
+  src: url('../fonts/grift-extralight.woff2') format('woff2');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -20,8 +18,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-light.otf') format('opentype'),
-       url('../fonts/grift-light.ttf') format('truetype');
+  src: url('../fonts/grift-light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -29,8 +26,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-regular.otf') format('opentype'),
-       url('../fonts/grift-regular.ttf') format('truetype');
+  src: url('../fonts/grift-regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -38,8 +34,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-medium.otf') format('opentype'),
-       url('../fonts/grift-medium.ttf') format('truetype');
+  src: url('../fonts/grift-medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -47,8 +42,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-semibold.otf') format('opentype'),
-       url('../fonts/grift-semibold.ttf') format('truetype');
+  src: url('../fonts/grift-semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -56,8 +50,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-bold.otf') format('opentype'),
-       url('../fonts/grift-bold.ttf') format('truetype');
+  src: url('../fonts/grift-bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -65,8 +58,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-extrabold.otf') format('opentype'),
-       url('../fonts/grift-extrabold.ttf') format('truetype');
+  src: url('../fonts/grift-extrabold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -74,8 +66,7 @@
 
 @font-face {
   font-family: 'Grift';
-  src: url('../fonts/grift-black.otf') format('opentype'),
-       url('../fonts/grift-black.ttf') format('truetype');
+  src: url('../fonts/grift-black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
