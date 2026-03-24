@@ -39,6 +39,13 @@ const getCurrencyLabel = (currencyKey?: string | null): string => {
 const currencyLabel = computed(() => getCurrencyLabel(props.trip.currency?.key))
 const formatMoney = (value: number) => `${new Intl.NumberFormat('uz-UZ').format(value)} ${currencyLabel.value}`
 
+const effectivePrice = computed(() =>
+  props.trip.discount && props.trip.discount_price != null
+    ? props.trip.discount_price
+    : props.trip.price
+)
+const hasDiscount = computed(() => props.trip.discount && props.trip.discount_price != null)
+
 const step = ref(1)
 const peopleCount = ref(1)
 const passengers = ref<Passenger[]>([])
@@ -84,7 +91,7 @@ watch(peopleCount, (count) => {
   }
 }, { immediate: true })
 
-const subtotal = computed(() => peopleCount.value * props.trip.price)
+const subtotal = computed(() => peopleCount.value * effectivePrice.value)
 
 const paymentAmount = computed(() =>
   paymentType.value === 'partial' ? Math.round(subtotal.value * 0.3) : subtotal.value
@@ -395,7 +402,10 @@ onUnmounted(() => {
               <div class="rounded-2xl bg-gray-50 p-4 sm:p-5 space-y-2">
                 <div class="flex items-center justify-between text-sm text-gray-600">
                   <span>{{ t('tourDetail.paymentModal.pricePerPerson') }}</span>
-                  <span class="font-semibold text-gray-900">{{ formatMoney(trip.price) }}</span>
+                  <div class="text-right">
+                    <span class="font-semibold" :class="hasDiscount ? 'text-orange-normal' : 'text-gray-900'">{{ formatMoney(effectivePrice) }}</span>
+                    <span v-if="hasDiscount" class="ml-2 text-gray-400 line-through text-xs">{{ formatMoney(trip.price) }}</span>
+                  </div>
                 </div>
                 <div class="flex items-center justify-between text-base font-semibold text-gray-900 pt-2 border-t border-gray-200">
                   <span>{{ t('tourDetail.paymentModal.subtotal') }}</span>
@@ -482,7 +492,10 @@ onUnmounted(() => {
                 </div>
                 <div class="flex items-center justify-between text-sm text-gray-600">
                   <span>{{ t('tourDetail.paymentModal.pricePerPerson') }}</span>
-                  <span class="font-semibold text-gray-900">{{ formatMoney(trip.price) }}</span>
+                  <div class="text-right">
+                    <span class="font-semibold" :class="hasDiscount ? 'text-orange-normal' : 'text-gray-900'">{{ formatMoney(effectivePrice) }}</span>
+                    <span v-if="hasDiscount" class="ml-2 text-gray-400 line-through text-xs">{{ formatMoney(trip.price) }}</span>
+                  </div>
                 </div>
                 <div class="flex items-center justify-between text-sm text-gray-600">
                   <span>{{ t('tourDetail.paymentModal.people') }}</span>

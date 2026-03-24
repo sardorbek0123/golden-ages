@@ -110,7 +110,7 @@ const formattedTotal = computed(() => {
 </script>
 
 <template>
-  <section class="py-10 sm:py-14 md:py-16 lg:py-20 bg-white">
+  <section class="py-10 sm:py-12 md:py-14 lg:py-16 bg-white">
     <div class="container mx-auto px-4 sm:px-6">
       <!-- Header -->
       <div class="flex flex-col-reverse sm:flex-row justify-between items-start gap-4 sm:gap-6 mb-6 sm:mb-8">

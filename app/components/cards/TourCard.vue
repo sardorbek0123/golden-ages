@@ -18,7 +18,8 @@ const localePath = useLocalePath()
 </script>
 
 <template>
-  <div 
+  <NuxtLink
+    :to="localePath(`/tours/${slug}`)" 
     class="tour-card relative overflow-hidden transition-all duration-500"
     :class="isActive ? 'tour-card--active' : 'tour-card--inactive'"
   >
@@ -38,13 +39,12 @@ const localePath = useLocalePath()
     <!-- Content -->
     <div class="mt-3 sm:mt-4 lg:mt-5">
       <!-- Title - Always visible -->
-      <NuxtLink 
-        :to="localePath(`/tours/${slug}`)"
+      <p
         class="font-bold text-gray-900 transition-all duration-300 line-clamp-2"
         :class="isActive ? 'text-base sm:text-lg lg:text-xl' : 'text-sm sm:text-base lg:text-lg'"
       >
         {{ title }}
-      </NuxtLink>
+      </p>
 
       <!-- Extra content - always in DOM to prevent height jump, visible only when active -->
       <div
@@ -76,7 +76,7 @@ const localePath = useLocalePath()
         </div>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <style scoped>
