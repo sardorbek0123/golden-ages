@@ -161,7 +161,9 @@
     "reviews": "reviews",
     "excellent": "Excellent",
     "try_again": "Try Again",
-    "bookNow": "BOOK NOW"
+    "bookNow": "BOOK NOW",
+    "countryCallingCode": "Country code",
+    "phoneNationalPlaceholder": "National number"
   },
   "tours": {
     "all": "All Tours",
@@ -262,7 +264,8 @@
       "processing": "Processing...",
       "successTitle": "Payment Successful!",
       "successMessage": "Thank you for your booking. We will contact you shortly.",
-      "paymentError": "Payment failed. Please check your card details and try again."
+      "paymentError": "Payment could not be completed. Please try again.",
+      "redirectMissing": "Payment link was not received. Please try again later or contact support."
     }
   },
   "contacts": {

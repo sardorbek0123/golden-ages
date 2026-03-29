@@ -158,7 +158,9 @@
     "reviews": "reseñas",
     "excellent": "Excelente",
     "try_again": "Intentar de nuevo",
-    "bookNow": "RESERVAR AHORA"
+    "bookNow": "RESERVAR AHORA",
+    "countryCallingCode": "Código de país",
+    "phoneNationalPlaceholder": "Número sin prefijo"
   },
   "tours": {
     "all": "Todos los tours",
@@ -259,7 +261,8 @@
       "processing": "Procesando...",
       "successTitle": "¡Pago exitoso!",
       "successMessage": "Gracias por su reserva. Nos pondremos en contacto con usted pronto.",
-      "paymentError": "Pago fallido. Compruebe los datos de su tarjeta e inténtelo de nuevo."
+      "paymentError": "No se pudo completar el pago. Inténtelo de nuevo.",
+      "redirectMissing": "No se recibió el enlace de pago. Inténtelo más tarde o contacte con soporte."
     }
   },
   "contacts": {

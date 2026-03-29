@@ -158,7 +158,9 @@
     "reviews": "Bewertungen",
     "excellent": "Ausgezeichnet",
     "try_again": "Erneut versuchen",
-    "bookNow": "JETZT BUCHEN"
+    "bookNow": "JETZT BUCHEN",
+    "countryCallingCode": "Ländervorwahl",
+    "phoneNationalPlaceholder": "Rufnummer ohne Vorwahl"
   },
   "tours": {
     "all": "Alle Touren",
@@ -259,7 +261,8 @@
       "processing": "Wird verarbeitet...",
       "successTitle": "Zahlung erfolgreich!",
       "successMessage": "Vielen Dank für Ihre Buchung. Wir werden uns in Kürze bei Ihnen melden.",
-      "paymentError": "Zahlung fehlgeschlagen. Bitte überprüfen Sie Ihre Kartendaten und versuchen Sie es erneut."
+      "paymentError": "Die Zahlung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.",
+      "redirectMissing": "Zahlungslink wurde nicht erhalten. Bitte versuchen Sie es später erneut oder kontaktieren Sie den Support."
     }
   },
   "contacts": {

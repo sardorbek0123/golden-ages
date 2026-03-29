@@ -161,7 +161,9 @@
     "reviews": "recensioni",
     "excellent": "Eccellente",
     "try_again": "Riprova",
-    "bookNow": "PRENOTA ORA"
+    "bookNow": "PRENOTA ORA",
+    "countryCallingCode": "Prefisso internazionale",
+    "phoneNationalPlaceholder": "Numero senza prefisso"
   },
   "tours": {
     "all": "Tutti i tour",
@@ -262,7 +264,8 @@
       "processing": "Elaborazione...",
       "successTitle": "Pagamento riuscito!",
       "successMessage": "Grazie per la prenotazione. Ti contatteremo a breve.",
-      "paymentError": "Pagamento fallito. Controlla i dati della carta e riprova."
+      "paymentError": "Impossibile completare il pagamento. Riprova.",
+      "redirectMissing": "Link di pagamento non ricevuto. Riprova più tardi o contatta l'assistenza."
     }
   },
   "contacts": {
