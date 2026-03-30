@@ -244,6 +244,7 @@
       "passportError": "Der Reisepass muss mindestens 6 Zeichen haben (nur Buchstaben, Zahlen und Leerzeichen).",
       "phone": "Telefonnummer",
       "email": "E-Mail",
+      "whatsapp": "WhatsApp",
       "cardDetails": "Kartendaten",
       "cardholderName": "Name auf der Karte",
       "cardholderNamePlaceholder": "Wie auf der Karte angegeben",

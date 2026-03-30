@@ -247,6 +247,7 @@
       "passportError": "Il passaporto deve contenere almeno 6 caratteri (solo lettere, numeri e spazi).",
       "phone": "Numero di telefono",
       "email": "Email",
+      "whatsapp": "WhatsApp",
       "cardDetails": "Dati carta",
       "cardholderName": "Nome titolare",
       "cardholderNamePlaceholder": "Come indicato sulla carta",

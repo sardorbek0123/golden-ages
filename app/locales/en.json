@@ -247,6 +247,7 @@
       "passportError": "Passport must be at least 6 characters (letters, numbers and spaces only).",
       "phone": "Phone Number",
       "email": "Email",
+      "whatsapp": "WhatsApp",
       "cardDetails": "Card Details",
       "cardholderName": "Card holder name",
       "cardholderNamePlaceholder": "As shown on the card",

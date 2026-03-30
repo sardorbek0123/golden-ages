@@ -244,6 +244,7 @@
       "passportError": "Pasport kamida 6 belgidan iborat bo'lishi kerak (faqat harflar, raqamlar va probellar).",
       "phone": "Telefon raqami",
       "email": "Email",
+      "whatsapp": "WhatsApp",
       "cardDetails": "Karta ma'lumotlari",
       "cardholderName": "Karta egasining ismi",
       "cardholderNamePlaceholder": "Kartada ko'rsatilgandek",

@@ -244,6 +244,7 @@
       "passportError": "El pasaporte debe tener al menos 6 caracteres (solo letras, números y espacios).",
       "phone": "Número de teléfono",
       "email": "Correo electrónico",
+      "whatsapp": "WhatsApp",
       "cardDetails": "Datos de la tarjeta",
       "cardholderName": "Nombre del titular",
       "cardholderNamePlaceholder": "Como aparece en la tarjeta",

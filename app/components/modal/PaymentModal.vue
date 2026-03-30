@@ -9,6 +9,8 @@ interface Passenger {
   country: string
   passport: string
   phone: string
+  email: string
+  whatsapp: string
 }
 
 const props = defineProps<{
@@ -60,7 +62,9 @@ const createPassenger = (): Passenger => ({
   gender: 'male',
   country: '',
   passport: '',
-  phone: ''
+  phone: '',
+  email: '',
+  whatsapp: ''
 })
 
 const normalizePeopleCount = (value: number) => {
@@ -161,40 +165,29 @@ const handlePay = async () => {
 
   const payload: Record<string, unknown> = {
     trip_id: props.trip.id,
-    people_count: peopleCount.value,
-    passengers: passengers.value.map((p) => ({
+    payment_type: paymentType.value,
+    persons: passengers.value.map((p) => ({
       first_name: p.firstName.trim(),
       last_name: p.lastName.trim(),
       gender: p.gender,
       country: p.country.trim(),
       passport: p.passport.trim(),
-      phone: p.phone.trim()
-    })),
-    total_amount: paymentAmount.value,
-    is_partial_payment: paymentType.value === 'partial'
+      phone: p.phone.trim(),
+      email: p.email.trim(),
+      whatsapp: p.whatsapp.trim()
+    }))
   }
 
   try {
-    const paymentRes = await post<{
-      redirect_url?: string
-      payment_url?: string
-      url?: string
-      checkout_url?: string
-    }>('/payment/create/', payload)
+    const paymentRes = await post<{ payment_url: string }>('/payment/create/', payload)
 
-    const payUrl =
-      paymentRes.redirect_url ??
-      paymentRes.payment_url ??
-      paymentRes.url ??
-      paymentRes.checkout_url
-
-    if (!payUrl) {
+    if (!paymentRes.payment_url) {
       submitError.value = t('tourDetail.paymentModal.redirectMissing')
       return
     }
 
     if (import.meta.client) {
-      window.location.href = payUrl
+      window.location.href = paymentRes.payment_url
     }
   } catch (error) {
     submitError.value = error instanceof Error
@@ -375,9 +368,20 @@ onUnmounted(() => {
                     />
                     <CommonPhoneInput
                       v-model="passenger.phone"
-                      wrapper-class="sm:col-span-2"
                       :placeholder="t('common.phoneNationalPlaceholder')"
                       :aria-label="t('tourDetail.paymentModal.phone')"
+                      :country-code-aria-label="t('common.countryCallingCode')"
+                    />
+                    <input
+                      v-model="passenger.email"
+                      type="email"
+                      :placeholder="t('tourDetail.paymentModal.email')"
+                      class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
+                    />
+                    <CommonPhoneInput
+                      v-model="passenger.whatsapp"
+                      :placeholder="t('tourDetail.paymentModal.whatsapp')"
+                      :aria-label="t('tourDetail.paymentModal.whatsapp')"
                       :country-code-aria-label="t('common.countryCallingCode')"
                     />
                   </div>

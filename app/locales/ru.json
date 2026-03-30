@@ -244,6 +244,7 @@
       "passportError": "Паспорт должен быть не менее 6 символов (только буквы, цифры и пробелы).",
       "phone": "Номер телефона",
       "email": "Email",
+      "whatsapp": "WhatsApp",
       "cardDetails": "Данные карты",
       "cardholderName": "Имя держателя карты",
       "cardholderNamePlaceholder": "Как указано на карте",
