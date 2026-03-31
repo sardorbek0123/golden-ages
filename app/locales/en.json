@@ -161,7 +161,9 @@
     "reviews": "reviews",
     "excellent": "Excellent",
     "try_again": "Try Again",
-    "bookNow": "BOOK NOW"
+    "bookNow": "BOOK NOW",
+    "countryCallingCode": "Country code",
+    "phoneNationalPlaceholder": "National number"
   },
   "tours": {
     "all": "All Tours",
@@ -245,6 +247,8 @@
       "passportError": "Passport must be at least 6 characters (letters, numbers and spaces only).",
       "phone": "Phone Number",
       "email": "Email",
+      "whatsapp": "WhatsApp",
+      "phoneAndWhatsapp": "Phone number / WhatsApp",
       "cardDetails": "Card Details",
       "cardholderName": "Card holder name",
       "cardholderNamePlaceholder": "As shown on the card",
@@ -262,7 +266,9 @@
       "processing": "Processing...",
       "successTitle": "Payment Successful!",
       "successMessage": "Thank you for your booking. We will contact you shortly.",
-      "paymentError": "Payment failed. Please check your card details and try again."
+      "paymentError": "Payment could not be completed. Please try again.",
+      "redirectMissing": "Payment link was not received. Please try again later or contact support.",
+      "uzsPaymentNote": "Payment will be processed in Uzbek sums (UZS)"
     }
   },
   "contacts": {

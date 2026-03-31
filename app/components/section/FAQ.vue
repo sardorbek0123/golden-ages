@@ -9,11 +9,12 @@ const expandedId = ref<number | null>(null)
 
 onMounted(async () => {
   if (!faqsStore.hasFaqs) {
-    await faqsStore.fetchFaqs()
+    await faqsStore.fetchFaqs({ limit: 30 })
   }
   // Expand first FAQ by default
-  if (faqs.value.length > 0) {
-    expandedId.value = faqs.value[0].id
+  const firstFaq = faqs.value[0]
+  if (firstFaq) {
+    expandedId.value = firstFaq.id
   }
 })
 

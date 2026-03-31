@@ -99,37 +99,36 @@ const handleSubmit = async () => {
               />
             </div>
 
-            <!-- Email & Phone -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <label for="contact-email" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
-                  {{ t('contactForm.email') }}
-                </label>
-                <input
-                  id="contact-email"
-                  v-model="form.email"
-                  type="email"
-                  required
-                  :placeholder="t('contactForm.email')"
-                  :aria-label="t('contactForm.email')"
-                  class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
-                />
-              </div>
-              <div>
+            <!-- Email -->
+            <div class=""">
+              <label for="contact-email" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
+                {{ t('contactForm.email') }}
+              </label>
+              <input
+                id="contact-email"
+                v-model="form.email"
+                type="email"
+                required
+                :placeholder="t('contactForm.email')"
+                :aria-label="t('contactForm.email')"
+                class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
+              />
+            </div>
+
+            <!-- Phone -->
+            <div>
                 <label for="contact-phone" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                   {{ t('contactForm.phone') }}
                 </label>
-                <input
+                <CommonPhoneInput
                   id="contact-phone"
                   v-model="form.phone"
-                  type="tel"
                   required
-                  :placeholder="t('contactForm.phone')"
+                  :placeholder="t('common.phoneNationalPlaceholder')"
                   :aria-label="t('contactForm.phone')"
-                  class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400"
+                  :country-code-aria-label="t('common.countryCallingCode')"
                 />
               </div>
-            </div>
 
             <!-- Tour Type -->
             <div>

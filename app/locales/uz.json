@@ -158,7 +158,9 @@
     "reviews": "sharhlar",
     "excellent": "A'lo",
     "try_again": "Qayta urinish",
-    "bookNow": "BAND QILISH"
+    "bookNow": "BAND QILISH",
+    "countryCallingCode": "Mamlakat kodi",
+    "phoneNationalPlaceholder": "Kodsiz telefon raqami"
   },
   "tours": {
     "all": "Barcha turlar",
@@ -242,6 +244,8 @@
       "passportError": "Pasport kamida 6 belgidan iborat bo'lishi kerak (faqat harflar, raqamlar va probellar).",
       "phone": "Telefon raqami",
       "email": "Email",
+      "whatsapp": "WhatsApp",
+      "phoneAndWhatsapp": "Telefon raqami / WhatsApp",
       "cardDetails": "Karta ma'lumotlari",
       "cardholderName": "Karta egasining ismi",
       "cardholderNamePlaceholder": "Kartada ko'rsatilgandek",
@@ -259,7 +263,9 @@
       "processing": "Qayta ishlanmoqda...",
       "successTitle": "To'lov muvaffaqiyatli!",
       "successMessage": "Band qilganingiz uchun rahmat. Tez orada siz bilan bog'lanamiz.",
-      "paymentError": "To'lov amalga oshmadi. Karta ma'lumotlarini tekshiring va qayta urinib ko'ring."
+      "paymentError": "To'lovni yakunlab bo'lmadi. Qayta urinib ko'ring.",
+      "redirectMissing": "To'lov havolasi kelmadi. Keyinroq urinib ko'ring yoki qo'llab-quvvatlash bilan bog'laning.",
+      "uzsPaymentNote": "To'lov o'zbek so'mida (UZS) amalga oshiriladi"
     }
   },
   "contacts": {

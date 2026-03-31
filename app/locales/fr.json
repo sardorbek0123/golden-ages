@@ -158,7 +158,9 @@
     "reviews": "avis",
     "excellent": "Excellent",
     "try_again": "Réessayer",
-    "bookNow": "RÉSERVER MAINTENANT"
+    "bookNow": "RÉSERVER MAINTENANT",
+    "countryCallingCode": "Indicatif pays",
+    "phoneNationalPlaceholder": "Numéro sans indicatif"
   },
   "tours": {
     "all": "Tous les tours",
@@ -242,6 +244,8 @@
       "passportError": "Le passeport doit contenir au moins 6 caractères (lettres, chiffres et espaces uniquement).",
       "phone": "Numéro de téléphone",
       "email": "E-mail",
+      "whatsapp": "WhatsApp",
+      "phoneAndWhatsapp": "Téléphone / WhatsApp",
       "cardDetails": "Informations de la carte",
       "cardholderName": "Nom du titulaire",
       "cardholderNamePlaceholder": "Comme indiqué sur la carte",
@@ -259,7 +263,9 @@
       "processing": "Traitement en cours...",
       "successTitle": "Paiement réussi !",
       "successMessage": "Merci pour votre réservation. Nous vous contacterons très bientôt.",
-      "paymentError": "Échec du paiement. Vérifiez les données de votre carte et réessayez."
+      "paymentError": "Le paiement n'a pas pu être effectué. Veuillez réessayer.",
+      "redirectMissing": "Le lien de paiement n'a pas été reçu. Réessayez plus tard ou contactez le support.",
+      "uzsPaymentNote": "Le paiement sera effectué en soums ouzbeks (UZS)"
     }
   },
   "contacts": {

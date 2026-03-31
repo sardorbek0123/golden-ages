@@ -53,6 +53,7 @@ export interface CityDetail {
   experience_highlights?: CityExperienceHighlight[]
   created_at: string
   updated_at: string
+  description?: string
 }
 
 export interface FamousPlaceImage {
