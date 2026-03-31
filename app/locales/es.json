@@ -160,7 +160,9 @@
     "try_again": "Intentar de nuevo",
     "bookNow": "RESERVAR AHORA",
     "countryCallingCode": "Código de país",
-    "phoneNationalPlaceholder": "Número sin prefijo"
+    "phoneNationalPlaceholder": "Número sin prefijo",
+    "search": "Buscar…",
+    "noResults": "Sin resultados"
   },
   "tours": {
     "all": "Todos los tours",

@@ -160,7 +160,9 @@
     "try_again": "Повторить",
     "bookNow": "ЗАБРОНИРОВАТЬ",
     "countryCallingCode": "Код страны",
-    "phoneNationalPlaceholder": "Номер без кода страны"
+    "phoneNationalPlaceholder": "Номер без кода страны",
+    "search": "Поиск…",
+    "noResults": "Ничего не найдено"
   },
   "tours": {
     "all": "Все туры",

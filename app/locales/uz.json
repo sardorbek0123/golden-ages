@@ -160,7 +160,9 @@
     "try_again": "Qayta urinish",
     "bookNow": "BAND QILISH",
     "countryCallingCode": "Mamlakat kodi",
-    "phoneNationalPlaceholder": "Kodsiz telefon raqami"
+    "phoneNationalPlaceholder": "Kodsiz telefon raqami",
+    "search": "Qidirish…",
+    "noResults": "Natija topilmadi"
   },
   "tours": {
     "all": "Barcha turlar",

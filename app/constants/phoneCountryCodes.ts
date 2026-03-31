@@ -92,3 +92,12 @@ export function matchDialFromFull(full: string): string | null {
   }
   return null
 }
+
+/**
+ * SVG flag image URL from flagcdn.com.
+ * Derives the ISO 3166-1 alpha-2 code from the label (first segment before " / ").
+ */
+export function flagImageUrl(label: string): string {
+  const iso = label.split(' / ')[0].toLowerCase()
+  return `https://flagcdn.com/${iso}.svg`
+}
