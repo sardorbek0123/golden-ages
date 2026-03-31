@@ -174,7 +174,7 @@ const handlePay = async () => {
       passport: p.passport.trim(),
       phone: p.phone.trim(),
       email: p.email.trim(),
-      whatsapp: p.whatsapp.trim()
+      whatsapp: p.phone.trim()
     }))
   }
 
@@ -321,6 +321,7 @@ onUnmounted(() => {
                   <span>{{ t('tourDetail.paymentModal.subtotal') }}</span>
                   <span>{{ formatMoney(subtotal) }}</span>
                 </div>
+                <p class="text-xs text-gray-400 pt-1">{{ t('tourDetail.paymentModal.uzsPaymentNote') }}</p>
               </div>
             </div>
 
@@ -366,24 +367,21 @@ onUnmounted(() => {
                       class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                       @input="onPassportInput(index, $event)"
                     />
-                    <CommonPhoneInput
-                      v-model="passenger.phone"
-                      :placeholder="t('common.phoneNationalPlaceholder')"
-                      :aria-label="t('tourDetail.paymentModal.phone')"
-                      :country-code-aria-label="t('common.countryCallingCode')"
-                    />
                     <input
                       v-model="passenger.email"
                       type="email"
                       :placeholder="t('tourDetail.paymentModal.email')"
                       class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-400 focus:outline-none text-gray-900 placeholder:text-gray-500"
                     />
-                    <CommonPhoneInput
-                      v-model="passenger.whatsapp"
-                      :placeholder="t('tourDetail.paymentModal.whatsapp')"
-                      :aria-label="t('tourDetail.paymentModal.whatsapp')"
-                      :country-code-aria-label="t('common.countryCallingCode')"
-                    />
+                    <div class="sm:col-span-2">
+                      <label class="block text-xs text-gray-500 mb-1.5">{{ t('tourDetail.paymentModal.phoneAndWhatsapp') }}</label>
+                      <CommonPhoneInput
+                        v-model="passenger.phone"
+                        :placeholder="t('common.phoneNationalPlaceholder')"
+                        :aria-label="t('tourDetail.paymentModal.phoneAndWhatsapp')"
+                        :country-code-aria-label="t('common.countryCallingCode')"
+                      />
+                    </div>
                   </div>
                   <p
                     v-if="passenger.passport && (!passportRegex.test(passenger.passport.trim()) || passenger.passport.trim().length < 6)"
@@ -431,6 +429,7 @@ onUnmounted(() => {
                   <span>{{ t('tourDetail.paymentModal.amountToPay') }}</span>
                   <span>{{ formatMoney(paymentAmount) }}</span>
                 </div>
+                <p class="text-xs text-gray-400 pt-1">{{ t('tourDetail.paymentModal.uzsPaymentNote') }}</p>
                 <p v-if="paymentType === 'partial'" class="text-xs text-gray-500">
                   {{ t('tourDetail.paymentModal.partialPaymentHint') }}
                 </p>

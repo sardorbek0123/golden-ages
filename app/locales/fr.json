@@ -245,6 +245,7 @@
       "phone": "Numéro de téléphone",
       "email": "E-mail",
       "whatsapp": "WhatsApp",
+      "phoneAndWhatsapp": "Téléphone / WhatsApp",
       "cardDetails": "Informations de la carte",
       "cardholderName": "Nom du titulaire",
       "cardholderNamePlaceholder": "Comme indiqué sur la carte",
@@ -263,7 +264,8 @@
       "successTitle": "Paiement réussi !",
       "successMessage": "Merci pour votre réservation. Nous vous contacterons très bientôt.",
       "paymentError": "Le paiement n'a pas pu être effectué. Veuillez réessayer.",
-      "redirectMissing": "Le lien de paiement n'a pas été reçu. Réessayez plus tard ou contactez le support."
+      "redirectMissing": "Le lien de paiement n'a pas été reçu. Réessayez plus tard ou contactez le support.",
+      "uzsPaymentNote": "Le paiement sera effectué en soums ouzbeks (UZS)"
     }
   },
   "contacts": {

@@ -245,6 +245,7 @@
       "phone": "Telefonnummer",
       "email": "E-Mail",
       "whatsapp": "WhatsApp",
+      "phoneAndWhatsapp": "Telefonnummer / WhatsApp",
       "cardDetails": "Kartendaten",
       "cardholderName": "Name auf der Karte",
       "cardholderNamePlaceholder": "Wie auf der Karte angegeben",
@@ -263,7 +264,8 @@
       "successTitle": "Zahlung erfolgreich!",
       "successMessage": "Vielen Dank für Ihre Buchung. Wir werden uns in Kürze bei Ihnen melden.",
       "paymentError": "Die Zahlung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.",
-      "redirectMissing": "Zahlungslink wurde nicht erhalten. Bitte versuchen Sie es später erneut oder kontaktieren Sie den Support."
+      "redirectMissing": "Zahlungslink wurde nicht erhalten. Bitte versuchen Sie es später erneut oder kontaktieren Sie den Support.",
+      "uzsPaymentNote": "Die Zahlung erfolgt in usbekischen Sum (UZS)"
     }
   },
   "contacts": {
