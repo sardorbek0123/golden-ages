@@ -163,7 +163,9 @@
     "try_again": "Try Again",
     "bookNow": "BOOK NOW",
     "countryCallingCode": "Country code",
-    "phoneNationalPlaceholder": "National number"
+    "phoneNationalPlaceholder": "National number",
+    "search": "Search…",
+    "noResults": "No results"
   },
   "tours": {
     "all": "All Tours",

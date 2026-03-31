@@ -163,7 +163,9 @@
     "try_again": "Riprova",
     "bookNow": "PRENOTA ORA",
     "countryCallingCode": "Prefisso internazionale",
-    "phoneNationalPlaceholder": "Numero senza prefisso"
+    "phoneNationalPlaceholder": "Numero senza prefisso",
+    "search": "Cerca…",
+    "noResults": "Nessun risultato"
   },
   "tours": {
     "all": "Tutti i tour",

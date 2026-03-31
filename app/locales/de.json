@@ -160,7 +160,9 @@
     "try_again": "Erneut versuchen",
     "bookNow": "JETZT BUCHEN",
     "countryCallingCode": "Ländervorwahl",
-    "phoneNationalPlaceholder": "Rufnummer ohne Vorwahl"
+    "phoneNationalPlaceholder": "Rufnummer ohne Vorwahl",
+    "search": "Suchen…",
+    "noResults": "Keine Ergebnisse"
   },
   "tours": {
     "all": "Alle Touren",

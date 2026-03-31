@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue'
+import { computed, watch, nextTick, onUnmounted } from 'vue'
 import {
   PHONE_COUNTRY_CODES_SORTED,
-  matchDialFromFull
+  matchDialFromFull,
+  flagImageUrl
 } from '~/constants/phoneCountryCodes'
 
 const props = withDefaults(
@@ -96,6 +97,59 @@ const activeShortLabel = computed(() => {
   const i = l.indexOf(' / ')
   return i >= 0 ? l.slice(0, i) : l
 })
+
+const dropdownOpen = ref(false)
+const search = ref('')
+const countryRef = ref<HTMLElement>()
+const searchInputRef = ref<HTMLInputElement>()
+
+const filteredCountries = computed(() => {
+  const q = search.value.trim().toLowerCase()
+  if (!q) return PHONE_COUNTRY_CODES_SORTED
+  return PHONE_COUNTRY_CODES_SORTED.filter(
+    (row) => row.label.toLowerCase().includes(q) || row.dial.includes(q)
+  )
+})
+
+const toggleDropdown = () => {
+  dropdownOpen.value = !dropdownOpen.value
+  if (dropdownOpen.value) {
+    search.value = ''
+    nextTick(() => searchInputRef.value?.focus())
+  }
+}
+
+const selectCountry = (dial: string) => {
+  dialCode.value = dial
+  dropdownOpen.value = false
+}
+
+const handleClickOutside = (e: MouseEvent) => {
+  if (countryRef.value && !countryRef.value.contains(e.target as Node)) {
+    dropdownOpen.value = false
+  }
+}
+
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') dropdownOpen.value = false
+}
+
+watch(dropdownOpen, (open) => {
+  if (open) {
+    nextTick(() => {
+      document.addEventListener('click', handleClickOutside)
+      document.addEventListener('keydown', handleKeydown)
+    })
+  } else {
+    document.removeEventListener('click', handleClickOutside)
+    document.removeEventListener('keydown', handleKeydown)
+  }
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+  document.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <template>
@@ -106,29 +160,23 @@ const activeShortLabel = computed(() => {
       wrapperClass
     ]"
   >
-    <!-- Country: one visual block with invisible native select -->
-    <div
-      class="relative flex max-w-[min(12.5rem,46%)] shrink-0 items-center pl-3 sm:max-w-none sm:pl-4"
-    >
-      <select
-        :id="id ? `${id}-country-code` : undefined"
-        v-model="dialCode"
-        class="absolute inset-0 z-1 h-full min-h-12 w-full cursor-pointer opacity-0 sm:min-h-13"
+    <!-- Country selector with custom dropdown -->
+    <div ref="countryRef" class="relative flex shrink-0 items-center">
+      <button
+        type="button"
+        class="flex min-h-12 items-center gap-1.5 py-3 pl-3 pr-2 sm:min-h-13 sm:py-4 sm:pl-4"
         :aria-label="countryCodeAriaLabel"
+        :aria-expanded="dropdownOpen"
+        aria-haspopup="listbox"
+        @click="toggleDropdown"
       >
-        <option
-          v-for="row in PHONE_COUNTRY_CODES_SORTED"
-          :key="`${row.dial}-${row.label}`"
-          :value="row.dial"
-        >
-          {{ row.flag }} {{ row.label }} {{ row.dial }}
-        </option>
-      </select>
-      <div
-        class="pointer-events-none flex min-h-12 items-center gap-1.5 py-3 pr-5 sm:min-h-13 sm:py-4"
-        aria-hidden="true"
-      >
-        <span class="text-lg leading-none">{{ activeOption.flag }}</span>
+        <img
+          :src="flagImageUrl(activeOption.label)"
+          :alt="activeOption.flag"
+          width="20"
+          height="15"
+          class="h-[15px] w-5 shrink-0 rounded-[2px] object-cover"
+        />
         <span class="whitespace-nowrap text-sm font-medium text-gray-900 sm:text-base">
           {{ activeShortLabel }}
         </span>
@@ -136,7 +184,8 @@ const activeShortLabel = computed(() => {
           {{ dialCode }}
         </span>
         <svg
-          class="ml-0.5 h-4 w-4 shrink-0 text-gray-500"
+          class="ml-0.5 h-4 w-4 shrink-0 text-gray-500 transition-transform"
+          :class="{ 'rotate-180': dropdownOpen }"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -144,7 +193,61 @@ const activeShortLabel = computed(() => {
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
-      </div>
+      </button>
+
+      <Transition
+        enter-active-class="transition duration-150 ease-out"
+        enter-from-class="opacity-0 -translate-y-1"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition duration-100 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-1"
+      >
+        <div
+          v-if="dropdownOpen"
+          role="listbox"
+          class="absolute left-0 top-full z-50 mt-1 w-64 rounded-xl border border-gray-200 bg-white shadow-lg"
+        >
+          <div class="border-b border-gray-100 p-2">
+            <input
+              ref="searchInputRef"
+              v-model="search"
+              type="text"
+              :placeholder="$t('common.search')"
+              class="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none placeholder:text-gray-400 focus:border-gray-400"
+              @keydown.stop
+            />
+          </div>
+          <div class="max-h-52 overflow-y-auto py-1">
+            <button
+              v-for="row in filteredCountries"
+              :key="`${row.dial}-${row.label}`"
+              type="button"
+              role="option"
+              :aria-selected="row.dial === dialCode"
+              class="flex w-full items-center gap-2.5 px-3 py-2 text-left transition-colors hover:bg-gray-50"
+              :class="{ 'bg-orange-50': row.dial === dialCode }"
+              @click="selectCountry(row.dial)"
+            >
+              <img
+                :src="flagImageUrl(row.label)"
+                :alt="row.flag"
+                width="20"
+                height="15"
+                class="h-[15px] w-5 shrink-0 rounded-[2px] object-cover"
+              />
+              <span class="text-sm text-gray-900">{{ row.label }}</span>
+              <span class="ml-auto text-sm text-gray-500">{{ row.dial }}</span>
+            </button>
+            <p
+              v-if="filteredCountries.length === 0"
+              class="px-3 py-4 text-center text-sm text-gray-400"
+            >
+              {{ $t('common.noResults') }}
+            </p>
+          </div>
+        </div>
+      </Transition>
     </div>
 
     <input
