@@ -165,7 +165,10 @@
     "countryCallingCode": "Prefisso internazionale",
     "phoneNationalPlaceholder": "Numero senza prefisso",
     "search": "Cerca…",
-    "noResults": "Nessun risultato"
+    "noResults": "Nessun risultato",
+    "dataConsentHint": "Conserviamo e trattiamo i suoi dati per evadere la richiesta. Confermi il consenso qui sotto.",
+    "dataConsent": "Acconsento alla conservazione e al trattamento dei miei dati personali e riconosco la {offer}.",
+    "publicOffer": "offerta pubblica"
   },
   "tours": {
     "all": "Tutti i tour",

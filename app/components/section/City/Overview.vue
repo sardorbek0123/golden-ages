@@ -99,13 +99,10 @@ const infoItems = computed(() => {
   return items;
 });
 
+/** Plain text from HTML — same on server and client to avoid hydration mismatches. */
 function stripHtml(html: string) {
-  if (!import.meta.server) {
-    const div = document.createElement("div");
-    div.innerHTML = html;
-    return div.textContent || div.innerText || "";
-  }
-  return html.replace(/<[^>]*>/g, "");
+  if (!html) return "";
+  return html.replace(/<[^>]*>/g, "").trim();
 }
 </script>
 

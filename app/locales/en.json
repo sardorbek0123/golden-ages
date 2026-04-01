@@ -165,7 +165,10 @@
     "countryCallingCode": "Country code",
     "phoneNationalPlaceholder": "National number",
     "search": "Search…",
-    "noResults": "No results"
+    "noResults": "No results",
+    "dataConsentHint": "We store and process your data to fulfill your request. Please confirm your consent below.",
+    "dataConsent": "I consent to the storage and processing of my personal data and acknowledge the {offer}.",
+    "publicOffer": "public offer"
   },
   "tours": {
     "all": "All Tours",

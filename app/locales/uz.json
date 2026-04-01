@@ -162,7 +162,10 @@
     "countryCallingCode": "Mamlakat kodi",
     "phoneNationalPlaceholder": "Kodsiz telefon raqami",
     "search": "Qidirish…",
-    "noResults": "Natija topilmadi"
+    "noResults": "Natija topilmadi",
+    "dataConsentHint": "So'rovingizni bajarish uchun ma'lumotlaringiz saqlanadi va qayta ishlanadi. Roziligingizni tasdiqlang.",
+    "dataConsent": "Shaxsiy ma'lumotlarimni saqlash va qayta ishlashga roziman va {offer} bilan tanishdim.",
+    "publicOffer": "ommaviy oferta"
   },
   "tours": {
     "all": "Barcha turlar",
