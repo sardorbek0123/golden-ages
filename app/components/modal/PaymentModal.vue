@@ -23,6 +23,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { post } = useApi()
 
 const getCurrencyLabel = (currencyKey?: string | null): string => {
@@ -55,6 +56,7 @@ const paymentType = ref<'full' | 'partial'>('full')
 
 const isSubmitting = ref(false)
 const submitError = ref('')
+const dataProcessingConsent = ref(true)
 
 const createPassenger = (): Passenger => ({
   firstName: '',
@@ -113,7 +115,7 @@ const isStep2Valid = computed(() => {
 })
 
 const canGoNext = computed(() => step.value === 1 && isStep1Valid.value)
-const canPay = computed(() => isStep2Valid.value && !isSubmitting.value)
+const canPay = computed(() => isStep2Valid.value && dataProcessingConsent.value && !isSubmitting.value)
 
 const onPeopleCountInput = (e: Event) => {
   const target = e.target as HTMLInputElement
@@ -150,6 +152,7 @@ const resetForm = () => {
 
   submitError.value = ''
   isSubmitting.value = false
+  dataProcessingConsent.value = true
 }
 
 const closeModal = () => {
@@ -158,7 +161,7 @@ const closeModal = () => {
 }
 
 const handlePay = async () => {
-  if (!isStep2Valid.value || isSubmitting.value) return
+  if (!isStep2Valid.value || !dataProcessingConsent.value || isSubmitting.value) return
 
   isSubmitting.value = true
   submitError.value = ''
@@ -436,6 +439,32 @@ onUnmounted(() => {
               </div>
 
               <p v-if="submitError" class="text-sm text-red-500">{{ submitError }}</p>
+
+              <div class="space-y-2 pt-1">
+                <p class="text-[11px] sm:text-xs text-gray-500 leading-snug">
+                  {{ t('common.dataConsentHint') }}
+                </p>
+                <label class="flex items-start gap-2.5 cursor-pointer select-none">
+                  <input
+                    v-model="dataProcessingConsent"
+                    type="checkbox"
+                    class="mt-0.5 size-4 shrink-0 rounded border-gray-300 text-orange-normal focus:ring-orange-normal"
+                  />
+                  <span class="text-[11px] sm:text-xs text-gray-600 leading-snug">
+                    <i18n-t keypath="common.dataConsent" tag="span">
+                      <template #offer>
+                        <NuxtLink
+                          :to="localePath('/public_offer')"
+                          class="text-orange-normal underline underline-offset-2 hover:text-orange-normal-hover"
+                          @click.stop
+                        >
+                          {{ t('common.publicOffer') }}
+                        </NuxtLink>
+                      </template>
+                    </i18n-t>
+                  </span>
+                </label>
+              </div>
             </div>
 
             <div class="mt-6 flex items-center justify-between gap-3">

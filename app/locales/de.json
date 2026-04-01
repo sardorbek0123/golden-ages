@@ -162,7 +162,10 @@
     "countryCallingCode": "Ländervorwahl",
     "phoneNationalPlaceholder": "Rufnummer ohne Vorwahl",
     "search": "Suchen…",
-    "noResults": "Keine Ergebnisse"
+    "noResults": "Keine Ergebnisse",
+    "dataConsentHint": "Wir speichern und verarbeiten Ihre Daten zur Bearbeitung Ihrer Anfrage. Bitte bestätigen Sie unten Ihre Einwilligung.",
+    "dataConsent": "Ich willige in die Speicherung und Verarbeitung meiner personenbezogenen Daten ein und bestätige die Kenntnisnahme der {offer}.",
+    "publicOffer": "öffentlichen Offerte"
   },
   "tours": {
     "all": "Alle Touren",

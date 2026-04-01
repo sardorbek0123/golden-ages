@@ -162,7 +162,10 @@
     "countryCallingCode": "Código de país",
     "phoneNationalPlaceholder": "Número sin prefijo",
     "search": "Buscar…",
-    "noResults": "Sin resultados"
+    "noResults": "Sin resultados",
+    "dataConsentHint": "Conservamos y tratamos sus datos para gestionar su solicitud. Confirme su consentimiento a continuación.",
+    "dataConsent": "Consiento el almacenamiento y el tratamiento de mis datos personales y reconozco la {offer}.",
+    "publicOffer": "oferta pública"
   },
   "tours": {
     "all": "Todos los tours",

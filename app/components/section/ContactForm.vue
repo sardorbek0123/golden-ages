@@ -5,6 +5,7 @@ import { useMessagesStore } from '~/stores/messages'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const tripsStore = useTripsStore()
 const messagesStore = useMessagesStore()
 const settingsStore = useSettingsStore()
@@ -17,6 +18,8 @@ const form = reactive({
   tripId: null as number | null,
   message: ''
 })
+
+const dataProcessingConsent = ref(true)
 
 // Fetch trips on mount
 onMounted(() => {
@@ -41,7 +44,8 @@ const isFormValid = computed(() => {
     form.email.trim() !== '' &&
     form.phone.trim() !== '' &&
     form.tripId !== null &&
-    form.message.trim() !== ''
+    form.message.trim() !== '' &&
+    dataProcessingConsent.value
   )
 })
 
@@ -70,6 +74,7 @@ const handleSubmit = async () => {
     form.phone = ''
     form.tripId = null
     form.message = ''
+    dataProcessingConsent.value = true
   }
 }
 </script>
@@ -100,7 +105,7 @@ const handleSubmit = async () => {
             </div>
 
             <!-- Email -->
-            <div class=""">
+            <div>
               <label for="contact-email" class="block text-xs text-gray-400 uppercase tracking-wide mb-1.5 sm:mb-2">
                 {{ t('contactForm.email') }}
               </label>
@@ -163,6 +168,31 @@ const handleSubmit = async () => {
                 :aria-label="t('contactForm.message')"
                 class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl sm:rounded-2xl focus:border-gray-400 outline-none transition-colors bg-transparent text-sm sm:text-base text-gray-900 placeholder:text-gray-400 resize-none sm:min-h-[150px] md:min-h-[180px]"
               />
+            </div>
+
+            <div class="space-y-2">
+              <p class="text-[11px] sm:text-xs text-gray-500 leading-snug">
+                {{ t('common.dataConsentHint') }}
+              </p>
+              <label class="flex items-start gap-2.5 cursor-pointer select-none">
+                <input
+                  v-model="dataProcessingConsent"
+                  type="checkbox"
+                  class="mt-0.5 size-4 shrink-0 rounded border-gray-300 text-orange-normal focus:ring-orange-normal"
+                />
+                <span class="text-[11px] sm:text-xs text-gray-600 leading-snug">
+                  <i18n-t keypath="common.dataConsent" tag="span">
+                    <template #offer>
+                      <NuxtLink
+                        :to="localePath('/public_offer')"
+                        class="text-orange-normal underline underline-offset-2 hover:text-orange-normal-hover"
+                      >
+                        {{ t('common.publicOffer') }}
+                      </NuxtLink>
+                    </template>
+                  </i18n-t>
+                </span>
+              </label>
             </div>
 
             <!-- Submit Button -->

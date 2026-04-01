@@ -162,7 +162,10 @@
     "countryCallingCode": "Indicatif pays",
     "phoneNationalPlaceholder": "Numéro sans indicatif",
     "search": "Rechercher…",
-    "noResults": "Aucun résultat"
+    "noResults": "Aucun résultat",
+    "dataConsentHint": "Nous conservons et traitons vos données pour répondre à votre demande. Veuillez confirmer votre consentement ci-dessous.",
+    "dataConsent": "J'accepte la conservation et le traitement de mes données personnelles, conformément à {offer}.",
+    "publicOffer": "l'offre publique"
   },
   "tours": {
     "all": "Tous les tours",
