@@ -27,7 +27,14 @@
     "title": "Découvrez l'histoire de l'Ouzbékistan",
     "subtitle": "De Samarcande à Khiva, voyagez sur la Route de la Soie à votre façon — en groupe, en famille, en affaires ou en privé — avec visas, hôtels et guides.",
     "exploreTours": "VOIR LES CIRCUITS À",
-    "ctaText": "COMMENCER LE VOYAGE"
+    "ctaText": "COMMENCER LE VOYAGE",
+    "leadForm": {
+      "title": "Contact rapide — laissez vos coordonnées, nous vous rappelons",
+      "submit": "ENVOYER",
+      "sending": "Envoi...",
+      "successTitle": "Merci !",
+      "successMessage": "Nous avons bien reçu vos informations et vous contacterons très bientôt."
+    }
   },
   "whyChooseUs": {
     "badge": "NOS VALEURS",

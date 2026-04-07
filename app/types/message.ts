@@ -10,3 +10,10 @@ export interface UserMessageCreate {
   message: string
 }
 
+/** Minimal payload for quick lead capture (same `/messages/create/` endpoint when API allows). */
+export interface UserMessageLead {
+  full_name: string
+  email: string
+  phone: string
+}
+

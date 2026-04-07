@@ -27,7 +27,14 @@
     "title": "Discover the history of Uzbekistan",
     "subtitle": "From Samarkand to Khiva, travel the Silk Road your way — group, family, business or private — with visas, hotels and guides taken care of.",
     "exploreTours": "SEE TOURS",
-    "ctaText": "START THE JOURNEY"
+    "ctaText": "START THE JOURNEY",
+    "leadForm": {
+      "title": "Quick contact — leave your details and we'll reach out",
+      "submit": "SEND",
+      "sending": "Sending...",
+      "successTitle": "Thank you!",
+      "successMessage": "We've received your details and will contact you shortly."
+    }
   },
   "whyChooseUs": {
     "badge": "OUR VALUES",
