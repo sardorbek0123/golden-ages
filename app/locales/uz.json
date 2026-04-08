@@ -27,7 +27,14 @@
     "title": "O'zbekiston tarixini kashf eting",
     "subtitle": "Samarqanddan Xivagacha, Ipak yo'li bo'ylab sayohat qiling — guruhli, oilaviy, biznes yoki shaxsiy turlar — vizalar, mehmonxonalar va gidlar bilan.",
     "exploreTours": "TURLARNI KO'RISH",
-    "ctaText": "SAYOHATNI BOSHLASH"
+    "ctaText": "SAYOHATNI BOSHLASH",
+    "leadForm": {
+      "title": "Tez aloqa — qoldiring, biz sizga qo'ng'iroq qilamiz",
+      "submit": "YUBORISH",
+      "sending": "Yuborilmoqda...",
+      "successTitle": "Rahmat!",
+      "successMessage": "Ma'lumotlaringiz qabul qilindi. Tez orada siz bilan bog'lanamiz."
+    }
   },
   "whyChooseUs": {
     "badge": "BIZNING QADRIYATLARIMIZ",

@@ -27,7 +27,14 @@
     "title": "Descubre la historia de Uzbekistán",
     "subtitle": "De Samarcanda a Jiva, viaja por la Ruta de la Seda a tu manera — en grupo, familia, negocios o privado — con visas, hoteles y guías incluidos.",
     "exploreTours": "VER TOURS EN",
-    "ctaText": "COMENZAR EL VIAJE"
+    "ctaText": "COMENZAR EL VIAJE",
+    "leadForm": {
+      "title": "Contacto rápido — deja tus datos y te llamamos",
+      "submit": "ENVIAR",
+      "sending": "Enviando...",
+      "successTitle": "¡Gracias!",
+      "successMessage": "Hemos recibido tus datos y nos pondremos en contacto contigo pronto."
+    }
   },
   "whyChooseUs": {
     "badge": "NUESTROS VALORES",

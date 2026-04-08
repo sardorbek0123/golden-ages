@@ -27,7 +27,14 @@
     "title": "Scopri la storia dell'Uzbekistan",
     "subtitle": "Da Samarcanda a Khiva, viaggia sulla Via della Seta come preferisci — in gruppo, in famiglia, business o privato — con visti, hotel e guide inclusi.",
     "exploreTours": "SCOPRI I TOUR",
-    "ctaText": "INIZIA IL VIAGGIO"
+    "ctaText": "INIZIA IL VIAGGIO",
+    "leadForm": {
+      "title": "Contatto rapido — lascia i tuoi dati, ti richiamiamo",
+      "submit": "INVIA",
+      "sending": "Invio in corso...",
+      "successTitle": "Grazie!",
+      "successMessage": "Abbiamo ricevuto i tuoi dati e ti contatteremo a breve."
+    }
   },
   "whyChooseUs": {
     "badge": "I NOSTRI VALORI",
