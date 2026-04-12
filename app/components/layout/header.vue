@@ -105,7 +105,7 @@ onUnmounted(() => {
           <!-- Logo -->
           <div class="flex items-center">
             <NuxtLink :to="localePath('/')" aria-label="Golden Ages home" @click="closeDropdown">
-              <IconsLogo class="w-20 h-10 md:w-[150px] md:h-[35px] lg:max-w-[260px] xl:max-w-[300px] lg:max-h-full"/>
+              <IconsLogo class="w-26 h-10 md:w-[150px] md:h-[35px] lg:max-w-[260px] xl:max-w-[300px] lg:max-h-full"/>
             </NuxtLink>
           </div>
 
